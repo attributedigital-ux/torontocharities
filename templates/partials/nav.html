@@ -1,0 +1,22 @@
+<nav class="bn-nav" id="bn-nav">
+  <div class="bn-container">
+    <div class="bn-nav__inner">
+      <a href="/" class="bn-nav__logo">{{ site_name }}</a>
+      <ul class="bn-nav__links">
+        {% for link in nav_links %}
+        <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+      <div class="bn-nav__actions">
+        <a href="tel:{{ phone_href }}" class="bn-nav__phone">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          {{ phone_display }}
+        </a>
+        <a href="/contact/" class="bn-btn bn-btn--cream" style="padding:10px 20px;font-size:12px;">Get a Quote</a>
+      </div>
+      <div class="bn-nav__hamburger" id="bn-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>

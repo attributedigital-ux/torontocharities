@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+.bn-legal-hero { background: var(--primary); padding: 130px 0 60px; position: relative; overflow: hidden; }
+.bn-legal-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 20% 60%, rgba(45,94,62,0.4) 0%, transparent 60%); pointer-events: none; }
+.bn-legal-hero__inner { position: relative; z-index: 1; max-width: 640px; }
+.bn-legal-hero__label { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-lt); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.bn-legal-hero__label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent-lt); }
+.bn-legal-hero__h1 { font-size: clamp(36px, 4.5vw, 58px); font-weight: 600; color: var(--cream); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 16px; }
+.bn-legal-hero__date { font-size: 13px; font-weight: 300; color: rgba(245,239,224,0.45); letter-spacing: 0.04em; }
+.bn-legal-body { padding: 72px 0 100px; background: var(--white); }
+.bn-legal-content { max-width: 720px; }
+.bn-legal-section { margin-bottom: 48px; }
+.bn-legal-section h2 { font-size: 28px; font-weight: 600; color: var(--primary); margin-bottom: 16px; letter-spacing: -0.01em; }
+.bn-legal-section p { font-size: 15px; font-weight: 300; color: var(--text-mid); line-height: 1.8; margin-bottom: 12px; }
+.bn-legal-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; padding-left: 4px; }
+.bn-legal-section ul li { font-size: 15px; font-weight: 300; color: var(--text-mid); line-height: 1.7; padding-left: 16px; position: relative; }
+.bn-legal-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 4px; }
+@media (max-width: 768px) { .bn-legal-hero { padding: 100px 0 48px; } .bn-legal-body { padding: 48px 0 64px; } }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="bn-legal-hero">
+  <div class="bn-container">
+    <div class="bn-legal-hero__inner">
+      <p class="bn-legal-hero__label">Legal</p>
+      <h1 class="bn-legal-hero__h1">Terms of Service</h1>
+      <p class="bn-legal-hero__date">Last updated: [Date]</p>
+    </div>
+  </div>
+</section>
+
+<section class="bn-legal-body">
+  <div class="bn-container">
+    <div class="bn-legal-content">
+      <div class="bn-legal-section">
+        <p>These Terms of Service govern your use of {{ site_name }}'s services. By booking a service, you agree to these terms.</p>
+      </div>
+      <div class="bn-legal-section">
+        <h2>Our Services</h2>
+        <p>Replace with your terms of service content.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

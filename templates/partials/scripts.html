@@ -1,0 +1,27 @@
+{% if chat_widget_id %}
+<script
+  src="https://widgets.leadconnectorhq.com/loader.js"
+  data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+  data-widget-id="{{ chat_widget_id }}">
+</script>
+{% endif %}
+
+<script>
+  // Nav hamburger
+  const hamburger = document.getElementById('bn-hamburger');
+  const mobileMenu = document.getElementById('bn-mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('bn-hamburger--open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('bn-hamburger--open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+{% block page_scripts %}{% endblock %}

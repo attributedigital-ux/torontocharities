@@ -1,0 +1,39 @@
+{
+  "site_name": "Site Name",
+  "site_url": "https://example.com",
+  "tagline": "Short description of the business",
+
+  "phone_display": "(000) 000-0000",
+  "phone_href": "+10000000000",
+  "email": "hello@example.com",
+  "address": "123 Example Street, City, Province A1B 2C3",
+
+  "ga_id": "G-XXXXXXXXXX",
+  "chat_widget_id": "",
+
+  "nav_links": [
+    { "label": "Services", "href": "/#services" },
+    { "label": "About",    "href": "/about/" },
+    { "label": "Contact",  "href": "/contact/" }
+  ],
+
+  "footer_services": [
+    { "label": "Service One", "href": "/service-one/" },
+    { "label": "Service Two", "href": "/service-two/" },
+    { "label": "Service Three", "href": "/service-three/" }
+  ],
+
+  "footer_areas": [
+    { "label": "Area One", "href": "/service-one/area-one/" },
+    { "label": "Area Two", "href": "/service-one/area-two/" }
+  ],
+
+  "footer_company": [
+    { "label": "About Us",        "href": "/about/" },
+    { "label": "Get a Free Quote", "href": "/contact/" },
+    { "label": "Privacy Policy",   "href": "/privacy/" },
+    { "label": "Terms of Service", "href": "/terms/" }
+  ],
+
+  "copyright": "© 2026 Site Name. All rights reserved."
+}

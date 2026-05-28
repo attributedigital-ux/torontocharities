@@ -1,0 +1,11 @@
+<div class="bn-mobile-menu" id="bn-mobile-menu">
+  <ul class="bn-mobile-menu__links">
+    {% for link in nav_links %}
+    <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="bn-mobile-menu__cta">
+    <a href="/contact/" class="bn-btn bn-btn--cream">Get a Free Quote</a>
+    <a href="tel:{{ phone_href }}" class="bn-btn bn-btn--ghost">{{ phone_display }}</a>
+  </div>
+</div>
