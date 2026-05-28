@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Toronto Charities — design tokens
+   Source: _docs/design/colors_and_type.css + DESIGN-SYSTEM-locked.md
+   ============================================================ */
+
+@theme {
+  /* Colours — Toronto Property base */
+  --color-tp-paper: #FAFAF8;
+  --color-tp-ink: #1A1A1A;
+  --color-tp-blue: #2C3D55;
+  --color-tp-amber: #A07830;
+  --color-tp-amber-d: #7A5C20;
+  --color-tp-muted: #999999;
+  --color-tp-hint: #C8C8C4;
+  --color-tp-rule: #E2E2DF;
+  --color-tp-white: #FFFFFF;
+  --color-tp-bg: #F2EFE8;
+  --color-tp-bgrule: #D8D4CC;
+
+  /* Toronto Charities differentiator — sage green (sparing use only) */
+  --color-tc-sage: #6B7F5C;
+  --color-tc-sage-d: #57684B;
+
+  /* Fonts — wired up in app/layout.tsx via next/font */
+  --font-serif: var(--font-playfair), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+/* Element defaults — matches design system */
+body {
+  background: var(--color-tp-bg);
+  color: var(--color-tp-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-tp-blue);
+  font-weight: 500; /* NEVER bold on Playfair */
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+
+a { color: inherit; text-decoration: none; transition: color 600ms ease; }
+button { font: inherit; cursor: pointer; }
+
+/* ============================================================
+   Photo placeholder — warm-beige block with diagonal weave + tag.
+   The mock uses these to mark every "real photography goes here" slot.
+   ============================================================ */
+.photo-ph {
+  position: relative;
+  background-color: #DCD7CB;
+  background-image:
+    repeating-linear-gradient(135deg,
+      transparent 0 16px,
+      rgba(26, 26, 26, 0.045) 16px 17px);
+  overflow: hidden;
+}
+.photo-ph::before {
+  content: attr(data-ph);
+  position: absolute;
+  top: 14px; left: 14px;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: rgba(26, 26, 26, 0.75);
+  background: rgba(250, 250, 248, 0.92);
+  padding: 5px 9px;
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  text-transform: uppercase;
+  max-width: calc(100% - 28px);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.photo-ph.overlay::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(44, 61, 85, 0) 35%, rgba(26, 26, 26, 0.70) 100%);
+  transition: background 600ms ease;
+}
+.cause-tile.photo-ph:hover::after {
+  background: linear-gradient(180deg, rgba(44, 61, 85, 0) 20%, rgba(26, 26, 26, 0.82) 100%);
+}

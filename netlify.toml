@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "https://www.toronto-charities.ca/*"
+  to = "https://toronto-charities.ca/:splat"
+  status = 301
+  force = true
+
+# Most redirects are handled by Next.js middleware (lib/redirects.ts).
+# Netlify-level redirects above are only for the www → bare-domain rule,
+# which middleware can't apply early enough on cold starts.

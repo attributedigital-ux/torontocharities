@@ -12,14 +12,14 @@ This is the document the sub-specs reference as "the main build spec." Where amb
 | Layer | Choice | Why |
 |---|---|---|
 | Web app | **Next.js 14 App Router** | Required by all three sub-specs. |
-| Database | **Postgres 15+** with `pg_trgm` extension | Required (trigram similarity used in dedup, organizer matching, fuzzy search). |
+| Web hosting | **Netlify** (with `@netlify/plugin-nextjs`) | Confirmed by owner. Next.js middleware and image optimization both supported. |
+| Database | **Neon** (serverless Postgres, `pg_trgm` enabled) | Free tier 0.5 GB covers Phase 1–2. Scales to zero — no idle cost. Use `postgres` (or `@neondatabase/serverless`) as the driver. |
 | ORM | **Drizzle** | Sub-specs use Drizzle syntax (`db.query.X.findMany`, `eq()`, `inArray()`, `onConflictDoUpdate`). |
-| Auth | **NextAuth (Auth.js v5)** with email magic links | `[CONFIRM]` — needed for charity dashboard + admin. Magic links avoid password storage. |
-| Web hosting | **Vercel** | Next.js native, free tier covers this until scale. SEO spec assumes Vercel image/asset pipeline. |
-| Worker hosting | **DigitalOcean $6-12/month VPS** | Required by event ingestion spec. Single VPS runs all cron jobs. |
-| Email | **Resend** or **Postmark** | `[CONFIRM]` — transactional only (magic links, claim verification, daily summary). Resend has cheaper free tier. |
-| Analytics | **Plausible** | Specified in SEO_FOUNDATIONS. Lightweight, GDPR-fine. |
-| Anthropic SDK | `@anthropic-ai/sdk` (Node) | For the two pipelines. |
+| Auth | **NextAuth (Auth.js v5)** + Drizzle adapter | Magic links only (no passwords). |
+| Email | **Resend** | Free 3 k emails/month covers magic links + claim verifications + daily summary. |
+| Worker hosting | **DigitalOcean $6–12/month VPS** | Single VPS runs all cron jobs per EVENT_INGESTION spec. |
+| Analytics | **Plausible** | Per SEO_FOUNDATIONS. Lightweight, GDPR-fine. |
+| Anthropic SDK | `@anthropic-ai/sdk` (Node) | For the two pipelines (CRA descriptions + event enrichment). |
 
 ---
 
@@ -366,18 +366,25 @@ Flagged so they don't get done by accident:
 
 ---
 
-## 9. Open questions for sign-off
+## 9. Sign-off log
 
-Items marked `[CONFIRM]` above plus:
+Confirmed by owner on 2026-05-27:
 
-1. **Domain**: SEO spec uses `toronto-charities.ca`. Is that registered? Pointing where?
-2. **Auth provider**: NextAuth with Resend magic links is cheapest. OK?
-3. **Admin user(s)**: Who gets `role=admin` on launch? Just you, or a small list?
-4. **Existing data**: Is there any historical content from the legacy ASP.NET site that needs importing beyond the URL redirects? (Old charity profiles, old events?)
-5. **Templates beyond homepage**: do per-template design briefs land separately, or do I infer them from the homepage design system?
-6. **Vercel + DigitalOcean accounts**: existing or new? Who's paying?
-7. **Eventbrite token**: who registers the developer account?
-8. **Quality review of Haiku output**: who reviews the first 20-50 generated charity descriptions to confirm Haiku is producing acceptable copy before the full 2,500-charity run? (My recommendation: you spot-check 20, and we promote to Sonnet only if quality fails.)
+- **Domain**: `toronto-charities.ca` — registered, ready, pointing to Netlify on launch
+- **Hosting**: Netlify (web) + DigitalOcean VPS (worker) + Neon (Postgres)
+- **Auth**: NextAuth (Auth.js v5) + Drizzle adapter + Resend magic links
+- **Templates beyond homepage**: infer from the homepage design system (`_docs/design/DESIGN-SYSTEM-locked.md` + `colors_and_type.css`). Per-template briefs are not coming.
+- **Legacy ASP.NET site data**: not importing. URL redirects from `HISTORICAL_REDIRECTS` handle inbound links. Directory populates from the CRA bulk import.
+- **CRA scale**: ~2,500–3,500 GTA registered charities is real (15–25% of Canada's ~85k total, filtered by GTA city + Registered status).
+- **Quality review of Haiku output**: owner spot-checks the first 20–50 generated descriptions. Promote to Sonnet only if quality fails.
+
+Still pending (need owner to provide before Phase 1 can fully run):
+
+- **Neon connection string** — for `DATABASE_URL` env var (free account at neon.tech, create project, copy connection string)
+- **Anthropic API key** — for `ANTHROPIC_API_KEY` env var (the CRA pipeline doesn't run without this)
+- **Resend API key** — for `RESEND_API_KEY` env var (magic-link auth doesn't work without this; sign-in dev-mode works with console output until then)
+- **Eventbrite developer token** — for `EVENTBRITE_TOKEN` env var on the VPS (only needed for Phase 3 — events)
+- **Admin user(s)**: which email address(es) get `role=admin` on launch? Default: one address provided by owner.
 
 ---
 

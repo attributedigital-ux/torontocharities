@@ -1,295 +1,134 @@
-# CLAUDE.md — [CLIENT NAME] SEO Page Factory
-# ============================================================
-# Operating rules for Claude Code on this project.
-# Read this file before touching anything.
-# Fill in every [PLACEHOLDER] before starting any work.
-# ============================================================
+# CLAUDE.md — Toronto Charities
 
-## What This Project Is
+Operating rules for Claude Code on this project. Read this file before touching anything.
 
-SEO Page Factory for [CLIENT NAME] — [brief description of trade/service].
-Serving [PRIMARY REGION], [OTHER REGIONS].
+## What this project is
 
-Platform: Static HTML deployed on Netlify
-CRM & lead tools: Go High Level (GHL) hybrid
-Repo: attributedigital-ux/[repo-name]
-Live site: https://[client-domain].com
-Netlify URL: https://[netlify-site-name].netlify.app
+A community directory of Toronto-area charities and their events, operated as a community resource by Toronto Property. Site eventually folds into `torontoproperty.ca/toronto-charities/` via a 301 redirect.
 
-[N] pages total: [N] hub pages + [N] landing pages + homepage + contact
+- Domain: `toronto-charities.ca`
+- Live data: ~2,500–3,500 GTA charities from CRA bulk import, ~100–300 events at any time from automated ingestion, ~10 editorial guides
+- Web app + Postgres reads on Netlify (serverless functions, static where possible)
+- Cron-driven worker on a $6–12/month DigitalOcean VPS handles CRA import + event ingestion + linkback verification
 
----
-
-## Client Details
+## Stack
 
 ```
-Business:   [CLIENT NAME]
-Owner(s):   [OWNER NAME]
-Phone:      [PHONE]
-Email:      [EMAIL]
-Address:    [ADDRESS]
-Colour:     [HEX] ([colour description])
+Next.js 16 App Router + React 19 + Tailwind 4
+Drizzle ORM + Neon (serverless Postgres, pg_trgm enabled)
+NextAuth (Auth.js v5) + @auth/drizzle-adapter + Resend magic links
+Anthropic SDK — Haiku 4.5 for both pipelines (Batches API for the CRA one-shot, prompt caching everywhere)
+Plausible analytics
+Netlify (web) + DigitalOcean VPS (worker)
 ```
 
----
+Source-of-truth specs:
+- `_docs/specs/00_MAIN_BUILD_SPEC.md` — stack, schema, routes, auth, phasing
+- `_docs/specs/SEO_FOUNDATIONS_SPEC.md` — middleware, sitemap, robots, schema markup, meta tags, redirects
+- `_docs/specs/CRA_IMPORT_SPEC.md` — bulk import + description generation pipeline
+- `_docs/specs/EVENT_INGESTION_SPEC.md` — event source registry + ingestion pipeline + cron schedule
+- `_docs/design/` — homepage design handoff (the only template with a design brief; all others infer from this system)
 
-## Tracking & Analytics
+## Where the agency-wide standards live
 
-```
-GA4 Measurement ID:   G-[XXXXXXXXXX]
-GTM Container ID:     GTM-[XXXXXXX]
-GHL Location ID:      [LOCATION ID]
-GHL Chat Widget ID:   [WIDGET ID]
-GHL Quote Form ID:    [FORM ID]
-```
-
-**GTM is injected via Netlify Snippet Injection — NOT in any HTML file.**
-Never add GTM or GA4 tags directly to HTML files.
-If tracking needs updating: Netlify → Site Settings → Build & Deploy → Snippet Injection.
-
-Google account managing all tracking: attributereporting@gmail.com
-Client's Google account added as Editor on GA4 and GTM: [CLIENT GOOGLE EMAIL]
-
----
-
-## The Four Script Files
-
-| File | Purpose |
-|------|---------|
-| `Scripts/sitemap.py` | All business details, services, regions, tier logic. Single source of truth. |
-| `Scripts/service_questions.py` | All FAQ, buying guide, troubleshooting questions. Never invent questions. |
-| `Scripts/prompts.py` | Builds system + user prompts for Claude API. CSS travels in system prompt. |
-| `Scripts/generate.py` | CLI runner. Calls API, writes files, logs cost, auto-resumes. |
-
----
-
-## CLI Commands
-
-```bash
-python3 Scripts/generate.py --list                       # preview all pages (no API calls)
-python3 Scripts/generate.py --limit 1                    # test: first page only
-python3 Scripts/generate.py --limit 3                    # test: 3 pages
-python3 Scripts/generate.py --service [service-slug]     # all pages for one service
-python3 Scripts/generate.py --hub-only                   # hub pages only
-python3 Scripts/generate.py --land-only                  # landing pages only
-python3 Scripts/generate.py                              # full batch (skips completed)
-```
-
----
-
-## Generator Rules — Non-Negotiable
-
-### RULE 1 — max_tokens MUST be 64000
-```python
-max_tokens=64000,  # ALWAYS — never lower
-```
-Pages need ~10,000 output tokens. Budget must be there or pages truncate.
-
-### RULE 2 — Always use streaming
-```python
-with client.messages.stream(
-    model=MODEL,
-    max_tokens=64000,
-    system=system,
-    messages=[{"role": "user", "content": prompt}]
-) as stream:
-    for text in stream.text_stream:
-        html += text
-    final = stream.get_final_message()
-```
-Never use `client.messages.create()` — API times out on long pages.
-
-### RULE 3 — CSS lives in the system prompt
-CSS is extracted from the template and injected into the system prompt.
-Never move it. If CSS is not in the system prompt, Claude invents class names
-and the design breaks completely.
-
-### RULE 4 — Test before every full run
-```bash
-python3 Scripts/generate.py --limit 1
-# Open output file in browser — verify all sections present
-# Check terminal — no truncation warning (stop_reason must be end_turn)
-# ONLY THEN run full batch
-```
-
-### RULE 5 — Never change slugs after pages are live
-The `slug` field in `sitemap.py` determines the URL.
-Changing a slug after Google has indexed the page loses all ranking.
-If a service name changes: change the display name only, never the slug.
-
-### RULE 6 — generation_log.json enables safe resume
-Do not delete this file mid-batch.
-To regenerate one page: remove its entry from the log, re-run with `--service` filter.
-
-### RULE 7 — Never hardcode tracking tags in HTML
-GTM and GA4 are delivered via Netlify Snippet Injection.
-Never add `<script>` tags for GTM, GA4, or any analytics tool to HTML files.
-Never include them in the generation prompt either.
-All tracking changes go through Netlify Snippet Injection — zero HTML edits needed.
-
-### RULE 8 — encoding declaration required
-All Python files must start with:
-```python
-# -*- coding: utf-8 -*-
-```
-
----
-
-## Deployment
-
-```bash
-# After generation — copy output contents to repo root
-cp -r Scripts/output/ ./
-git add .
-git commit -m "Generate [N] pages — [description] — [date]"
-git push
-```
-
-Netlify auto-deploys on every push. No manual deploy step needed.
-
-**Before regenerating any live page:**
-- Check Google Search Console — does the page have impressions?
-- If yes: edit the HTML file directly. Do not regenerate.
-- If no: safe to regenerate.
-
----
-
-## Page Architecture
+Cross-cutting writing, design, banned words, content thinking, research rules, copy standard, guide page standard, design stage workflow, lessons learned, post-launch GMB checklist all live in:
 
 ```
-URL structure:
-  /[service]/               → hub page (service authority)
-  /[service]/[region]/      → landing page (geo + service)
-  /                         → homepage
-  /contact/                 → contact page
-
-File structure in repo root:
-  [service]/index.html
-  [service]/[region]/index.html
-  index.html
-  contact/index.html
-  sitemap.xml
-  robots.txt
+~/Documents/GitHub/attribute-media/_docs/standards/
 ```
 
-**Services:** [list service slugs]
-**Regions:** [list region slugs]
-**Tier logic:** Tier 1 = all regions | Tier 2 = key regions | Tier 3 = hub only
+Read from there. Never duplicate any of those files into this repo.
 
----
+## The two Claude pipelines — cost rules are non-negotiable
 
-## Content Rules
+This project calls the Claude API in two places. Both follow the same rules so costs stay predictable.
 
-1. Minimum 1,200 visible words per page
-2. Exactly 6 service cards per page — never fewer
-3. FAQ answers minimum 80 words each — specific, not filler
-4. Pricing in body copy: broad only ("we work within any budget")
-5. Pricing in FAQ: specific range + factors affecting cost + free quote link
-6. 3 review cards per page — different names, different vocabulary, different structure
-7. Never invent questions — all questions come from `service_questions.py`
-8. Max 2 neighbourhood names per section, never repeated
-9. Every page must end with closing `</html>` — if it doesn't, it's truncated
+### Rule 1 — Always Haiku 4.5
 
----
+```typescript
+const MODEL = 'claude-haiku-4-5-20251001';
+```
 
-## Banned Words — Never Use in Any Content
+Never use Sonnet or Opus in either pipeline. Both tasks (charity description writing, event enrichment) are pattern work, not reasoning work. Haiku handles them. If a quality-review pass flags Haiku as failing — and only then — discuss promoting to Sonnet. Never silently upgrade the model.
 
-seamless, comprehensive, top-notch, tailored, bespoke, cutting-edge, state-of-the-art,
-peace of mind, rest assured, look no further, second to none, world-class,
-"We are committed to", "We pride ourselves on", "Our team of experts",
-"years of experience" (use the actual number),
-"fully qualified" (use specific licence number or credential instead),
-"Whether you need X or Y, we have you covered",
-"It depends on many factors" (without immediately listing the factors)
+### Rule 2 — Batches API for one-shot bulk jobs
 
----
+The CRA description pipeline is a one-shot 2,500–3,500 call job with no urgency. Use `client.messages.batches.create()`. 50% discount on every token. 24-hour SLA is fine.
 
-## GHL Integration
+Event enrichment runs daily on ~10–50 events — too small for Batches. Run inline.
 
-Contact form: GHL iframe embed on /contact/ page
-Chat widget: GHL script tag on all pages (Widget ID: [WIDGET ID])
-CRM: GHL sub-account (Location ID: [LOCATION ID])
+### Rule 3 — Prompt caching on the static portion
 
-**GHL handles:** forms, chat, CRM, automations, client dashboard, scheduled reports
-**Netlify handles:** all SEO pages — never use GHL pages for anything that needs to rank
+Both prompts have a substantial static portion (style rules, format spec, banned words list, JSON schema for the response). Move that into the `system` parameter with `cache_control: { type: 'ephemeral' }`. Variable portion (per-charity or per-event data) goes in the user message.
 
-GHL sub-account dashboard: "[CLIENT NAME] — Live Performance"
-Monthly report: scheduled to [CLIENT EMAIL] on 1st of each month
+```typescript
+const response = await client.messages.create({
+  model: MODEL,
+  max_tokens: 600,
+  system: [
+    { type: 'text', text: STATIC_INSTRUCTIONS, cache_control: { type: 'ephemeral' } },
+  ],
+  messages: [{ role: 'user', content: buildVariablePrompt(charity) }],
+});
+```
 
----
+### Rule 4 — Strict `max_tokens` budgets
 
-## DNS & Domain
+- Charity description: `max_tokens: 600` (target output 80–150 words ≈ 300 tokens; 600 covers retries)
+- Event enrichment: `max_tokens: 800` (JSON object with multiple fields)
 
-Domain registered at: [REGISTRAR — GHL / GoDaddy / other]
-DNS records pointing to Netlify:
-  A record:     [domain].com → 75.2.60.5
-  CNAME:        www → [netlify-site-name].netlify.app
+Never raise these without measuring why an output is truncating. Truncation usually means the prompt is wrong, not the budget.
 
-SSL provisioned by Netlify automatically after DNS change.
+### Rule 5 — No verification-with-second-call patterns
 
----
+Do not call Claude a second time to verify the first call's output. Trust the model; sample-review human-side.
 
-## Search Console & Bing
+### Expected costs (back of envelope)
 
-Google Search Console: verified via Google Analytics
-Sitemap submitted: https://[domain].com/sitemap.xml
-Hub pages indexed: [date]
+| Job | Volume | Model | Optimizations | Estimate |
+|---|---|---|---|---|
+| CRA descriptions (one-shot) | 2,500 calls | Haiku 4.5 | Batches + caching | ~$8 |
+| Event enrichment (recurring) | 50/week | Haiku 4.5 | Caching | ~$0.50/week |
 
-Bing Webmaster Tools: [verified Y/N]
-Sitemap submitted to Bing: [Y/N]
+If a run exceeds the estimate by more than 2×, stop and investigate before continuing.
 
----
+## Banned words / writing rules
 
-## What Not To Do
+Cross-cutting copy standard: `~/Documents/GitHub/attribute-media/_docs/standards/COPY_STANDARD.md`.
+Cross-cutting banned words: `~/Documents/GitHub/attribute-media/_docs/standards/BANNED_WORDS.md`.
 
-- Never change a slug after pages are live
-- Never edit generated HTML to fix design issues — fix the template, then regenerate
-- Never run a full batch without testing `--limit 1` first
-- Never set max_tokens below 64000
-- Never use `client.messages.create()` — always stream
-- Never move CSS out of the system prompt
-- Never add GTM, GA4, or any tracking tags to HTML files — Netlify Snippet Injection only
-- Never use your personal Gmail for GHL integrations — use attributereporting@gmail.com
-- Never delete `generation_log.json` mid-batch
-- Never regenerate a page that has Google impressions — edit the HTML file directly
-- Never change DNS without client confirmation and agreed cutover time
+Both Claude pipelines must paste the banned-words list verbatim into their prompts (per `attribute-media` Rule). Spot examples — never use these in any generated copy:
 
----
+`seamless, comprehensive, top-notch, tailored, bespoke, cutting-edge, peace of mind, rest assured, world-class, committed to, dedicated to, passionate about, tirelessly, making a difference`
 
-## Checklist — Before First Generation
+No em dashes anywhere. No rhetorical negation. No contrastive identity statements. No generic openers. Use the cross-cutting BANNED_WORDS as the canonical list.
 
-- [ ] All client details filled in above
-- [ ] GA4 account and property created (attributereporting@gmail.com)
-- [ ] GTM container created and GA4 tag published inside it
-- [ ] GTM ID stored in sitemap.py as `"gtm_id"`
-- [ ] sitemap.py complete — all services, regions, tiers, business details
-- [ ] service_questions.py complete — 8 FAQ, 7 buying guide, 5 troubleshooting per service
-- [ ] template_landing.html approved by client in writing
-- [ ] All image URLs confirmed in generate.py
-- [ ] Test run completed: `python3 Scripts/generate.py --limit 1`
-- [ ] Test page opened in browser — all sections present, design correct
-- [ ] No truncation warning in terminal output
+## Things not to build without explicit instruction
 
----
+- Payment processing (this is a directory, not a fundraising platform)
+- User accounts for end users / donors (only charity owners + admins have accounts)
+- Multi-language support (English only)
+- Native mobile apps
 
-## Checklist — After Deployment
+## Phasing (per main spec §7)
 
-- [ ] Netlify Snippet Injection confirmed active (GTM on all pages)
-- [ ] GA4 DebugView shows pageview events on live site
-- [ ] Domain DNS pointed to Netlify
-- [ ] SSL certificate active (not just pending)
-- [ ] Google Search Console verified and sitemap submitted
-- [ ] Hub pages requested for indexing in GSC
-- [ ] Bing Webmaster Tools verified and sitemap submitted
-- [ ] GA4 connected to GHL sub-account
-- [ ] GHL dashboard built and set as default
-- [ ] Client added as Account User (restricted permissions)
-- [ ] Monthly scheduled report configured
-- [ ] Snapshot created from this sub-account
-- [ ] POST_LAUNCH_GMB_CHECKLIST.md completed
+- **Phase 0** — scaffold (this session): Next.js, Drizzle schema, design system port, deploy config
+- **Phase 1** — directory shell: directory + category + profile templates, CRA structural import, auth scaffolding, SEO foundations §1–3, §5
+- **Phase 2** — content fill: CRA description generation (Claude pipeline), first guides, SEO §4 and §6, featured selection
+- **Phase 3** — events: VPS provisioned, worker deployed, all ingestion sources active
+- **Phase 4** — launch prep: page speed audit, admin views, daily summary email, verification checklist
 
----
+## Build hygiene
 
-*SEO Page Factory — New Client Template · March 2026*
-*Attribute.Media · Copy this file to every new client repo and fill in all placeholders*
-*attributereporting@gmail.com is the agency reporting Google account — use for all GA4/GTM connections*
+- Netlify free tier has 300 build minutes/month — don't push to main repeatedly during dev. Push deliberately, test locally first.
+- Push via GitHub Desktop (HTTPS not configured in terminal per agency global rule)
+- One logical change per commit. Use the format `[area]: what changed and why` (per seo-page-factory CLAUDE.md convention)
+- Never edit anything on a deployed site server-side without committing back to git the same session
+
+## Working principles
+
+- Edit, don't rewrite — targeted Edits over Writes for existing files
+- Read only what you need — don't grep the whole codebase to orient
+- Plan before acting on multi-step work
+- Use the Server Component default; mark `'use client'` only where required (forms, search, dashboard interactions)
+- No third-party UI libraries (shadcn etc.) unless a real component need justifies the dependency cost
