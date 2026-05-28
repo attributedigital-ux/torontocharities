@@ -1,0 +1,132 @@
+/* ============================================================
+   Toronto Property — Colors & Type Tokens
+   Source: wp-content/themes/torontoproperty/DESIGN-SYSTEM.md
+   ============================================================ */
+
+/* Fonts: Playfair Display (headings, prices, CTAs — italic for emphasis)
+          Inter (body, nav, labels)
+   Loaded from Google Fonts in every page that uses this file. */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  /* ---------- Colour tokens (locked) ---------- */
+  --tp-paper:   #FAFAF8;   /* Page background — warm off-white, never pure #FFF */
+  --tp-ink:     #1A1A1A;   /* Headings + body text + masthead rule */
+  --tp-blue:    #2C3D55;   /* Deep navy. Badges, active nav, links */
+  --tp-amber:   #A07830;   /* Aged brass. CTA BUTTONS ONLY */
+  --tp-amber-d: #7A5C20;   /* Amber hover — darker brass */
+  --tp-muted:   #999999;   /* Secondary text, inactive nav */
+  --tp-hint:    #C8C8C4;   /* Placeholders, fine print, eyebrows */
+  --tp-rule:    #E2E2DF;   /* Dividers, borders */
+  --tp-white:   #FFFFFF;   /* Card surfaces, inputs */
+  --tp-bg:      #F2EFE8;   /* Search zone cream (warmer than paper) */
+  --tp-bgrule:  #D8D4CC;   /* Search zone borders */
+
+  /* ---------- Font stacks ---------- */
+  --tp-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --tp-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+
+  /* ---------- Type scale (desktop) ---------- */
+  /* Hard rule: nothing visible below 11px. Labels/meta min 11px. */
+  --tp-fs-page:        56px;  /* Page headline — Playfair */
+  --tp-fs-section:     28px;  /* Section title — Playfair */
+  --tp-fs-hero-addr:   40px;  /* Hero address — Playfair */
+  --tp-fs-hero-price:  38px;  /* Hero price — Playfair */
+  --tp-fs-card-addr:   18px;  /* Listing card address — Playfair */
+  --tp-fs-card-price:  20px;  /* Listing card price — Playfair */
+  --tp-fs-guide-title: 24px;  /* Guide card title — Playfair */
+  --tp-fs-hood:        22px;  /* Neighbourhood name — Playfair */
+  --tp-fs-hood-feat:   30px;  /* Featured neighbourhood — Playfair */
+  --tp-fs-search-inp:  16px;  /* Search input — Playfair italic */
+  --tp-fs-body:        16px;  /* Body — Inter */
+  --tp-fs-desc:        15px;  /* Description / section link — Inter or Playfair italic */
+  --tp-fs-nav:         15px;  /* Nav links — Inter, uppercase, tracked 0.06em */
+  --tp-fs-cta:         15px;  /* CTA button — Playfair italic */
+  --tp-fs-cta-ghost:   14px;  /* Ghost CTA — Playfair italic */
+  --tp-fs-footer:      14px;  /* Footer links — Inter */
+  --tp-fs-breadcrumb:  13px;  /* Breadcrumbs — Inter */
+  --tp-fs-label:       11px;  /* MINIMUM. Labels, badges, meta — Inter */
+
+  /* ---------- Transitions (locked) ---------- */
+  --tp-ease:    600ms ease;   /* Every single hover */
+  --tp-ease-img: 800ms ease;  /* Image zoom on card hover */
+
+  /* ---------- Geometry ---------- */
+  --tp-radius-pill:   20px;   /* CTA buttons only */
+  --tp-radius-sharp:  2px;    /* Inputs, filters, search — NOT pills */
+  --tp-radius-chip:   12px;   /* Filter preset chips */
+  --tp-border-hair:   0.5px;  /* Dividers, card borders, masthead hair lines */
+  --tp-border-thick:  2px;    /* Masthead bottom border */
+
+  /* ---------- Letter spacing ---------- */
+  --tp-ls-nav:   0.06em;      /* Uppercase nav */
+  --tp-ls-micro: 0.08em;      /* Uppercase eyebrows / type labels */
+}
+
+/* ============================================================
+   Semantic, element-level defaults
+   ============================================================ */
+
+html, body {
+  background: var(--tp-paper);
+  color: var(--tp-ink);
+  font-family: var(--tp-sans);
+  font-size: var(--tp-fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--tp-serif);
+  color: var(--tp-ink);
+  font-weight: 400;          /* NEVER bold on Playfair */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h1 { font-size: var(--tp-fs-page); line-height: 1.05; }
+h2 { font-size: var(--tp-fs-section); }
+h3 { font-size: var(--tp-fs-guide-title); }
+h4 { font-size: var(--tp-fs-card-price); }
+
+p { margin: 0 0 1em; line-height: 1.6; }
+
+a { color: var(--tp-blue); text-decoration: none; transition: color var(--tp-ease); }
+a:hover { color: var(--tp-ink); }
+
+/* Italic serif — used for CTAs, search inputs, section links */
+.tp-italic { font-family: var(--tp-serif); font-style: italic; font-weight: 400; }
+
+/* Uppercase Inter nav-style label */
+.tp-label {
+  font-family: var(--tp-sans);
+  font-size: var(--tp-fs-label);
+  letter-spacing: var(--tp-ls-micro);
+  text-transform: uppercase;
+  color: var(--tp-hint);
+}
+
+/* Eyebrow (bigger than label) */
+.tp-eyebrow {
+  font-family: var(--tp-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tp-muted);
+}
+
+/* Nav link */
+.tp-nav-link {
+  font-family: var(--tp-sans);
+  font-size: var(--tp-fs-nav);
+  font-weight: 500;
+  letter-spacing: var(--tp-ls-nav);
+  text-transform: uppercase;
+  color: var(--tp-ink);
+}
+
+/* Muted / secondary body */
+.tp-muted { color: var(--tp-muted); }
+.tp-hint  { color: var(--tp-hint); }

@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Toronto Charities — A directory of Toronto-area charities</title>
+<meta name="viewport" content="width=1280"/>
+<link rel="stylesheet" href="colors_and_type.css"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--tp-bg); color: var(--tp-ink); }
+  body { font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; }
+  a { color: inherit; text-decoration: none; transition: color 600ms ease; }
+  button { font: inherit; cursor: pointer; }
+
+  /* ---- Toronto Charities specific ---- */
+  :root {
+    --tc-sage: #6B7F5C;
+    --tc-sage-d: #57684B;
+    --tc-ink-60: rgba(26,26,26,0.60);
+    --tc-ink-80: rgba(26,26,26,0.80);
+    --tc-blue-12: rgba(44,61,85,0.12);
+    --tc-blue-08: rgba(44,61,85,0.08);
+    --tc-bg-70: rgba(242,239,232,0.70);
+    --tc-bg-80: rgba(242,239,232,0.80);
+    --tc-bg-40: rgba(242,239,232,0.40);
+    --tc-bg-15: rgba(242,239,232,0.15);
+  }
+
+  /* ===== Logo lockup =====
+     NOTE: outer .logo is a <span>, not an <a>, so the inner "by Toronto Property"
+     link can be its own anchor without nesting (which HTML doesn't allow). */
+  .logo {
+    display: inline-grid;
+    grid-template-columns: 56px auto;
+    grid-template-rows: auto auto;
+    column-gap: 14px;
+    row-gap: 4px;
+    align-items: center;
+  }
+  .logo-main {
+    /* anchor that wraps just the mark + main wordmark — children become grid items */
+    display: contents;
+    text-decoration: none;
+  }
+  .logo-mark {
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+    width: 56px; height: 56px;
+    border: 1px solid var(--tp-ink);
+    background: var(--tp-paper);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-mark .mono {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--tp-ink);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-top: -3px;
+  }
+  .logo-mark .bar {
+    position: absolute;
+    left: 50%; bottom: 8px;
+    transform: translateX(-50%);
+    width: 18px; height: 2px;
+    background: var(--tp-amber);
+  }
+  .logo-word {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex; flex-direction: column; line-height: 1;
+  }
+  .logo-word .top {
+    font-family: 'Playfair Display', serif; font-weight: 400;
+    font-size: 17px; color: var(--tp-ink); letter-spacing: 0.005em;
+  }
+  .logo-word .bot {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: 22px; color: var(--tp-ink); margin-top: 1px;
+  }
+  .logo-by {
+    grid-column: 2;
+    grid-row: 2;
+    font-family: 'Inter', sans-serif; font-weight: 400;
+    font-size: 9px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--tp-muted);
+    line-height: 1;
+  }
+  .logo-by a { color: var(--tp-muted); border-bottom: 0.5px solid transparent; transition: all 600ms ease; }
+  .logo-by a:hover { color: var(--tp-ink); border-bottom-color: var(--tp-ink); }
+
+  /* ===== Nav ===== */
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 50;
+    background: transparent;
+    transition: background 400ms ease, border-color 400ms ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav-wrap.scrolled {
+    background: var(--tp-bg);
+    border-bottom-color: var(--tc-blue-12);
+  }
+  .nav {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 32px;
+  }
+  .nav-center { display: flex; align-items: center; gap: 36px; }
+  .nav-center a {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400;
+    color: var(--tp-ink);
+  }
+  .nav-center a:hover { color: var(--tp-blue); }
+  .nav-center a.active { color: var(--tp-blue); }
+
+  .nav-cta {
+    background: transparent; color: var(--tc-sage);
+    border: 1px solid var(--tc-sage); padding: 10px 18px;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 600ms ease;
+  }
+  .nav-cta:hover { background: var(--tc-sage); color: var(--tp-bg); }
+
+  /* ===== Layout containers ===== */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .band { padding: 96px 0; }
+  .band-bg { background: var(--tp-bg); }
+  .band-paper { background: var(--tp-paper); }
+  .band-blue { background: var(--tp-blue); color: var(--tp-bg); }
+
+  /* ===== Type primitives ===== */
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--tp-amber);
+    margin: 0 0 20px;
+  }
+  .eyebrow-sage { color: var(--tc-sage); }
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--tp-blue);
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  h1 { font-size: 72px; line-height: 1.05; font-weight: 500; letter-spacing: -0.015em; }
+  h2 { font-size: 40px; line-height: 1.15; }
+  h3 { font-size: 22px; line-height: 1.3; }
+  p { margin: 0; }
+
+  .section-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px; gap: 32px;
+  }
+  .section-head-left { max-width: 720px; }
+  .section-head-left .eyebrow { margin-bottom: 16px; }
+  .section-head-link {
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: var(--tp-blue); white-space: nowrap;
+    border-bottom: 1px solid transparent; padding-bottom: 2px;
+    transition: all 600ms ease;
+  }
+  .section-head-link:hover { border-bottom-color: var(--tp-blue); }
+
+  /* ===== Photo placeholder utility =====
+     Warm beige block + faint diagonal weave + a monospace tag at top-left
+     so it's unambiguous that real photography drops in here. */
+  .photo-ph {
+    position: relative;
+    background-color: #DCD7CB;
+    background-image:
+      repeating-linear-gradient(135deg,
+        transparent 0 16px,
+        rgba(26,26,26,0.045) 16px 17px);
+    overflow: hidden;
+  }
+  .photo-ph::before {
+    content: attr(data-ph);
+    position: absolute;
+    top: 14px; left: 14px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: rgba(26,26,26,0.75);
+    background: rgba(250,250,248,0.92);
+    padding: 5px 9px;
+    border: 1px solid rgba(26,26,26,0.12);
+    text-transform: uppercase;
+    max-width: calc(100% - 28px);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .photo-ph.overlay::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(44,61,85,0) 35%, rgba(26,26,26,0.70) 100%);
+  }
+
+  /* ===== Hero ===== */
+  .hero { padding: 96px 0; background: var(--tp-bg); }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 32px;
+    display: grid; grid-template-columns: 7fr 5fr;
+    gap: 56px; align-items: stretch;
+  }
+  .hero-content { display: flex; flex-direction: column; justify-content: center; }
+  .hero h1 {
+    color: var(--tp-blue); margin: 0 0 28px;
+    font-size: 60px; line-height: 1.05;
+  }
+  .hero h1 .n { font-style: italic; }
+  .hero-lede {
+    font-family: 'Inter', sans-serif; font-size: 18px;
+    color: var(--tc-ink-80); line-height: 1.6;
+    max-width: 56ch; margin: 0 0 36px;
+  }
+  .hero-search {
+    width: 100%; max-width: none;
+    display: flex; align-items: center;
+    height: 64px;
+    background: var(--tp-paper);
+    border: 1px solid var(--tc-blue-12);
+    padding: 0 24px;
+  }
+  .hero-search input {
+    flex: 1; border: none; outline: none; background: transparent;
+    font-family: 'Inter', sans-serif; font-size: 16px;
+    color: var(--tp-ink);
+  }
+  .hero-search input::placeholder { color: var(--tc-ink-60); }
+  .hero-search button {
+    background: transparent; border: none; padding: 0;
+    color: var(--tp-blue); display: flex; align-items: center;
+    transition: color 600ms ease;
+  }
+  .hero-search button:hover { color: var(--tp-ink); }
+  .hero-links {
+    display: flex; gap: 0; margin-top: 18px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: var(--tc-ink-60);
+  }
+  .hero-links a {
+    color: var(--tc-ink-60);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: all 600ms ease;
+  }
+  .hero-links a:hover { color: var(--tp-blue); border-bottom-color: var(--tp-blue); }
+  .hero-links .dot {
+    margin: 0 14px; color: var(--tc-ink-60); opacity: 0.5;
+  }
+  .hero-photo {
+    min-height: 540px;
+    align-self: stretch;
+  }
+
+  /* ===== Events grid ===== */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .event-card {
+    background: var(--tp-paper);
+    padding: 0;
+    display: flex; flex-direction: column;
+    transition: background 600ms ease;
+    cursor: pointer;
+  }
+  .event-card:hover { background: var(--tp-bg); }
+  .event-photo {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+  }
+  .event-body {
+    padding: 22px 28px 28px;
+    display: flex; flex-direction: column; flex: 1;
+  }
+  .event-date {
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500;
+    color: var(--tp-amber);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .event-title {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: 22px; line-height: 1.25;
+    color: var(--tp-blue);
+    margin-bottom: 14px;
+  }
+  .event-host {
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: var(--tp-ink); margin-bottom: 14px;
+  }
+  .event-host .by { color: var(--tc-ink-60); }
+  .event-host .name { color: var(--tp-ink); border-bottom: 1px solid transparent; padding-bottom: 1px; transition: border-color 600ms ease; }
+  .event-card:hover .event-host .name { border-bottom-color: var(--tp-ink); }
+  .event-meta {
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: var(--tc-ink-60); line-height: 1.5;
+    margin-top: auto;
+    padding-top: 14px;
+  }
+  .event-meta-row {
+    display: flex; align-items: center; gap: 6px;
+  }
+  .pin {
+    display: inline-block; width: 12px; height: 12px;
+    flex: 0 0 auto;
+  }
+  .pin svg { width: 100%; height: 100%; display: block; }
+  .event-time {
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: var(--tc-ink-60);
+  }
+
+  /* ===== Causes grid — neighbourhood-style photo tiles ===== */
+  .grid-causes {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .cause-tile {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform 600ms ease;
+  }
+  .cause-tile .cause-body {
+    position: absolute;
+    left: 22px; right: 22px; bottom: 20px;
+    color: var(--tp-bg);
+    z-index: 2;
+  }
+  .cause-tile .cause-name {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: 22px; line-height: 1.15;
+    color: var(--tp-bg);
+    letter-spacing: -0.005em;
+    margin-bottom: 6px;
+  }
+  .cause-tile .cause-count {
+    font-family: 'Inter', sans-serif; font-size: 11px;
+    color: rgba(242,239,232,0.85);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .cause-tile.photo-ph::after {
+    transition: background 600ms ease;
+  }
+  .cause-tile.photo-ph:hover::after {
+    background: linear-gradient(180deg, rgba(44,61,85,0) 20%, rgba(26,26,26,0.82) 100%);
+  }
+
+  /* ===== Charity grid ===== */
+  .charity-card {
+    background: var(--tp-paper);
+    padding: 0;
+    display: flex; flex-direction: column;
+    transition: background 600ms ease;
+    cursor: pointer;
+  }
+  .charity-card:hover { background: var(--tp-bg); }
+  .charity-photo {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+  }
+  .charity-body {
+    padding: 28px 32px 32px;
+    display: flex; flex-direction: column; flex: 1;
+  }
+  .verified {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500;
+    color: var(--tc-sage); letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .verified svg { width: 12px; height: 12px; display: block; }
+  .charity-card h3 {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: 24px; line-height: 1.25;
+    color: var(--tp-blue);
+    margin-bottom: 12px;
+  }
+  .charity-tags {
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    color: var(--tc-ink-60);
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+  }
+  .charity-desc {
+    font-family: 'Inter', sans-serif; font-size: 15px;
+    color: var(--tp-ink); line-height: 1.6;
+    margin-bottom: 22px; flex: 1;
+  }
+  .charity-link {
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: var(--tp-blue);
+    border-bottom: 1px solid transparent; padding-bottom: 2px;
+    align-self: flex-start;
+    transition: border-color 600ms ease;
+  }
+  .charity-card:hover .charity-link { border-bottom-color: var(--tp-blue); }
+
+  /* ===== Claim CTA band ===== */
+  .claim {
+    background: var(--tp-blue);
+    color: var(--tp-bg);
+    padding: 112px 0;
+  }
+  .claim-inner {
+    max-width: 720px; margin: 0 auto;
+    padding: 0 32px; text-align: center;
+  }
+  .claim .eyebrow { color: var(--tc-sage); margin-bottom: 24px; }
+  .claim h2 {
+    font-size: 40px; color: var(--tp-bg);
+    margin-bottom: 24px; line-height: 1.15;
+  }
+  .claim p {
+    font-family: 'Inter', sans-serif; font-size: 18px;
+    color: var(--tc-bg-80); line-height: 1.65;
+    margin-bottom: 40px;
+  }
+  .claim-actions {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  }
+  .btn-sage {
+    background: var(--tc-sage); color: var(--tp-bg);
+    border: 1px solid var(--tc-sage);
+    padding: 16px 28px;
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 600ms ease;
+  }
+  .btn-sage:hover { background: var(--tc-sage-d); border-color: var(--tc-sage-d); }
+  .btn-ghost-bg {
+    background: transparent; color: var(--tp-bg);
+    border: 1px solid var(--tc-bg-40);
+    padding: 16px 28px;
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 600ms ease;
+  }
+  .btn-ghost-bg:hover { border-color: var(--tp-bg); }
+
+  /* ===== Recently added — list ===== */
+  .recent { padding: 64px 0; background: var(--tp-bg); }
+  .recent-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0 64px;
+  }
+  .recent-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--tc-blue-08);
+    transition: background 600ms ease, padding 600ms ease;
+  }
+  .recent-row:hover { background: var(--tp-paper); padding-left: 12px; padding-right: 12px; }
+  .recent-row .name {
+    font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500;
+    color: var(--tp-blue);
+    margin-bottom: 4px;
+  }
+  .recent-row .desc {
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: var(--tc-ink-60); line-height: 1.5;
+  }
+  .recent-row .added {
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    color: rgba(26,26,26,0.40);
+    white-space: nowrap;
+    align-self: start;
+    padding-top: 2px;
+  }
+
+  /* ===== Guides ===== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .guide-card {
+    background: var(--tp-bg);
+    padding: 40px;
+    display: flex; flex-direction: column;
+    cursor: pointer;
+    transition: background 600ms ease;
+  }
+  .guide-card:hover { background: var(--tp-paper); }
+  .guide-card .eyebrow { margin-bottom: 20px; }
+  .guide-card h3 {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: 28px; line-height: 1.2;
+    color: var(--tp-blue);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+  .guide-card .dek {
+    font-family: 'Inter', sans-serif; font-size: 15px;
+    color: var(--tp-ink); line-height: 1.6;
+    margin-bottom: 24px; flex: 1;
+  }
+  .guide-card .read-time {
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    color: var(--tc-ink-60); letter-spacing: 0.04em;
+  }
+
+  /* ===== Footer ===== */
+  footer { background: var(--tp-blue); color: var(--tp-bg); padding: 96px 0 64px; }
+  .foot-grid {
+    max-width: 1200px; margin: 0 auto; padding: 0 32px;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 64px;
+  }
+  .foot-logo .logo-mark {
+    border-color: var(--tp-bg);
+    background: transparent;
+  }
+  .foot-logo .logo-mark .mono { color: var(--tp-bg); }
+  .foot-logo .logo-word .top, .foot-logo .logo-word .bot { color: var(--tp-bg); }
+  .foot-logo .logo-by { color: var(--tc-bg-80); }
+  .foot-logo .logo-by a { color: var(--tc-bg-80); }
+  .foot-logo .logo-by a:hover { color: var(--tp-bg); border-bottom-color: var(--tp-bg); }
+  .foot-tagline {
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: rgba(242,239,232,0.70); line-height: 1.6;
+    margin: 22px 0 18px; max-width: 320px;
+  }
+  .foot-credit {
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: rgba(242,239,232,0.60);
+  }
+  .foot-credit a {
+    color: var(--tp-bg); border-bottom: 1px solid var(--tc-bg-40);
+    padding-bottom: 1px; transition: border-color 600ms ease;
+  }
+  .foot-credit a:hover { border-bottom-color: var(--tp-bg); }
+  .foot-col .eyebrow {
+    color: var(--tc-sage); margin-bottom: 22px;
+  }
+  .foot-col a {
+    display: block; font-family: 'Inter', sans-serif; font-size: 14px;
+    color: rgba(242,239,232,0.70);
+    margin-bottom: 12px;
+    transition: color 600ms ease;
+  }
+  .foot-col a:hover { color: var(--tp-bg); }
+  .foot-bottom {
+    max-width: 1200px; margin: 64px auto 0; padding: 24px 32px 0;
+    border-top: 1px solid var(--tc-bg-15);
+    display: flex; justify-content: space-between;
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    color: rgba(242,239,232,0.50);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<div class="nav-wrap" id="navWrap">
+  <nav class="nav" data-screen-label="Navigation">
+    <span class="logo">
+      <a class="logo-main" href="/" aria-label="Toronto Charities — home">
+        <span class="logo-mark" aria-hidden="true">
+          <span class="mono">TC</span>
+          <span class="bar"></span>
+        </span>
+        <span class="logo-word">
+          <span class="top">Toronto</span>
+          <span class="bot">Charities</span>
+        </span>
+      </a>
+      <span class="logo-by">By <a href="https://torontoproperty.ca">Toronto Property</a></span>
+    </span>
+    <div class="nav-center">
+      <a href="/toronto-charities-list/">Browse charities</a>
+      <a href="/events/">Events</a>
+      <a href="/guides/">Guides</a>
+      <a href="/about/">About</a>
+    </div>
+    <a class="nav-cta" href="/charity/claim/">For charities</a>
+  </nav>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-screen-label="Hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="eyebrow">Toronto Community Directory</p>
+      <h1>A directory of <span class="n">247</span> Toronto charities and the work they do.</h1>
+      <p class="hero-lede">Find local charities by cause, browse upcoming events, and discover how Toronto-area organizations are working in your community. Free for everyone, free for charities.</p>
+      <form class="hero-search" action="/toronto-charities-list/" method="get">
+        <input type="search" name="q" placeholder="Search by charity name or cause" />
+        <button type="submit" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        </button>
+      </form>
+      <div class="hero-links">
+        <a href="/toronto-charities-list/">Browse all charities</a>
+        <span class="dot">·</span>
+        <a href="/causes/">Browse by cause</a>
+        <span class="dot">·</span>
+        <a href="/charity/submit/">Submit a charity</a>
+      </div>
+    </div>
+    <figure class="hero-photo photo-ph" data-ph="Photo · Hero · Documentary frame from a featured Toronto charity"></figure>
+  </div>
+</section>
+
+<!-- ============ UPCOMING EVENTS ============ -->
+<section class="band band-bg" data-screen-label="Upcoming events">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head-left">
+        <p class="eyebrow">This week in Toronto</p>
+        <h2>Upcoming charity events</h2>
+      </div>
+      <a class="section-head-link" href="/events/">View all events →</a>
+    </div>
+
+    <div class="grid-3">
+      <a class="event-card" href="/events/daily-bread-soup-night">
+        <div class="event-photo photo-ph" data-ph="Event · Soup night · Daily Bread warehouse"></div>
+        <div class="event-body">
+        <div class="event-date">Sat · Jun 14</div>
+        <h3 class="event-title">Soup night at the Etobicoke warehouse</h3>
+        <div class="event-host"><span class="by">by </span><span class="name">Daily Bread Food Bank</span></div>
+        <div class="event-meta">
+          <div class="event-meta-row">
+            <span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-7.58-7-12a7 7 0 1 1 14 0c0 4.42-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            191 New Toronto St
+          </div>
+          <div class="event-time">6:30 PM · Free entry</div>
+        </div>
+        </div>
+      </a>
+
+      <a class="event-card" href="/events/covenant-house-walk">
+        <div class="event-photo photo-ph" data-ph="Event · Sleep Out walk · Covenant House"></div>
+        <div class="event-body">
+        <div class="event-date">Sun · Jun 15</div>
+        <h3 class="event-title">Sleep Out: a one-night solidarity walk</h3>
+        <div class="event-host"><span class="by">by </span><span class="name">Covenant House Toronto</span></div>
+        <div class="event-meta">
+          <div class="event-meta-row">
+            <span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-7.58-7-12a7 7 0 1 1 14 0c0 4.42-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            Yonge &amp; Gerrard
+          </div>
+          <div class="event-time">8:00 PM · $25 registration</div>
+        </div>
+        </div>
+      </a>
+
+      <a class="event-card" href="/events/stop-spring-gala">
+        <div class="event-photo photo-ph" data-ph="Event · Night Market · The Stop"></div>
+        <div class="event-body">
+        <div class="event-date">Tue · Jun 17</div>
+        <h3 class="event-title">The Stop's Night Market &amp; community supper</h3>
+        <div class="event-host"><span class="by">by </span><span class="name">The Stop Community Food Centre</span></div>
+        <div class="event-meta">
+          <div class="event-meta-row">
+            <span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-7.58-7-12a7 7 0 1 1 14 0c0 4.42-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            Wychwood Barns
+          </div>
+          <div class="event-time">7:00 PM · $80</div>
+        </div>
+        </div>
+      </a>
+
+      <a class="event-card" href="/events/humane-society-volunteer">
+        <div class="event-photo photo-ph" data-ph="Event · Volunteer orientation · Humane Society"></div>
+        <div class="event-body">
+        <div class="event-date">Wed · Jun 18</div>
+        <h3 class="event-title">Volunteer orientation: shelter operations</h3>
+        <div class="event-host"><span class="by">by </span><span class="name">Toronto Humane Society</span></div>
+        <div class="event-meta">
+          <div class="event-meta-row">
+            <span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-7.58-7-12a7 7 0 1 1 14 0c0 4.42-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            11 River St
+          </div>
+          <div class="event-time">6:00 PM · Free</div>
+        </div>
+        </div>
+      </a>
+
+      <a class="event-card" href="/events/sickkids-reading">
+        <div class="event-photo photo-ph" data-ph="Event · Public reading · SickKids"></div>
+        <div class="event-body">
+        <div class="event-date">Thu · Jun 19</div>
+        <h3 class="event-title">An evening reading: paediatric research in plain language</h3>
+        <div class="event-host"><span class="by">by </span><span class="name">SickKids Foundation</span></div>
+        <div class="event-meta">
+          <div class="event-meta-row">
+            <span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-7.58-7-12a7 7 0 1 1 14 0c0 4.42-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            Lillian H. Smith Branch
+          </div>
+          <div class="event-time">7:30 PM · Free entry</div>
+        </div>
+        </div>
+      </a>
+
+      <a class="event-card" href="/events/sistering-saturday">
+        <div class="event-photo photo-ph" data-ph="Event · Drop-in kitchen · Sistering"></div>
+        <div class="event-body">
+        <div class="event-date">Sat · Jun 21</div>
+        <h3 class="event-title">Saturday drop-in kitchen: meal-prep volunteer shift</h3>
+        <div class="event-host"><span class="by">by </span><span class="name">Sistering</span></div>
+        <div class="event-meta">
+          <div class="event-meta-row">
+            <span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-7.58-7-12a7 7 0 1 1 14 0c0 4.42-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            962 Bloor St W
+          </div>
+          <div class="event-time">9:00 AM · Free</div>
+        </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BROWSE BY CAUSE ============ -->
+<section class="band band-paper" data-screen-label="Browse by cause">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head-left">
+        <p class="eyebrow">Explore the directory</p>
+        <h2>Browse charities by cause</h2>
+      </div>
+    </div>
+
+    <div class="grid-causes">
+      <a class="cause-tile photo-ph overlay" href="/causes/mental-health/" data-ph="Mental health · group meeting">
+        <div class="cause-body">
+          <div class="cause-name">Mental health</div>
+          <div class="cause-count">26 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/food-security/" data-ph="Food bank · sorting floor">
+        <div class="cause-body">
+          <div class="cause-name">Food security</div>
+          <div class="cause-count">31 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/housing-homelessness/" data-ph="Shelter intake · evening">
+        <div class="cause-body">
+          <div class="cause-name">Housing & homelessness</div>
+          <div class="cause-count">48 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/youth-children/" data-ph="After-school programme">
+        <div class="cause-body">
+          <div class="cause-name">Youth & children</div>
+          <div class="cause-count">42 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/newcomers-refugees/" data-ph="Newcomer welcome centre">
+        <div class="cause-body">
+          <div class="cause-name">Newcomers & refugees</div>
+          <div class="cause-count">18 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/animal-welfare/" data-ph="Shelter · kennel hallway">
+        <div class="cause-body">
+          <div class="cause-name">Animal welfare</div>
+          <div class="cause-count">11 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/seniors/" data-ph="Senior visit · community room">
+        <div class="cause-body">
+          <div class="cause-name">Seniors</div>
+          <div class="cause-count">14 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/arts-culture/" data-ph="Community theatre · rehearsal">
+        <div class="cause-body">
+          <div class="cause-name">Arts & culture</div>
+          <div class="cause-count">19 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/environment/" data-ph="Ravine clean-up">
+        <div class="cause-body">
+          <div class="cause-name">Environment</div>
+          <div class="cause-count">9 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/education/" data-ph="Tutoring session">
+        <div class="cause-body">
+          <div class="cause-name">Education</div>
+          <div class="cause-count">22 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/health-medical/" data-ph="Hospital ward · corridor">
+        <div class="cause-body">
+          <div class="cause-name">Health & medical</div>
+          <div class="cause-count">17 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/disability/" data-ph="Accessibility programme">
+        <div class="cause-body">
+          <div class="cause-name">Disability</div>
+          <div class="cause-count">13 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/lgbtq/" data-ph="Community centre · LGBTQ">
+        <div class="cause-body">
+          <div class="cause-name">LGBTQ+ communities</div>
+          <div class="cause-count">8 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/indigenous/" data-ph="Indigenous-led centre">
+        <div class="cause-body">
+          <div class="cause-name">Indigenous communities</div>
+          <div class="cause-count">10 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/women-gender/" data-ph="Women's shelter · kitchen">
+        <div class="cause-body">
+          <div class="cause-name">Women & gender equity</div>
+          <div class="cause-count">15 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/legal-aid/" data-ph="Clinic · client interview">
+        <div class="cause-body">
+          <div class="cause-name">Legal aid</div>
+          <div class="cause-count">7 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/employment-skills/" data-ph="Job training · workshop">
+        <div class="cause-body">
+          <div class="cause-name">Employment & skills</div>
+          <div class="cause-count">12 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/crisis-trauma/" data-ph="Crisis line · office">
+        <div class="cause-body">
+          <div class="cause-name">Crisis & trauma</div>
+          <div class="cause-count">9 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/community/" data-ph="Neighbourhood hub">
+        <div class="cause-body">
+          <div class="cause-name">Community development</div>
+          <div class="cause-count">16 charities</div>
+        </div>
+      </a>
+      <a class="cause-tile photo-ph overlay" href="/causes/interfaith/" data-ph="Interfaith gathering">
+        <div class="cause-body">
+          <div class="cause-name">Religious & interfaith</div>
+          <div class="cause-count">10 charities</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED CHARITIES ============ -->
+<section class="band band-bg" data-screen-label="Featured charities">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head-left">
+        <p class="eyebrow">Verified charities</p>
+        <h2>Featured this month</h2>
+      </div>
+      <a class="section-head-link" href="/toronto-charities-list/">Browse all charities →</a>
+    </div>
+
+    <div class="grid-3">
+      <a class="charity-card" href="/charity/daily-bread/">
+        <div class="charity-photo photo-ph" data-ph="Charity · Daily Bread · warehouse floor"></div>
+        <div class="charity-body">
+        <div class="verified">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Verified
+        </div>
+        <h3>Daily Bread Food Bank</h3>
+        <div class="charity-tags">Food security · Community programs</div>
+        <p class="charity-desc">A central food bank serving over 200 member agencies across the GTA, distributing more than fifty thousand meals a day through neighbourhood programs.</p>
+        <span class="charity-link">Visit profile →</span>
+      </div>
+    </a>
+
+      <a class="charity-card" href="/charity/covenant-house/">
+        <div class="charity-photo photo-ph" data-ph="Charity · Covenant House · intake hall"></div>
+        <div class="charity-body">
+        <div class="verified">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Verified
+        </div>
+        <h3>Covenant House Toronto</h3>
+        <div class="charity-tags">Youth services · Housing &amp; homelessness</div>
+        <p class="charity-desc">Canada's largest agency for homeless and trafficked youth, providing 24-hour crisis housing, transitional programs and continuing care for ages 16 to 24.</p>
+        <span class="charity-link">Visit profile →</span>
+      </div>
+    </a>
+
+      <a class="charity-card" href="/charity/humane-society/">
+        <div class="charity-photo photo-ph" data-ph="Charity · Humane Society · adoption room"></div>
+        <div class="charity-body">
+        <div class="verified">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Verified
+        </div>
+        <h3>Toronto Humane Society</h3>
+        <div class="charity-tags">Animal welfare · Veterinary care</div>
+        <p class="charity-desc">Established 1887, operating a no-kill shelter, low-cost public veterinary clinic, and rescue and rehoming programs for cats, dogs and small companion animals.</p>
+        <span class="charity-link">Visit profile →</span>
+      </div>
+    </a>
+
+      <a class="charity-card" href="/charity/fcj/">
+        <div class="charity-photo photo-ph" data-ph="Charity · FCJ · client meeting room"></div>
+        <div class="charity-body">
+        <div class="verified">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Verified
+        </div>
+        <h3>FCJ Refugee Centre</h3>
+        <div class="charity-tags">Newcomers &amp; refugees · Legal aid</div>
+        <p class="charity-desc">Refugee resettlement, legal accompaniment and transitional housing for newcomers in precarious immigration status, in operation in Toronto since 1991.</p>
+        <span class="charity-link">Visit profile →</span>
+      </div>
+    </a>
+
+      <a class="charity-card" href="/charity/sickkids/">
+        <div class="charity-photo photo-ph" data-ph="Charity · SickKids · research floor"></div>
+        <div class="charity-body">
+        <div class="verified">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Verified
+        </div>
+        <h3>SickKids Foundation</h3>
+        <div class="charity-tags">Health &amp; medical · Children</div>
+        <p class="charity-desc">Fundraising and research foundation for The Hospital for Sick Children, supporting paediatric research, clinical care and family resources at Canada's largest children's hospital.</p>
+        <span class="charity-link">Visit profile →</span>
+      </div>
+    </a>
+
+      <a class="charity-card" href="/charity/the-stop/">
+        <div class="charity-photo photo-ph" data-ph="Charity · The Stop · community kitchen"></div>
+        <div class="charity-body">
+        <div class="verified">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Verified
+        </div>
+        <h3>The Stop Community Food Centre</h3>
+        <div class="charity-tags">Food security · Community development</div>
+        <p class="charity-desc">A community food centre operating drop-in meals, a perinatal program, urban agriculture, advocacy and a market garden out of two locations in the west end.</p>
+        <span class="charity-link">Visit profile →</span>
+      </div>
+    </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLAIM CTA ============ -->
+<section class="claim" data-screen-label="Claim CTA">
+  <div class="claim-inner">
+    <p class="eyebrow eyebrow-sage">For listed charities</p>
+    <h2>Already listed? Claim your profile.</h2>
+    <p>If your charity is in our directory, you can claim your profile to post your own events, update your description, and get a "Featured on Toronto Charities" badge for your website. The only thing we ask is a link from your site to your profile, so visitors can find related charities in the GTA.</p>
+    <div class="claim-actions">
+      <a class="btn-sage" href="/charity/claim/">Claim your profile</a>
+      <a class="btn-ghost-bg" href="/charity/how-claiming-works/">How claiming works</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENTLY ADDED ============ -->
+<section class="recent" data-screen-label="Recently added">
+  <div class="container">
+    <div class="section-head" style="margin-bottom: 32px;">
+      <div class="section-head-left">
+        <p class="eyebrow">New to the directory</p>
+        <h2>Recently added charities</h2>
+      </div>
+    </div>
+
+    <div class="recent-grid">
+      <a class="recent-row" href="/charity/storefront/">
+        <div>
+          <div class="name">The Storefront Humber</div>
+          <div class="desc">Drop-in centre and community support for South Etobicoke</div>
+        </div>
+        <div class="added">Added May 22</div>
+      </a>
+      <a class="recent-row" href="/charity/east-end-arts/">
+        <div>
+          <div class="name">East End Arts</div>
+          <div class="desc">Community arts council programming festivals and studio space</div>
+        </div>
+        <div class="added">Added May 20</div>
+      </a>
+      <a class="recent-row" href="/charity/black-creek/">
+        <div>
+          <div class="name">Black Creek Community Farm</div>
+          <div class="desc">Eight-acre farm growing food and running youth programs in Jane &amp; Finch</div>
+        </div>
+        <div class="added">Added May 18</div>
+      </a>
+      <a class="recent-row" href="/charity/parkdale-queen-west/">
+        <div>
+          <div class="name">Parkdale Queen West CHC</div>
+          <div class="desc">Community health centre with harm reduction and primary care</div>
+        </div>
+        <div class="added">Added May 16</div>
+      </a>
+      <a class="recent-row" href="/charity/regent-park-school/">
+        <div>
+          <div class="name">Regent Park School of Music</div>
+          <div class="desc">Free, high-quality music lessons for children in priority neighbourhoods</div>
+        </div>
+        <div class="added">Added May 14</div>
+      </a>
+      <a class="recent-row" href="/charity/native-child/">
+        <div>
+          <div class="name">Native Child and Family Services</div>
+          <div class="desc">Indigenous-led child welfare and family services across the GTA</div>
+        </div>
+        <div class="added">Added May 12</div>
+      </a>
+      <a class="recent-row" href="/charity/yonge-street-mission/">
+        <div>
+          <div class="name">Yonge Street Mission</div>
+          <div class="desc">Long-running downtown agency working on poverty, food and housing</div>
+        </div>
+        <div class="added">Added May 9</div>
+      </a>
+      <a class="recent-row" href="/charity/scadding-court/">
+        <div>
+          <div class="name">Scadding Court Community Centre</div>
+          <div class="desc">Recreation, citizenship classes and a market in Alexandra Park</div>
+        </div>
+        <div class="added">Added May 7</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDES ============ -->
+<section class="band band-paper" data-screen-label="Guides">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head-left">
+        <p class="eyebrow">Editorial</p>
+        <h2>Guides for giving in Toronto</h2>
+      </div>
+      <a class="section-head-link" href="/guides/">All guides →</a>
+    </div>
+
+    <div class="grid-2">
+      <a class="guide-card" href="/guides/how-to-donate-to-toronto-charities/">
+        <p class="eyebrow">Giving guide</p>
+        <h3>How to donate to Toronto charities: a complete guide</h3>
+        <p class="dek">A practical primer on choosing a charity, reading a T3010 return, setting up a monthly gift, and what to expect from a tax receipt issued in Ontario.</p>
+        <span class="read-time">8 min read</span>
+      </a>
+      <a class="guide-card" href="/guides/finding-a-volunteer-role/">
+        <p class="eyebrow">Volunteer guide</p>
+        <h3>Finding a volunteer role that actually fits your week</h3>
+        <p class="dek">Beyond the one-off Saturday: how to match your skills, schedule and stamina to a charity that needs them, with notes from twelve volunteer coordinators.</p>
+        <span class="read-time">6 min read</span>
+      </a>
+      <a class="guide-card" href="/guides/year-end-giving-toronto/">
+        <p class="eyebrow">Giving guide</p>
+        <h3>Year-end giving: a Toronto-specific calendar</h3>
+        <p class="dek">When deadlines fall in Ontario, how DAFs and stock gifts work, and a working calendar for last-week-of-December decisions that still produce a receipt.</p>
+        <span class="read-time">11 min read</span>
+      </a>
+      <a class="guide-card" href="/guides/how-to-read-an-impact-report/">
+        <p class="eyebrow">Giving guide</p>
+        <h3>How to read a charity's impact report without losing the plot</h3>
+        <p class="dek">Program-spend ratios, restricted funds, outcome metrics versus output metrics — what to look for, what to discount, and the questions worth asking the executive director.</p>
+        <span class="read-time">9 min read</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer data-screen-label="Footer">
+  <div class="foot-grid">
+    <div class="foot-logo">
+      <span class="logo">
+        <a class="logo-main" href="/" aria-label="Toronto Charities — home">
+          <span class="logo-mark" aria-hidden="true">
+            <span class="mono">TC</span>
+            <span class="bar"></span>
+          </span>
+          <span class="logo-word">
+            <span class="top">Toronto</span>
+            <span class="bot">Charities</span>
+          </span>
+        </a>
+        <span class="logo-by">By <a href="https://torontoproperty.ca">Toronto Property</a></span>
+      </span>
+      <p class="foot-tagline">A community directory of Toronto-area charities and the events they run.</p>
+      <p class="foot-credit">A community resource by <a href="https://torontoproperty.ca">Toronto Property</a>.</p>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow eyebrow-sage">Browse</p>
+      <a href="/toronto-charities-list/">All charities</a>
+      <a href="/causes/">By cause</a>
+      <a href="/events/">Upcoming events</a>
+      <a href="/events/?month=current">This month</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow eyebrow-sage">For charities</p>
+      <a href="/charity/claim/">Claim your profile</a>
+      <a href="/charity/how-claiming-works/">How it works</a>
+      <a href="/charity/submit/">Submit a charity</a>
+      <a href="/charity/badge/">Embeddable badge</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow eyebrow-sage">About</p>
+      <a href="/about/">About us</a>
+      <a href="/contact/">Contact</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Toronto Charities. A community resource by Toronto Property.</span>
+    <span>Directory last updated May 27, 2026</span>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll state
+  (function () {
+    const wrap = document.getElementById('navWrap');
+    if (!wrap) return;
+    const update = () => {
+      if (window.scrollY > 4) wrap.classList.add('scrolled');
+      else wrap.classList.remove('scrolled');
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  })();
+</script>
+
+</body>
+</html>
