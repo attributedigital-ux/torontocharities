@@ -167,7 +167,7 @@ function EventCard({ event }: { event: EventCardData }) {
     >
       <PhotoPlaceholder caption={event.photoCaption} className="aspect-[4/3] w-full" />
       <div className="px-7 pt-[22px] pb-7 flex flex-col flex-1">
-        <div className="font-sans text-xs font-medium text-tp-amber tracking-[0.12em] uppercase mb-[14px]">
+        <div className="inline-flex self-start bg-tp-amber text-tp-paper font-sans text-[11px] font-medium tracking-[0.12em] uppercase px-2.5 py-1 mb-[14px]">
           {event.date}
         </div>
         <h3 className="font-serif font-medium text-[22px] leading-[1.25] text-tp-blue mb-[14px]">
@@ -259,7 +259,7 @@ export type CharityCardData = {
 
 function VerifiedTick() {
   return (
-    <div className="inline-flex items-center gap-1.5 font-sans text-[11px] font-medium text-tc-sage tracking-[0.12em] uppercase mb-[14px]">
+    <div className="inline-flex self-start items-center gap-1.5 border border-tc-sage text-tc-sage font-sans text-[11px] font-medium tracking-[0.12em] uppercase px-2.5 py-1 mb-[14px]">
       <svg
         viewBox="0 0 24 24"
         fill="none"

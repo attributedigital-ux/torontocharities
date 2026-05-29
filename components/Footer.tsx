@@ -31,7 +31,7 @@ const COLS = [
   },
 ];
 
-export function Footer({ lastUpdated }: { lastUpdated: string }) {
+export function Footer({ lastUpdated = '' }: { lastUpdated?: string }) {
   return (
     <footer className="bg-tp-blue text-tp-bg pt-24 pb-16">
       <div className="max-w-[1200px] mx-auto px-8 grid grid-cols-[1.5fr_1fr_1fr_1fr] gap-16">
@@ -73,7 +73,7 @@ export function Footer({ lastUpdated }: { lastUpdated: string }) {
         <span>
           © {new Date().getFullYear()} Toronto Charities. A community resource by Toronto Property.
         </span>
-        <span>Directory last updated {lastUpdated}</span>
+        {lastUpdated && <span>Directory last updated {lastUpdated}</span>}
       </div>
     </footer>
   );

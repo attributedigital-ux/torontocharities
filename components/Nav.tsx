@@ -23,10 +23,8 @@ export function Nav() {
 
   return (
     <div
-      className={`sticky top-0 z-50 border-b transition-[background-color,border-color] duration-[400ms] ${
-        scrolled
-          ? 'bg-tp-bg border-[rgba(44,61,85,0.12)]'
-          : 'bg-transparent border-transparent'
+      className={`sticky top-0 z-50 bg-tp-bg border-b transition-[border-color] duration-[400ms] ${
+        scrolled ? 'border-[rgba(44,61,85,0.12)]' : 'border-transparent'
       }`}
     >
       <nav className="max-w-[1200px] mx-auto flex items-center justify-between px-8 py-[22px]">

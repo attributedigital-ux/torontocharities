@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
 @import "tailwindcss";
 
 /* ============================================================
    Toronto Charities — design tokens
    Source: _docs/design/colors_and_type.css + DESIGN-SYSTEM-locked.md
+
+   Fonts loaded via CSS @import (not next/font) because next/font/google
+   has a packaging bug in Next.js 16 (missing capsize-font-metrics.json in
+   dev mode). Performance cost is tiny — Google Fonts CDN is fast and the
+   browser caches across sites.
    ============================================================ */
 
 @theme {
@@ -23,9 +29,9 @@
   --color-tc-sage: #6B7F5C;
   --color-tc-sage-d: #57684B;
 
-  /* Fonts — wired up in app/layout.tsx via next/font */
-  --font-serif: var(--font-playfair), Georgia, 'Times New Roman', serif;
-  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  /* Fonts — loaded via @import above */
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
 /* Element defaults — matches design system */

@@ -344,8 +344,11 @@ Sub-specs assume a phased build. Suggested order:
 - Featured charity selection (CRA_IMPORT_SPEC §6)
 
 **Phase 3 — Events (weeks 4-6)**
-- Per EVENT_INGESTION_SPEC "Initial seeding plan" §574-603
-- VPS provisioned, worker deployed, cron set up
+- Per EVENT_INGESTION_SPEC — note the revised architecture at the top of that file
+- All ingestion runs as **Netlify Scheduled Functions** (no VPS)
+- Single weekly cadence (Sunday night ingest → Monday morning enrichment + summary)
+- Claude (Haiku) used as the scraper for the last-resort HTML sources, not hand-coded scrapers
+- healthchecks.io dead-man-switch + weekly summary email for monitoring
 
 **Phase 4 — Launch prep (week 7)**
 - SEO foundations §7 (page speed audit) + §8 (verification checklist)

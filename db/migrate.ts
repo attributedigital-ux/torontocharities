@@ -19,7 +19,7 @@ async function run() {
 
   // 1. Apply extensions BEFORE any tables exist.
   const extensions = readFileSync(
-    path.join(__dirname, 'migrations', '0000_extensions.sql'),
+    path.join(__dirname, 'sql', '0000_extensions.sql'),
     'utf8',
   );
   console.log('Applying extensions...');
@@ -30,12 +30,12 @@ async function run() {
   await migrate(db, { migrationsFolder: path.join(__dirname, 'migrations') });
 
   // 3. Apply custom SQL files (trigram indexes that need tables to exist first).
-  const customFiles = readdirSync(path.join(__dirname, 'migrations'))
+  const customFiles = readdirSync(path.join(__dirname, 'sql'))
     .filter((f) => f.match(/^\d{4,}_.*\.sql$/) && f !== '0000_extensions.sql')
     .sort();
 
   for (const file of customFiles) {
-    const content = readFileSync(path.join(__dirname, 'migrations', file), 'utf8');
+    const content = readFileSync(path.join(__dirname, 'sql', file), 'utf8');
     console.log(`Applying ${file}...`);
     await sql.unsafe(content);
   }

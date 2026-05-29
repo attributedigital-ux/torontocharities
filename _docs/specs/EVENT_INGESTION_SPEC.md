@@ -2,7 +2,36 @@
 
 **For**: Claude Code
 **Goal**: an automated event-discovery pipeline that produces 20-50 approved Toronto charity events per week without manual scraping work.
-**Architecture**: Node worker running on a small VPS (DigitalOcean $6-12/month), cron-driven, with results landing in the same Postgres as the web app.
+
+---
+
+## REVISED ARCHITECTURE — 2026-05-28 (supersedes the original below)
+
+Three changes from the original spec, in effect from this date forward:
+
+**1. Runtime: Netlify Scheduled Functions, not a DigitalOcean VPS.**
+Each cron job lives in `netlify/functions/` with its own schedule in `netlify.toml` (or via the v2 API). Same platform as the web app, deployed by the same `git push`, no SSH, no server to maintain. Functions write to Neon Postgres exactly the same way the web app does. Chunking required for any job > 10s (Starter timeout); most fit. Cost: $0/month on Starter for the expected volume (~250 invocations/month with weekly cadence).
+
+**2. Cadence: weekly, not hourly/daily.**
+Charity events are announced weeks to months in advance, not hours. One weekly ingest is sufficient. Schedule:
+```
+Sunday 23:00 EST   →  all source pullers (chunked invocations over ~30 min)
+Monday 01:00 EST   →  Claude enrichment on raw_events queue
+Monday 09:00 EST   →  expire ended events + linkback verification
+Monday 10:00 EST   →  weekly summary email to owner
+```
+The Claude enrichment runs as **one weekly Batches API job** (50% discount, 24h SLA is plenty). Last-minute events posted by claimed charities go through the dashboard directly — no automation needed for that path.
+
+**3. HTML scrapers: replaced by Claude-as-scraper.**
+Source type #5 in the original spec called for hand-coded per-site scrapers (`scrapers/daily-bread.ts`, etc.) — fragile, break on site redesign. Replace with a single generic function that fetches the page HTML and asks Claude (Haiku, prompt-cached) to extract events as JSON. Adapts automatically when sites redesign. Cost: ~$1–3/month for the 5–10 sites in this category. Other source types (iCal, RSS, Eventbrite, schema.org) stay as-is — they're already structured and don't need a language model.
+
+**Monitoring (new, two layers):**
+- **healthchecks.io dead-man-switch**: each scheduled function pings a unique URL on success. If a ping doesn't arrive within the expected window, healthchecks emails. Catches function crashes, Netlify outages, misconfigured schedules. Free tier covers it.
+- **Weekly summary email** loudly flags: sources with 0 events for 3+ weeks running, unverified claims older than 7 days, weeks with zero approvals. Catches silent breakage where the cron runs but produces nothing useful.
+
+The rest of the spec below (source types 1–4, dedup logic, Claude enrichment prompt, approval queue, schema) remains accurate — only the *runtime, cadence, and scraper approach* change. Read with the above in mind.
+
+---
 
 This is the make-or-break for the directory's content density. A charity directory with no events is a yellow pages. A charity directory with a real, current events feed is a destination.
 
