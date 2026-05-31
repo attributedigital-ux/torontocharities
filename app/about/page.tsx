@@ -33,7 +33,7 @@ export default function AboutPage() {
             Your charity already has a profile here. Activating it takes about two minutes: add a link to toronto-charities.ca on your website and we verify it automatically. Once active, your events appear here for free, permanently, with no ongoing work required on your end.
           </p>
           <p>
-            You can update your description, address, or contact details at any time by emailing <a href="mailto:hello@toronto-charities.ca" className="text-tp-blue hover:underline">hello@toronto-charities.ca</a>. Our system processes update requests automatically.
+            You can update your description, address, or contact details at any time by finding your profile in the directory and using the activation link.
           </p>
 
           <h2 className="text-xl mt-10 mb-4">For donors and volunteers</h2>
@@ -43,7 +43,7 @@ export default function AboutPage() {
 
           <h2 className="text-xl mt-10 mb-4">Contact</h2>
           <p>
-            Questions, corrections, or removal requests: <a href="mailto:hello@toronto-charities.ca" className="text-tp-blue hover:underline">hello@toronto-charities.ca</a>. We aim to respond within one business day.
+            Questions, corrections, or removal requests can be submitted by finding your charity profile in the directory. Charity owners can activate their profile to manage their listing directly.
           </p>
         </div>
       </main>

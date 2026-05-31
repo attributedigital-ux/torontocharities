@@ -36,17 +36,11 @@ export function Footer({ lastUpdated = '' }: { lastUpdated?: string }) {
             A community directory of Toronto-area charities and the events they
             run.
           </p>
-          <a
-            href="mailto:hello@toronto-charities.ca"
-            className="block font-sans text-sm text-tp-bg/80 hover:text-tp-bg transition-colors duration-[600ms] mb-[14px]"
-          >
-            hello@toronto-charities.ca
-          </a>
-          <p className="font-sans text-[13px] text-tp-bg/60">
+          <p className="font-sans text-[11px] text-tp-bg/25">
             A community resource by{' '}
             <a
               href="https://torontoproperty.ca"
-              className="text-tp-bg border-b border-tp-bg/40 pb-px hover:border-tp-bg transition-colors duration-[600ms]"
+              className="text-tp-bg/25 hover:text-tp-bg/40 transition-colors duration-[600ms]"
             >
               Toronto Property
             </a>
