@@ -6,9 +6,7 @@ import { Logo } from './Logo';
 
 const NAV_LINKS = [
   { label: 'Browse charities', href: '/toronto-charities-list/' },
-  { label: 'Events', href: '/events/' },
-  { label: 'Guides', href: '/guides/' },
-  { label: 'About', href: '/about/' },
+  { label: 'Events', href: '/charity-events-toronto/' },
 ];
 
 export function Nav() {
@@ -41,10 +39,10 @@ export function Nav() {
           ))}
         </div>
         <Link
-          href="/charity/claim/"
+          href="/toronto-charities-list/"
           className="border border-tc-sage text-tc-sage px-[18px] py-[10px] font-sans text-[13px] font-medium tracking-[0.02em] hover:bg-tc-sage hover:text-tp-bg transition-all duration-[600ms]"
         >
-          For charities
+          Find a charity
         </Link>
       </nav>
     </div>
