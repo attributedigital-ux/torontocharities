@@ -64,6 +64,15 @@ export default async function handler() {
     ))
     .limit(BATCH);
 
+  // Send a test email first so you can review before real sends go out
+  await resend.emails.send({
+    from: FROM,
+    replyTo: FROM,
+    to: 'richardarmstrong01@hotmail.com',
+    subject: `[TEST] Your free charity listing is live — ${candidates[0]?.display_name ?? 'Example Charity'}`,
+    html: buildHtml(candidates[0] ?? { slug: 'test', display_name: 'Example Charity', website_url: null }),
+  }).catch(() => {});
+
   let sent = 0;
   for (const c of candidates) {
     if (!c.email) continue;

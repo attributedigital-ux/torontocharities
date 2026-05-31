@@ -58,7 +58,7 @@ export function Footer({ lastUpdated = '' }: { lastUpdated?: string }) {
       <div className="max-w-[1200px] mx-auto px-8 mt-16 pt-6 border-t border-tp-bg/15 flex justify-between font-sans text-xs text-tp-bg/50">
         <span>
           © {new Date().getFullYear()} Toronto Charities. A community resource by{' '}
-          <a href="https://torontoproperty.ca" className="text-tp-bg/30 hover:text-tp-bg/50 transition-colors duration-[600ms]">Toronto Property</a>.
+          <a href="https://torontoproperty.ca" className="text-tp-bg/70 hover:text-tp-bg/90 transition-colors duration-[600ms]">Toronto Property</a>.
         </span>
         {lastUpdated && <span>Directory last updated {lastUpdated}</span>}
       </div>
