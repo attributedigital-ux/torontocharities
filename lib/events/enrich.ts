@@ -11,7 +11,7 @@
  */
 
 import Anthropic from '@anthropic-ai/sdk';
-import { eq, isNull, and } from 'drizzle-orm';
+import { eq, isNull, and, sql } from 'drizzle-orm';
 import { db, raw_events, events, charities, event_sources } from '@/db';
 
 const MODEL = 'claude-haiku-4-5-20251001';
@@ -99,11 +99,19 @@ async function uniqueSlug(title: string): Promise<string> {
 
 async function findCharityId(organizerName: string | null | undefined): Promise<number | null> {
   if (!organizerName) return null;
-  const rows = await db.select({ id: charities.id })
+
+  // Exact match first
+  const exact = await db.select({ id: charities.id })
     .from(charities)
     .where(eq(charities.display_name, organizerName))
     .limit(1);
-  return rows[0]?.id ?? null;
+  if (exact[0]) return exact[0].id;
+
+  // Fuzzy match via pg_trgm similarity (threshold 0.4)
+  const fuzzy = await db.execute(
+    sql`SELECT id FROM charities WHERE similarity(display_name, ${organizerName}) > 0.4 ORDER BY similarity(display_name, ${organizerName}) DESC LIMIT 1`
+  );
+  return (fuzzy[0] as any)?.id ?? null;
 }
 
 async function writeEvent(rawId: number, result: Record<string, unknown>, raw: typeof raw_events.$inferSelect) {

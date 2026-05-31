@@ -13,11 +13,25 @@ import { eq, and } from 'drizzle-orm';
 
 const BASE = 'https://www.eventbriteapi.com/v3';
 const SEARCH_PAGES = [
+  // Charity & fundraising — 4 pages
   'https://www.eventbrite.ca/d/canada--toronto/charity--fundraising/',
-  'https://www.eventbrite.ca/d/canada--toronto/fundraiser/',
   'https://www.eventbrite.ca/d/canada--toronto/charity--fundraising/?page=2',
-  'https://www.eventbrite.ca/d/canada--toronto/fundraiser/?page=2',
   'https://www.eventbrite.ca/d/canada--toronto/charity--fundraising/?page=3',
+  'https://www.eventbrite.ca/d/canada--toronto/charity--fundraising/?page=4',
+  // Fundraiser — 4 pages
+  'https://www.eventbrite.ca/d/canada--toronto/fundraiser/',
+  'https://www.eventbrite.ca/d/canada--toronto/fundraiser/?page=2',
+  'https://www.eventbrite.ca/d/canada--toronto/fundraiser/?page=3',
+  'https://www.eventbrite.ca/d/canada--toronto/fundraiser/?page=4',
+  // Community & non-profit
+  'https://www.eventbrite.ca/d/canada--toronto/community--non-profit/',
+  'https://www.eventbrite.ca/d/canada--toronto/community--non-profit/?page=2',
+  // Gala & auction
+  'https://www.eventbrite.ca/d/canada--toronto/gala/',
+  'https://www.eventbrite.ca/d/canada--toronto/auction/',
+  // Volunteer & walk
+  'https://www.eventbrite.ca/d/canada--toronto/volunteer/',
+  'https://www.eventbrite.ca/d/canada--toronto/charity-walk/',
 ];
 
 function extractEventIds(html: string): string[] {
