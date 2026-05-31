@@ -12,23 +12,37 @@ import { eq } from 'drizzle-orm';
 
 const TARGET_DOMAIN = 'toronto-charities.ca';
 const TIMEOUT_MS = 8000;
+const EXTRA_PATHS = ['/about', '/about-us', '/contact', '/links', '/resources', '/community', '/support'];
 
-async function checkForLinkback(websiteUrl: string): Promise<boolean> {
+async function fetchPage(url: string): Promise<string | null> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
-    const res = await fetch(websiteUrl, {
+    const res = await fetch(url, {
       signal: controller.signal,
       headers: { 'User-Agent': 'TorontoCharitiesVerifier/1.0' },
     });
-    if (!res.ok) return false;
-    const html = await res.text();
-    return html.toLowerCase().includes(TARGET_DOMAIN);
+    if (!res.ok) return null;
+    return await res.text();
   } catch {
-    return false;
+    return null;
   } finally {
     clearTimeout(timer);
   }
+}
+
+async function checkForLinkback(websiteUrl: string): Promise<boolean> {
+  const base = websiteUrl.replace(/\/$/, '');
+
+  // Check homepage first
+  const home = await fetchPage(base);
+  if (home?.toLowerCase().includes(TARGET_DOMAIN)) return true;
+
+  // Check common sub-pages in parallel
+  const pages = await Promise.all(
+    EXTRA_PATHS.map(path => fetchPage(`${base}${path}`))
+  );
+  return pages.some(html => html?.toLowerCase().includes(TARGET_DOMAIN));
 }
 
 export async function POST(req: NextRequest) {
