@@ -78,7 +78,7 @@ export default function ForCharitiesPage() {
           </div>
 
           <p className="text-sm text-tp-muted">
-            Questions? Find your charity in the directory and use the activation link on your profile page.
+            Questions? Email <a href="mailto:hello@toronto-charities.ca" className="text-tp-blue hover:underline">hello@toronto-charities.ca</a> or find your charity in the directory and use the activation link on your profile page.
           </p>
         </div>
       </main>

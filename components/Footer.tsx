@@ -22,6 +22,7 @@ const COLS = [
     title: 'About',
     links: [
       { label: 'About us', href: '/about/' },
+      { label: 'hello@toronto-charities.ca', href: 'mailto:hello@toronto-charities.ca' },
     ],
   },
 ];

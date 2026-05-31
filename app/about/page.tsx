@@ -43,7 +43,7 @@ export default function AboutPage() {
 
           <h2 className="text-xl mt-10 mb-4">Contact</h2>
           <p>
-            Questions, corrections, or removal requests can be submitted by finding your charity profile in the directory. Charity owners can activate their profile to manage their listing directly.
+            Questions, corrections, or removal requests: email <a href="mailto:hello@toronto-charities.ca" className="text-tp-blue hover:underline">hello@toronto-charities.ca</a> or find your charity profile in the directory and use the activation link.
           </p>
         </div>
       </main>

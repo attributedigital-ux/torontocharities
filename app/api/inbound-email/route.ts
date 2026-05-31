@@ -2,19 +2,12 @@
  * POST /api/inbound-email
  * Resend inbound webhook — receives emails sent to hello@toronto-charities.ca.
  *
- * Flow:
- * 1. Resend receives email, POSTs JSON payload to this endpoint
- * 2. We find the charity by matching sender email to charities.email
- * 3. Claude reads the email body and decides what to do:
- *    - Edit request → apply via /api/charity/edit logic, reply with confirmation
- *    - Removal request → mark opted_out, reply confirming removal
- *    - Question → Claude answers from charity data, replies
- *    - Unclear → polite reply asking them to clarify
- * 4. We reply via Resend API
+ * Resend webhook payload contains metadata only (id, from, to, subject).
+ * Body must be fetched separately via resend.emails.receiving.get(id).
  *
- * Setup in Resend dashboard:
- *   Domains → toronto-charities.ca → Inbound → Add webhook URL:
- *   https://toronto-charities.ca/api/inbound-email
+ * Setup: Resend → Webhooks → Add Endpoint
+ *   URL: https://toronto-charities.ca/api/inbound-email
+ *   Events: email.received
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -60,9 +53,18 @@ export async function POST(req: NextRequest) {
   const payload = await req.json().catch(() => null);
   if (!payload) return NextResponse.json({ ok: true }); // Ignore malformed
 
-  const fromEmail: string = payload.from?.address ?? payload.from ?? '';
-  const subject: string = payload.subject ?? '';
-  const body: string = payload.text ?? payload.html?.replace(/<[^>]+>/g, ' ') ?? '';
+  // Resend webhook sends metadata only — fetch full email for body
+  const emailId: string = payload.data?.email_id ?? payload.email_id ?? '';
+  if (!emailId) return NextResponse.json({ ok: true });
+
+  const resendClient = new Resend(process.env.RESEND_API_KEY);
+  const received = await resendClient.emails.receiving.get(emailId).catch(() => null);
+  if (!received) return NextResponse.json({ ok: true });
+
+  const fromEmail: string = (received as any).from ?? payload.data?.from ?? '';
+  const subject: string = (received as any).subject ?? payload.data?.subject ?? '';
+  const rawBody: string = (received as any).text ?? (received as any).html ?? '';
+  const body: string = rawBody.includes('<') ? rawBody.replace(/<[^>]+>/g, ' ') : rawBody;
 
   if (!fromEmail || !body) return NextResponse.json({ ok: true });
 
@@ -73,8 +75,7 @@ export async function POST(req: NextRequest) {
 
   if (!charity) {
     // Unknown sender — send a polite reply pointing them to the directory
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    await resendClient.emails.send({
       from: FROM,
       to: fromEmail,
       subject: `Re: ${subject}`,
@@ -90,8 +91,7 @@ export async function POST(req: NextRequest) {
       reason: 'inbound email removal request',
     }).onConflictDoNothing();
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    await resendClient.emails.send({
       from: FROM,
       to: fromEmail,
       subject: `Re: ${subject}`,
@@ -144,8 +144,7 @@ ${body.slice(0, 1500)}`;
 
   // Send reply
   if (result.reply_body) {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    await resendClient.emails.send({
       from: FROM,
       to: fromEmail,
       subject: `Re: ${subject}`,
