@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Nav } from '@/components/Nav';
@@ -8,7 +8,7 @@ import { Footer } from '@/components/Footer';
 
 type Step = 'instructions' | 'checking' | 'verified' | 'not_found' | 'editing' | 'done';
 
-export default function ClaimPage() {
+function ClaimContent() {
   const params = useSearchParams();
   const slug = params.get('charity') ?? '';
   const charityName = params.get('name') ?? 'your charity';
@@ -179,5 +179,13 @@ export default function ClaimPage() {
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function ClaimPage() {
+  return (
+    <Suspense fallback={<div className="max-w-xl mx-auto px-4 py-16 text-tp-muted">Loading...</div>}>
+      <ClaimContent />
+    </Suspense>
   );
 }

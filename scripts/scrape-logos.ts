@@ -7,7 +7,7 @@
  */
 
 import { db, charities } from '@/db';
-import { isNotNull, isNull } from 'drizzle-orm';
+import { isNotNull, eq } from 'drizzle-orm';
 
 const DELAY_MS = 500;
 const TIMEOUT_MS = 7000;
@@ -71,7 +71,7 @@ async function main() {
       const logo = extractLogo(html, website_url);
       if (logo) {
         await db.update(charities).set({ logo_url: logo, updated_at: new Date() })
-          .where((t, { eq }) => eq(t.id, id));
+          .where(eq(charities.id, id));
         found++;
         if (found <= 10 || found % 50 === 0) console.log(`  ✓ ${display_name}: ${logo}`);
       }
