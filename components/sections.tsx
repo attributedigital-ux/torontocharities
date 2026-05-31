@@ -143,8 +143,8 @@ export function Hero({ charityCount }: { charityCount: number }) {
         </div>
         <div className="min-h-[540px] self-stretch overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80"
-            alt="Volunteers at a Toronto charity event"
+            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80"
+            alt="Toronto charity volunteers sorting food donations"
             className="w-full h-full object-cover"
           />
         </div>
