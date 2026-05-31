@@ -5,6 +5,9 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+[functions]
+  directory = "netlify/functions"
+
 [[redirects]]
   from = "https://www.toronto-charities.ca/*"
   to = "https://toronto-charities.ca/:splat"

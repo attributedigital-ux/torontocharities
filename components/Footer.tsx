@@ -6,27 +6,22 @@ const COLS = [
     title: 'Browse',
     links: [
       { label: 'All charities', href: '/toronto-charities-list/' },
-      { label: 'By cause', href: '/causes/' },
-      { label: 'Upcoming events', href: '/events/' },
-      { label: 'This month', href: '/events/?month=current' },
+      { label: 'Upcoming events', href: '/charity-events-toronto/' },
+      { label: 'Guides', href: '/guides/' },
     ],
   },
   {
     title: 'For charities',
     links: [
-      { label: 'Claim your profile', href: '/charity/claim/' },
-      { label: 'How it works', href: '/charity/how-claiming-works/' },
-      { label: 'Submit a charity', href: '/submit-a-charity/' },
-      { label: 'Embeddable badge', href: '/charity/badge/' },
+      { label: 'Activate your listing', href: '/for-charities/' },
+      { label: 'How it works', href: '/for-charities/' },
+      { label: 'Find your profile', href: '/toronto-charities-list/' },
     ],
   },
   {
     title: 'About',
     links: [
       { label: 'About us', href: '/about/' },
-      { label: 'Contact', href: '/contact/' },
-      { label: 'Privacy', href: '/privacy/' },
-      { label: 'Terms', href: '/terms/' },
     ],
   },
 ];
@@ -41,6 +36,12 @@ export function Footer({ lastUpdated = '' }: { lastUpdated?: string }) {
             A community directory of Toronto-area charities and the events they
             run.
           </p>
+          <a
+            href="mailto:hello@toronto-charities.ca"
+            className="block font-sans text-sm text-tp-bg/80 hover:text-tp-bg transition-colors duration-[600ms] mb-[14px]"
+          >
+            hello@toronto-charities.ca
+          </a>
           <p className="font-sans text-[13px] text-tp-bg/60">
             A community resource by{' '}
             <a
