@@ -207,8 +207,8 @@ export default async function ProfilePage({
                   {charity.claimed_at
                     ? 'The charity manager can add one from the dashboard.'
                     : (
-                      <Link href="/charity/claim/" className="underline hover:text-tp-blue">
-                        Claim this profile
+                      <Link href={`/charity/claim/?charity=${slug}&name=${encodeURIComponent(charity.display_name)}&site=${encodeURIComponent(charity.website_url ?? '')}`} className="underline hover:text-tp-blue">
+                        Activate this profile
                       </Link>
                     )}{' '}
                 </p>
@@ -323,16 +323,16 @@ export default async function ProfilePage({
                 </div>
               </div>
 
-              {!charity.claimed_at && (
+              {!charity.linkback_verified_at && (
                 <div className="mt-4 p-4 border border-tc-sage rounded bg-tp-paper">
                   <p className="text-sm text-tp-ink mb-2">
                     Is this your charity?
                   </p>
                   <Link
-                    href="/charity/claim/"
+                    href={`/charity/claim/?charity=${slug}&name=${encodeURIComponent(charity.display_name)}&site=${encodeURIComponent(charity.website_url ?? '')}`}
                     className="text-sm text-tc-sage hover:underline font-medium"
                   >
-                    Claim this profile
+                    Activate your free listing →
                   </Link>
                 </div>
               )}

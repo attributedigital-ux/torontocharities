@@ -34,6 +34,7 @@ export const charities = pgTable(
     is_featured: boolean('is_featured').default(false).notNull(),
     claimed_at: timestamp('claimed_at'),
     claimed_by_user_id: integer('claimed_by_user_id'),
+    logo_url: text('logo_url'),
     linkback_verified_at: timestamp('linkback_verified_at'),
     last_verified_at: timestamp('last_verified_at'),
     created_at: timestamp('created_at').defaultNow().notNull(),

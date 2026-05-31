@@ -1,0 +1,1 @@
+ALTER TABLE "charities" ADD COLUMN "logo_url" text;
