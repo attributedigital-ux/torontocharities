@@ -37,16 +37,6 @@ export function Footer({ lastUpdated = '' }: { lastUpdated?: string }) {
             A community directory of Toronto-area charities and the events they
             run.
           </p>
-          <p className="font-sans text-[11px] text-tp-bg/25">
-            A community resource by{' '}
-            <a
-              href="https://torontoproperty.ca"
-              className="text-tp-bg/25 hover:text-tp-bg/40 transition-colors duration-[600ms]"
-            >
-              Toronto Property
-            </a>
-            .
-          </p>
         </div>
         {COLS.map((col) => (
           <div key={col.title}>
@@ -67,7 +57,8 @@ export function Footer({ lastUpdated = '' }: { lastUpdated?: string }) {
       </div>
       <div className="max-w-[1200px] mx-auto px-8 mt-16 pt-6 border-t border-tp-bg/15 flex justify-between font-sans text-xs text-tp-bg/50">
         <span>
-          © {new Date().getFullYear()} Toronto Charities. A community resource by Toronto Property.
+          © {new Date().getFullYear()} Toronto Charities. A community resource by{' '}
+          <a href="https://torontoproperty.ca" className="text-tp-bg/30 hover:text-tp-bg/50 transition-colors duration-[600ms]">Toronto Property</a>.
         </span>
         {lastUpdated && <span>Directory last updated {lastUpdated}</span>}
       </div>
