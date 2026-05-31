@@ -4,131 +4,149 @@ Operating rules for Claude Code on this project. Read this file before touching 
 
 ## What this project is
 
-A community directory of Toronto-area charities and their events, operated as a community resource by Toronto Property. Site eventually folds into `torontoproperty.ca/toronto-charities/` via a 301 redirect.
+A free public directory of every registered charity in the Greater Toronto Area, with automated event ingestion and a self-managing charity activation pipeline. Operated as a community resource by Toronto Property (credited subtly in footer only — one line, 70% opacity).
 
 - Domain: `toronto-charities.ca`
-- Live data: ~2,500–3,500 GTA charities from CRA bulk import, ~100–300 events at any time from automated ingestion, ~10 editorial guides
-- Web app + Postgres reads on Netlify (serverless functions, static where possible)
-- Cron-driven worker on a $6–12/month DigitalOcean VPS handles CRA import + event ingestion + linkback verification
+- Live data: 12,758 GTA charities from CRA bulk import, events from Eventbrite + charity websites, AI-generated descriptions
+- Hosted on Netlify (web + scheduled functions). No VPS — everything runs on Netlify crons.
+- Repo: `github.com/attributedigital-ux/torontocharities`
 
 ## Stack
 
 ```
 Next.js 16 App Router + React 19 + Tailwind 4
 Drizzle ORM + Neon (serverless Postgres, pg_trgm enabled)
-NextAuth (Auth.js v5) + @auth/drizzle-adapter + Resend magic links
-Anthropic SDK — Haiku 4.5 for both pipelines (Batches API for the CRA one-shot, prompt caching everywhere)
-Plausible analytics
-Netlify (web) + DigitalOcean VPS (worker)
+Resend — sending + receiving (hello@toronto-charities.ca, MX verified)
+Anthropic SDK — Haiku 4.5 (inbound email handler + edit processing)
+Netlify scheduled functions (crons — no VPS needed)
 ```
 
-Source-of-truth specs:
-- `_docs/specs/00_MAIN_BUILD_SPEC.md` — stack, schema, routes, auth, phasing
-- `_docs/specs/SEO_FOUNDATIONS_SPEC.md` — middleware, sitemap, robots, schema markup, meta tags, redirects
-- `_docs/specs/CRA_IMPORT_SPEC.md` — bulk import + description generation pipeline
-- `_docs/specs/EVENT_INGESTION_SPEC.md` — event source registry + ingestion pipeline + cron schedule
-- `_docs/design/` — homepage design handoff (the only template with a design brief; all others infer from this system)
+## Current state (as of 2026-05-31)
 
-## Where the agency-wide standards live
+### Data
+- 12,758 charities imported from CRA CSV (names, addresses, CRA numbers, categories)
+- 5,531 charities have website URLs (imported from CRA open data `weburl_2023_updated.csv`)
+- ~2,400 charities have discovered email addresses (scraped from charity websites)
+- All 12,747 AI-generated descriptions cleaned of JSON markdown fences
+- 15 categories with correct slugs and Unsplash cover images
 
-Cross-cutting writing, design, banned words, content thinking, research rules, copy standard, guide page standard, design stage workflow, lessons learned, post-launch GMB checklist all live in:
+### Email pipeline
+- **Outreach cron**: `netlify/functions/daily-outreach.mts` — fires 9am UTC daily, sends 90 emails/day (Resend free tier limit: 3,000/month)
+- **Send logic**: initial email → follow-up at 14 days → final follow-up at 30 days → stops. Tracked via `outreach_sent_at` and `outreach_count` columns.
+- **Inbound handler**: `app/api/inbound-email/route.ts` — Resend webhook → fetches body via `resend.emails.receiving.get(id)` → Claude Haiku classifies and responds
+- **Webhook**: set up in Resend → Webhooks pointing to `https://toronto-charities.ca/api/inbound-email`
+- **Verification**: `app/api/charity/verify/route.ts` — checks homepage + 7 common sub-pages (/about, /about-us, /contact, /links, /resources, /community, /support) for `toronto-charities.ca` link
+
+### Activation flow
+1. Charity receives outreach email
+2. Clicks "Activate your free listing" → `/charity/claim/`
+3. Adds link to their website
+4. Clicks verify — we fetch their site and confirm the link exists
+5. `linkback_verified_at` and `claimed_at` set — charity is activated
+
+### Events
+- Eventbrite ingestion: `lib/events/eventbrite.ts` — 14 search pages across charity/fundraising/community categories
+- Weekly cron: `netlify/functions/weekly-events.mts` — fires Sunday 11pm UTC
+- Event enrichment: `lib/events/enrich.ts` — Claude Haiku, fuzzy charity matching via pg_trgm
+- Homepage shows 18 upcoming events
+
+## Netlify environment variables required
 
 ```
-~/Documents/GitHub/attribute-media/_docs/standards/
+DATABASE_URL          — Neon connection string
+ANTHROPIC_API_KEY     — Claude Haiku for inbound email + edit processing
+RESEND_API_KEY        — Sending + receiving
+RESEND_WEBHOOK_SECRET — Svix signing secret from Resend webhook settings
+NEXTAUTH_URL          — https://toronto-charities.ca
+NEXTAUTH_SECRET       — Random secret for auth
 ```
 
-Read from there. Never duplicate any of those files into this repo.
+## Key scripts (run with `npx tsx --env-file=.env scripts/[name].ts`)
 
-## The two Claude pipelines — cost rules are non-negotiable
+| Script | Purpose |
+|---|---|
+| `import-cra-charities.ts` | One-time CRA CSV import. Pass path to CSV. |
+| `import-websites.ts` | Import website URLs from CRA open data weburl CSV. Download from open.canada.ca dataset `05b3abd0-e70f-4b3b-a9c5-acc436bd15b6`. |
+| `discover-emails.ts` | Scrape emails from charity websites. Run after import-websites. |
+| `fix-descriptions.ts` | Strip JSON markdown fences from descriptions. Already run — don't re-run unless new descriptions are generated. |
+| `generate-descriptions.ts` | Generate AI descriptions via Batches API. Run once. |
+| `pull-events.ts` | Manual event pull (Eventbrite). Normally handled by weekly cron. |
+| `reset-errors.ts` | Reset `processed_status='error'` back to `'pending'` for re-processing. |
+| `scrape-logos.ts` | Find charity logo URLs from their websites. |
 
-This project calls the Claude API in two places. Both follow the same rules so costs stay predictable.
+## Claude pipelines — cost rules
 
-### Rule 1 — Always Haiku 4.5
-
+### Always Haiku 4.5
 ```typescript
 const MODEL = 'claude-haiku-4-5-20251001';
 ```
+Never use Sonnet or Opus. Both tasks are pattern work, not reasoning work.
 
-Never use Sonnet or Opus in either pipeline. Both tasks (charity description writing, event enrichment) are pattern work, not reasoning work. Haiku handles them. If a quality-review pass flags Haiku as failing — and only then — discuss promoting to Sonnet. Never silently upgrade the model.
-
-### Rule 2 — Batches API for one-shot bulk jobs
-
-The CRA description pipeline is a one-shot 2,500–3,500 call job with no urgency. Use `client.messages.batches.create()`. 50% discount on every token. 24-hour SLA is fine.
-
-Event enrichment runs daily on ~10–50 events — too small for Batches. Run inline.
-
-### Rule 3 — Prompt caching on the static portion
-
-Both prompts have a substantial static portion (style rules, format spec, banned words list, JSON schema for the response). Move that into the `system` parameter with `cache_control: { type: 'ephemeral' }`. Variable portion (per-charity or per-event data) goes in the user message.
-
+### Prompt caching on static portions
 ```typescript
-const response = await client.messages.create({
-  model: MODEL,
-  max_tokens: 600,
-  system: [
-    { type: 'text', text: STATIC_INSTRUCTIONS, cache_control: { type: 'ephemeral' } },
-  ],
-  messages: [{ role: 'user', content: buildVariablePrompt(charity) }],
-});
+system: [{ type: 'text', text: STATIC_INSTRUCTIONS, cache_control: { type: 'ephemeral' } }]
 ```
 
-### Rule 4 — Strict `max_tokens` budgets
+### Inbound email handler — hard limits
+Claude handles inbound email from charities. It may ONLY:
+- Edit a charity's listing (description, address, phone, email, website, display name)
+- Remove a charity from the directory
+- Answer questions about the directory
 
-- Charity description: `max_tokens: 600` (target output 80–150 words ≈ 300 tokens; 600 covers retries)
-- Event enrichment: `max_tokens: 800` (JSON object with multiple fields)
+It must NEVER:
+- Promise features that don't exist
+- Make up charity information
+- Agree to promote specific campaigns beyond automated event ingestion
+- Discuss pricing, partnerships, or commercial arrangements
+- Take any action outside the three above
 
-Never raise these without measuring why an output is truncating. Truncation usually means the prompt is wrong, not the budget.
-
-### Rule 5 — No verification-with-second-call patterns
-
-Do not call Claude a second time to verify the first call's output. Trust the model; sample-review human-side.
-
-### Expected costs (back of envelope)
-
-| Job | Volume | Model | Optimizations | Estimate |
-|---|---|---|---|---|
-| CRA descriptions (one-shot) | 2,500 calls | Haiku 4.5 | Batches + caching | ~$8 |
-| Event enrichment (recurring) | 50/week | Haiku 4.5 | Caching | ~$0.50/week |
-
-If a run exceeds the estimate by more than 2×, stop and investigate before continuing.
-
-## Banned words / writing rules
-
-Cross-cutting copy standard: `~/Documents/GitHub/attribute-media/_docs/standards/COPY_STANDARD.md`.
-Cross-cutting banned words: `~/Documents/GitHub/attribute-media/_docs/standards/BANNED_WORDS.md`.
-
-Both Claude pipelines must paste the banned-words list verbatim into their prompts (per `attribute-media` Rule). Spot examples — never use these in any generated copy:
-
-`seamless, comprehensive, top-notch, tailored, bespoke, cutting-edge, peace of mind, rest assured, world-class, committed to, dedicated to, passionate about, tirelessly, making a difference`
-
-No em dashes anywhere. No rhetorical negation. No contrastive identity statements. No generic openers. Use the cross-cutting BANNED_WORDS as the canonical list.
+## Charity branding rules
+- Toronto Property: one line in footer only, 70% opacity, one link to torontoproperty.ca
+- Logo: "TC / Toronto Charities" only — no "by Toronto Property" in the logo
+- Email from: `hello@toronto-charities.ca`
 
 ## Things not to build without explicit instruction
-
-- Payment processing (this is a directory, not a fundraising platform)
-- User accounts for end users / donors (only charity owners + admins have accounts)
-- Multi-language support (English only)
+- Payment processing
+- User accounts for donors/public (charity owners + admins only)
+- Multi-language support
 - Native mobile apps
+- Social media posting
+- Fundraising tools
+- Donor or volunteer matching
 
-## Phasing (per main spec §7)
+## Next steps / todo
 
-- **Phase 0** — scaffold (this session): Next.js, Drizzle schema, design system port, deploy config
-- **Phase 1** — directory shell: directory + category + profile templates, CRA structural import, auth scaffolding, SEO foundations §1–3, §5
-- **Phase 2** — content fill: CRA description generation (Claude pipeline), first guides, SEO §4 and §6, featured selection
-- **Phase 3** — events: VPS provisioned, worker deployed, all ingestion sources active
-- **Phase 4** — launch prep: page speed audit, admin views, daily summary email, verification checklist
+### Immediate
+- [ ] Monitor first outreach wave — check Resend logs for bounces and replies coming in
+- [ ] Verify inbound email handler is working when a charity replies (check Resend webhook logs)
+- [ ] Run `scripts/scrape-logos.ts --limit=2000` to find charity logos
+- [ ] Run `scripts/discover-ical.ts` to find iCal feeds from charity websites
+
+### Content
+- [ ] Write actual content for guide pages (currently "Coming soon" stubs at `/guides/`)
+- [ ] Select and mark `is_featured = true` for 6-12 high-quality charities for homepage featured section
+
+### Growth
+- [ ] Business backlink outreach pipeline — contact Toronto businesses to link to the directory in exchange for a mention in Toronto Property neighbourhood guides. See memory: `torontocharities_business_backlinks.md`
+
+### Technical
+- [ ] Implement proper Svix webhook signature verification in `app/api/inbound-email/route.ts` (currently just checks header exists)
+- [ ] Add `RESEND_WEBHOOK_SECRET` to Netlify env vars once retrieved from Resend → Webhooks → signing secret
+- [ ] United Way GT event scraper
+- [ ] Toronto Life event scraper
+- [ ] Admin view: dashboard showing outreach stats, verified charities, recent inbound emails handled
 
 ## Build hygiene
 
-- Netlify free tier has 300 build minutes/month — don't push to main repeatedly during dev. Push deliberately, test locally first.
-- Push via GitHub Desktop (HTTPS not configured in terminal per agency global rule)
-- One logical change per commit. Use the format `[area]: what changed and why` (per seo-page-factory CLAUDE.md convention)
-- Never edit anything on a deployed site server-side without committing back to git the same session
+- Netlify free tier: 300 build minutes/month — push deliberately, not repeatedly
+- Git push via terminal (`git push origin main`) — HTTPS credentials are configured
+- One logical change per commit
+- Never edit anything live without committing the same session
+- Scheduled functions cost nothing meaningful on free tier (~65 invocations/month)
 
 ## Working principles
 
 - Edit, don't rewrite — targeted Edits over Writes for existing files
-- Read only what you need — don't grep the whole codebase to orient
-- Plan before acting on multi-step work
-- Use the Server Component default; mark `'use client'` only where required (forms, search, dashboard interactions)
-- No third-party UI libraries (shadcn etc.) unless a real component need justifies the dependency cost
+- Server Components by default; `'use client'` only for forms, search, interactive elements
+- No third-party UI libraries
+- Resend free tier: 3,000 emails/month, 100/day — outreach cron is capped at 90/day to stay within this
