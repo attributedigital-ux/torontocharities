@@ -1,5 +1,29 @@
 import Link from 'next/link';
-import { PhotoPlaceholder } from './PhotoPlaceholder';
+
+// Unsplash category image map — one curated photo per cause area
+const CATEGORY_IMAGES: Record<string, string> = {
+  'food-security':        'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=75',
+  'mental-health':        'https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=600&q=75',
+  'housing-homelessness': 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=600&q=75',
+  'youth-children':       'https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=600&q=75',
+  'newcomers-refugees':   'https://images.unsplash.com/photo-1527689368851-a7ee4a2de1d8?auto=format&fit=crop&w=600&q=75',
+  'animal-welfare':       'https://images.unsplash.com/photo-1601758123927-45d23b1e3397?auto=format&fit=crop&w=600&q=75',
+  'seniors':              'https://images.unsplash.com/photo-1574923558564-53f3de1b8a13?auto=format&fit=crop&w=600&q=75',
+  'arts-culture':         'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=75',
+  'environment':          'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=75',
+  'education':            'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=75',
+  'health-medical':       'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=75',
+  'disability':           'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=75',
+  'lgbtq':                'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=75',
+  'indigenous':           'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=600&q=75',
+  'women-gender':         'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=75',
+  'community':            'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=75',
+  'legal-aid':            'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=75',
+  'employment-skills':    'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=75',
+  'crisis-trauma':        'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=600&q=75',
+  'interfaith':           'https://images.unsplash.com/photo-1585975754342-8e3c4f79a7ef?auto=format&fit=crop&w=600&q=75',
+};
+const FALLBACK_IMG = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=75';
 
 /* ============================================================
    Shared bits
@@ -117,10 +141,13 @@ export function Hero({ charityCount }: { charityCount: number }) {
             </Link>
           </div>
         </div>
-        <PhotoPlaceholder
-          caption="Photo · Hero · Documentary frame from a featured Toronto charity"
-          className="min-h-[540px] self-stretch"
-        />
+        <div className="min-h-[540px] self-stretch overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80"
+            alt="Volunteers at a Toronto charity event"
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </section>
   );
@@ -137,7 +164,7 @@ export type EventCardData = {
   host: string;
   location: string;
   time: string;
-  photoCaption: string;
+  imageUrl?: string | null;
 };
 
 function PinIcon() {
@@ -165,7 +192,10 @@ function EventCard({ event }: { event: EventCardData }) {
       href={event.href}
       className="group bg-tp-paper hover:bg-tp-bg transition-colors duration-[600ms] flex flex-col"
     >
-      <PhotoPlaceholder caption={event.photoCaption} className="aspect-[4/3] w-full" />
+      {event.imageUrl
+        ? <img src={event.imageUrl} alt={event.title} className="aspect-[4/3] w-full object-cover" />
+        : <div className="aspect-[4/3] w-full bg-tp-blue/10" />
+      }
       <div className="px-7 pt-[22px] pb-7 flex flex-col flex-1">
         <div className="inline-flex self-start bg-tp-amber text-tp-paper font-sans text-[11px] font-medium tracking-[0.12em] uppercase px-2.5 py-1 mb-[14px]">
           {event.date}
@@ -214,7 +244,7 @@ export function EventsSection({ events }: { events: EventCardData[] }) {
    Causes grid
    ============================================================ */
 
-export type CauseTileData = { href: string; name: string; count: number; caption: string };
+export type CauseTileData = { href: string; name: string; count: number; slug: string };
 
 export function CausesSection({ causes }: { causes: CauseTileData[] }) {
   return (
@@ -226,10 +256,15 @@ export function CausesSection({ causes }: { causes: CauseTileData[] }) {
             <Link
               key={c.href}
               href={c.href}
-              data-ph={c.caption}
-              className="cause-tile photo-ph overlay relative aspect-square overflow-hidden transition-transform duration-[600ms]"
+              className="cause-tile relative aspect-square overflow-hidden transition-transform duration-[600ms] hover:scale-[1.02]"
             >
-              <div className="absolute left-[22px] right-[22px] bottom-5 text-tp-bg z-[2]">
+              <img
+                src={CATEGORY_IMAGES[c.slug] ?? FALLBACK_IMG}
+                alt={c.name}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-[1]" />
+              <div className="absolute left-[22px] right-[22px] bottom-5 z-[2]">
                 <div className="font-serif font-medium text-[22px] leading-[1.15] tracking-[-0.005em] mb-1.5 text-tp-bg">
                   {c.name}
                 </div>
@@ -254,7 +289,7 @@ export type CharityCardData = {
   name: string;
   tags: string;
   description: string;
-  photoCaption: string;
+  logoUrl?: string | null;
 };
 
 function VerifiedTick() {
@@ -282,7 +317,12 @@ function CharityCard({ charity }: { charity: CharityCardData }) {
       href={charity.href}
       className="group bg-tp-paper hover:bg-tp-bg transition-colors duration-[600ms] flex flex-col"
     >
-      <PhotoPlaceholder caption={charity.photoCaption} className="aspect-[4/3] w-full" />
+      {charity.logoUrl
+        ? <img src={charity.logoUrl} alt={charity.name} className="aspect-[4/3] w-full object-contain bg-tp-paper p-8" />
+        : <div className="aspect-[4/3] w-full bg-tp-blue/5 flex items-center justify-center">
+            <span className="font-serif text-7xl text-tp-blue/20">{charity.name[0]}</span>
+          </div>
+      }
       <div className="px-8 pt-7 pb-8 flex flex-col flex-1">
         <VerifiedTick />
         <h3 className="font-serif font-medium text-2xl leading-[1.25] text-tp-blue mb-3">
@@ -342,16 +382,16 @@ export function ClaimSection() {
         </p>
         <div className="flex gap-[14px] justify-center flex-wrap">
           <Link
-            href="/charity/claim/"
-            className="bg-tc-sage text-tp-bg border border-tc-sage px-7 py-4 font-sans text-sm font-medium tracking-[0.02em] hover:bg-tc-sage-d hover:border-tc-sage-d transition-all duration-[600ms]"
+            href="/for-charities/"
+            className="bg-tc-sage text-tp-bg border border-tc-sage px-7 py-4 font-sans text-sm font-medium tracking-[0.02em] hover:opacity-90 transition-all duration-[600ms]"
           >
-            Claim your profile
+            Activate your free listing
           </Link>
           <Link
-            href="/charity/how-claiming-works/"
+            href="/toronto-charities-list/"
             className="bg-transparent text-tp-bg border border-tp-bg/40 px-7 py-4 font-sans text-sm font-medium tracking-[0.02em] hover:border-tp-bg transition-all duration-[600ms]"
           >
-            How claiming works
+            Find your charity
           </Link>
         </div>
       </div>
