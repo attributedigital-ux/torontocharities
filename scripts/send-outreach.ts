@@ -105,7 +105,7 @@ async function main() {
   const isLive = process.argv.includes('--send');
   const isFollowup = process.argv.includes('--followup');
   const limitArg = process.argv.find(a => a.startsWith('--limit='));
-  const limit = limitArg ? parseInt(limitArg.split('=')[1], 10) : 100;
+  const limit = limitArg ? parseInt(limitArg.split('=')[1], 10) : 90;
 
   if (!isDryRun && !isLive) {
     console.log('Usage: --dry-run or --send [--followup] [--limit=N]');
