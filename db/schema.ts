@@ -37,6 +37,8 @@ export const charities = pgTable(
     logo_url: text('logo_url'),
     linkback_verified_at: timestamp('linkback_verified_at'),
     last_verified_at: timestamp('last_verified_at'),
+    outreach_sent_at: timestamp('outreach_sent_at'),
+    outreach_count: integer('outreach_count').default(0).notNull(),
     created_at: timestamp('created_at').defaultNow().notNull(),
     updated_at: timestamp('updated_at').defaultNow().notNull(),
   },
