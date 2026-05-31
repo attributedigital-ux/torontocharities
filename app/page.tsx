@@ -32,7 +32,7 @@ export default async function HomePage() {
         .from(events)
         .where(and(eq(events.status, 'approved'), gte(events.starts_at, now)))
         .orderBy(events.starts_at)
-        .limit(6),
+        .limit(18),
 
       db.select({
         slug: categories.slug,

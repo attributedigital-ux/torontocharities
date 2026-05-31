@@ -2,26 +2,21 @@ import Link from 'next/link';
 
 // Unsplash category image map — one curated photo per cause area
 const CATEGORY_IMAGES: Record<string, string> = {
-  'food-security':        'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=75',
-  'mental-health':        'https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=600&q=75',
-  'housing-homelessness': 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=600&q=75',
-  'youth-children':       'https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=600&q=75',
-  'newcomers-refugees':   'https://images.unsplash.com/photo-1527689368851-a7ee4a2de1d8?auto=format&fit=crop&w=600&q=75',
   'animal-welfare':       'https://images.unsplash.com/photo-1601758123927-45d23b1e3397?auto=format&fit=crop&w=600&q=75',
-  'seniors':              'https://images.unsplash.com/photo-1574923558564-53f3de1b8a13?auto=format&fit=crop&w=600&q=75',
   'arts-culture':         'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=75',
-  'environment':          'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=75',
+  'community-services':   'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=75',
   'education':            'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=75',
-  'health-medical':       'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=75',
-  'disability':           'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=75',
-  'lgbtq':                'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=75',
-  'indigenous':           'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=600&q=75',
-  'women-gender':         'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=75',
-  'community':            'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=75',
-  'legal-aid':            'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=75',
-  'employment-skills':    'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=75',
-  'crisis-trauma':        'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=600&q=75',
-  'interfaith':           'https://images.unsplash.com/photo-1585975754342-8e3c4f79a7ef?auto=format&fit=crop&w=600&q=75',
+  'environment':          'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=75',
+  'food-hunger':          'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=75',
+  'fundraising-events':   'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=600&q=75',
+  'health':               'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=75',
+  'housing':              'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=600&q=75',
+  'international':        'https://images.unsplash.com/photo-1527689368851-a7ee4a2de1d8?auto=format&fit=crop&w=600&q=75',
+  'religion':             'https://images.unsplash.com/photo-1585975754342-8e3c4f79a7ef?auto=format&fit=crop&w=600&q=75',
+  'seniors':              'https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&w=600&q=75',
+  'social-services':      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=75',
+  'sports-recreation':    'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=75',
+  'youth-children':       'https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=600&q=75',
 };
 const FALLBACK_IMG = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=75';
 
