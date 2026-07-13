@@ -39,6 +39,7 @@ export const charities = pgTable(
     last_verified_at: timestamp('last_verified_at'),
     outreach_sent_at: timestamp('outreach_sent_at'),
     outreach_count: integer('outreach_count').default(0).notNull(),
+    reengagement_sent_at: timestamp('reengagement_sent_at'),
     created_at: timestamp('created_at').defaultNow().notNull(),
     updated_at: timestamp('updated_at').defaultNow().notNull(),
   },

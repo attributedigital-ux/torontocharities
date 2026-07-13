@@ -14,7 +14,7 @@ async function main() {
       MAX(linkback_verified_at) AS last_verified
     FROM charities
   `);
-  console.log(r.rows ?? r);
+  console.log(r);
   process.exit(0);
 }
 main().catch(e => { console.error(e.message); process.exit(1); });

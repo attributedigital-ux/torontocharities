@@ -7,11 +7,14 @@
  * - Follow-up 1: 14 days after first email, outreach_count = 1
  * - Follow-up 2: 30 days after first email, outreach_count = 2
  * - No further emails after 2 follow-ups
+ * - Re-engagement: ONE extra send to unclaimed charities 30+ days after their
+ *   last touch, different copy, tracked via reengagement_sent_at. Fills
+ *   whatever daily batch capacity the sequence emails leave unused.
  */
 
 import type { Config } from '@netlify/functions';
 import { db, charities } from '@/db';
-import { isNotNull, isNull, and, lt, lte, sql, eq } from 'drizzle-orm';
+import { isNotNull, isNull, and, lt, lte, gte, sql, eq } from 'drizzle-orm';
 import { Resend } from 'resend';
 
 export const config: Config = { schedule: '0 9 * * *' };
@@ -22,6 +25,7 @@ const BATCH = 90;
 const FOLLOWUP_1_DAYS = 14;
 const FOLLOWUP_2_DAYS = 30;
 const MAX_OUTREACH = 3; // initial + 2 follow-ups
+const REENGAGE_QUIET_DAYS = 30; // wait this long after the last touch before the re-engagement email
 
 function buildClaimUrl(slug: string, name: string, site: string | null) {
   const p = new URLSearchParams({ charity: slug, name, site: site ?? '' });
@@ -72,6 +76,43 @@ function buildHtml(charity: { slug: string; display_name: string; website_url: s
   };
 }
 
+function buildReengagementHtml(charity: { slug: string; display_name: string; website_url: string | null }) {
+  const claimUrl = buildClaimUrl(charity.slug, charity.display_name, charity.website_url);
+  const profileUrl = `${BASE_URL}/profile/${charity.slug}/`;
+
+  return {
+    subject: 'Your free listing on Toronto Charities is still unclaimed',
+    html: `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="font-family: Georgia, serif; max-width: 560px; margin: 0 auto; padding: 40px 20px; color: #1a2332; background: #fff;">
+  <p style="font-size: 13px; color: #6b7a8d; margin-bottom: 32px;">Toronto Charities Directory — toronto-charities.ca</p>
+
+  <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">A few weeks ago we wrote about <strong>${charity.display_name}</strong>'s profile on toronto-charities.ca, the free directory of every registered charity in the GTA. We haven't heard back, so one last note in case the earlier emails read like a sales pitch. They weren't. There's no cost and no catch; the directory is a community project and always will be.</p>
+
+  <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Your profile already exists. Activating it takes about two minutes and does three things: your events get published automatically whenever you announce them, with no submissions or admin on your end; donors and volunteers can find you when they search for Toronto causes; and you get control of your own description and contact details.</p>
+
+  <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px; padding-left: 16px; border-left: 3px solid #2c7a4b; color: #2c3e50;">To activate, add a link to <strong>toronto-charities.ca</strong> anywhere on your website, then click below and we verify it on the spot.</p>
+
+  <div style="margin: 32px 0;">
+    <a href="${claimUrl}" style="display: inline-block; background: #2c7a4b; color: #fff; padding: 16px 32px; font-family: sans-serif; font-size: 15px; font-weight: 600; text-decoration: none;">Activate your free listing →</a>
+    <span style="display: inline-block; margin-left: 16px; font-family: sans-serif; font-size: 14px; color: #6b7a8d; vertical-align: middle;"><a href="${profileUrl}" style="color: #6b7a8d;">View your profile</a></span>
+  </div>
+
+  <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">That's the whole process. If now's not the right time, no problem at all. Your basic listing stays up either way, and we'll only check in now and then if something on your profile is worth updating.</p>
+
+  <p style="font-size: 15px; line-height: 1.6; margin: 0;">Warm regards,<br>The Toronto Charities team</p>
+
+  <hr style="border: none; border-top: 1px solid #e5e8ec; margin: 32px 0;">
+  <p style="font-size: 12px; line-height: 1.6; color: #9aa5b4; margin: 0;">
+    You're receiving this because ${charity.display_name} is registered with the CRA. To remove your listing, reply with "remove" and we'll take it down within 24 hours.
+    <br><br>Toronto Charities · toronto-charities.ca · hello@toronto-charities.ca
+  </p>
+</body>
+</html>`,
+  };
+}
+
 export default async function handler() {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const now = new Date();
@@ -105,25 +146,61 @@ export default async function handler() {
     .orderBy(charities.outreach_count, charities.outreach_sent_at)
     .limit(BATCH);
 
+  // Priority 4: re-engagement — sequence exhausted, never claimed, quiet for
+  // 30+ days, never re-engaged. Fills whatever batch capacity is left.
+  const reengageCutoff = new Date(now.getTime() - REENGAGE_QUIET_DAYS * 86400000);
+  let reengage: typeof candidates = [];
+  if (candidates.length < BATCH) {
+    reengage = await db.select({
+      id: charities.id,
+      slug: charities.slug,
+      display_name: charities.display_name,
+      email: charities.email,
+      website_url: charities.website_url,
+      outreach_count: charities.outreach_count,
+      outreach_sent_at: charities.outreach_sent_at,
+    })
+      .from(charities)
+      .where(and(
+        isNotNull(charities.email),
+        isNull(charities.linkback_verified_at),
+        isNull(charities.claimed_at),
+        gte(charities.outreach_count, MAX_OUTREACH),
+        isNull(charities.reengagement_sent_at),
+        lte(charities.outreach_sent_at, reengageCutoff),
+      ))
+      .orderBy(charities.outreach_sent_at)
+      .limit(BATCH - candidates.length);
+  }
+
   let sent = 0;
-  for (const c of candidates) {
+  let reengaged = 0;
+  const queue = [
+    ...candidates.map(c => ({ ...c, isReengage: false })),
+    ...reengage.map(c => ({ ...c, isReengage: true })),
+  ];
+  for (const c of queue) {
     if (!c.email) continue;
-    const isFollowup = (c.outreach_count ?? 0) > 0;
-    const { subject, html } = buildHtml(c, isFollowup);
+    const { subject, html } = c.isReengage
+      ? buildReengagementHtml(c)
+      : buildHtml(c, (c.outreach_count ?? 0) > 0);
     try {
       await resend.emails.send({ from: FROM, replyTo: FROM, to: c.email, subject, html });
       await db.update(charities)
-        .set({
-          outreach_sent_at: now,
-          outreach_count: sql`${charities.outreach_count} + 1`,
-          updated_at: now,
-        })
+        .set(c.isReengage
+          ? { reengagement_sent_at: now, updated_at: now }
+          : {
+              outreach_sent_at: now,
+              outreach_count: sql`${charities.outreach_count} + 1`,
+              updated_at: now,
+            })
         .where(eq(charities.id, c.id));
       sent++;
+      if (c.isReengage) reengaged++;
     } catch {}
     await new Promise(r => setTimeout(r, 200));
   }
 
-  console.log(`Daily outreach: ${sent} sent`);
-  return new Response(JSON.stringify({ sent }), { status: 200 });
+  console.log(`Daily outreach: ${sent} sent (${reengaged} re-engagement)`);
+  return new Response(JSON.stringify({ sent, reengaged }), { status: 200 });
 }
