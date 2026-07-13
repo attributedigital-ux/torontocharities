@@ -25,7 +25,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            Events are pulled automatically from Eventbrite and charity websites. When a charity activates their profile by linking to this site, their events are published here as soon as they are announced — no manual submission needed.
+            Events are pulled automatically from Eventbrite and charity websites. When a charity activates their profile by linking to this site, their events are published here as soon as they are announced. No manual submission needed.
           </p>
 
           <h2 className="text-xl mt-10 mb-4">For charities</h2>
@@ -39,6 +39,11 @@ export default function AboutPage() {
           <h2 className="text-xl mt-10 mb-4">For donors and volunteers</h2>
           <p>
             Browse by cause area to find charities working on issues you care about. Event listings are updated weekly so you can find fundraisers, volunteer days, galas, and community events happening near you.
+          </p>
+
+          <h2 className="text-xl mt-10 mb-4">Who runs this</h2>
+          <p>
+            Toronto Charities is built and maintained by <a href="https://torontoproperty.ca" className="text-tp-blue hover:underline">Toronto Property</a>, a Toronto real estate listings and neighbourhood research site. The directory started as a side project: the neighbourhood research behind our property guides kept surfacing the charities working in each part of the city, and there was no single free place to find them all. No charity pays to be listed and nothing here is sponsored.
           </p>
 
           <h2 className="text-xl mt-10 mb-4">Contact</h2>
