@@ -136,13 +136,16 @@ It must NEVER:
 - [ ] Toronto Life event scraper
 - [ ] Admin view: dashboard showing outreach stats, verified charities, recent inbound emails handled
 
-## Build hygiene
+## Build hygiene & hosting cost
 
-- Netlify free tier: 300 build minutes/month — push deliberately, not repeatedly
-- Git push via terminal (`git push origin main`) — HTTPS credentials are configured
-- One logical change per commit
-- Never edit anything live without committing the same session
-- Scheduled functions cost nothing meaningful on free tier (~65 invocations/month)
+⚠ **This account is on Netlify Pro with CREDIT-BASED billing, not the free tier.** Function and edge-function invocations cost credits and auto-charge $10 top-ups when exhausted. The earlier "free tier / functions cost nothing" note here was wrong and cost ~$70/month before it was caught (2026-08-20).
+
+- **This is an SSR app** (Neon DB queries per request + NextAuth). Every uncached page request runs a serverless function; crawler/bot traffic multiplies it. Keep the per-request cost in mind for every change.
+- **Redirects live in `netlify.toml` `[[redirects]]` (CDN-level, free) — NOT in middleware.** Next.js middleware fires an edge function on every request; that alone was ~338K invocations/month. `middleware.ts` was removed 2026-08-20; do not reintroduce it for redirects.
+- **Pre-render public pages where possible** (`generateStaticParams` + `revalidate`) so listing/profile/category pages serve as static files instead of a DB query per hit. This is the next cost fix to do.
+- Git push via terminal (`git push origin main`) — HTTPS credentials are configured. Each push triggers a Netlify build, which also costs credits — push deliberately, one logical change per commit.
+- Never edit anything live without committing the same session.
+- Scheduled functions (crons) are low volume (~65/month) and not the cost concern; the request-driven functions are.
 
 ## Working principles
 
