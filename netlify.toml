@@ -8,12 +8,101 @@
 [functions]
   directory = "netlify/functions"
 
+# ── Redirects: moved from Next.js middleware to the CDN (2026-08-20) ──
+# These run at Netlify's edge BEFORE any function is invoked, so they are free.
+# Previously all of this lived in middleware.ts, which fired an EDGE FUNCTION on
+# every single request (~338K/month) just to serve these 301s. www→bare stays
+# here; HTTPS is forced automatically by Netlify. Order matters: specific rules
+# (query strings, exact paths) MUST come before the catch-alls.
+
 [[redirects]]
   from = "https://www.toronto-charities.ca/*"
   to = "https://toronto-charities.ca/:splat"
   status = 301
   force = true
 
-# Most redirects are handled by Next.js middleware (lib/redirects.ts).
-# Netlify-level redirects above are only for the www → bare-domain rule,
-# which middleware can't apply early enough on cold starts.
+# Legacy query-string URLs (before the .aspx catch-alls)
+[[redirects]]
+  from = "/page.aspx"
+  query = {dt = "242"}
+  to = "/category/fundraising-events/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pg.aspx"
+  query = {id = "67"}
+  to = "/category/environmental/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/"
+  query = {page_id = "419"}
+  to = "/fundraising/"
+  status = 301
+  force = true
+
+# Legacy ASP.NET catch-alls
+[[redirects]]
+  from = "/page.aspx*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pg.aspx*"
+  to = "/"
+  status = 301
+  force = true
+
+# Specific WordPress upload URLs with inbound links (before /wp-content/* catch-all)
+[[redirects]]
+  from = "/wp-content/uploads/2018/09/https_2F2Fcdn.evbuc_.com2Fimages2F498396242F445691342332F12Foriginal.jpg"
+  to = "/listing/red-dress-gala/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wp-content/uploads/2018/09/https_2F2Fcdn.evbuc_.com2Fimages2F493938202F2374769491622F12Foriginal.jpg"
+  to = "/listing/sign-painting-fundraiser/"
+  status = 301
+  force = true
+
+# WordPress catch-all
+[[redirects]]
+  from = "/wp-content/*"
+  to = "/"
+  status = 301
+  force = true
+
+# Other historical URLs with inbound links
+[[redirects]]
+  from = "/images/smaller_RMHC2212.gif"
+  to = "/profile/ronald-mcdonald-house-charities-toronto/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/children/"
+  to = "/childrens-charities"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/walk-now-for-autism-speaks-2014"
+  to = "/listing/walk-now-for-autism-speaks/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/merry-music-at-the-grove-2012"
+  to = "/listing/merry-musique-at-the-grove/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/st-michaels-hospital-foundation"
+  to = "/profile/st-michaels-hospital-foundation/"
+  status = 301
+  force = true
