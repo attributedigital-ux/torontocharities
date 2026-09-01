@@ -11,7 +11,11 @@ import { charities, events, categories, charity_categories } from '@/db/schema';
 import { eq, and, gte, desc, count, sql } from 'drizzle-orm';
 import { format } from 'date-fns';
 
-export const revalidate = 3600;
+export const dynamic = 'force-static';
+export const revalidate = 604800; // rebuilt weekly by the data refresh job
+
+
+
 
 export default async function HomePage() {
   const now = new Date();
