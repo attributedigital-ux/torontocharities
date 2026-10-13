@@ -1,6 +1,8 @@
 [build]
   command = "npm run build"
   publish = ".next"
+  # Skip the build (exit 0) when only seo/, reports/, docs/ or .md files changed.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)seo/' ':(exclude)reports/' ':(exclude)docs/' ':(exclude)*.md'"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
@@ -106,9 +108,3 @@
   to = "/profile/st-michaels-hospital-foundation/"
   status = 301
   force = true
-
-# Netlify rebuilds and bills for a full deploy on every push, even when
-# nothing that is part of the website changed. This makes it check first.
-# Exit 0 skips the build. If the command errors, Netlify builds as normal.
-[build]
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)seo/' ':(exclude)reports/' ':(exclude)docs/' ':(exclude)*.md'"
