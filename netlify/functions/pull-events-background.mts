@@ -28,6 +28,14 @@ export default async function handler(req: Request) {
       if (n === 0) break;
     }
     console.log(`[pull-events] done: ${fetched} fetched, ${written} written`);
+
+    // The events page and profile pages are built as files and cached for a
+    // week, so new events only appear after a rebuild. One build per weekly run.
+    const hook = process.env.EVENTS_BUILD_HOOK;
+    if (written > 0 && hook) {
+      const r = await fetch(hook, { method: 'POST' });
+      console.log(`[pull-events] rebuild triggered, status ${r.status}`);
+    }
     return new Response(JSON.stringify({ fetched, written }), { status: 200 });
   } catch (err) {
     console.error('[pull-events] Error:', err);
