@@ -11,19 +11,16 @@ import { eq, gte, and } from 'drizzle-orm';
 const BASE = 'https://toronto-charities.ca';
 
 const STATIC_PAGES: MetadataRoute.Sitemap = [
+  // Only URLs that have a page. Eight entries listed here since 28 May 2026
+  // never had one (fundraising, non-profits, jobs, contact, submit, how
+  // claiming works, two without trailing slashes) and returned 404.
   { url: `${BASE}/`, changeFrequency: 'daily', priority: 1.0 },
   { url: `${BASE}/toronto-charities-list/`, changeFrequency: 'daily', priority: 0.95 },
   { url: `${BASE}/charity-events-toronto/`, changeFrequency: 'daily', priority: 0.9 },
-  { url: `${BASE}/fundraising/`, changeFrequency: 'weekly', priority: 0.85 },
-  { url: `${BASE}/non-profits/`, changeFrequency: 'weekly', priority: 0.8 },
-  { url: `${BASE}/non-profit-organizations`, changeFrequency: 'weekly', priority: 0.8 },
-  { url: `${BASE}/childrens-charities`, changeFrequency: 'weekly', priority: 0.8 },
-  { url: `${BASE}/toronto-charity-jobs/`, changeFrequency: 'weekly', priority: 0.7 },
+  { url: `${BASE}/guides/`, changeFrequency: 'weekly', priority: 0.7 },
+  { url: `${BASE}/for-charities/`, changeFrequency: 'monthly', priority: 0.6 },
   { url: `${BASE}/charity/claim/`, changeFrequency: 'monthly', priority: 0.6 },
-  { url: `${BASE}/charity/how-claiming-works/`, changeFrequency: 'monthly', priority: 0.6 },
-  { url: `${BASE}/submit-a-charity/`, changeFrequency: 'monthly', priority: 0.5 },
   { url: `${BASE}/about/`, changeFrequency: 'monthly', priority: 0.4 },
-  { url: `${BASE}/contact/`, changeFrequency: 'monthly', priority: 0.4 },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
