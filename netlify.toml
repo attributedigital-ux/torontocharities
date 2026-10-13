@@ -2,7 +2,10 @@
   command = "npm run build"
   publish = ".next"
   # Skip the build (exit 0) when only seo/, reports/, docs/ or .md files changed.
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)seo/' ':(exclude)reports/' ':(exclude)docs/' ':(exclude)*.md'"
+  # When Netlify has no cached commit (first build, or cache lost) both refs are
+  # the same commit and the diff is empty, which skipped the 13 Oct 2026 deploy.
+  # In that case always build (exit 1).
+  ignore = "[ \"$CACHED_COMMIT_REF\" = \"$COMMIT_REF\" ] && exit 1; git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)seo/' ':(exclude)reports/' ':(exclude)docs/' ':(exclude)*.md'"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
