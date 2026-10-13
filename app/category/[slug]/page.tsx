@@ -8,6 +8,15 @@ import { Footer } from '@/components/Footer';
 import { BreadcrumbSchema } from '@/components/Schema';
 import { pageMeta } from '@/lib/meta';
 
+export const dynamic = 'force-static';
+export const revalidate = 604800; // rebuilt weekly by the data refresh job
+
+export async function generateStaticParams() {
+  const rows = await db.select({ slug: categories.slug }).from(categories);
+  return rows.map((r) => ({ slug: r.slug }));
+}
+
+
 export async function generateMetadata({
   params,
 }: {

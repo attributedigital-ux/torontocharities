@@ -7,6 +7,10 @@ import { Footer } from '@/components/Footer';
 import { pageMeta } from '@/lib/meta';
 import { format } from 'date-fns';
 
+export const dynamic = 'force-static';
+export const revalidate = 604800; // rebuilt weekly by the data refresh job
+
+
 export async function generateMetadata() {
   const [{ value: m }] = await db
     .select({ value: count() })

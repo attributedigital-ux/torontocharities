@@ -9,6 +9,12 @@ import { CharitySchema, BreadcrumbSchema } from '@/components/Schema';
 import { pageMeta } from '@/lib/meta';
 import { format } from 'date-fns';
 
+// Rendered on first visit, then served from the cache for a week.
+// Not pre-rendered at build: 12,758 pages would mean a 12,758-query build.
+export const dynamic = 'force-static';
+export const dynamicParams = true;
+export const revalidate = 604800;
+
 export async function generateMetadata({
   params,
 }: {

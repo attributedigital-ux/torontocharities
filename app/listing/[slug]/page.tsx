@@ -9,6 +9,15 @@ import { EventSchema, BreadcrumbSchema } from '@/components/Schema';
 import { pageMeta } from '@/lib/meta';
 import { format } from 'date-fns';
 
+export const dynamic = 'force-static';
+export const revalidate = 604800; // rebuilt weekly by the data refresh job
+
+export async function generateStaticParams() {
+  const rows = await db.select({ slug: events.slug }).from(events);
+  return rows.map((r) => ({ slug: r.slug }));
+}
+
+
 export async function generateMetadata({
   params,
 }: {
