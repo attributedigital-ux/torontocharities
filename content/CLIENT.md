@@ -44,12 +44,12 @@ link-rich pages, which is what the directory lacks.
 
 **Track 1: This week's charity events in Toronto.** Published Monday morning.
 Source: the `events` table, every approved event starting in the next seven
-days (83 upcoming as of 13 Oct; 44 of them matched to a charity profile, the
+days (110 upcoming as of 13 Oct; 54 of them matched to a charity profile, the
 rest name the organiser as given). Each event: date, time, place, what it is,
 cost, the Eventbrite link, the charity's profile link. Grouped by day. No
 commentary, no filler between entries. Title pattern: "Toronto charity events,
 week of 20 October 2026". Slug: charity-events-toronto-week-of-2026-10-20.
-Image: the Eventbrite image of the lead event (all 44 matched events have one).
+Image: the Eventbrite image of the lead event (every upcoming event has one).
 
 **Track 2: Toronto charity news this week.** Published Friday. Source: Google
 News RSS for Toronto charity, nonprofit, food bank, fundraiser, foundation,
