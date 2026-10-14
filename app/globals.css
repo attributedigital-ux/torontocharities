@@ -125,3 +125,8 @@ button { font: inherit; cursor: pointer; }
 .guide-logos span { font-size: .82rem; line-height: 1.25; }
 
 .guide-body > h2:first-child { margin-top: 0; }
+
+/* Drawn figures inside a guide (no generator, no photograph) */
+.guide-body .guide-figure { margin: 2.5rem 0; }
+.guide-body .guide-figure svg { width: 100%; height: auto; display: block; }
+.guide-body .guide-figure figcaption { font-size: .8rem; line-height: 1.45; opacity: .6; margin-top: .9rem; max-width: 52ch; }
