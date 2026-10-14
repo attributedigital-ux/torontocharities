@@ -91,6 +91,34 @@ Track 1 uses the Eventbrite image of the lead event; no generated hero.
 Track 2: one Canva image per issue from the brand kit, plain, dated, no stock
 photos of hands or hearts. Charity logos do not exist yet (todo R-164).
 
+## What the editors kept catching (promoted from EDITLOG, 13 Oct 2026)
+
+Four drafts, four editors, 149 sentence edits. The same five faults in every
+piece. A writer that avoids these saves an editor pass:
+
+1. **Invented beliefs about the reader.** "Most people picture a soup ladle."
+   Nobody said that. Never open by telling the reader what they assume.
+2. **Unsourced superlatives**, mostly in the sentence above a list: largest,
+   best known, the one people think of first. If no facts row says it, cut it.
+3. **Invented numbers and comparisons.** Costs, waiting times, counts of roles,
+   "the shortest commitment of any charity here". Every figure comes from a
+   facts row or it does not appear.
+4. **An H2 that restates the FAQ question below it.** Read the headings as a
+   list before handing over; two that say the same thing means one goes.
+5. **Claims about our own site.** The events page does not list book sales. The
+   category pages are wrong (see below). Check our pages like any other source.
+
+Also: Canadian spelling and vocabulary. Not rubbish, programme, car park,
+jumper or flat.
+
+## Category pages are wrong, do not link them (13 Oct 2026)
+
+Six of eight category pages list charities from an unrelated cause: housing
+shows animal rescues, animal-welfare shows synagogues, food-hunger shows
+environmental groups. The May import guessed the CRA code mapping. Only
+`/category/social-services/` is verified correct. Until the remap runs
+(attribute-brain todo R-170) the only category link allowed is that one.
+
 ## Known site quirks
 - Static pages are cached for a week; nothing appears until the build hook
   fires. The publish leg must call it and then verify the live URL.
