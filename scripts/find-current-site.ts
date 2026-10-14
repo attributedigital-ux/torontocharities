@@ -119,7 +119,21 @@ async function page(url: string): Promise<string | null> {
         console.log(`  ? ${r.slug}: ${hit} (needs review)`);
         review++;
       } else {
-        console.log(`  x ${r.slug}: no current site found`);
+        // No domain carries the charity's name. Often a rebrand or a merger:
+        // Ontario Association of Food Banks is Feed Ontario, Toronto
+        // Rehabilitation Institute is part of UHN, Houselink and Mainstay is
+        // Neighbours Community Homes (all 14 Oct 2026). The top result is
+        // usually right, but a guess must never reach a public page, so the
+        // suggestion is parked for a person.
+        const suggestion = candidates.find((c) => {
+          const h = host(c);
+          return h && !NOT_A_WEBSITE.some((b) => h.includes(b));
+        });
+        if (suggestion) {
+          if (!existsSync(REVIEW)) writeFileSync(REVIEW, 'slug\tname\told_url\tfound_url\tscores\n');
+          appendFileSync(REVIEW, `${r.slug}\t${r.name}\t${r.old ?? ''}\t${suggestion}\tpossible rebrand, top result\n`);
+        }
+        console.log(`  x ${r.slug}: no match${suggestion ? `, suggestion ${host(suggestion)}` : ''}`);
         if (!dry) await db.update(charities)
           .set({ website_status: 'none_found', website_checked_at: new Date() })
           .where(eq(charities.slug, r.slug));
