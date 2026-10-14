@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { db } from '@/db';
-import { guides } from '@/db/schema';
-import { eq, and } from 'drizzle-orm';
+import { guides, charities } from '@/db/schema';
+import { eq, and, inArray, isNotNull } from 'drizzle-orm';
 import { format } from 'date-fns';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
@@ -14,6 +14,16 @@ import { pageMeta } from '@/lib/meta';
 export const dynamic = 'force-static';
 export const dynamicParams = true;
 export const revalidate = 604800;
+
+// The charities a guide names, read back from the profile links in its body.
+async function featuredCharities(html: string) {
+  const slugs = [...new Set([...html.matchAll(/\/profile\/([a-z0-9-]+)\//g)].map((m) => m[1]))];
+  if (slugs.length === 0) return [];
+  return db
+    .select({ slug: charities.slug, name: charities.display_name, logo: charities.logo_url })
+    .from(charities)
+    .where(and(inArray(charities.slug, slugs), isNotNull(charities.logo_url)));
+}
 
 async function getGuide(slug: string) {
   const [guide] = await db
@@ -41,6 +51,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   if (!guide) notFound();
 
   const published = guide.published_at ?? guide.updated_at;
+  const featured = await featuredCharities(guide.content);
 
   return (
     <>
@@ -52,16 +63,39 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         ]}
       />
       <Nav />
-      <main className="max-w-3xl mx-auto px-4 py-16">
-        <p className="text-sm text-tp-muted mb-6">
-          <Link href="/guides/" className="underline">Guides</Link>
-        </p>
-        <h1 className="text-3xl md:text-4xl mb-4">{guide.title}</h1>
-        {guide.dek && <p className="text-lg text-tp-muted mb-4">{guide.dek}</p>}
-        <p className="text-xs text-tp-muted mb-10">
-          Updated {format(published, 'd MMMM yyyy')}
-        </p>
-        <article className="guide-body" dangerouslySetInnerHTML={{ __html: guide.content }} />
+      <main>
+        <header className="guide-hero">
+          <div className="guide-hero-inner">
+            <p className="guide-kicker">
+              <Link href="/guides/">Guides</Link>
+            </p>
+            <h1>{guide.title}</h1>
+            {guide.dek && <p className="guide-dek">{guide.dek}</p>}
+            <p className="guide-date">Updated {format(published, 'd MMMM yyyy')}</p>
+          </div>
+        </header>
+
+        {featured.length > 0 && (
+          <section className="guide-logos">
+            <div className="guide-logos-inner">
+              <h2>Charities in this guide</h2>
+              <ul>
+                {featured.map((c) => (
+                  <li key={c.slug}>
+                    <Link href={`/profile/${c.slug}/`}>
+                      <img src={c.logo!} alt="" width={48} height={48} loading="lazy" />
+                      <span>{c.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
+
+        <div className="max-w-3xl mx-auto px-4 py-12">
+          <article className="guide-body" dangerouslySetInnerHTML={{ __html: guide.content }} />
+        </div>
       </main>
       <Footer />
     </>

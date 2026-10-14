@@ -164,6 +164,15 @@ export default async function ProfilePage({
             </nav>
 
             <div className="flex items-start gap-4">
+              {charity.logo_url && (
+                <img
+                  src={charity.logo_url}
+                  alt=""
+                  width={64}
+                  height={64}
+                  className="flex-shrink-0 w-16 h-16 object-contain bg-white border border-tp-rule rounded p-1.5"
+                />
+              )}
               <div className="flex-1 min-w-0">
                 <h1 className="text-3xl">{charity.display_name}</h1>
                 {charity.legal_name !== charity.display_name && (

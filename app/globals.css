@@ -103,3 +103,25 @@ button { font: inherit; cursor: pointer; }
 .guide-body a { text-decoration: underline; }
 .guide-body table { border-collapse: collapse; margin: 0 0 1.5rem; width: 100%; font-size: 0.95rem; }
 .guide-body th, .guide-body td { border-bottom: 1px solid #e5e5e5; padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+
+/* Guide hero and the charity logo strip (content engine) */
+.guide-hero { background: var(--tp-paper, #f7f5f1); border-bottom: 1px solid var(--tp-rule, #e5e1d8); padding: 4.5rem 1rem 3.5rem; }
+.guide-hero-inner { max-width: 48rem; margin: 0 auto; }
+.guide-kicker { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 1.4rem; }
+.guide-kicker a { text-decoration: none; opacity: .65; }
+.guide-kicker a:hover { opacity: 1; }
+.guide-hero h1 { font-size: clamp(2.1rem, 5.5vw, 3.4rem); line-height: 1.05; letter-spacing: -.02em; margin: 0 0 1.1rem; max-width: 20ch; }
+.guide-dek { font-size: 1.22rem; line-height: 1.5; max-width: 46ch; margin: 0 0 1.6rem; opacity: .78; }
+.guide-date { font-size: .8rem; letter-spacing: .04em; opacity: .55; margin: 0; }
+
+.guide-logos { border-bottom: 1px solid var(--tp-rule, #e5e1d8); padding: 2rem 1rem; }
+.guide-logos-inner { max-width: 48rem; margin: 0 auto; }
+.guide-logos h2 { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; opacity: .55; margin: 0 0 1.1rem; font-weight: 400; }
+.guide-logos ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .5rem 1rem; list-style: none; margin: 0; padding: 0; }
+.guide-logos li { margin: 0; }
+.guide-logos a { display: flex; align-items: center; gap: .6rem; text-decoration: none; padding: .4rem; border-radius: 4px; }
+.guide-logos a:hover { background: var(--tp-paper, #f7f5f1); }
+.guide-logos img { width: 40px; height: 40px; object-fit: contain; background: #fff; border: 1px solid var(--tp-rule, #e5e1d8); border-radius: 4px; padding: 3px; flex: 0 0 auto; }
+.guide-logos span { font-size: .82rem; line-height: 1.25; }
+
+.guide-body > h2:first-child { margin-top: 0; }
