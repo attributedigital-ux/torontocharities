@@ -316,3 +316,151 @@ guide. Diabetes Canada is filed under `arts-culture` and the Salvation Army unde
 and be accurate about who is in it, and the category pages themselves mislead
 anyone arriving from search. Added to attribute-brain `todo/toronto-charities.md`
 alongside the `food-hunger` mapping.
+
+---
+
+## volunteer-toronto — 13 October 2026 — APPROVED with fixes
+
+41 sentence-level edits. Sixteen sources re-fetched and read in full this
+session: Toronto Police record checks, ontario.ca police record checks,
+ontario.ca graduation requirements, Covenant House, Sunnybrook, The Stop,
+YMCA GTA, Toronto Humane Society, Toronto Wildlife Centre (FAQ), Volunteer
+Toronto, Daily Bread, FoodShare, Furniture Bank, High Park Nature Centre,
+Yonge Street Mission, Big Brothers Big Sisters, Second Harvest. 63 links
+checked: 57 return 200 to curl; four hosts refuse curl behind Cloudflare
+(tps.ca, covenanthousetoronto.ca, torontowildlifecentre.com,
+volunteertoronto.ca, five URLs) and every one was loaded and read in the work
+Chrome this session; `/guides/soup-kitchen-volunteer-toronto/` is the one
+not-yet-live link, the approved sibling guide. All 26 profile slugs resolve.
+`prose_gate.py` exits 0, three warns, each a defining clause. FAQ answers 249
+to 289 words, answer in sentence one. FAQPage JSON-LD regenerated from the
+edited visible text and verified character for character; Article description
+and the json meta description now the same string; TOC text and anchors match
+the H2s.
+
+**The fee spine holds.** Toronto Police list the volunteer vulnerable sector
+check at $26.72 against $71.72 for employment, the criminal record check and
+CRJMC free to volunteers with a signed letter on organisation letterhead, the
+$25.00 fingerprint fee waived for bona fide volunteers, vulnerable sector
+applications of 30 September being processed on 13 October, and no rush
+service. Every figure on the page is right. Read the whole fee table, not the
+first block: the page prints the same "Employment/Other $26.72 / Volunteer no
+charge" table three times before the vulnerable sector table, and a partial
+read of it would have reported the page's central claim as invented.
+
+**What broke, and the rule, so it does not come back:**
+
+1. **Six wrong category links, not one.** The soup-kitchen pass found
+   `/category/food-hunger/` lists environmental charities. I opened all eight
+   you linked. `housing` lists animal rescues, `animal-welfare` lists
+   synagogues, `environment` lists Buddhist and Sikh organisations, `health`
+   lists international relief agencies, `youth-children` lists disability
+   sports clubs, `food-hunger` lists environmental charities. Only
+   `social-services` holds what its name says. All seven wrong links removed,
+   `social-services` kept with the verified count of 1,394. The rule from the
+   soup-kitchen pass stands and is now proven at scale: a 200 is not proof a
+   link is right, so open the page and read the first twenty names before you
+   put an anchor on it.
+
+2. **Invented beliefs, three of them, opening the page.** "Most people who
+   decide to volunteer in Toronto expect to turn up and start. Almost nowhere
+   works that way." "One-off shifts exist, but they sit under names you would
+   never think to search for." "The commitments on ongoing roles run longer
+   than a first-time volunteer expects." Nobody published any of this. Never
+   invent what the reader thinks in order to correct it. The page now opens on
+   the route itself, which is the fact, and names the keyword in the first
+   sentence.
+
+3. **Seven unsourced superlatives, six of them in the section intros you
+   wrote to introduce lists.** "Food work has the shortest route in for a
+   first-time volunteer and the widest choice of shifts." "These roles carry
+   the heaviest screening in the city and the most useful training."
+   "Fostering is where the shortage is." "the strictest health requirements of
+   any category here." "The longest commitments in the city, and the ones
+   where a single volunteer makes the clearest difference." "Daily Bread's
+   three public sorting events a year are the other reliable drop-in option in
+   the city." "the easiest way to do it." That is the third draft in a row
+   with this fault. If you cannot point at the row that ranks them, do not
+   rank them, and a section intro is not a licence to editorialise because it
+   sits above a list.
+
+4. **A ranking that was checkable and wrong.** "Fred Victor asks for one
+   month, the shortest commitment of any charity listed below." Yonge Street
+   Mission's In-a-Pinch shifts and Habitat's one-time roles ask for no
+   commitment at all, and you wrote about both three paragraphs later. Count
+   it against the list, not against the sentence you just wrote.
+
+5. **Two invented queue comparisons, the same claim twice.** "the queue at a
+   neighbourhood agency is nothing like the queue at the Humane Society" and
+   "the queue at Dixon Hall or New Circles looks nothing like the queue at the
+   Humane Society". Neither Dixon Hall nor New Circles publishes anything
+   about a wait. Both replaced with what Covenant House, Toronto Wildlife
+   Centre and Scott Mission actually say, which makes the same practical point
+   and is true.
+
+6. **A count that did not count, and a count whose third example did not
+   support it.** "at all four organisations checked here it carries a price"
+   named three; The Stop charges too and was missing, so the four are now
+   named. "Three of the best-known charities here say on their own pages that
+   they have more applicants than places" then offered Toronto Humane Society,
+   Toronto Wildlife Centre and Red Door, and Red Door says it has no openings,
+   which is a different fact. Now two, and Red Door stands on its own with its
+   date.
+
+7. **A perishable homepage snapshot read as a published figure.** Volunteer
+   Toronto "posted four new openings on 13 October 2026 alone". Their homepage
+   module shows four recent opportunities; it does not say four were posted
+   that day. A feed count is not a fact about the organisation, and RULINGS
+   2026-10-11 keeps perishable numbers out of page prose. Cut.
+
+8. **Four H2s were index labels restating their own FAQ question** ("How old
+   you have to be" above "How old do you have to be to volunteer in
+   Toronto?"), the identical fault logged on the soup-kitchen draft this
+   morning. H2s are now the answer, FAQ H3s stay as the question.
+
+9. **Seven section intros built to one pattern**, one short sentence plus
+   "See the X category". With six of the seven category links gone the pattern
+   had to go anyway; four intros now carry a fact the rows do not, one was
+   cut, and the shapes vary.
+
+10. **Smaller slips.** "the fingerprint step catches people out" (a claim
+    about people); "the calendar, not the paperwork, sets the pace" (a
+    metaphor, and the inference appended after the fact); "Ontario makes the
+    first two free ... as long as you attach a signed letter" (Ontario says a
+    service *may* require one, Toronto Police require it, so the sentence now
+    says which); "real training" (the bare intensifier, RULINGS 2026-10-10);
+    "the large one may take six months to answer" (six months is how long
+    Covenant House *keeps* an application, not how long it takes to answer);
+    "Yonge Street Mission puts it most directly"; "Check whether applications
+    are even open"; "Read the actual role description"; a repeated sentence
+    inside FAQ 1; and the FoodShare photo release form, in the FAQ but not in
+    the body.
+
+11. **Markup.** The TOC carried no `class="toc"`, unlike the three approved
+    siblings. The meta description carried no form of the target term;
+    rewritten to 139 characters opening with it, and the Article JSON-LD
+    description synced to it. The json `hub_blurb` said "how long the wait
+    really is"; the intensifier is gone.
+
+12. **For me, not the writer.** My own fix to 6 left "The Toronto Humane
+    Society" opening two consecutive sentences, and my first parks intro began
+    "Both run to a season" with the antecedent only in the list below it. Both
+    caught by reading every rewritten sentence in its paragraph after the gate
+    went green, per RULINGS 2026-10-13.
+
+**For Richard, one decision and one bug.**
+
+The decision: this page links out to volunteertoronto.ca, the site it is
+written to outrank for "volunteer toronto" (2,800/mo). The 12 Oct ruling says
+every fleet site links out to authority sites in its niche we do not own, the
+page would read as evasive without the city's actual volunteer centre on it,
+and Yonge Street Mission's own volunteer page points there. CLIENT.md names no
+competitor ban. Kept, with the City of Toronto link beside it. Say if you want
+it out.
+
+The bug, now measured: the charity-to-category mapping is broken across the
+site, not only for `food-hunger`. Six of the eight category pages I opened
+list charities from an unrelated cause. Every one of the fifteen category
+pages is a live, indexable page that misleads anyone who lands on it from
+search, and no guide can send a reader to a cause category until it is fixed.
+Already in attribute-brain `todo/toronto-charities.md`.
