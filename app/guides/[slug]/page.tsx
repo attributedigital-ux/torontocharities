@@ -75,10 +75,13 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           </div>
         </header>
 
+        <div className="max-w-3xl mx-auto px-4 py-12">
+          <article className="guide-body" dangerouslySetInnerHTML={{ __html: guide.content }} />
+        </div>
         {featured.length > 0 && (
           <section className="guide-logos">
             <div className="guide-logos-inner">
-              <h2>Charities in this guide</h2>
+              <h2>The charities named in this guide</h2>
               <ul>
                 {featured.map((c) => (
                   <li key={c.slug}>
@@ -93,9 +96,6 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           </section>
         )}
 
-        <div className="max-w-3xl mx-auto px-4 py-12">
-          <article className="guide-body" dangerouslySetInnerHTML={{ __html: guide.content }} />
-        </div>
       </main>
       <Footer />
     </>
