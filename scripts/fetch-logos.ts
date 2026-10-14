@@ -97,6 +97,11 @@ function dims(path: string): [number, number] | null {
 
       if (type.includes('svg')) {
         if (buf.length > 400_000) continue;
+        // A logo drawn entirely in white is made for a dark header and
+        // disappears on our white tile (YMCA, 14 Oct 2026). Take the next one.
+        const svg = buf.toString('utf8');
+        const fills = [...svg.matchAll(/fill\s*[:=]\s*["']?(#[0-9a-fA-F]{3,6}|white)/g)].map((m) => m[1].toLowerCase());
+        if (fills.length > 0 && fills.every((f) => f === '#fff' || f === '#ffffff' || f === 'white')) continue;
         const out = `${DIR}/${r.slug}.svg`;
         writeFileSync(out, buf);
         await db.update(charities).set({ logo_url: `/images/charities/${r.slug}.svg` }).where(eq(charities.slug, r.slug));
