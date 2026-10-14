@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="180"
+   height="180"
+   viewBox="0 0 47.624999 47.625001"
+   version="1.1"
+   id="svg370"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="icon.svg"
+   inkscape:export-filename="C:\Users\mstringer\Downloads\apple-touch-icon.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview372"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.4823794"
+     inkscape:cx="12.817232"
+     inkscape:cy="191.58389"
+     inkscape:window-width="1123"
+     inkscape:window-height="1040"
+     inkscape:window-x="1197"
+     inkscape:window-y="74"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     units="px" />
+  <defs
+     id="defs367" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#fdda10;fill-opacity:1;stroke-width:0.618291"
+       id="rect5916"
+       width="47.625"
+       height="47.625"
+       x="0"
+       y="0" />
+    <path
+       d="m 31.204327,11.927885 c 1.71758,-0.0274 3.56125,-1.72876 3.48507,-3.7019603 -0.0839,-1.87897 -1.40011,-3.34406 -4.1549,-4.25737 -0.77955,-0.26821 -5.83833,-1.85096 -10.5608,0.091 -4.72039,1.93652 -10.9952801,7.9442903 -10.9952801,20.4238203 0,12.48268 7.5828201,18.55705 11.3703401,19.53845 3.79523,0.96212 9.56507,1.68228 13.55172,-1.70184 1.60164,-1.35685 1.39204,-3.25047 0.73169,-4.80811 -0.41216,-0.98936 -1.50523,-1.9952 -3.11769,-1.80208 -1.59429,0.1992 -3.46102,1.01351 -5.11056,1.01351 -4.76296,0 -8.99331,-4.60657 -9.02335,-11.21496 -0.008,-3.4435 -0.10973,-13.55762 8.01727,-14.72061 3.66663,-0.25242 4.07702,1.02155 5.80649,1.14029"
+       style="fill:#c4122e;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.0894065"
+       id="path40" />
+  </g>
+</svg>

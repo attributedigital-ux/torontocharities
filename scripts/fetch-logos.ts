@@ -24,6 +24,15 @@ import { db } from '../db';
 import { charities } from '../db/schema';
 import { eq, inArray, isNotNull, and, ne } from 'drizzle-orm';
 
+const host = (u: string) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return ''; } };
+/** Same site, or a subdomain of it. A charity moving to a different domain
+ *  entirely usually means the old one lapsed and someone else bought it. */
+const sameSite = (a: string, b: string) => {
+  const x = host(a), y = host(b);
+  if (!x || !y) return false;
+  return x === y || x.endsWith('.' + y) || y.endsWith('.' + x);
+};
+
 const DIR = 'public/images/charities';
 const MIN_PX = 64;
 const MAX_PX = 160;   // a 38px tile at 2x; 5,531 of these have to stay small
@@ -141,9 +150,28 @@ function dims(path: string): [number, number] | null {
     if (res && res.ok) { html = await res.text(); baseUrl = res.url; }
     else {
       viaBrowser = await viaChrome(base);
-      if (!viaBrowser) { console.log(`  x ${r.slug}: site ${res?.status ?? 'unreachable'}, browser no help`); fail++; continue; }
+      if (!viaBrowser) {
+        await db.update(charities)
+          .set({ website_status: 'dead', website_checked_at: new Date() })
+          .where(eq(charities.slug, r.slug));
+        console.log(`  x ${r.slug}: DEAD, site ${res?.status ?? 'unreachable'}, browser no help`);
+        fail++; continue;
+      }
       html = viaBrowser.html;
+      baseUrl = base;
     }
+
+    // Left its own domain: record where it goes and take nothing from it.
+    if (!sameSite(base, baseUrl)) {
+      await db.update(charities)
+        .set({ website_status: 'redirected', website_redirects_to: baseUrl.slice(0, 500), website_checked_at: new Date() })
+        .where(eq(charities.slug, r.slug));
+      console.log(`  x ${r.slug}: REDIRECTED to ${host(baseUrl)}, nothing taken`);
+      fail++; continue;
+    }
+    await db.update(charities)
+      .set({ website_status: 'live', website_redirects_to: null, website_checked_at: new Date() })
+      .where(eq(charities.slug, r.slug));
     let saved = false;
 
     for (const cand of candidates(html, baseUrl).slice(0, 8)) {
@@ -190,7 +218,7 @@ function dims(path: string): [number, number] | null {
       console.log(`  + ${r.slug} ${d[0]}x${d[1]}`);
       ok++; saved = true; break;
     }
-    if (!saved) { console.log(`  x ${r.slug}: no logo good enough`); fail++; }
+    if (!saved) { console.log(`  . ${r.slug}: live, no logo good enough`); }
   }
   if (tab) { await tab.close().catch(() => {}); }
   if (browser) { await browser.disconnect().catch(() => {}); }

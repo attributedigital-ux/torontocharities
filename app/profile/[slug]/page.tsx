@@ -288,7 +288,7 @@ export default async function ProfilePage({
                     </dd>
                   </div>
                 )}
-                {charity.website_url && (
+                {charity.website_url && charity.website_status !== 'dead' && charity.website_status !== 'redirected' && (
                   <div>
                     <dt className="text-xs text-tp-muted uppercase tracking-wide mb-0.5">
                       Website
@@ -302,6 +302,28 @@ export default async function ProfilePage({
                       >
                         {charity.website_url.replace(/^https?:\/\//, '')}
                       </a>
+                    </dd>
+                  </div>
+                )}
+                {(charity.website_status === 'dead' || charity.website_status === 'redirected') && (
+                  <div>
+                    <dt className="text-xs text-tp-muted uppercase tracking-wide mb-0.5">
+                      Website
+                    </dt>
+                    <dd className="text-sm text-tp-muted">
+                      {charity.website_status === 'dead'
+                        ? 'We have no working website for this charity.'
+                        : 'The address we held now sends visitors to an unrelated site, so we have taken the link down.'}{' '}
+                      {charity.website_checked_at
+                        ? `Checked ${format(charity.website_checked_at, 'd MMMM yyyy')}.`
+                        : null}{' '}
+                      It is still on the Canada Revenue Agency register under{' '}
+                      {charity.cra_charity_number}. Check that it is still running before
+                      you give money or apply to volunteer.{' '}
+                      <Link href={`/charity/claim/?charity=${slug}&name=${encodeURIComponent(charity.display_name)}`} className="underline">
+                        If you run this charity, add a current address
+                      </Link>
+                      .
                     </dd>
                   </div>
                 )}

@@ -28,6 +28,12 @@ export const charities = pgTable(
     address_postcode: text('address_postcode'),
     cra_designation: text('cra_designation'),
     website_url: text('website_url'),
+    // Set by scripts/fetch-logos.ts on every visit: 'live', 'dead' (nothing
+    // answers), or 'redirected' (the address now sends visitors to a different
+    // domain, which usually means the domain lapsed and someone else bought it).
+    website_status: text('website_status'),
+    website_checked_at: timestamp('website_checked_at'),
+    website_redirects_to: text('website_redirects_to'),
     email: text('email'),
     phone: text('phone'),
     status: text('status').default('published').notNull(),
