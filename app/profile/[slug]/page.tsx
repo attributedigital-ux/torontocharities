@@ -288,7 +288,7 @@ export default async function ProfilePage({
                     </dd>
                   </div>
                 )}
-                {charity.website_url && charity.website_status !== 'dead' && charity.website_status !== 'redirected' && (
+                {charity.website_url && charity.website_status !== 'none_found' && charity.website_status !== 'redirected' && (
                   <div>
                     <dt className="text-xs text-tp-muted uppercase tracking-wide mb-0.5">
                       Website
@@ -305,14 +305,14 @@ export default async function ProfilePage({
                     </dd>
                   </div>
                 )}
-                {(charity.website_status === 'dead' || charity.website_status === 'redirected') && (
+                {(charity.website_status === 'none_found' || charity.website_status === 'redirected') && (
                   <div>
                     <dt className="text-xs text-tp-muted uppercase tracking-wide mb-0.5">
                       Website
                     </dt>
                     <dd className="text-sm text-tp-muted">
-                      {charity.website_status === 'dead'
-                        ? 'We have no working website for this charity.'
+                      {charity.website_status === 'none_found'
+                        ? 'The address we held stopped working and we could not find a current one.'
                         : 'The address we held now sends visitors to an unrelated site, so we have taken the link down.'}{' '}
                       {charity.website_checked_at
                         ? `Checked ${format(charity.website_checked_at, 'd MMMM yyyy')}.`
