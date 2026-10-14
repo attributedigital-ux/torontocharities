@@ -1,0 +1,44 @@
+name: Publish approved guides
+# Runs when a guide lands in content/approved/. Writes it to the guides table,
+# fires the build hook, verifies the live URL, then moves the files to
+# content/published/ and commits that move. Fails loudly; publishes nothing on error.
+on:
+  push:
+    branches: [main]
+    paths: ['content/approved/*.html', 'content/approved/*.json']
+  workflow_dispatch:
+    inputs:
+      slugs:
+        description: 'space-separated slugs (default: every pair in content/approved/)'
+        required: false
+      update:
+        description: 'replace an already published guide'
+        type: boolean
+        default: false
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - name: Publish
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          EVENTS_BUILD_HOOK: ${{ secrets.EVENTS_BUILD_HOOK }}
+        run: |
+          SLUGS="${{ github.event.inputs.slugs }}"
+          if [ -z "$SLUGS" ]; then SLUGS=$(ls content/approved/*.json 2>/dev/null | xargs -n1 basename | sed 's/\.json$//' | tr '\n' ' '); fi
+          if [ -z "$SLUGS" ]; then echo "nothing approved"; exit 0; fi
+          FLAG=""; [ "${{ github.event.inputs.update }}" = "true" ] && FLAG="--update"
+          npx tsx scripts/publish-guide.ts $SLUGS $FLAG
+      - name: Commit the move to content/published
+        run: |
+          git config user.name "publish-bot"; git config user.email "publish-bot@users.noreply.github.com"
+          git add content/approved content/published
+          git diff --cached --quiet || git commit -m "Published: $(ls content/published/*.json | xargs -n1 basename | sed 's/\.json$//' | tr '\n' ' ') [skip ci]"
+          git push
