@@ -464,3 +464,13 @@ list charities from an unrelated cause. Every one of the fifteen category
 pages is a live, indexable page that misleads anyone who lands on it from
 search, and no guide can send a reader to a cause category until it is fixed.
 Already in attribute-brain `todo/toronto-charities.md`.
+
+## GATE run — 15 October 2026 — NOTHING TO REVIEW
+
+`content/drafts/` does not exist; no draft files anywhere outside
+`content/published/`. Today's two commissions (donate-hair-toronto,
+volunteer-opportunities-toronto-students, COMMISSIONS.md 15 Oct) have no
+`research/facts/<slug>.md` row and no draft yet — the writer has not run
+against them. Per content-editor.md cost discipline ("Nothing in
+content/drafts/? Stop in one line"), stopping here rather than reviewing
+`content/published/` work already gated on 13 October.
