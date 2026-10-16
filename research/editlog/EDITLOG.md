@@ -474,3 +474,23 @@ volunteer-opportunities-toronto-students, COMMISSIONS.md 15 Oct) have no
 against them. Per content-editor.md cost discipline ("Nothing in
 content/drafts/? Stop in one line"), stopping here rather than reviewing
 `content/published/` work already gated on 13 October.
+
+## GATE run — 16 October 2026 — NOTHING TO REVIEW
+
+`content/drafts/` still does not exist; no draft files anywhere outside
+`content/published/`. Today's only commission (toronto-charity-news-2026-10-16,
+COMMISSIONS.md Friday Track 2) has no `research/facts/<slug>.md` row and no
+draft: `attribute-brain/todo/toronto-charities.md` R-192 (16 Oct) records the
+writer's session failing on the same egress fault as R-187 (15 Oct) — WebFetch
+DNS failures and proxy 403s on every outlet/profile host tried — and correctly
+drafting nothing rather than substituting search-snippet paraphrase. The
+donate-hair-toronto and volunteer-opportunities-toronto-students commissions
+from 15 Oct (R-187) are still undrafted too. Per content-editor.md cost
+discipline, stopping here; `content/published/` work stays as gated 13 October.
+
+**For Richard:** this is two consecutive scheduled writer runs (15 and 16
+Oct) blocked by the identical unresolved egress fault, not an empty queue —
+R-187 asked 15 Oct whether this session type's network policy allows general
+web egress and why destinations get a 403 instead of a consistent DNS
+failure or timeout; R-192 asks the same question again today, still
+unanswered. Three commissions now sit undrafted behind it.
