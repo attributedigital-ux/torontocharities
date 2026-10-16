@@ -1,188 +1,140 @@
-# Commissions — 15 October 2026 (Thursday)
+# Commissions — 16 October 2026 (Friday)
 
-Written by the editor, commissioning run. No `research/EVIDENCE.md` exists yet —
-the researcher has not run — so this draws from the standing `content/QUEUE.md`
-(ready since Richard's go-ahead, 13 Oct 2026) per the seo-researcher ruling that
-a missing or stale pack never blocks commissioning. Thursday is neither Monday
-nor Friday, so today is two guides from the queue, highest score first among
-clusters marked `ready`: donate-hair-toronto (45) and
-volunteer-opportunities-toronto-students (22). donate-furniture-toronto (9,
-also `ready`) stays queued for a later day.
+Written by the editor, commissioning run. Friday is a fixed-track day
+(CLIENT.md, "the two tracks"): the weekly news roundup takes priority over
+any queue guide, so this is today's only commission.
 
-Both commissions sit inside the five standing faults in CLIENT.md ("What the
-editors kept catching") — every one of the four published guides broke one or
-more of them. Do not repeat: invented reader beliefs, unsourced superlatives,
-invented numbers/counts not matching a facts row, an H2 that restates its own
-FAQ question below it, and any claim about our own site (events page, category
-pages) that is not checked live first. Canadian spelling throughout.
+No `research/EVIDENCE.md` exists yet — the researcher has not run — same
+position as the 15 Oct commissioning run: a missing pack never blocks
+commissioning, and it does not block this piece anyway, since the news
+track is sourced live from outlets each week, not from Ahrefs evidence.
+`content/QUEUE.md` itself says weekly tracks run on a schedule, not from the
+queue, so nothing there changes today's pick.
 
-Both pieces link only `/category/social-services/` among category pages — it
-is the one page CLIENT.md confirms is correctly mapped; every other category
-page lists the wrong charities and is banned from linking until R-170 lands.
+`research/editlog/EDITLOG.md` has five entries, all evergreen guides; none
+yet on either weekly track. The five standing faults from CLIENT.md ("What
+the editors kept catching") apply here as much as to a guide and are
+written into this commission below: invented reader beliefs, unsourced
+superlatives, invented numbers, an H2 restating its own FAQ question, and
+unchecked claims about our own site.
+
+One operational flag, not a content one: `attribute-brain/todo/
+toronto-charities.md` R-187 (15 Oct) recorded the writer's session that day
+losing all live-fetch access (WebFetch DNS failures, proxy 403s on curl) and
+drafting nothing rather than drafting unverified. This piece is entirely
+built from live fetches (RSS feeds, outlet pages, our own events/profile
+pages) — if the writer's session hits the same egress failure, it must stop
+and log it the same way R-187 did, not substitute search-snippet
+paraphrase for a read outlet page.
 
 ---
 
 ## Commission 1
 
-**Slug:** `donate-hair-toronto`
-**Working title:** Where to donate hair in Toronto
-**Cluster / intent tier:** donate hair toronto (90/mo, KD 1) — WINNABLE NOW,
-long-tail, effectively no competing difficulty.
+**Slug:** `toronto-charity-news-2026-10-16`
+**Working title:** Toronto charity news, 16 October 2026
+**Cluster / intent tier:** Fixed weekly track (CLIENT.md Track 2), not an
+Ahrefs cluster. Runs every Friday regardless of queue state. Purpose is
+authority and outreach, not keyword ranking: dated, link-rich content the
+static directory otherwise lacks, and 20–40 named charities handed to the
+outreach workers (R-173) as a fresh reason each one might link back.
 
-**Angle (one sentence):** A Toronto reader who has decided to cut and donate
-their hair needs to know, before they book the appointment, which named
-organisations actually make wigs from donated hair, what each requires
-(minimum length, no colour/no grey, how it ships, whether the salon has to be
-involved), and that this is a different, smaller list than general clothing
-or donation charities.
+**Angle (one sentence):** A reader who wants to know what happened this
+week in Toronto's charity and nonprofit sector gets five to twelve short,
+plainly stated items, each one naming the charity involved, saying what
+happened, and linking straight to the outlet that reported it and to the
+charity's own profile on this site.
 
-**Reader:** Someone who has already decided to donate, mid-decision on where,
-not someone being sold on the idea. They want the requirements, not
-encouragement.
+**Reader:** Someone scanning for what is new in the sector this week —
+donors, charity staff checking what is being said about peers, and the
+charities named, who may share or link the page that names them. Not a
+reader who wants commentary or analysis; this is a record of the week, not
+an op-ed.
 
-**Questions it must answer (3–6):**
-1. Which Toronto-connected charities make wigs from donated hair, by name?
-2. What is the minimum ponytail length and condition (colour, grey, perm)
-   each one actually requires, per their own published guidelines?
-3. Does the hair need to be cut by a stylist, or can the reader cut it
-   themselves and mail it in?
-4. Is there a cost to the reader (shipping, a salon fee) at any step?
-5. What happens to hair that does not meet the requirements?
-6. Is this the same as donating to a charity that *sells* hair/wigs for
-   revenue (a different model, must not be conflated)?
+**What it must answer (3–6):**
+1. What concretely happened this week, dated, at each named charity or
+   funder — a grant, a closure, a fundraising result, a programme launch, a
+   leadership change, a report or a controversy — not a general mention.
+2. Which outlet reported it, so the reader can read the full story.
+3. Which of our own charity profiles does this item belong to, if the
+   named organisation is in our 12,758-charity database?
+4. Where the story involves a number (dollars raised, people served, a
+   grant size), what exact figure did the outlet itself state, with its own
+   date?
+5. Is this story still live and accurate as of publication, or has it been
+   updated or corrected since the outlet first ran it?
 
-**Links it must earn:**
-- Every named organisation's charity profile (`/profile/<slug>/`) where it
-  has one in our database — check the slug resolves before linking; name
-  without a link if it does not.
-- `/category/social-services/` only, and only if a named charity is actually
-  filed there — verify in the database, do not assume.
-- The organisation's own site for its donation instructions (outbound,
-  required per CLIENT.md).
-- No link to `/charity-events-toronto/` unless the writer has read the live
-  page and found an actual hair-donation drive listed on it that week —
-  do not claim or imply one exists otherwise.
-
-**Facts needed, and where they come from:**
-- The candidate list to check (not yet verified, verify each independently
-  before naming it as a Toronto option): Angel Hair for Kids (Canadian),
-  Chai Lifeline Canada, Canadian Cancer Society's wig/look-good-feel-better
-  programme, Pantene Beautiful Lengths (a brand programme, not itself a
-  charity — if used, name the charity it actually donates to, not the brand).
-  This list is a starting point for the researcher/writer, not a set of
-  facts to assert.
-- Each organisation's own current donation-requirements page is the only
-  source for length/condition/shipping rules — no secondary source, no
-  inference from "most wig charities require X."
-- Cross-check every named organisation against our charities table for a
-  CRA registration and a profile slug before it is treated as "a Toronto
-  charity"; if it has no CRA registration, say so plainly rather than
-  implying registered-charity status.
-
-**Do not claim (binding):**
-- Do not state a minimum hair length without quoting the organisation's own
-  current page — lengths vary by organisation and change.
-- Do not claim any organisation "always" or "currently" needs donations —
-  some pause intake; state only what the source says today, dated.
-- Do not invent a reason people donate hair ("most people donate after
-  chemotherapy affects someone they love") — no invented reader belief.
-- Do not rank organisations ("the easiest," "the most popular") without a
-  row that supports it.
-- Do not claim any hair-donation drive appears on our events page unless
-  verified live that day.
-- Do not link any category page other than social-services.
-
----
-
-## Commission 2
-
-**Slug:** `volunteer-opportunities-toronto-students`
-**Working title:** Volunteer opportunities for students in Toronto
-**Cluster / intent tier:** volunteer opportunities toronto for students
-(200/mo, KD 8) — WINNABLE NOW.
-
-**Cannibalisation guard:** `/guides/volunteer-toronto/` already exists and is
-published (comprehensive, adult-oriented, includes the vulnerable-sector-check
-process). This piece must NOT repeat that guide's ground. Its sole job is the
-part specific to students: Ontario's mandatory 40 hours of community
-involvement for the high school diploma (OSSD), what counts, what does not,
-age minimums that exclude a vulnerable-sector check, and which Toronto
-charities specifically take under-18 volunteers. Link to `/guides/
-volunteer-toronto/` once, for the reader who turns out to be 18+ or wants the
-general picture, and do not re-explain what that guide already covers.
-
-**Angle (one sentence):** A Toronto high school student (or a parent) needs
-to know which charities will actually let someone under 18 volunteer, how the
-mandatory 40 community-involvement hours work under the Ontario diploma
-requirement, and which roles need a parent's signature or have an age floor
-that rules a student out.
-
-**Reader:** A student (roughly 14–18) or a parent, searching close to a
-deadline, who needs hours that count and an organisation that will take them
-at their age — not a general volunteering article.
-
-**Questions it must answer (3–6):**
-1. What exactly is the Ontario 40-hour community involvement requirement, and
-   from what grade can a student start logging hours?
-2. What kinds of activities are excluded from counting, per ontario.ca?
-3. Which named Toronto charities explicitly accept volunteers under 18, and
-   at what minimum age?
-4. Does a parent need to sign anything, and does the charity need proof of
-   enrolment or a school's own form?
-5. Which common adult volunteer roles (ones covered in `/guides/
-   volunteer-toronto/`) are closed to a student because of the vulnerable
-   sector check or an age floor?
-6. Where can a student find a short, one-off role rather than an ongoing
-   weekly commitment?
-
-**Links it must earn:**
-- `/guides/volunteer-toronto/` once, as the general resource for an
-  18+ reader or anyone wanting the full picture (per the cannibalisation
-  guard above — do not duplicate its content).
-- Every named charity's `/profile/<slug>/`, slug-checked before linking.
-- `/category/social-services/` only, same rule as Commission 1.
-- ontario.ca's own community-involvement-requirement page (outbound,
-  authority source, required).
-- `/charity-events-toronto/` only if the writer has read the live page and
-  found an actual one-off, under-18-eligible event listed that week.
+**Links it must earn, every item:**
+- The outlet's own article (outbound, required, no exceptions — CLIENT.md:
+  "no outlet, no item"). Toronto Star, CBC Toronto, CP24, the Globe,
+  BlogTO, Toronto Life, The Philanthropist, Future of Good, CharityVillage,
+  or the Google News RSS source story itself if one of those doesn't carry
+  it.
+- The named charity's profile at `/profile/<slug>/` — check the slug
+  resolves in the live sitemap/database before linking; if the charity is
+  not in our database (a funder, a government body, an umbrella group with
+  no CRA registration here), name it without a link rather than guessing a
+  URL.
+- `/category/social-services/` only, and only where a named charity is
+  actually filed there in the database — every other category page is
+  wrong (CLIENT.md, "Category pages are wrong, do not link them", R-170
+  still open) and stays unlinked from this piece.
+- No link to `/charity-events-toronto/` or any event page unless the writer
+  has read that live page this week and the story is actually about an
+  event listed on it — do not imply a connection that doesn't exist.
 
 **Facts needed, and where they come from:**
-- The 40-hour requirement, eligible grades, and excluded-activity list:
-  ontario.ca's own community involvement page — the volunteer-toronto facts
-  file (`research/facts/volunteer-toronto.md`) already cites "ontario.ca
-  graduation requirements"; re-check it is current before reusing, do not
-  assume last week's fetch still holds.
-- Minimum volunteering age per organisation: each charity's own volunteer
-  page, not inferred from the adult guide. Candidates likely to have
-  under-18 roles (verify each, do not assume): Toronto Humane Society,
-  Toronto Wildlife Centre, High Park Nature Centre, Daily Bread, FoodShare,
-  Second Harvest's youth programmes if any — check, do not carry over the
-  adult-guide list unexamined, since several of its roles (vulnerable sector
-  check roles) are specifically the ones closed to a student.
-- Whether each organisation requires parental consent or a school form:
-  that organisation's own under-18 policy page, if published; if unpublished,
-  say the reader should ask, not invent a policy.
+- The stories themselves: Google News RSS searched for "Toronto charity",
+  "Toronto nonprofit", "Toronto food bank", "Toronto fundraiser", "Toronto
+  foundation", plus a direct check of each named outlet's own site/feed
+  for the same week. Five to twelve items, drawn from whichever actually
+  ran stories this week — do not pad to twelve by loosening what counts as
+  a Toronto charity story, and do not cut below five without checking every
+  outlet first.
+- Every charity name mentioned in a candidate story, checked against our
+  charities table for a CRA registration and a resolving profile slug
+  before it is linked or called "a Toronto charity."
+- Any dollar figure, headcount or percentage: the outlet's own stated
+  number, with the outlet's own date, quoted or closely paraphrased — never
+  rounded up, combined across stories, or restated as a different unit
+  (e.g. turning "meals" into "dollars" by assuming a cost per meal nobody
+  stated).
+- Whether a named charity's event this week also appears on our own
+  `/charity-events-toronto/` page: check the live page itself, do not
+  assume from the news story alone.
 
 **Do not claim (binding):**
-- Do not restate the vulnerable-sector-check fee table from
-  `/guides/volunteer-toronto/` — link to it instead.
-- Do not claim a charity accepts under-18 volunteers unless its own page
-  says so; absence of a stated age floor is not evidence it is open to
-  minors.
-- Do not invent a reason students look for these hours ("most students
-  leave it to the last minute") — no invented reader belief.
-- Do not claim the 40-hour count resets or changes year to year without a
-  current ontario.ca citation dated in the piece.
-- Do not rank charities by ease or popularity without a supporting row.
-- Do not link any category page other than social-services.
+- Do not open any item by stating what the reader assumes, expects or
+  pictures — no invented reader belief (CLIENT.md fault 1).
+- Do not call any charity "the best known," "the largest," "a leading" or
+  similar without a row/source that states it — CLIENT.md fault 2, and a
+  roundup item is exactly the place this creeps in as filler before the
+  real sentence.
+- Do not invent or round a number not stated by the outlet — no donation
+  total, attendance count or "the biggest fundraiser this quarter"
+  invented or inferred (fault 3).
+- Do not write an item for a story the researcher cannot cite to a named
+  outlet — CLIENT.md is explicit: "Nothing the researcher cannot cite to an
+  outlet is written."
+- Do not claim an event, programme or page exists on toronto-charities.ca
+  (our events page, a category page, a profile) without checking it live
+  that day — fault 5, and specifically: do not link any category page
+  other than social-services.
+- Do not editorialise on a charity's conduct, controversy or closure
+  beyond what the outlet itself reported — report what happened, not a
+  verdict on it.
+- Canadian spelling and vocabulary throughout (CLIENT.md voice: no
+  "vibrant," "heartwarming," or adjectives about the cause).
+- Title and dek carry the full date, year included — this issue is a
+  record, not an evergreen page (CLIENT.md: "Dates in full, with the
+  year").
 
 ---
 
 ## For Richard
 
-Nothing in today's two commissions needs his input — both are standard
-evergreen guides of the same shape as the four already published, and the
-one open structural issue on this site (the category-page mapping, R-170)
-is already tracked in `attribute-brain/todo/toronto-charities.md` and is
-handled in both commissions above by restricting category links to
-social-services only. No new `[NEEDS RICHARD]` item this run.
+Nothing in today's commission needs his input. The piece is a straight
+application of the Track 2 brief Richard already approved (CLIENT.md, 13
+Oct), and its one open structural risk — the category-page mapping, R-170
+— is handled the same way the 15 Oct guide commissions handled it:
+`/category/social-services/` only. No new `[NEEDS RICHARD]` item this run.
