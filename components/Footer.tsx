@@ -59,6 +59,8 @@ export function Footer({ lastUpdated = '' }: { lastUpdated?: string }) {
         <span>
           © {new Date().getFullYear()} Toronto Charities. A community resource by{' '}
           <a href="https://torontoproperty.ca" rel="nofollow" className="text-tp-bg/70 hover:text-tp-bg/90 transition-colors duration-[600ms]">Toronto Property</a>.
+          {' '}Website by{' '}
+          <a href="https://attribute.media" className="text-tp-bg/70 hover:text-tp-bg/90 transition-colors duration-[600ms]">Attribute Media</a>.
         </span>
         {lastUpdated && <span>Directory last updated {lastUpdated}</span>}
       </div>
