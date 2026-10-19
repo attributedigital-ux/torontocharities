@@ -494,3 +494,35 @@ R-187 asked 15 Oct whether this session type's network policy allows general
 web egress and why destinations get a 403 instead of a consistent DNS
 failure or timeout; R-192 asks the same question again today, still
 unanswered. Three commissions now sit undrafted behind it.
+
+## GATE run — 19 October 2026 — NOTHING TO REVIEW
+
+`content/drafts/` still does not exist; no draft files anywhere outside
+`content/published/`. Today's only commission (COMMISSIONS.md, Monday Track
+1: `charity-events-toronto-week-of-2026-10-19`) has no
+`research/facts/<slug>.md` row and no draft. `attribute-brain/todo/
+toronto-charities.md` R-193 (updated 19 Oct) records the writer session
+failing on both routes the commission itself proposed: `DATABASE_URL` is not
+set in this session at all (not a quota or timeout — the credential is
+absent), and WebFetch to `charity-events-toronto/` failed the same
+`getaddrinfo ENOTFOUND` as R-187 (15 Oct) and R-192 (16 Oct). Correctly
+nothing was drafted rather than a cached or remembered event list
+substituted. The 15 Oct commissions (donate-hair-toronto,
+volunteer-opportunities-toronto-students, R-187) and the 16 Oct commission
+(toronto-charity-news-2026-10-16, R-192) remain undrafted too — four
+commissions now undrafted behind this fault. Per content-editor.md cost
+discipline, stopping here; `content/published/` work stays as gated 13
+October.
+
+**For Richard, escalating per content-editor.md's own rule ("when the same
+fault appears three times, stop logging it and escalate"):** this is the
+third consecutive scheduled writer run blocked by egress/credential gaps
+(15, 16, 19 Oct — no writer run has produced a draft since 13 Oct), and the
+pattern has widened, not narrowed: R-187/R-192 asked whether this session
+type gets general web egress at all, unanswered twice; today adds that the
+DB-query workaround COMMISSIONS.md itself proposed also has no credential
+provisioned. Neither fallback route works. This needs a decision, not
+another logged instance: either provision `DATABASE_URL` for writer-type
+sessions, confirm/fix the egress policy, or both. Until one lands, the
+Monday and Friday fixed tracks cannot run and the queue guides stay frozen
+at 13 October's four.
