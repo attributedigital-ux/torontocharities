@@ -526,3 +526,32 @@ another logged instance: either provision `DATABASE_URL` for writer-type
 sessions, confirm/fix the egress policy, or both. Until one lands, the
 Monday and Friday fixed tracks cannot run and the queue guides stay frozen
 at 13 October's four.
+
+## GATE run — 20 October 2026 — NOTHING TO REVIEW
+
+`content/drafts/` still does not exist; no draft files anywhere outside
+`content/published/`. Checked after `git fetch` + fast-forward to 952f480
+(QUEUE.md 20 Oct). Today's recommissioned clusters (donate-hair-toronto,
+volunteer-opportunities-toronto-students, COMMISSIONS.md 20 Oct) have no
+`research/facts/<slug>.md` rows and no draft: the writer session logged the
+same run (LOG.md, attribute-brain, 2026-10-20) hit both failure modes
+together — `WebFetch` DNS-failed on toronto-charities.ca, ontario.ca and a
+plain google.com, and `curl` through the proxy got a 403 on the CONNECT
+tunnel to the same hosts — confirming this is not site-specific and not a
+transient timeout. QUEUE.md rows #6/#10 record the block. Per
+content-editor.md cost discipline ("Nothing in content/drafts/? Stop in one
+line"), stopping here; `content/published/` work stays as gated 13 October.
+
+This is the fourth consecutive GATE run finding nothing to review (15, 16,
+19, 20 Oct), behind the fourth consecutive writer block on the same
+unresolved infrastructure gap. The decision request is already filed and
+unanswered: `attribute-brain/todo/toronto-charities.md` R-193 (updated 20
+Oct) asks Richard to provision general web egress for this session type,
+provision `DATABASE_URL` for writer-type sessions, or both. Not re-filing a
+new escalation here — this is an access/infrastructure gap, not a content
+fault, so it belongs on R-193, not as a new RULINGS entry or CLIENT.md line.
+Five commissions now sit undrafted: donate-hair-toronto and
+volunteer-opportunities-toronto-students (15 Oct), toronto-charity-news-
+2026-10-16, charity-events-toronto-week-of-2026-10-19, and the two
+recommissioned 20 Oct clusters. No writer run has produced a draft since 13
+October.
