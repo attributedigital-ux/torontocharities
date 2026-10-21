@@ -1,77 +1,70 @@
-# Commissions — 20 October 2026 (Tuesday)
+# Commissions — 21 October 2026 (Wednesday)
 
-Written by the editor, commissioning run. Tuesday is neither Monday nor
+Written by the editor, commissioning run. Wednesday is neither Monday nor
 Friday, so today is one or two guides from the queue per `content-engine.md`.
 
-**No new researcher run since 19 Oct.** `research/EVIDENCE.md` is still
-yesterday's pull; nothing in it has changed overnight, so this run reads it
-rather than re-deriving anything.
+**No new researcher run since 19 Oct.** `research/EVIDENCE.md` is still that
+pull; nothing in it has changed overnight, so this run reads it rather than
+re-deriving anything. `content/QUEUE.md` is unchanged since 20 Oct.
 
 ## What today commissions, and what it deliberately does not
 
-`content/QUEUE.md` has exactly one `ready`-not-yet-commissioned cluster,
-`donate-furniture-toronto` (#9), and two `ready`, already-commissioned,
-still-undrafted clusters sitting behind the egress/credential fault below:
-`volunteer-opportunities-toronto-students` (#6) and `donate-hair-toronto`
-(#10), both commissioned 15 Oct.
+Same two clusters as 20 Oct, held steady, not new picks: `donate-hair-toronto`
+(#10) and `volunteer-opportunities-toronto-students` (#6), both still `ready`,
+both still undrafted since first commissioned 15 Oct. `donate-furniture-toronto`
+(#9), the only `ready`-not-yet-commissioned cluster, stays uncommissioned again
+today, for the same reason as yesterday: EVIDENCE.md's standing instruction not
+to add new supply into a pipeline that has drafted nothing since 13 Oct still
+holds — nothing in the last 24 hours gives a reason to revisit that call. If
+anything it is reinforced, see below.
 
-**This run recommissions #6 and #10, and does not commission #9.** Two
-reasons, not one:
-
-1. `COMMISSIONS.md` replaces, it does not append — confirmed from git history
-   (15 Oct's commissions for #6/#10 were overwritten by 16 Oct's Friday-track
-   file, then 19 Oct's Monday-track file). The angle, questions, links and
-   do-not-claim list the writer needs for #6 and #10 currently exist nowhere
-   in the live repo, only in a five-day-old commit. That is a real gap, not a
-   status note in QUEUE.md's table — a writer session reading this file today
-   would find nothing to act on for either. Restoring them is this run's main
-   job.
-2. EVIDENCE.md is explicit: *"Do not treat this week's honest recommendation
-   as 'write more guides.' The site's real constraint right now is pipeline,
-   not content supply... Fixing R-187/R-192 is worth more this week than a
-   new commission."* #9 would be new supply into a pipeline that has drafted
-   nothing since 13 Oct; #6 and #10 are not new supply, they are restoring
-   work already committed to. `donate-furniture-toronto` stays `ready` in
-   QUEUE.md, untouched, for the first commissioning run after the pipeline is
-   unblocked — EVIDENCE.md's own SERP caveat on it (parent_topic reads as a
-   single strong incumbent, borderline WINNABLE not a guaranteed quick win)
-   still holds and should be checked fresh whenever that run happens, not
-   assumed from 19 Oct.
+**New since yesterday's commissioning run, for context not action:**
+`attribute-brain/todo/toronto-charities.md` R-193's 21 Oct morning-pass update
+records the `tc-backup.yml` dump step as `skipped` on its 20 Oct run, with the
+same Neon quota-exhaustion error that preceded the 19-day outage behind
+R-026 — one skipped run, not yet confirmed as the same deepening pattern, and
+a database/hosting question, not a content one. It does not change what gets
+commissioned today. It is one more sign that this site's constraint this week
+is infrastructure, not a shortage of guides to write, which is exactly
+EVIDENCE.md's point about not piling new commissions onto a blocked pipeline.
+Not filing a new item for it — R-193 already carries it, and todo entries are
+not this file's job.
 
 ## Operational flags, carried forward, not re-litigated
 
 `attribute-brain/todo/toronto-charities.md` R-187 (15 Oct) and R-192 (16 Oct)
-asked whether writer-type sessions get general web egress at all; neither has
-been answered. R-193 (18 Oct, updated 19 Oct) adds that `DATABASE_URL` is
-also absent in at least one writer session, so the DB-query fallback the 19
-Oct events commission proposed has no guaranteed path either. No fallback
-exists for #6 or #10 the way there was for the events track: both need live
-fetches to charity, outlet and ontario.ca pages, which a DB query cannot
-substitute for. If the writer hits the same fault again, that is this same
-open item surfacing a fourth and fifth time, not a new one — add one line to
-R-192/R-193 rather than opening a fresh item, exactly as EDITLOG's 19 Oct
-entry already asks.
+asked whether writer-type sessions get general web egress at all; still
+unanswered. R-193 (added 18 Oct, updated 19, 20 and 21 Oct) adds that
+`DATABASE_URL` is also absent in at least one writer session, so the DB-query
+fallback the 19 Oct events commission proposed has no guaranteed path either,
+and now also carries the fresh Neon quota-exhaustion finding above. Six
+writer-side blocks running (15, 16, 19, 20 Oct, this makes the fifth
+commissioning day behind the same gap): if today's writer run hits the
+identical fault, that is this same open item surfacing again, not a new one —
+one line on R-193, not a fresh escalation, exactly as the 19 Oct GATE entry
+already asked.
+
+Both commissions below need live fetches (a charity's own page, an outlet or
+ontario.ca page, the live events page) with no database substitute, same as
+20 Oct — this is not the Monday events track, which at least has a DB route
+to fall back on.
 
 ## Standing rules for both commissions below
 
 The five faults from CLIENT.md ("What the editors kept catching") apply
-directly — every one of the four published guides broke one or more of them:
-invented reader beliefs, unsourced superlatives, invented numbers/counts not
-matching a facts row, an H2 restating its own FAQ question, and any claim
-about this site's own pages (events, category) not checked live that session.
+directly: invented reader beliefs, unsourced superlatives, invented
+numbers/counts not matching a facts row, an H2 restating its own FAQ
+question, and any claim about this site's own pages (events, category) not
+checked live that session.
 
-Two items added to the standing list since these were last commissioned 15
-Oct, both binding on this run:
-
-- **The bare-intensifier family now includes "actually"/"actual"** alongside
+- **The bare-intensifier family includes "actually"/"actual"** alongside
   "real"/"genuine(ly)" (RULINGS 2026-10-10, 2026-10-16, 2026-10-18) — delete
   as filler, never reword, unless the sentence draws an explicit contrast.
-- **GRAMMAR.md's object-as-actor rule** (RULINGS 2026-10-18, `wiki/standards/
-  GRAMMAR.md`, read before HOW_TO_WRITE): no verb that needs intention,
-  judgement or perception attached to a thing that cannot do it — a page does
-  not "solve" anything, a guide does not "notice," a requirement does not
-  "decide." A document loading, a table listing, a figure rising are fine; a
-  document meaning or deciding is not.
+- **GRAMMAR.md's object-as-actor rule** (RULINGS 2026-10-18): no verb that
+  needs intention, judgement or perception attached to a thing that cannot
+  do it — a page does not "solve" anything, a guide does not "notice," a
+  requirement does not "decide." A document loading, a table listing, a
+  figure rising are fine; a document meaning or deciding is not.
 
 Both commissions link only `/category/social-services/` among category
 pages — the one page CLIENT.md confirms is correctly mapped; every other
@@ -84,8 +77,8 @@ Canadian spelling throughout.
 
 **Slug:** `donate-hair-toronto`
 **Working title:** Where to donate hair in Toronto
-**Status:** Recommissioned — first commissioned 15 Oct, undrafted since,
-blocked on the egress fault above, not an editorial issue.
+**Status:** Held from 20 Oct — commissioned 15 Oct, undrafted since, blocked
+on the egress fault above, not an editorial issue.
 **Cluster / intent tier:** donate hair toronto (90/mo, KD 1) — WINNABLE NOW,
 long-tail, effectively no competing difficulty.
 
@@ -126,31 +119,28 @@ encouragement.
 
 **Facts needed, and where they come from:**
 - Starting candidate list, each to be verified independently before being
-  named as a Toronto option, not asserted from this list: Angel Hair for
-  Kids (Canadian), Chai Lifeline Canada, the Canadian Cancer Society's
-  wig/Look Good Feel Better programme. Pantene Beautiful Lengths is a brand
-  programme, not itself a charity — if used, name the charity it actually
-  donates the hair to, never the brand.
+  named as a Toronto option: Angel Hair for Kids (Canadian), Chai Lifeline
+  Canada, the Canadian Cancer Society's wig/Look Good Feel Better
+  programme. Pantene Beautiful Lengths is a brand programme, not itself a
+  charity — if used, name the charity it actually donates the hair to.
 - Each organisation's own current donation-requirements page is the only
-  source for length/condition/shipping rules — no secondary source, no
-  inference from "most wig charities require X."
+  source for length/condition/shipping rules — no secondary source.
 - Cross-check every named organisation against our charities table for a CRA
   registration and a profile slug before treating it as "a Toronto
-  charity"; where it has no CRA registration, say so plainly rather than
-  implying registered-charity status.
+  charity"; where it has no CRA registration, say so plainly.
 
 **Do not claim (binding):**
-- Do not state a minimum hair length without quoting the organisation's own
-  current page — lengths vary by organisation and change.
-- Do not claim any organisation "always" or "currently" needs donations —
-  some pause intake; state only what the source says today, dated.
-- Do not invent a reason people donate hair ("most people donate after
-  chemotherapy affects someone they love") — no invented reader belief.
-- Do not rank organisations ("the easiest," "the most popular") without a
-  row that supports it.
-- Do not claim a hair-donation drive appears on our events page unless
-  checked live that session.
-- Do not link any category page other than social-services.
+- No minimum hair length without quoting the organisation's own current
+  page — lengths vary by organisation and change.
+- No "always" or "currently" accepts donations — some pause intake; state
+  only what the source says today, dated.
+- No invented reason people donate hair ("most people donate after
+  chemotherapy affects someone they love").
+- No ranking organisations ("the easiest," "the most popular") without a row
+  that supports it.
+- No claim of a hair-donation drive on our events page unless checked live
+  that session.
+- No link to any category page other than social-services.
 - No bare "real"/"genuine(ly)"/"actually"/"actual" as filler; no verb
   requiring intention or judgement given to an organisation's page, policy
   or requirement instead of the organisation itself.
@@ -161,8 +151,8 @@ encouragement.
 
 **Slug:** `volunteer-opportunities-toronto-students`
 **Working title:** Volunteer opportunities for students in Toronto
-**Status:** Recommissioned — first commissioned 15 Oct, undrafted since,
-blocked on the egress fault above, not an editorial issue.
+**Status:** Held from 20 Oct — commissioned 15 Oct, undrafted since, blocked
+on the egress fault above, not an editorial issue.
 **Cluster / intent tier:** volunteer opportunities toronto for students
 (200/mo, KD 8) — WINNABLE NOW.
 
@@ -215,31 +205,30 @@ at their age — not a general volunteering article.
 - The 40-hour requirement, eligible grades, and excluded-activity list:
   ontario.ca's own community involvement page. `research/facts/
   volunteer-toronto.md` already cites "ontario.ca graduation requirements" —
-  re-check it is still current before reusing; do not assume a five-day-old
-  fetch still holds.
+  re-check it is still current before reusing; do not assume a stale fetch
+  still holds.
 - Minimum volunteering age per organisation: each charity's own volunteer
-  page, not inferred from the adult guide. Candidates to verify independently
-  (do not carry the adult guide's list over unexamined — several of its
-  roles are specifically the ones closed to a student by the vulnerable
-  sector check): Toronto Humane Society, Toronto Wildlife Centre, High Park
-  Nature Centre, Daily Bread, FoodShare, Second Harvest's youth programmes
-  if any.
+  page, not inferred from the adult guide. Candidates to verify
+  independently (do not carry the adult guide's list over unexamined —
+  several of its roles are specifically the ones closed to a student by the
+  vulnerable sector check): Toronto Humane Society, Toronto Wildlife
+  Centre, High Park Nature Centre, Daily Bread, FoodShare, Second
+  Harvest's youth programmes if any.
 - Whether each organisation requires parental consent or a school form: that
   organisation's own under-18 policy page, if published; if unpublished, say
   the reader should ask, not invent a policy.
 
 **Do not claim (binding):**
-- Do not restate the vulnerable-sector-check fee table from `/guides/
+- No restating the vulnerable-sector-check fee table from `/guides/
   volunteer-toronto/` — link to it instead.
-- Do not claim a charity accepts under-18 volunteers unless its own page
-  says so; absence of a stated age floor is not evidence it is open to
-  minors.
-- Do not invent a reason students look for these hours ("most students
-  leave it to the last minute") — no invented reader belief.
-- Do not claim the 40-hour count resets or changes year to year without a
+- No claim a charity accepts under-18 volunteers unless its own page says
+  so; absence of a stated age floor is not evidence it is open to minors.
+- No invented reason students look for these hours ("most students leave it
+  to the last minute").
+- No claim the 40-hour count resets or changes year to year without a
   current ontario.ca citation dated in the piece.
-- Do not rank charities by ease or popularity without a supporting row.
-- Do not link any category page other than social-services.
+- No ranking charities by ease or popularity without a supporting row.
+- No link to any category page other than social-services.
 - No bare "real"/"genuine(ly)"/"actually"/"actual" as filler; no verb
   requiring intention or judgement given to a requirement, a page or a
   policy instead of the organisation or the ministry that states it.
@@ -248,11 +237,11 @@ at their age — not a general volunteering article.
 
 ## For Richard
 
-Nothing new needs his input this run. The operational blocker (R-187/
-R-192/R-193: writer-session egress and `DATABASE_URL` provisioning) is
-already open and already his to decide; this run reconfirms it applies to
-both recommissioned guides and routes nothing around it, because unlike the
-events track there is no DB-query substitute for a live charity/outlet/
-ontario.ca fetch. `donate-furniture-toronto` (#9) is deliberately held, not
-commissioned — see "What today commissions" above — pending the pipeline
-fix, not a question for him. No new `[NEEDS RICHARD]` item.
+Nothing new needs his input from this run specifically. The operational
+blockers are already open and already his to decide: R-192 (writer-session
+egress), R-193 (DATABASE_URL absence, and now also the recurring Neon quota
+exhaustion). This run reconfirms both commissions apply unchanged and routes
+nothing around them, because neither has a DB-query substitute for a live
+fetch. `donate-furniture-toronto` (#9) stays deliberately uncommissioned,
+pending the pipeline fix, not a question for him. No new `[NEEDS RICHARD]`
+item.
