@@ -1,6 +1,6 @@
-# Commissions — 21 October 2026 (Wednesday)
+# Commissions — 22 October 2026 (Thursday)
 
-Written by the editor, commissioning run. Wednesday is neither Monday nor
+Written by the editor, commissioning run. Thursday is neither Monday nor
 Friday, so today is one or two guides from the queue per `content-engine.md`.
 
 **No new researcher run since 19 Oct.** `research/EVIDENCE.md` is still that
@@ -9,45 +9,50 @@ re-deriving anything. `content/QUEUE.md` is unchanged since 20 Oct.
 
 ## What today commissions, and what it deliberately does not
 
-Same two clusters as 20 Oct, held steady, not new picks: `donate-hair-toronto`
-(#10) and `volunteer-opportunities-toronto-students` (#6), both still `ready`,
-both still undrafted since first commissioned 15 Oct. `donate-furniture-toronto`
-(#9), the only `ready`-not-yet-commissioned cluster, stays uncommissioned again
-today, for the same reason as yesterday: EVIDENCE.md's standing instruction not
-to add new supply into a pipeline that has drafted nothing since 13 Oct still
-holds — nothing in the last 24 hours gives a reason to revisit that call. If
-anything it is reinforced, see below.
+Same two clusters as 20 and 21 Oct, held steady again, not new picks:
+`donate-hair-toronto` (#10) and `volunteer-opportunities-toronto-students`
+(#6), both still `ready`, both still undrafted since first commissioned 15
+Oct. `donate-furniture-toronto` (#9), the only `ready`-not-yet-commissioned
+cluster, stays uncommissioned again today, for the same reason as the last
+two runs: EVIDENCE.md's standing instruction not to add new supply into a
+pipeline that has drafted nothing since 13 Oct still holds, and nothing
+since 21 Oct gives a reason to revisit that call. This is the third
+consecutive day this commissioning run has held the same two clusters
+unchanged (20, 21, 22 Oct), on top of the original 15 Oct commission — not
+ceremony, since re-issuing an unchanged brief costs nothing and the brief
+needs to exist and be current the day the writer's block actually clears.
 
-**New since yesterday's commissioning run, for context not action:**
-`attribute-brain/todo/toronto-charities.md` R-193's 21 Oct morning-pass update
-records the `tc-backup.yml` dump step as `skipped` on its 20 Oct run, with the
-same Neon quota-exhaustion error that preceded the 19-day outage behind
-R-026 — one skipped run, not yet confirmed as the same deepening pattern, and
-a database/hosting question, not a content one. It does not change what gets
-commissioned today. It is one more sign that this site's constraint this week
-is infrastructure, not a shortage of guides to write, which is exactly
-EVIDENCE.md's point about not piling new commissions onto a blocked pipeline.
-Not filing a new item for it — R-193 already carries it, and todo entries are
-not this file's job.
+**New since yesterday's commissioning run, for context not action:** R-193
+(`attribute-brain/todo/toronto-charities.md`) recorded on 21 Oct that the
+Neon quota-exhaustion check failed a second consecutive time (`tc-backup.yml`
+run 39594015185, "Probe database" reporting `alive=false`, "Dump and commit"
+`skipped`) — by that item's own stated bar, this is no longer "lower stakes,
+not confirmed down" but the same deepening shape that preceded the 19-day
+R-026 outage, with the ~12,640 on-demand charity profile pages now exposed
+to a live, not hypothetical, render failure. This is a database/hosting
+question, not a content one, and it does not change what gets commissioned
+today — if anything it reinforces EVIDENCE.md's point that this site's
+constraint this week is infrastructure, not a shortage of guides to write.
+Not filing a new item for it — R-193 already carries it in full.
 
 ## Operational flags, carried forward, not re-litigated
 
-`attribute-brain/todo/toronto-charities.md` R-187 (15 Oct) and R-192 (16 Oct)
-asked whether writer-type sessions get general web egress at all; still
+`attribute-brain/todo/toronto-charities.md` R-187 (15 Oct) and R-192 (16
+Oct) asked whether writer-type sessions get general web egress at all; still
 unanswered. R-193 (added 18 Oct, updated 19, 20 and 21 Oct) adds that
 `DATABASE_URL` is also absent in at least one writer session, so the DB-query
-fallback the 19 Oct events commission proposed has no guaranteed path either,
-and now also carries the fresh Neon quota-exhaustion finding above. Six
-writer-side blocks running (15, 16, 19, 20 Oct, this makes the fifth
-commissioning day behind the same gap): if today's writer run hits the
-identical fault, that is this same open item surfacing again, not a new one —
-one line on R-193, not a fresh escalation, exactly as the 19 Oct GATE entry
-already asked.
+fallback the 19 Oct events commission proposed has no guaranteed path
+either, and now also carries the deepened Neon quota finding above. Five
+consecutive writer-run failures are already logged in EDITLOG (15, 16, 19,
+20, 21 Oct) on this identical fault; if today's writer run hits it again,
+that is the same open item surfacing again, not a new one — one line on
+R-193, not a fresh escalation, exactly as the 19 Oct GATE entry already
+asked, and exactly as 20 and 21 Oct's commissioning runs already did.
 
 Both commissions below need live fetches (a charity's own page, an outlet or
 ontario.ca page, the live events page) with no database substitute, same as
-20 Oct — this is not the Monday events track, which at least has a DB route
-to fall back on.
+the last two runs — this is not the Monday events track, which at least has
+a DB route to fall back on.
 
 ## Standing rules for both commissions below
 
@@ -77,8 +82,8 @@ Canadian spelling throughout.
 
 **Slug:** `donate-hair-toronto`
 **Working title:** Where to donate hair in Toronto
-**Status:** Held from 20 Oct — commissioned 15 Oct, undrafted since, blocked
-on the egress fault above, not an editorial issue.
+**Status:** Held from 20/21 Oct — commissioned 15 Oct, undrafted since,
+blocked on the egress/DATABASE_URL fault above, not an editorial issue.
 **Cluster / intent tier:** donate hair toronto (90/mo, KD 1) — WINNABLE NOW,
 long-tail, effectively no competing difficulty.
 
@@ -151,8 +156,8 @@ encouragement.
 
 **Slug:** `volunteer-opportunities-toronto-students`
 **Working title:** Volunteer opportunities for students in Toronto
-**Status:** Held from 20 Oct — commissioned 15 Oct, undrafted since, blocked
-on the egress fault above, not an editorial issue.
+**Status:** Held from 20/21 Oct — commissioned 15 Oct, undrafted since,
+blocked on the egress/DATABASE_URL fault above, not an editorial issue.
 **Cluster / intent tier:** volunteer opportunities toronto for students
 (200/mo, KD 8) — WINNABLE NOW.
 
@@ -239,9 +244,9 @@ at their age — not a general volunteering article.
 
 Nothing new needs his input from this run specifically. The operational
 blockers are already open and already his to decide: R-192 (writer-session
-egress), R-193 (DATABASE_URL absence, and now also the recurring Neon quota
-exhaustion). This run reconfirms both commissions apply unchanged and routes
-nothing around them, because neither has a DB-query substitute for a live
-fetch. `donate-furniture-toronto` (#9) stays deliberately uncommissioned,
-pending the pipeline fix, not a question for him. No new `[NEEDS RICHARD]`
-item.
+egress), R-193 (DATABASE_URL absence, and the now-deepened Neon quota
+exhaustion affecting on-demand profile pages). This run reconfirms both
+commissions apply unchanged and routes nothing around them, because neither
+has a DB-query substitute for a live fetch. `donate-furniture-toronto` (#9)
+stays deliberately uncommissioned, pending the pipeline fix, not a question
+for him. No new `[NEEDS RICHARD]` item.
