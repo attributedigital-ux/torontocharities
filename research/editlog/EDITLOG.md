@@ -640,3 +640,34 @@ carries the open question. Separately, R-213 (Neon quota, three-plus
 consecutive skipped daily backups) also remains open, unrelated code fix
 available to either fleet role — both are account-level decisions waiting on
 Richard.
+
+## GATE run — 26 October 2026 — NOTHING TO REVIEW
+
+`content/drafts/` still does not exist; no draft files anywhere outside
+`content/published/`. `content/approved/` also does not exist. Confirmed
+independently this session rather than trusting prior logs: `curl` to
+`toronto-charities.ca` got `CONNECT tunnel failed, response 403`, the proxy's
+own status endpoint logging it as `connect_rejected` ("gateway answered 403
+to CONNECT"), the identical signal as every confirmation back to 21 October;
+the status endpoint also reports the policy as non-selective
+(`"selective": false`), so this is a blanket egress block for the session
+type, not a per-host rule. `env` carries neither `DATABASE_URL` nor
+`ANTHROPIC_API_KEY`, same as every prior run back to R-193's first finding.
+Cross-checked `attribute-brain/todo/toronto-charities.md` directly rather
+than assuming from this log alone: R-192, R-193, R-213 and R-170 are all
+still open with no new update since the 22–23 Oct entries already cited
+here. Today's COMMISSIONS.md (26 Oct, Monday events track) independently
+confirms the same block for the writer's commission
+(`charity-events-toronto-week-of-2026-10-26`) and logs it as the eighth
+weekday session to hit this fault. Per content-editor.md cost discipline
+("Nothing in content/drafts/? Stop in one line"), stopping here;
+`content/published/` work stays as gated 13 October.
+
+This is the eighth consecutive GATE run finding nothing to review (15, 16,
+19, 20, 21, 22, 23, 26 Oct) — thirteen calendar days, nine weekday sessions
+since 13 October with no writer run producing a draft. Not re-escalating as
+a new item: R-192/R-193 already carry the open egress/`DATABASE_URL`
+question and a ninth log entry restating it changes nothing; R-213 (Neon
+backup skips) and R-170 (category mapping) are unrelated and also already
+open. All four remain Richard's decisions, not something either fleet role
+can fix from inside a session.
