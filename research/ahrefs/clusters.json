@@ -1,5 +1,5 @@
 {
-  "pulled": "2026-10-19",
+  "pulled": "2026-10-26",
   "pull_params": {
     "tool": "keywords-explorer-matching-terms",
     "country": "ca",
@@ -7,25 +7,32 @@
     "keywords": "volunteer toronto,volunteer opportunities toronto,where to donate clothes toronto,where to donate books toronto,where to donate furniture toronto,charity events toronto,charities in toronto,food bank toronto",
     "units_spent": 1452
   },
-  "note": "terms=questions only, per researcher brief. Head seed terms themselves (e.g. 'volunteer toronto' 2,800/mo) are not question-phrased so do not appear here; their volumes/KD are carried forward unchanged from the 13 Oct all-terms pull already in QUEUE.md. This pull's job is the question long-tail under each seed, for FAQ material and to re-check winnability, not to replace the head-term numbers.",
+  "note": "Third pull for these seeds (13 Oct all-terms, 19 Oct questions, this one). terms=questions only, per researcher brief. Head seed terms themselves (e.g. 'volunteer toronto' 2,800/mo) are not question-phrased so do not appear here; their volumes/KD are carried forward unchanged from the 13 Oct all-terms pull already in QUEUE.md. This pull's job is the question long-tail under each seed, for FAQ material and to re-check winnability, not to replace the head-term numbers.",
+  "delta_vs_19_oct_pull": [
+    "where to donate clothes toronto: volume 100 -> 90, difficulty unchanged at 0. Normal estimate drift, no re-rank.",
+    "where to donate books toronto: difficulty 3 -> 6, volume unchanged at 90. Still far below the preposition variant's KD; no re-rank.",
+    "where to donate books in toronto (preposition variant, not commissioned on its own per 19 Oct 'what NOT to write'): difficulty 23 -> 6. Large drop, still a 'do not chase separately' variant of the published cluster, not a new opportunity.",
+    "where can i volunteer in toronto: difficulty 0 -> 18, volume unchanged at 10. Score drops 10 -> 0.53. Still folds into volunteer-toronto (published); does not change that fold.",
+    "furniture bank / where to donate furniture toronto: volume 60, difficulty 7, both unchanged. SERP caveat (parent_topic reads as a single strong incumbent, Furniture Bank Toronto's own site) stands unchanged."
+  ],
   "clusters": [
     {
       "parent_topic": "where to donate clothes toronto",
-      "score": 100,
+      "score": 90,
       "status": "published (where-to-donate-clothes-toronto)",
       "questions": [
-        { "keyword": "where to donate clothes toronto", "volume": 100, "difficulty": 0, "cpc": 25 },
-        { "keyword": "where to donate clothes in toronto", "volume": 10, "difficulty": 2, "parent_topic": "donate clothes toronto", "cpc": 60 }
+        { "keyword": "where to donate clothes toronto", "volume": 90, "difficulty": 0, "cpc": null },
+        { "keyword": "where to donate clothes in toronto", "volume": 10, "difficulty": 2, "parent_topic": "donate clothes toronto", "cpc": null }
       ]
     },
     {
       "parent_topic": "where to donate books toronto",
-      "score": 22.5,
+      "score": 12.86,
       "status": "published (where-to-donate-books-toronto)",
       "questions": [
-        { "keyword": "where to donate books toronto", "volume": 90, "difficulty": 3, "cpc": 40 },
-        { "keyword": "where to donate books in toronto", "volume": 10, "difficulty": 23, "cpc": null, "note": "same cluster, 8x harder than the head term — a scoring artefact per seo-researcher.md; do not chase this variant on its own" },
-        { "keyword": "where to donate used books toronto", "volume": 0, "difficulty": 4, "cpc": null }
+        { "keyword": "where to donate books toronto", "volume": 90, "difficulty": 6, "cpc": null },
+        { "keyword": "where to donate books in toronto", "volume": 10, "difficulty": 6, "note": "same cluster, do not chase this variant on its own (unchanged ruling from 19 Oct pull, when its difficulty read 23)" },
+        { "keyword": "where to donate used books toronto", "volume": 0, "difficulty": 6, "cpc": null }
       ]
     },
     {
@@ -33,11 +40,11 @@
       "score": 7.5,
       "status": "ready, not yet commissioned (#9 donate-furniture-toronto)",
       "questions": [
-        { "keyword": "where to donate furniture toronto", "volume": 60, "difficulty": 7, "cpc": 25 },
-        { "keyword": "where to donate furniture in toronto", "volume": 10, "difficulty": 7, "parent_topic": "furniture bank toronto", "cpc": 25 },
+        { "keyword": "where to donate furniture toronto", "volume": 60, "difficulty": 7, "cpc": null },
+        { "keyword": "where to donate furniture in toronto", "volume": 10, "difficulty": 7, "parent_topic": "furniture bank toronto", "cpc": null },
         { "keyword": "where to donate used furniture in toronto", "volume": 0, "difficulty": null, "cpc": null }
       ],
-      "serp_note": "parent_topic is literally 'furniture bank' / 'furniture bank toronto' — the #1 ranking page for this cluster is almost certainly Furniture Bank Toronto's own site, a strong single-charity incumbent, not a thin or irrelevant SERP. KD 7 reads as winnable by the raw score but check the SERP before promising a quick win; this is the borderline case the two-tier split exists for."
+      "serp_note": "Unchanged from 19 Oct: parent_topic is literally 'furniture bank' / 'furniture bank toronto' — the #1 ranking page is almost certainly Furniture Bank Toronto's own site, a strong single-charity incumbent, not a thin or irrelevant SERP. KD 7 reads as winnable by the raw score but check the live SERP before promising a quick win; this is the borderline case the two-tier split exists for."
     },
     {
       "parent_topic": "volunteering ontario",
@@ -52,26 +59,37 @@
       "score": 2.86,
       "status": "covered by volunteer-toronto (published)",
       "questions": [
-        { "keyword": "where to volunteer in toronto", "volume": 20, "difficulty": 6, "cpc": 20 },
+        { "keyword": "where to volunteer in toronto", "volume": 20, "difficulty": 6, "cpc": null },
         { "keyword": "where to volunteer toronto", "volume": 20, "difficulty": null, "cpc": null }
       ]
     },
     {
       "parent_topic": "volunteer opportunities toronto",
-      "score": 10,
+      "score": 0.53,
       "status": "covered by volunteer-toronto (published) — same reader as #1, already folded 13 Oct",
       "questions": [
-        { "keyword": "where can i volunteer in toronto", "volume": 10, "difficulty": 0, "cpc": null }
+        { "keyword": "where can i volunteer in toronto", "volume": 10, "difficulty": 18, "note": "difficulty read 0 on 19 Oct, now 18 — scoring artefact on a 10/mo term, does not change the fold decision" }
       ]
     }
   ],
   "zero_volume_questions_seen_not_scored": [
     "where to donate old books in toronto", "how many people volunteer in toronto",
-    "how to volunteer toronto election campaign", "where to donate baby clothes toronto",
+    "how to volunteer toronto election campaign", "where to donate books toronto 2022",
+    "where to donate baby clothes toronto", "where to donate books and dvds toronto",
     "where can kids volunteer in toronto", "how to use food bank toronto",
-    "where to donate used clothes toronto", "how to get food from food bank toronto",
-    "where to get volunteer hours in toronto", "how to find volunteer opportunities in toronto",
-    "where to donate children's clothes toronto"
+    "how to volunteer for psychedelic research toronto", "where to donate used books in toronto",
+    "toronto where to donate books", "how to volunteer firefighter toronto",
+    "where to donate clothes toronto during covid", "where to donate winter clothes toronto",
+    "how to get food from food bank toronto", "toronto where to donate clothes",
+    "how to volunteer for a charity toronto", "where to donate used clothes toronto",
+    "where to donate books toronto during covid", "how do i get food from the food bank in toronto?",
+    "where to donate books toronto 2021", "where to donate clothes downtown toronto",
+    "where can i volunteer to help animals toronto", "how to volunteer for the city of toronto",
+    "where to get volunteer hours in toronto", "where to donate children's clothes toronto",
+    "how to find volunteer opportunities in toronto", "where to donate old clothes toronto",
+    "where to donate books toronto 2020", "where to donate clothes during covid toronto",
+    "where to volunteer this christmas in toronto", "where to donate used furniture in toronto",
+    "where to donate clothes toronto covid"
   ],
   "no_results": [
     "charity events toronto", "charities in toronto", "food bank toronto — no question-phrased volume above the items listed under the other parent topics"
