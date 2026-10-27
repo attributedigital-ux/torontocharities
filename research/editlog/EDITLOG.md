@@ -671,3 +671,35 @@ question and a ninth log entry restating it changes nothing; R-213 (Neon
 backup skips) and R-170 (category mapping) are unrelated and also already
 open. All four remain Richard's decisions, not something either fleet role
 can fix from inside a session.
+
+## DESIGNER run — 27 October 2026 — NOTHING TO REVIEW
+
+`content/drafts/` still does not exist, confirmed independently this
+session (`ls` fails: no such directory), and neither does `content/images/`
+or `content/approved/`. No draft carries imagery work because no draft
+exists anywhere outside `content/published/`, where the four published
+guides already got their drawn figures on 13–14 Oct (volunteer-toronto's
+police-check-fee timeline, soup-kitchen-volunteer-toronto's Daily Bread
+shift timeline, the clothes and books guides' donation-use/sale-proceeds
+figures) — nothing new to add there and no fifth guide has shipped since.
+Independently re-verified rather than trusted from COMMISSIONS.md: `curl`
+to `toronto-charities.ca` got the identical `CONNECT tunnel failed,
+response 403`, proxy status endpoint logging `connect_rejected`, policy
+`"selective": false` — same blanket block as every confirmation since 21
+Oct. Cross-checked `attribute-brain/todo/toronto-charities.md` directly:
+R-192, R-193, R-213 and R-170 are all still open, last updated 26 Oct, no
+new entry since. Today's `COMMISSIONS.md` (27 Oct) independently confirms
+the same fault blocking both of today's commissions
+(`volunteer-opportunities-toronto-students`, `donate-hair-toronto`) before
+either reaches a writer draft. No PENDING.md entry to add either: no draft
+names a charity, so no logo lookup is owed. Per content-designer.md's own
+cost discipline ("No draft missing a hero? Stop in one line") and the
+sibling GATE log's established pattern, stopping here rather than
+generating anything.
+
+This is the ninth consecutive weekday session (15, 16, 19, 20, 21, 22, 23,
+26, 27 Oct) to find no writer output at all — fourteen calendar days since
+13 October. Not re-escalating: R-192/R-193 already carry the open egress/
+`DATABASE_URL` question and a tenth log entry restating it changes nothing;
+R-213 and R-170 are unrelated and also already open. All remain Richard's
+decisions.
