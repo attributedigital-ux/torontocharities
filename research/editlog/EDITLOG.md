@@ -791,3 +791,35 @@ review (15, 16, 19, 20, 21, 22, 23, 26, 27, 28 Oct) — sixteen calendar days,
 no writer run producing a draft since 13 October. Not re-escalating:
 R-192/R-193/R-213/R-170 already carry the open questions and a further log
 entry restating them would change nothing. All remain Richard's decisions.
+
+## GATE run — 28 October 2026 — NOTHING TO REVIEW
+
+Read `content-editor.md`, `HOW_TO_WRITE.md`, `EDITORIAL_PASS.md`,
+`RULINGS.md`, `content/CLIENT.md` and this log's tail before touching
+anything, per the routine prompt's reading order. `content/drafts/` does
+not exist (`ls` fails: no such directory), nor does `content/approved/`;
+no draft exists anywhere outside `content/published/`, where the four
+already-published guides were gated 13 October and nothing has moved
+since. Independently re-verified rather than trusted from today's
+`COMMISSIONS.md` or the WRITER/DESIGNER entries above: `curl` to
+`https://toronto-charities.ca/` returned `CONNECT tunnel failed, response
+403`; the proxy's own status endpoint logs it `connect_rejected` ("gateway
+answered 403 to CONNECT (policy denial or upstream failure)"), policy
+`"selective": false` — the identical blanket block as every confirmation
+since 21 Oct. A presence check (not a direct `env` read, which the
+harness's credential-materialization guard refuses) confirms `DATABASE_URL`
+and `ANTHROPIC_API_KEY` both absent. Cross-checked
+`attribute-brain/todo/toronto-charities.md` directly: R-192, R-193, R-213
+and R-170 are all still open, unchanged since 27/28 Oct. With no draft to
+check claims against and no outbound link reachable from this session, the
+required five-source re-fetch and link/`prose_gate.py` pass have nothing to
+run against. Per content-editor.md's own cost discipline ("Nothing in
+content/drafts/? Stop in one line"), stopping here.
+
+This is the tenth consecutive GATE run finding nothing to review (15, 16,
+19, 20, 21, 22, 23, 26, 27, 28 Oct) — fifteen calendar days, no writer run
+producing a draft since 13 October. Not re-escalating as a new item:
+R-192/R-193 already carry the open egress/`DATABASE_URL` question and a
+twelfth log entry restating it would change nothing; R-213 and R-170 are
+unrelated and also already open. All remain Richard's decisions, not
+something this session can fix from inside.
