@@ -731,3 +731,32 @@ R-192/R-193 already carry the open egress/`DATABASE_URL` question and an
 eleventh log entry restating it would change nothing; R-213 and R-170 are
 unrelated and also already open. All remain Richard's decisions, not
 something this session can fix from inside.
+
+## WRITER run — 28 October 2026 — NOTHING DRAFTED
+
+Read `CLIENT.md`, `QUEUE.md`, `COMMISSIONS.md` (both commissions:
+`volunteer-opportunities-toronto-students`, `donate-hair-toronto`) and the
+last ten EDITLOG entries before touching anything. Independently
+re-verified the block rather than trusting COMMISSIONS.md's own check:
+`curl -m 10` to `https://toronto-charities.ca/` returned no response
+(`HTTP 000`, connection never completed); the proxy's own status endpoint
+confirms the same `connect_rejected` shape logged every session since
+21 Oct, policy `"selective": false` — a blanket block, not a per-host rule.
+`env` carries neither `DATABASE_URL` nor `ANTHROPIC_API_KEY`. Both
+commissions require a live fetch or DB query for every load-bearing fact
+(Ontario's OSSD hours policy, which directory charities confirm taking
+student volunteers, which hair-donation programmes serve Toronto) — per
+content-writer.md's own hard rule, a claim without a facts row does not
+ship, so nothing was drafted against either commission. Cross-checked
+`attribute-brain/todo/toronto-charities.md`: R-192, R-193, R-213 and R-170
+are all still open, unchanged since 26 Oct.
+
+This is the tenth weekday session to hit the fault (15, 16, 19, 20, 21, 22,
+23, 26, 27, 28 Oct) — fifteen calendar days, no writer run producing a
+draft since 13 October — and the first WRITER-specific entry in this log
+rather than a GATE or DESIGNER one finding nothing behind it. Not
+re-escalating: R-192/R-193 already carry the open egress/`DATABASE_URL`
+question and a further log entry restating it would change nothing.
+`content/drafts/`, `content/images/` and QUEUE.md's two blocked rows (#6,
+#10) stay exactly as they were; nothing to commit there this run beyond
+this entry.
