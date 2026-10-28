@@ -760,3 +760,34 @@ question and a further log entry restating it would change nothing.
 `content/drafts/`, `content/images/` and QUEUE.md's two blocked rows (#6,
 #10) stay exactly as they were; nothing to commit there this run beyond
 this entry.
+
+## DESIGNER run — 28 October 2026 — NOTHING TO REVIEW
+
+Read `content-designer.md` and `content/CLIENT.md` per the routine prompt
+before touching anything. Independently re-verified rather than trusted
+from today's `COMMISSIONS.md` or the WRITER run's log entry above:
+`ls content/drafts content/approved content/images` — none of the three
+exist. `curl -m 10` to `https://toronto-charities.ca/` got `CONNECT tunnel
+failed, response 403`; the proxy's own status endpoint logs it
+`connect_rejected`, "gateway answered 403 to CONNECT (policy denial or
+upstream failure)", policy `"selective": false` — the identical blanket
+block logged every session since 21 Oct. `DATABASE_URL` and
+`ANTHROPIC_API_KEY` both confirmed absent (presence check, not a direct
+read). Cross-checked `attribute-brain/todo/toronto-charities.md` directly:
+R-192, R-193, R-213 and R-170 all still open, unchanged since 27 Oct.
+
+No draft exists anywhere to give imagery to: the writer run logged above
+drafted nothing against either of today's commissions for the same reason.
+There is therefore no figure to draw (Richard's 13 Oct ruling: a figure
+traces to a facts row in a draft's own research file — there is no draft
+and no new facts row to trace to) and no charity name to add to a
+`content/images/PENDING.md` that itself does not exist. The four guides in
+`content/published/` already carry their drawn figures and real logos from
+13 to 14 Oct; nothing new to add there. Per content-designer.md's own cost
+discipline ("No draft missing a hero? Stop in one line"), stopping here.
+
+This is the tenth consecutive DESIGNER-or-equivalent run finding nothing to
+review (15, 16, 19, 20, 21, 22, 23, 26, 27, 28 Oct) — sixteen calendar days,
+no writer run producing a draft since 13 October. Not re-escalating:
+R-192/R-193/R-213/R-170 already carry the open questions and a further log
+entry restating them would change nothing. All remain Richard's decisions.
