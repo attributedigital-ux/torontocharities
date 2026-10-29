@@ -823,3 +823,34 @@ R-192/R-193 already carry the open egress/`DATABASE_URL` question and a
 twelfth log entry restating it would change nothing; R-213 and R-170 are
 unrelated and also already open. All remain Richard's decisions, not
 something this session can fix from inside.
+
+## WRITER run — 29 October 2026 — NOTHING DRAFTED
+
+Read `content-writer.md`, today's `COMMISSIONS.md` (both commissions:
+`volunteer-opportunities-toronto-students`, `donate-hair-toronto`),
+`content/CLIENT.md` and this log's last ten entries before touching
+anything, per the reading order. Independently re-verified the block
+rather than trusting COMMISSIONS.md's own check: `curl -m 10` to
+`https://toronto-charities.ca/charity-events-toronto/` and to
+`/profile/volunteer-toronto/` both returned `000` (connection never
+completed, exit 56); the proxy's own status endpoint logs the failure
+`connect_rejected`, "gateway answered 403 to CONNECT," policy
+`"selective": false` — the identical blanket block logged every session
+since 21 Oct. A presence check confirms `DATABASE_URL` and
+`ANTHROPIC_API_KEY` both absent. Both commissions need a live fetch or DB
+query for every load-bearing fact (Ontario's OSSD hours policy, which
+directory charities confirm taking student volunteers, which hair-donation
+programmes serve Toronto); per content-writer.md's own hard rule, a claim
+without a facts row does not ship, so nothing was drafted against either
+commission. Cross-checked `attribute-brain/todo/toronto-charities.md`
+directly: R-192, R-193, R-213 and R-170 are all still open, unchanged
+since 27 Oct.
+
+This is the eleventh weekday session to hit the fault (15, 16, 19, 20, 21,
+22, 23, 26, 27, 28, 29 Oct) — sixteen calendar days, no writer run
+producing a draft since 13 October. Not re-escalating: R-192/R-193 already
+carry the open egress/`DATABASE_URL` question and a further log entry
+restating it would change nothing; R-213 and R-170 are unrelated and also
+already open. `content/drafts/` and QUEUE.md's two blocked rows (#6, #10)
+stay exactly as they were; nothing to commit there this run beyond this
+entry.
