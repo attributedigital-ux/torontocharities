@@ -1,22 +1,21 @@
-# Commissions — 28 October 2026 (Wednesday)
+# Commissions — 29 October 2026 (Thursday)
 
-Written by the editor, commissioning run. Wednesday is neither Monday nor
+Written by the editor, commissioning run. Thursday is neither Monday nor
 Friday, so per `CLIENT.md`/`content-engine.md` today commissions one or two
 guides from `QUEUE.md`, not either fixed weekly track.
 
 ## Connectivity, checked this session
 
-`curl -m 10` to `toronto-charities.ca` got `CONNECT tunnel failed, response
-403`; the proxy's own status endpoint logs it `connect_rejected` and reports
-the policy as non-selective (`"selective": false`) — a blanket block for
-this session type, not a per-host rule, same reading as every confirmation
-since 21 Oct. `env` carries neither `DATABASE_URL` nor `ANTHROPIC_API_KEY`.
-Both identical to every confirmation since 21 Oct. This is the **tenth**
-weekday session to hit the fault (15, 16, 19, 20, 21, 22, 23, 26, 27, 28
-Oct) — fifteen calendar days, no writer run producing a draft since 13 Oct.
+`curl -m 10 -v` to `https://toronto-charities.ca/charity-events-toronto/`
+got `CONNECT tunnel failed, response 403` on the proxy's own CONNECT
+negotiation (full verbose log kept this session) — the identical signal as
+every confirmation since 21 Oct. `DATABASE_URL` and `ANTHROPIC_API_KEY` are
+both confirmed absent (`test -n` presence check). This is the **eleventh**
+weekday session to hit the fault (15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29
+Oct) — sixteen calendar days, no writer run producing a draft since 13 Oct.
 Not re-escalating: `attribute-brain/todo/toronto-charities.md` R-192 and
 R-193 already carry the open question (provision egress, provision
-`DATABASE_URL`, or both) and an eleventh log entry restating it would change
+`DATABASE_URL`, or both) and a further log entry restating it would change
 nothing. Filed as today's data point only.
 
 **This means both commissions below inherit the same block every commission
@@ -50,30 +49,26 @@ the writer's block actually lifts.
 ## Operational flags, carried forward, not re-litigated
 
 `attribute-brain/todo/toronto-charities.md` R-192 (egress) and R-193
-(`DATABASE_URL`/Neon quota) remain open and unanswered. R-213 (three-plus
-consecutive skipped Neon backups, opened 22 Oct on the same underlying
-quota exhaustion) and R-170 (category-page mapping) are also unchanged.
-None of these is a content decision; all four are Richard's calls.
+(`DATABASE_URL`/Neon quota) remain open and unanswered, last updated 27 Oct.
+R-213 (three-plus consecutive skipped Neon backups, opened 22 Oct on the
+same underlying quota exhaustion) and R-170 (category-page mapping) are
+also unchanged. None of these is a content decision; all four are Richard's
+calls.
 
-## Correction to the fixed-track backlog (27 Oct's note was incomplete)
+## Fixed-track backlog, unchanged from 28 Oct's note
 
-27 Oct's commission listed only `toronto-charity-news-2026-10-16` and
-`charity-events-toronto-week-of-2026-10-19` as the undrafted fixed-track
-issues, which undercounts it: `toronto-charity-news-2026-10-23` (the Friday
-track, commissioned 23 Oct, never drafted) is also still open, and is the
-**current** news issue, not a stale one — the next Friday issue isn't due
-until 30 Oct. Reading the fixed tracks the same way Monday's events issue
-already works (a newer issue supersedes the older one of the same track,
-per `CLIENT.md`'s dated-record rule), the accurate state is:
-- `toronto-charity-news-2026-10-16` — stale, superseded by 10-23's issue.
-- `toronto-charity-news-2026-10-23` — **current**, undrafted, awaiting
-  30 Oct's issue or the block clearing first.
+Reading the fixed tracks the same way they already work (a newer issue
+supersedes the older one of the same track, per `CLIENT.md`'s dated-record
+rule):
+- `toronto-charity-news-2026-10-16` and `toronto-charity-news-2026-10-23` —
+  the latter is **current**, undrafted, same block; the next Friday issue
+  (30 Oct) is tomorrow and will supersede it if it ever drafts first.
 - `charity-events-toronto-week-of-2026-10-19` — stale, superseded by
   10-26's issue.
 - `charity-events-toronto-week-of-2026-10-26` — **current**, undrafted,
   awaiting 2 Nov's issue or the block clearing first.
-Today is Wednesday, so neither fixed track is re-commissioned here; both
-current issues above stay as they are until their own Monday/Friday or
+Today is Thursday, so neither fixed track is re-commissioned here; both
+current issues above stay as they are until their own Friday/Monday or
 until a writer run finally reaches one.
 
 ## Standing rules for both commissions below
@@ -174,10 +169,9 @@ fault — picked up again unchanged.
 decided to donate and wants the actual steps.
 
 **Angle (one sentence):** Someone in Toronto who wants to donate hair gets
-the real, current requirements of the organisations that accept it and an
-honest account of which model applies — a Toronto drop-off versus a
-mail-in national programme — named only where a charity's own site
-confirms it.
+the current requirements of the organisations that accept it and an honest
+account of which model applies — a Toronto drop-off versus a mail-in
+national programme — named only where a charity's own site confirms it.
 
 **What it must answer:**
 1. Which organisations actually accept hair donations, confirmed on their
@@ -227,26 +221,20 @@ confirms it.
 
 `donate-furniture-toronto` (#9) stays held, same reasoning as every run
 since 13 Oct: no new supply into a pipeline that has drafted nothing in
-fifteen calendar days, and per `EVIDENCE.md`'s standing caveat (three pulls
+sixteen calendar days, and per `EVIDENCE.md`'s standing caveat (three pulls
 now, 13/19/26 Oct) its parent_topic is literally "furniture bank," a real
 single-charity incumbent — still unchecked at the SERP, so it is not
 promised as an easy score to whoever eventually commissions it. Today's two
 commissions (above) satisfy the day's "one or two guides" instruction
 without adding a third item to the undrafted backlog.
 
-The fixed-track backlog is corrected above: `toronto-charity-news-2026-10-16`
-and `charity-events-toronto-week-of-2026-10-19` are stale and superseded;
-`toronto-charity-news-2026-10-23` and `charity-events-toronto-week-of-
-2026-10-26` are the current issues of each track and remain undrafted,
-same block.
-
 ## For Richard
 
 Nothing new needs his input from this run specifically. R-192 (writer/
 gate/researcher/commissioning egress) and R-193 (`DATABASE_URL` absence,
 Neon quota) already carry the operational blocker; today adds one data
-point (confirmed independently this session, tenth weekday session, fifteen
-calendar days) to that record, logged above, not re-filed. No new
+point (confirmed independently this session, eleventh weekday session,
+sixteen calendar days) to that record, logged above, not re-filed. No new
 `[NEEDS RICHARD]` item. R-170 (category-page mapping) and R-213 (Neon
 backup-skip recurrence) remain open on the same todo file, unaffected by
 today's run.
