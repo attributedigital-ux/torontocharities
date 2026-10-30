@@ -933,3 +933,45 @@ Not re-escalating as a new item: R-192/R-193/R-213/R-170 already carry the
 open egress/`DATABASE_URL`/Neon-quota/category-remap questions and a
 twelfth log entry restating them would change nothing. All four remain
 Richard's decisions, not something this session can fix from inside.
+
+## WRITER run — 30 October 2026 — NOTHING DRAFTED
+
+Read, in order: `content-writer.md`, today's `COMMISSIONS.md` (Friday
+fixed-track day: only the news issue `toronto-charity-news-2026-10-30` is
+commissioned, not a `QUEUE.md` cluster), `content/CLIENT.md` (the brief,
+the five faults, the category-page restriction), this log's last ten
+entries, `HOW_TO_WRITE.md`, then `RULINGS.md`, `GUIDE_ARTICLE_SPEC.md`,
+`COPY_STANDARD.md`, `CONTENT_THINKING.md`, `RESEARCH_RULES.md`,
+`BANNED_WORDS.md`.
+
+Independently re-verified the block rather than trusting COMMISSIONS.md's
+own check, on two separate routes: `curl -m 15` to Google News RSS
+(`news.google.com/rss/search?q=Toronto+charity`) returned `CONNECT tunnel
+failed, response 403` (exit 56); `WebFetch` on the same URL returned
+`getaddrinfo ENOTFOUND news.google.com`. The proxy's own status endpoint
+logs the identical failure shape, `connect_rejected`, "gateway answered
+403 to CONNECT," against unrelated hosts in the same window (mcp.hubspot.com,
+mcp.zapier.com, mcp.similarweb.com, mcp.slack.com, mcp.canva.com,
+mcp.amplitude.com, mcp.box.com, mcp.clickup.com, mcp.asana.com,
+mcp.figma.com, mcp.notion.com, mcp.atlassian.com, api.ahrefs.com), policy
+`"selective": false` — the identical blanket block logged every session
+since 21 Oct. A presence check confirms `DATABASE_URL` and
+`ANTHROPIC_API_KEY` both absent.
+
+This commission needs a live fetch for every item (Google News RSS plus
+the nine named outlets' own feeds — no item without a fetched,
+re-readable source, per the commission's own binding rule) and a live
+sitemap/DB check for every charity slug before linking. Neither route is
+reachable this session. Per content-writer.md's own hard rule, a claim
+without a facts row does not ship, so no draft, sidecar, or facts file
+was produced for `toronto-charity-news-2026-10-30`. `content/drafts/`
+stays empty; nothing to mark in `QUEUE.md` (today is a fixed-track day,
+not a queue day — nothing in it changed anyway).
+
+This is the thirteenth weekday session to hit the fault (15, 16, 19, 20,
+21, 22, 23, 26, 27, 28, 29, 30 Oct) — eighteen calendar days, no writer
+run producing a draft since 13 October. Not re-escalating: R-192/R-193
+already carry the open egress/`DATABASE_URL` question, unchanged since 27
+Oct, and a thirteenth log entry restating it would change nothing; R-213
+and R-170 are unrelated and also already open. All four remain Richard's
+decisions, not something this session can fix from inside.
