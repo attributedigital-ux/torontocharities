@@ -1,240 +1,158 @@
-# Commissions — 29 October 2026 (Thursday)
+# Commissions — 30 October 2026 (Friday)
 
-Written by the editor, commissioning run. Thursday is neither Monday nor
-Friday, so per `CLIENT.md`/`content-engine.md` today commissions one or two
-guides from `QUEUE.md`, not either fixed weekly track.
+Written by the editor, commissioning run. Friday is a fixed-track day: per
+`CLIENT.md`/`content-engine.md`, today commissions only "Toronto charity
+news this week" (Track 2), not a guide from `QUEUE.md`. The fixed tracks
+take priority over the queue on their own day.
 
 ## Connectivity, checked this session
 
-`curl -m 10 -v` to `https://toronto-charities.ca/charity-events-toronto/`
-got `CONNECT tunnel failed, response 403` on the proxy's own CONNECT
-negotiation (full verbose log kept this session) — the identical signal as
-every confirmation since 21 Oct. `DATABASE_URL` and `ANTHROPIC_API_KEY` are
-both confirmed absent (`test -n` presence check). This is the **eleventh**
-weekday session to hit the fault (15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29
-Oct) — sixteen calendar days, no writer run producing a draft since 13 Oct.
-Not re-escalating: `attribute-brain/todo/toronto-charities.md` R-192 and
-R-193 already carry the open question (provision egress, provision
-`DATABASE_URL`, or both) and a further log entry restating it would change
-nothing. Filed as today's data point only.
+`curl -m 10` to `https://toronto-charities.ca/charity-events-toronto/`
+returned `000` (connection never completed). The proxy's own status
+endpoint logs the identical `connect_rejected` shape ("gateway answered 403
+to CONNECT") against unrelated hosts in the same window (api.ahrefs.com,
+mcp.atlassian.com, mcp.docusign.com, mcp.zapier.com, mcp.linear.app),
+confirming — as every session since 21 Oct has — that this is a blanket
+block for the session type (`"selective": false`), not a dead page.
+`DATABASE_URL` and `ANTHROPIC_API_KEY` are both confirmed absent (presence
+check). This is the **twelfth** weekday session to hit the fault (15, 16,
+19, 20, 21, 22, 23, 26, 27, 28, 29, 30 Oct) — seventeen calendar days, no
+writer run producing a draft since 13 October.
 
-**This means both commissions below inherit the same block every commission
+**This means today's commission inherits the same block every commission
 since 15 Oct has logged.** Per `content-writer.md`'s own hard rule, the
-writer drafts nothing against either commission until a live fetch or a DB
-query actually returns data, and logs which route it tried rather than
-re-describing the fault.
+writer drafts nothing until a live fetch (Google News RSS, the named
+outlet feeds) actually returns data, and logs which route it tried rather
+than re-describing the fault. Not re-escalating as a new item:
+`attribute-brain/todo/toronto-charities.md` R-192 (egress) and R-193
+(`DATABASE_URL`/Neon quota) already carry the open question, unchanged
+since 27 Oct; a thirteenth log entry restating it would change nothing.
+R-213 (Neon backup skips) and R-170 (category-page mapping) are also
+unchanged. All four remain Richard's decisions.
 
 ## No new researcher run since 26 Oct
 
 `research/EVIDENCE.md` is still the 26 Oct pull; `content/QUEUE.md` is
-unchanged since. Nothing in either has moved, so this run reads them rather
-than re-deriving anything. The next researcher pull is due 2 Nov (Monday).
+unchanged since. The next researcher pull is due 2 Nov (Monday). Not
+relevant to today's commission anyway — the weekly tracks run on schedule,
+not from the queue (`QUEUE.md` line 3).
 
-## What today commissions, and what it deliberately does not
+## Fixed-track backlog, carried forward
 
-Same two clusters as every run since 20 Oct, held steady again, not new
-picks: `volunteer-opportunities-toronto-students` (#6) and
-`donate-hair-toronto` (#10), both still `ready`, both still undrafted since
-first commissioned 15 Oct. `donate-furniture-toronto` (#9), the only
-`ready`-not-yet-commissioned cluster, stays uncommissioned again today, same
-reasoning as every run since 13 Oct: `EVIDENCE.md`'s standing instruction
-not to add new supply into a pipeline that has drafted nothing since 13 Oct
-still holds, and its SERP caveat (parent_topic is literally "furniture
-bank," most likely a real single-charity incumbent, unchecked at the SERP
-across three pulls now) means it should not be handed to a writer as an
-easy score the first time the block clears either. Re-issuing an unchanged
-brief costs nothing, and the brief needs to exist and be current the day
-the writer's block actually lifts.
+Reading the fixed tracks the way `CLIENT.md`'s dated-record rule says they
+work — a newer issue supersedes the older one of the same track:
+- `toronto-charity-news-2026-10-16` and `-10-23` — both stale, both
+  undrafted, both superseded by today's issue below.
+- `charity-events-toronto-week-of-2026-10-19` and `-10-26` — the latter is
+  **current**, undrafted, same block; the next Monday issue (2 Nov) will
+  supersede it if it ever drafts first.
+- The two guide commissions held since 15/20 Oct
+  (`volunteer-opportunities-toronto-students`, `donate-hair-toronto`) are
+  not re-issued today — today is a fixed-track day, not a queue day — and
+  pick back up on the next non-Monday/Friday commissioning run.
 
-## Operational flags, carried forward, not re-litigated
-
-`attribute-brain/todo/toronto-charities.md` R-192 (egress) and R-193
-(`DATABASE_URL`/Neon quota) remain open and unanswered, last updated 27 Oct.
-R-213 (three-plus consecutive skipped Neon backups, opened 22 Oct on the
-same underlying quota exhaustion) and R-170 (category-page mapping) are
-also unchanged. None of these is a content decision; all four are Richard's
-calls.
-
-## Fixed-track backlog, unchanged from 28 Oct's note
-
-Reading the fixed tracks the same way they already work (a newer issue
-supersedes the older one of the same track, per `CLIENT.md`'s dated-record
-rule):
-- `toronto-charity-news-2026-10-16` and `toronto-charity-news-2026-10-23` —
-  the latter is **current**, undrafted, same block; the next Friday issue
-  (30 Oct) is tomorrow and will supersede it if it ever drafts first.
-- `charity-events-toronto-week-of-2026-10-19` — stale, superseded by
-  10-26's issue.
-- `charity-events-toronto-week-of-2026-10-26` — **current**, undrafted,
-  awaiting 2 Nov's issue or the block clearing first.
-Today is Thursday, so neither fixed track is re-commissioned here; both
-current issues above stay as they are until their own Friday/Monday or
-until a writer run finally reaches one.
-
-## Standing rules for both commissions below
+## Standing rules for the commission below
 
 The five faults from `CLIENT.md` ("What the editors kept catching") apply
 directly: invented reader beliefs, unsourced superlatives, invented
 numbers/counts not matching a facts row, an H2 restating its own FAQ
-question, and any claim about this site's own pages (events, category) not
-checked live that session.
+question (not applicable to this surface's format, but the heading-list
+check still applies to any subheads used), and any claim about this site's
+own pages (events, category) not checked live this session.
 
 - **The bare-intensifier family includes "actually"/"actual"** alongside
   "real"/"genuine(ly)" (RULINGS 2026-10-10, 2026-10-16, 2026-10-18) — delete
   as filler, never reword, unless the sentence draws an explicit contrast.
 - **GRAMMAR.md's object-as-actor rule** (RULINGS 2026-10-18): no verb that
   needs intention, judgement or perception attached to a thing that cannot
-  do it — a page does not "solve" anything, a guide does not "notice," a
-  requirement does not "decide." A document loading, a table listing, a
-  figure rising are fine; a document meaning or deciding is not.
+  do it.
+- No adjectives about the cause ("heartwarming", "vital", "inspiring") —
+  `CLIENT.md`'s voice line: a local reporter listing what happened, not
+  endorsing it.
+- Only `/category/social-services/` among category pages, same restriction
+  as every other commission until R-170 lands. Canadian spelling throughout.
 
-Both commissions link only `/category/social-services/` among category
-pages — the one page `CLIENT.md` confirms is correctly mapped; every other
-category page lists the wrong charities and stays banned until R-170 lands.
-Canadian spelling throughout.
+## Commission: Friday news issue
 
-## Commission 1
+**Slug:** `toronto-charity-news-2026-10-30`
+**Working title:** Toronto charity news, 30 October 2026
+**Track / intent tier:** Fixed Track 2 (`CLIENT.md`), weekly, Friday. Dated
+news-roundup, not keyword-driven — not a `QUEUE.md` cluster. Reader intent:
+someone checking what happened this week in Toronto's charity sector, or a
+charity's own staff checking whether their organisation was covered.
 
-**Slug:** `volunteer-opportunities-toronto-students`
-**Working title:** Where Toronto students can get volunteer hours
-**Cluster:** `QUEUE.md` #6, "volunteer opportunities toronto for students" —
-Vol 200/mo, KD 8, Score 22. Standalone cluster, not folded into #1
-(`volunteer-toronto`, published). Recommissioned 20 Oct, undrafted since,
-blocked on the fault above — picked up again unchanged.
-**Intent tier:** Decision-adjacent informational — a student with a fixed
-requirement (hours) looking for where to actually go, not a browser.
+**Angle (one sentence):** Five to twelve things that genuinely happened
+this week involving a Toronto-area charity, food bank, fundraiser or
+foundation, each one sourced to the outlet that actually reported it and
+linked to that charity's profile on this site wherever the charity is in
+our own directory.
 
-**Angle (one sentence):** A Toronto student who needs volunteer hours —
-most often Ontario's mandatory 40 community-involvement hours for the OSSD —
-gets the actual rule, sourced, plus specific charities in our own directory
-that take student volunteers and what each one needs from them.
-
-**What it must answer:**
-1. What is Ontario's community-involvement-hours requirement, in the
-   ministry's own terms, with a link to the actual policy — not a
-   paraphrase from memory?
-2. Which charities in our directory confirm (on their own site) that they
-   take student or teen volunteers, and what do they ask for — minimum
-   age, parental consent, a school-issued hours form?
-3. How does a student actually apply — direct to the charity, or through a
-   volunteer-matching tool?
-4. What should a student expect on time commitment during the school term
-   (evenings, weekends, school breaks)?
-5. Where does a student look if none of the charities named here fit their
-   schedule or location?
+**What it must cover (the per-item bar, in place of FAQ-style questions —
+this surface has no FAQ):**
+1. Did a named outlet (Toronto Star, CBC Toronto, CP24, Globe and Mail,
+   BlogTO, Toronto Life, The Philanthropist, Future of Good, CharityVillage,
+   or a hit from Google News RSS on "Toronto charity" / "nonprofit" /
+   "food bank" / "fundraiser" / "foundation") actually publish this story
+   this week? No item without a fetched, re-readable source.
+2. Which charity is the story about, and does that charity's slug resolve
+   in our own directory? Named with a profile link if it does; named
+   without one if it does not — never a guessed URL.
+3. What exactly did the outlet say — one or two sentences, restating the
+   outlet's own facts, not the writer's gloss on them?
+4. Is there a date on the story (published this week, or reporting
+   something that happened this week)? An older story re-surfacing does not
+   qualify.
+5. Where the story concerns money, a closure, a controversy or a dispute,
+   does the summary state only what the outlet printed, with no added
+   verdict, sympathy, or editorial colour?
+6. If fewer than five outlet-sourced items turn up this week, does the
+   draft say so and publish what it has, rather than padding to the
+   five-item floor with something uncited?
 
 **Links it must earn:**
-- The profile `/profile/<slug>/` for every charity named — no exception,
-  checked against the sitemap/DB before linking; unresolved, name without a
-  link.
-- `/category/social-services/` only if the charities covered actually sit
-  in that category.
-- Ontario's own community-involvement-hours policy page (ontario.ca) —
-  required authority outbound.
-- A cross-link to the published `/guides/volunteer-toronto/` guide, since
-  this piece's reader overlaps it — this piece is the student-specific
-  narrowing, not a restatement of it.
-- No `/charity-events-toronto/` link; this is not an events piece.
+- The reporting outlet, linked, for every single item — no exception. An
+  item with no outlet link does not ship.
+- The charity's own profile `/profile/<slug>/` for every charity named,
+  checked against the sitemap/DB before linking — unresolved, name without
+  a link, never guess the slug.
+- `/category/social-services/` only where a named charity genuinely sits in
+  that category (the only category page `CLIENT.md` confirms is correctly
+  mapped).
+- No `/charity-events-toronto/` link unless an item is itself about an
+  event on that page — this is the news track, not the events track.
+- No link to a sister site unless the story itself concerns a place
+  (torontoproperty.ca) or is about Attribute Media's own operations
+  (attribute.media, which should not apply here).
 
 **Facts needed, and where from:**
-- The 40-hour figure and its terms: ontario.ca's own OSSD community
-  involvement policy page, fetched live, not recalled.
-- Charities suited to student volunteers: a live DB query or site read
-  against our own directory — the exact thing blocked this run. No charity
-  is named from memory or a prior guide's list.
-- Any age/consent/paperwork requirement per charity: that charity's own
-  site, fetched live, not inferred.
+- Every item: Google News RSS for the five seed terms, plus the nine named
+  outlets' own feeds, fetched live this run — not recalled from a prior
+  week's issue or from training data.
+- Each charity's directory slug: our own sitemap/DB, live query, not a
+  guess based on the charity's name.
+- Nothing else — this track carries no evergreen research dependency.
 
 **Do not claim (binding):**
-- No charity named as taking students unless its own site confirms it.
-- No number of required hours beyond Ontario's own stated figure, cited
-  with a source.
-- No invented process promise ("they'll sign your form the same day")
-  unless the charity's own site says so.
-- No unsourced superlative ("the best charity for students," "the easiest
-  way to get your hours").
-- No duplication of `/guides/volunteer-toronto/`'s own territory.
+- No item invented or paraphrased from memory to fill the five-to-twelve
+  count; an honest shorter issue beats a padded one.
+- No charity named as the subject of a story unless the outlet's own piece
+  names it.
+- No profile link to an unresolved or guessed slug.
+- No adjective about the cause, no "heartwarming"/"vital"/"inspiring", no
+  editorial verdict on a controversy, closure or dispute beyond what the
+  outlet printed.
+- No claim about our own site's events or category pages not checked live
+  this session.
 - No bare "real"/"genuine(ly)"/"actually"/"actual" filler; no "where"
   pivots; no object-as-actor construction.
 - Canadian spelling throughout.
 
-## Commission 2
-
-**Slug:** `donate-hair-toronto`
-**Working title:** How to donate hair in Toronto
-**Cluster:** `QUEUE.md` #10, "donate hair toronto" — Vol 90/mo, KD 1,
-Score 45. Recommissioned 20 Oct, undrafted since, blocked on the same
-fault — picked up again unchanged.
-**Intent tier:** Decision-adjacent informational — someone who has already
-decided to donate and wants the actual steps.
-
-**Angle (one sentence):** Someone in Toronto who wants to donate hair gets
-the current requirements of the organisations that accept it and an honest
-account of which model applies — a Toronto drop-off versus a mail-in
-national programme — named only where a charity's own site confirms it.
-
-**What it must answer:**
-1. Which organisations actually accept hair donations, confirmed on their
-   own sites, and is any of them a Toronto charity in our own directory or
-   a national programme donors here mail into?
-2. What are the current minimum-length and condition requirements (no
-   major chemical treatment, dry vs. clean, etc.), stated per organisation
-   rather than as one blanket rule?
-3. How should the hair be prepared and sent — cut, bundled, packaged?
-4. What does the organisation do with donated hair, stated only where its
-   own site says so?
-5. Is there a Toronto salon or charity that facilitates collection locally,
-   rather than a straight mail-in?
-
-**Links it must earn:**
-- The profile `/profile/<slug>/` for any charity in our directory that is
-  actually involved — no exception.
-- Outbound to each named programme's own site (authority source,
-  required) — written only once the writer has verified, live, which
-  programmes genuinely operate for Canadian/Toronto donors.
-- `/category/social-services/` only if a named charity genuinely sits
-  there.
-
-**Facts needed, and where from:**
-- Each programme's current requirements: fetched live from that
-  programme's own site. No programme is named from memory — this is
-  exactly the kind of claim 2026-10-18's "unsourced superlative" ruling and
-  the facts audit both treat as needing a source.
-- Which programmes operate in/for Toronto versus mail-in only: confirmed
-  from the programme's own site, not assumed.
-- Any Toronto charity's own involvement: our own directory, live query.
-
-**Do not claim (binding):**
-- No charity or programme named as collecting in person in Toronto unless
-  its own site says so.
-- No minimum length or condition stated without a source; where
-  organisations differ, say so per organisation rather than averaging them
-  into one rule.
-- No claim about what happens to donated hair beyond what the organisation
-  states.
-- No unsourced superlative ("the easiest way to donate hair in Toronto").
-- No bare "real"/"genuine(ly)"/"actually"/"actual" filler; no "where"
-  pivots.
-- Canadian spelling throughout.
-
-## Held, not commissioned today
-
-`donate-furniture-toronto` (#9) stays held, same reasoning as every run
-since 13 Oct: no new supply into a pipeline that has drafted nothing in
-sixteen calendar days, and per `EVIDENCE.md`'s standing caveat (three pulls
-now, 13/19/26 Oct) its parent_topic is literally "furniture bank," a real
-single-charity incumbent — still unchecked at the SERP, so it is not
-promised as an easy score to whoever eventually commissions it. Today's two
-commissions (above) satisfy the day's "one or two guides" instruction
-without adding a third item to the undrafted backlog.
-
 ## For Richard
 
-Nothing new needs his input from this run specifically. R-192 (writer/
-gate/researcher/commissioning egress) and R-193 (`DATABASE_URL` absence,
-Neon quota) already carry the operational blocker; today adds one data
-point (confirmed independently this session, eleventh weekday session,
-sixteen calendar days) to that record, logged above, not re-filed. No new
-`[NEEDS RICHARD]` item. R-170 (category-page mapping) and R-213 (Neon
-backup-skip recurrence) remain open on the same todo file, unaffected by
-today's run.
+No new `[NEEDS RICHARD]` item from this run. The standing operational
+blocker (R-192 egress, R-193 `DATABASE_URL`/Neon quota) is now seventeen
+calendar days old across twelve consecutive weekday sessions with zero
+drafts produced since 13 October — carried forward above, not re-filed as
+a new item, per the already-open todo entries. R-170 (category-page
+mapping) and R-213 (Neon backup-skip recurrence) remain open on the same
+todo file, unaffected by today's run.
