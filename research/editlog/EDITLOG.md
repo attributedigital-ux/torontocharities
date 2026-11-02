@@ -1042,3 +1042,39 @@ R-192/R-193/R-213/R-170 already carry the open egress/`DATABASE_URL`/Neon-
 quota/category-remap questions and a further log entry restating them would
 change nothing. All remain Richard's decisions, not something this session
 can fix from inside.
+
+## WRITER run — 2 November 2026 — NOTHING DRAFTED
+
+Read, in order: `content-writer.md`, today's `COMMISSIONS.md` (Monday
+fixed-track day: only the events issue
+`charity-events-toronto-week-of-2026-11-02` is commissioned, not a
+`QUEUE.md` cluster), `content/CLIENT.md`, this log's last ten entries, then
+the commissioning run's own connectivity note for today, which already
+confirmed the block this morning.
+
+Independently re-verified rather than trusted from COMMISSIONS.md's own
+same-day note: a presence check confirms `DATABASE_URL` and
+`ANTHROPIC_API_KEY` both absent from `env`; Bash `curl -m 10` to the live
+page this commission needs (`https://toronto-charities.ca/charity-events-toronto/`)
+returned `000`/exit 56. The agent-proxy status endpoint logs the identical
+`connect_rejected` shape, "gateway answered 403 to CONNECT," against a wide,
+unrelated spread of hosts in the same window (mcp.clickup.com,
+mcp.similarweb.com, mcp.zapier.com and others), policy `"selective": false`
+— the same blanket block logged every session since 21 Oct, confirmed on
+both routes this commission names (live fetch, DB query).
+
+This commission needs a live read of the `events` table (via `DATABASE_URL`
+or a live fetch) for every entry — date, time, cost, organiser, Eventbrite
+link — plus a live slug check before linking any charity profile. Neither
+route is reachable this session. Per content-writer.md's own hard rule, a
+claim without a facts row does not ship, so no draft, sidecar, or facts file
+was produced for `charity-events-toronto-week-of-2026-11-02`.
+`content/drafts/` stays empty; nothing to mark in `QUEUE.md` (today is a
+fixed-track day, not a queue day).
+
+This is the thirteenth weekday session to hit the fault (15, 16, 19, 20, 21,
+22, 23, 26, 27, 28, 29, 30 Oct, now 2 Nov) — twenty calendar days, no writer
+run producing a draft since 13 October. Not re-escalating: R-192/R-193
+already carry the open egress/`DATABASE_URL` question; R-213 and R-170 are
+unrelated and also already open. All four remain Richard's decisions, not
+something this session can fix from inside.
