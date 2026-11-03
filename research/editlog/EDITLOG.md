@@ -1159,3 +1159,46 @@ R-192/R-193/R-213/R-170 already carry the open egress/`DATABASE_URL`/Neon-
 quota/category-remap questions and a further log entry restating them would
 change nothing. All remain Richard's decisions, not something this session
 can fix from inside.
+
+## WRITER run — 3 November 2026 — NOTHING DRAFTED
+
+Read, in order: `attribute-brain/wiki/agents/content-writer.md`,
+`content/COMMISSIONS.md` (today's two commissions: `donate-furniture-
+toronto` and `donate-hair-toronto`, QUEUE.md #9/#10), `content/CLIENT.md`
+(brief, five faults, category-page restriction), this log's last ten
+entries, `attribute-brain/wiki/standards/HOW_TO_WRITE.md` and the other
+writing-law files.
+
+Independently re-verified rather than trusted from today's COMMISSIONS.md
+connectivity note: `env` confirms `DATABASE_URL` and `ANTHROPIC_API_KEY`
+both absent; `curl -m 15` to `https://toronto-charities.ca/guides/` and
+`/` both returned exit 56, "CONNECT tunnel failed, response 403"; the
+agent-proxy status endpoint logs the identical `connect_rejected` shape
+against a wide, unrelated spread of hosts in the same window
+(mcp.amplitude.com, mcp.canva.com, mcp.box.com, mcp.zapier.com,
+mcp-server.egnyte.com and others), policy `"selective": false` — the same
+blanket block logged every session since 21 Oct. Cross-checked
+`attribute-brain/todo/toronto-charities.md` directly: R-192, R-193, R-213
+and R-170 are all still open, unchanged since the dates cited in prior
+entries.
+
+Both of today's commissions need a live fetch of each named charity's own
+current website — acceptance rules, pickup/drop-off process, minimum hair
+length, colour-treatment rules — plus a live slug check against the
+sitemap/DB before linking any profile. No route to either is reachable
+this session (general web egress and `DATABASE_URL` both blocked, same
+fault). Per content-writer.md's own hard rule, a claim without a facts row
+does not ship, and COPY_STANDARD/RESEARCH_RULES forbid substituting a
+remembered figure, so no draft, sidecar, or facts file was produced for
+either `donate-furniture-toronto` or `donate-hair-toronto`. `content/
+drafts/` stays empty (confirmed: still absent from this repo's history);
+nothing marked in `QUEUE.md` beyond what the commissioning run already
+holds — both clusters stay `ready`, not `drafted`.
+
+This is the fourteenth consecutive weekday session this fleet has hit the
+fault across its roles (15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30 Oct,
+2, 3 Nov) — twenty-one calendar days, no writer run producing a draft since
+13 October. Not re-escalating as a new item: R-192/R-193/R-213/R-170
+already carry the open egress/`DATABASE_URL`/Neon-quota/category-remap
+questions and a further log entry restating them would change nothing. All
+remain Richard's decisions, not something this session can fix from inside.
