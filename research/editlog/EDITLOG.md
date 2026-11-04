@@ -1237,3 +1237,47 @@ calendar days, no writer run producing a draft since 13 October. Not
 re-escalating as a new item: R-192/R-193/R-213/R-170 already carry the open
 egress/`DATABASE_URL`/Neon-quota/category-remap questions and a further log
 entry restating them would change nothing. All remain Richard's decisions.
+
+## WRITER run — 4 November 2026 — NOTHING DRAFTED
+
+Read, in order: `attribute-brain/wiki/agents/content-writer.md`,
+`content/COMMISSIONS.md` (today's commission: `volunteer-opportunities-
+toronto-students`, QUEUE.md #6), `content/CLIENT.md` (brief, five faults,
+category-page restriction), this log's last ten entries, `attribute-
+brain/wiki/standards/HOW_TO_WRITE.md` and the other writing-law files.
+
+Independently re-verified rather than trusted from today's COMMISSIONS.md
+connectivity note: `env` confirms `DATABASE_URL`, `ANTHROPIC_API_KEY`,
+`RESEND_API_KEY`, `CF_ACCOUNT_ID` and `CF_API_TOKEN` all absent; `curl -m
+10` to `https://toronto-charities.ca/guides/`, `/profile/test/` and
+`https://www.ontario.ca/page/community-involvement-activities-diploma-
+requirement` all returned exit 56 / HTTP 000 (connection never completed);
+the agent-proxy status endpoint logs the identical `connect_rejected`/
+"gateway answered 403 to CONNECT" shape against a wide, unrelated spread of
+hosts in the same window (mcp.box.com, mcp.asana.com, mcp.apollo.io,
+mcp.hubspot.com, mcp.notion.com and others), policy `"selective": false` —
+the same blanket block logged every session since 21 Oct. Cross-checked
+`attribute-brain/todo/toronto-charities.md` directly: R-192, R-193, R-213
+and R-170 are all still open, unchanged since the dates cited in prior
+entries.
+
+Today's commission needs a live fetch of each named charity's own current
+website (student-acceptance statements, minor-consent rules, screening
+steps), a live slug check against the sitemap/DB before linking any
+profile, and ontario.ca's own page for the 40-hour community-involvement
+mechanics. No route to any of these is reachable this session (general web
+egress and `DATABASE_URL` both blocked, same fault). Per content-writer.md's
+own hard rule, a claim without a facts row does not ship, and COPY_STANDARD/
+RESEARCH_RULES forbid substituting a remembered figure — every fact this
+piece needs is behind the block, with no section left to write around — so
+no draft, sidecar, or facts file was produced for `volunteer-opportunities-
+toronto-students`. `content/drafts/` stays empty; `QUEUE.md` unchanged,
+cluster #6 stays at its current status, not `drafted`.
+
+This is the eighteenth consecutive weekday session this fleet has hit the
+fault across its roles (15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30 Oct,
+2 Nov, three sessions on 3 Nov, now this one) — twenty-three calendar days,
+no writer run producing a draft since 13 October. Not re-escalating as a
+new item: R-192/R-193/R-213/R-170 already carry the open egress/
+`DATABASE_URL`/Neon-quota/category-remap questions and a further log entry
+restating them would change nothing. All remain Richard's decisions.
