@@ -1366,3 +1366,55 @@ a new item: R-192/R-193/R-213/R-170 already carry the open
 egress/`DATABASE_URL`/Neon-quota/category-remap questions and a further log
 entry restating them would change nothing. All remain Richard's decisions,
 not something this session can fix from inside.
+
+## WRITER run — 5 November 2026 — NOTHING DRAFTED
+
+Read, in order: `attribute-brain/wiki/agents/content-writer.md`,
+`content/COMMISSIONS.md` (today's carried-forward commissions: #6
+`volunteer-opportunities-toronto-students`, #9 `donate-furniture-toronto`,
+#10 `donate-hair-toronto` — no new commission today), `content/CLIENT.md`
+(brief, five faults, category-page restriction), this log's last ten
+entries, `attribute-brain/wiki/standards/HOW_TO_WRITE.md` and the other
+writing-law files. `content/drafts/` does not exist on disk, so the
+revise-recheck step (any slug whose newest verdict is REVISE) has nothing
+to check — no slug has ever reached drafting.
+
+Independently re-verified rather than trusted from today's COMMISSIONS.md
+connectivity note: a presence-only check confirms `DATABASE_URL`,
+`ANTHROPIC_API_KEY`, `RESEND_API_KEY`, `CF_ACCOUNT_ID` and `CF_API_TOKEN`
+all absent (a direct `env` read was refused by the harness's
+credential-materialization guard, same as prior sessions). `curl -m 10` to
+`https://toronto-charities.ca/`, `/profile/` and `https://www.cbc.ca/` all
+returned HTTP `000` (connection never completed, not a non-200). The
+agent-proxy status endpoint logs the identical `connect_rejected`/"gateway
+answered 403 to CONNECT" shape against a wide, unrelated spread of hosts in
+the same window (mcp.linear.app, mcp.intercom.com, mcp.figma.com,
+mcp.supermetrics.com, mcp.asana.com, mcp.notion.com and others), policy
+`"selective": false` — the same blanket block logged every session since
+21 Oct. Cross-checked `attribute-brain/todo/toronto-charities.md` directly:
+R-192 and R-170 are both still open, unchanged since the dates cited in
+prior entries; R-193 and R-213 (Neon compute quota) closed 2026-11-05 per
+today's COMMISSIONS.md, which does not touch this session's two faults.
+
+All three standing commissions need a live fetch of each named charity's
+own current website before any claim or link, a live slug check against
+the sitemap/DB before linking any profile, and (for #6) ontario.ca's own
+40-hour community-involvement page. No route to any of these is reachable
+this session (general web egress and `DATABASE_URL` both blocked, same
+fault). Per content-writer.md's own hard rule, a claim without a facts row
+does not ship, and COPY_STANDARD/RESEARCH_RULES forbid substituting a
+remembered figure — every fact all three pieces need is behind the block,
+with no section left to write around — so no draft, sidecar, or facts file
+was produced for any of `volunteer-opportunities-toronto-students`,
+`donate-furniture-toronto`, or `donate-hair-toronto`. `content/drafts/`
+stays absent; `QUEUE.md` unchanged, clusters #6/#9/#10 stay at their
+current status, not `drafted`.
+
+This is the twenty-second consecutive weekday session this fleet has hit
+the fault across its roles (15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30
+Oct, 2 Nov, three sessions on 3 Nov, three sessions on 4 Nov, now a second
+session on 5 Nov) — twenty-four calendar days, no writer run producing a
+draft since 13 October. Not re-escalating as a new item: R-192/R-170
+already carry the open egress/`DATABASE_URL`/category-remap questions and a
+further log entry restating them would change nothing. Both remain
+Richard's decisions, not something this session can fix from inside.
