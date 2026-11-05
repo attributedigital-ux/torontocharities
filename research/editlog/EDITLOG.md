@@ -4,6 +4,27 @@ One entry per editor pass: slug, date, what was bounced or fixed, the rule it br
 
 ---
 
+## DESIGNER run — 5 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, which also carried Richard's 13 Oct ruling (imagery
+from what is true, not from a model; no generator on this site). `git status`
+and a filesystem check: `content/drafts/` does not exist, confirming the
+writer's own 5 Nov entry below — twenty-fourth calendar day, no draft
+produced since 13 October. Nothing for a designer to add a figure to.
+
+Checked the four live pieces in `content/published/` anyway in case any
+needed a figure: all four (`volunteer-toronto`, `soup-kitchen-volunteer-toronto`,
+`where-to-donate-books-toronto`, `where-to-donate-clothes-toronto`) already
+carry exactly one `.guide-figure` element each — this step already ran on
+all of them before. No new charity names to add to a logo-pending list;
+`content/images/` does not exist because no draft has ever named one.
+
+No file needed changing. Logged here only so the next session does not
+re-check the same empty directory from scratch.
+
+---
+
 ## soup-kitchen-volunteer-toronto — 13 October 2026 — APPROVED with fixes
 
 36 sentence-level edits applied by the editor. Every source re-fetched: Daily
