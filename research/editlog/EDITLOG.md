@@ -1525,3 +1525,24 @@ as a new item: R-192/R-170 already carry the open
 egress/`DATABASE_URL`/category-remap questions and a further log entry
 restating them would change nothing. Both remain Richard's decisions, not
 something this session can fix from inside.
+
+---
+
+## DESIGNER run — 6 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 Oct ruling (imagery from what is
+true, not from a model; no generator on this site; generate nothing).
+Filesystem check: `content/drafts/` does not exist, confirming today's own
+WRITER run logged above — twenty-sixth calendar day, no draft produced since
+13 October. Nothing for a designer to add a figure to.
+
+Checked the four live pieces in `content/published/` anyway: all four
+(`volunteer-toronto`, `soup-kitchen-volunteer-toronto`,
+`where-to-donate-books-toronto`, `where-to-donate-clothes-toronto`) still
+carry exactly one `.guide-figure` element each, unchanged since the 5 Nov
+check. No new charity names to add to a logo-pending list; `content/images/`
+still does not exist because no draft has ever named one.
+
+No file needed changing beyond this entry. Logged only so the next session
+does not re-check the same empty directory from scratch.
