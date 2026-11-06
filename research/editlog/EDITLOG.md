@@ -1482,3 +1482,46 @@ draft since 13 October. Not re-escalating as a new item: R-192/R-170
 already carry the open egress/`DATABASE_URL`/category-remap questions and a
 further log entry restating them would change nothing. Both remain
 Richard's decisions, not something this session can fix from inside.
+
+## WRITER run — 6 November 2026 — NOTHING DRAFTED
+
+Read, in order: `attribute-brain/wiki/agents/content-writer.md`,
+`content/COMMISSIONS.md` (today's commission: Track 2 Friday news issue
+`toronto-charity-news-2026-11-06`; carried-forward evergreen commissions #6
+`volunteer-opportunities-toronto-students`, #9 `donate-furniture-toronto`,
+#10 `donate-hair-toronto`), `content/CLIENT.md` (brief, five faults,
+category-page restriction), this log's last ten entries, the writing-law
+files, `RULINGS.md`. `content/drafts/` does not exist on disk, so the
+revise-recheck step has nothing to check.
+
+Independently re-verified rather than trusted from today's COMMISSIONS.md:
+a presence check confirms `DATABASE_URL` and `ANTHROPIC_API_KEY` both
+absent. `curl -m 10` to `https://toronto-charities.ca/` and
+`https://toronto-charities.ca/guides/` both returned HTTP `000`. The
+agent-proxy status endpoint logs the identical `connect_rejected`/"gateway
+answered 403 to CONNECT" shape against a wide, unrelated spread of hosts
+(mcp.hubspot.com, mcp.asana.com, mcp.slack.com, mcp.notion.com,
+mcp.clickup.com and others), policy `"selective": false` — the same
+blanket block logged every session since 21 Oct.
+
+Today's commission needs Google News RSS, the outlets' own feeds, and a
+live slug check against the sitemap/DB for every charity named — all
+live-fetch or DB-query dependent, all confirmed blocked above, exactly as
+COMMISSIONS.md states. The three carried-forward evergreen commissions
+need the same live charity-site fetches and slug checks as every prior
+session. No route to any of these is reachable this session. Per
+content-writer.md's own hard rule, a claim without a facts row does not
+ship — no draft, sidecar, or facts file was produced for
+`toronto-charity-news-2026-11-06`, `volunteer-opportunities-toronto-students`,
+`donate-furniture-toronto`, or `donate-hair-toronto`. `content/drafts/`
+stays absent; `QUEUE.md` unchanged.
+
+This is the twenty-fifth consecutive weekday session this fleet has hit
+the fault across its roles (15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30
+Oct, 2 Nov, three sessions on 3 Nov, three sessions on 4 Nov, three
+sessions on 5 Nov, now a second session on 6 Nov) — twenty-five calendar
+days, no writer run producing a draft since 13 October. Not re-escalating
+as a new item: R-192/R-170 already carry the open
+egress/`DATABASE_URL`/category-remap questions and a further log entry
+restating them would change nothing. Both remain Richard's decisions, not
+something this session can fix from inside.
