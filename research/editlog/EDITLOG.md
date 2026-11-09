@@ -1623,3 +1623,25 @@ Not re-escalating: R-192 (egress) and R-170 (category remap) already carry
 this as an open Richard decision, flagged directly by the 6 Nov GATE run,
 and a further log entry restating it would change nothing. Nothing
 committed beyond this entry.
+
+---
+
+## DESIGNER run — 9 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 Oct ruling (imagery from what is
+true, not from a model; no generator on this site; generate nothing).
+Filesystem check: `content/drafts/` does not exist, matching today's own
+WRITER run logged above — twenty-seventh calendar day, no draft produced
+since 13 October. Nothing for a designer to draw a figure into.
+
+Checked the four live pieces in `content/published/` anyway: all four
+(`volunteer-toronto`, `soup-kitchen-volunteer-toronto`,
+`where-to-donate-books-toronto`, `where-to-donate-clothes-toronto`) still
+carry exactly one `.guide-figure` element each, unchanged since the 6 Nov
+check, each figure's numbers still traceable to its `research/facts/*.md`
+row. No new charity names to add to a logo-pending list; `content/images/`
+still does not exist because no draft has ever named one.
+
+No file needed changing beyond this entry. Logged only so the next session
+does not re-check the same empty directory from scratch.
