@@ -1591,3 +1591,35 @@ Both remain Richard's decisions, not something this session can fix from
 inside. Flagging to Richard directly this run, separate from this log,
 because R-192 specifically has now sat unanswered for three full weeks
 with the entire content pipeline dead behind it.
+
+---
+
+## WRITER run — 9 November 2026 — NOTHING DRAFTED
+
+Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
+(Monday Track 1, `charity-events-toronto-week-of-2026-11-09`), and this
+file's tail per the routine brief. Independently re-verified rather than
+trusted from the commission's own write-up: `curl -m 10` to
+`https://toronto-charities.ca/charity-events-toronto/` and
+`https://toronto-charities.ca/` both returned `000`; `WebFetch` to the same
+URL failed `getaddrinfo ENOTFOUND`; the agent-proxy status endpoint logs the
+identical `connect_rejected`/403-to-CONNECT shape against a wide, unrelated
+spread of hosts in the same window, policy `"selective": false`. Same fault,
+twenty-seventh consecutive weekday session.
+
+The commission names three facts routes (the `events` table, the lead
+event's Eventbrite image, live slug checks against the sitemap/DB for every
+charity) and states plainly none can be reached this session. No event list
+exists anywhere in this repo to fall back on, and content-writer.md's own
+rule (a claim without a facts row does not ship; never substitute a
+remembered figure) forbids inventing one. `content/drafts/` remains absent.
+The three carried-forward evergreens (#6 `volunteer-opportunities-toronto-
+students`, #9 `donate-furniture-toronto`, #10 `donate-hair-toronto`) are
+blocked on the identical route (live SERP/source checks) and were not
+drafted either. `QUEUE.md` unchanged — no coverage check was possible
+without live egress, so no cluster status was touched.
+
+Not re-escalating: R-192 (egress) and R-170 (category remap) already carry
+this as an open Richard decision, flagged directly by the 6 Nov GATE run,
+and a further log entry restating it would change nothing. Nothing
+committed beyond this entry.
