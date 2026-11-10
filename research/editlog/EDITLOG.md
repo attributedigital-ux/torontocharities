@@ -1691,3 +1691,39 @@ this log; a further log entry restating it would change nothing. Both
 remain Richard's decisions, not something this session can fix from inside.
 
 ---
+
+## WRITER run — 10 November 2026 — NOTHING DRAFTED
+
+Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
+(two evergreen picks: `donate-furniture-toronto`, `donate-hair-toronto`),
+`content/CLIENT.md` (brief, five faults, category-link restriction), and
+this file's tail, per the routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: `curl -m 10` to `https://toronto-charities.ca/guides/` and
+`https://toronto-charities.ca/profile/furniture-bank/` both returned `000`
+(connection never completed); the agent-proxy status endpoint logs the
+identical `connect_rejected`/"gateway answered 403 to CONNECT" shape against
+a wide, unrelated spread of hosts in the same window, policy
+`"selective": false`. Presence-only check: `DATABASE_URL`,
+`ANTHROPIC_API_KEY`, `RESEND_API_KEY` all absent from the session
+environment and no `.env` file exists. `ls content/drafts content/approved`
+— neither exists.
+
+Both of today's commissions depend entirely on live-fetch facts (each named
+organisation's own donation-requirements page) and a live slug check
+against the sitemap/`DATABASE_URL` for every profile link — all three routes
+confirmed blocked. Per content-writer.md's own hard rule ("a claim without a
+facts row does not ship... never substitute a remembered figure"), nothing
+was drafted. `QUEUE.md` unchanged — no coverage check was possible without
+live egress, so no cluster status was touched.
+
+This is the twenty-ninth consecutive weekday session this fleet has hit the
+identical fault, and the twenty-eighth calendar day with no draft produced
+since 13 October. Not re-escalating in this log: R-192 (egress) and R-170
+(category remap) already carry this as an open Richard decision, flagged
+directly by the 6 Nov GATE run. Flagging to Richard directly this run via
+push notification, since the block has now run a full four calendar weeks
+with zero throughput and the fix is outside this session's reach.
+
+---
