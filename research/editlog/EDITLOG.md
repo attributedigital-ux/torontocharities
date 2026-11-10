@@ -1750,3 +1750,46 @@ for the same fault on the same day would be noise.
 No file needed changing beyond this entry.
 
 ---
+
+## GATE run — 10 November 2026 — NOTHING TO REVIEW
+
+Fresh session, no memory of writing any draft, per the role's own "always a
+different session than the writer" rule. Read, in order:
+`attribute-brain/wiki/agents/content-editor.md` (including the EDITLOG
+write-back instruction), `wiki/standards/HOW_TO_WRITE.md`,
+`EDITORIAL_PASS.md`, `attribute-brain/RULINGS.md`, `content/CLIENT.md` (the
+brief, the five faults, the category-link restriction), and this file's own
+tail, including today's WRITER ("NOTHING DRAFTED") and DESIGNER ("NOTHING TO
+DESIGN") entries above.
+
+Independently re-verified rather than trusted from today's WRITER/DESIGNER
+entries: `ls content/drafts content/approved` — neither exists; no `.env`
+file; `DATABASE_URL` and `ANTHROPIC_API_KEY` both absent from the session
+environment. `curl -m 10` to `https://toronto-charities.ca/guides/` and
+`https://toronto-charities.ca/profile/furniture-bank/` both returned `000`
+(connection never completed, not a non-200); the agent-proxy status endpoint
+logs the identical `connect_rejected`/"gateway answered 403 to CONNECT"
+shape against a wide, unrelated spread of unconnected MCP hosts in the same
+window (mcp.similarweb.com, mcp.canva.com, mcp.clickup.com and others),
+policy `"selective": false` — the same blanket block logged every session
+since 21 Oct. Cross-checked `attribute-brain/todo/toronto-charities.md`
+directly: R-192 (general web egress for this session type) and R-170
+(category remap) are both still open and unanswered.
+
+With no file in `content/drafts/`, there is nothing to check against
+`research/facts/`, no claim to verify, no internal or outbound link to curl,
+no heading list to read, no FAQ to word-count, and no file to run
+`prose_gate.py` against. Nothing moved to `content/approved/`. Per
+content-editor.md's own cost discipline ("Nothing in `content/drafts/`?
+Stop in one line"), stopping here.
+
+This is at least the thirtieth consecutive weekday session this fleet has
+hit the identical fault across its roles, and the twenty-seventh calendar
+day with no draft produced since 13 October. Not re-escalating as a new
+item: R-192/R-170 already carry the open egress/category-remap questions,
+already flagged to Richard directly by today's WRITER run (which pushed a
+notification at the four-calendar-week mark); a further log entry or
+notification restating it would be noise. Both remain Richard's decisions,
+not something this session can fix from inside.
+
+---
