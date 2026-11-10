@@ -33,8 +33,8 @@ unchanged.
 | 6 | volunteer opportunities toronto for students | volunteer-opportunities-toronto-students | 200 | 8 | 22 | recommissioned 20 Oct — **undrafted, blocked**: still the same egress/`DATABASE_URL` fault (R-187/R-192/R-193); see EDITLOG.md and COMMISSIONS.md for the current run count. Not re-verified by the researcher (writer/gate territory, not a keyword question) |
 | 7 | where to donate books toronto | where-to-donate-books-toronto | 90 | 6 | 12.86 | **published** |
 | 8 | food bank volunteer toronto | folded into #5: same reader, same answer; the guide covers food banks, meal programmes and drop-ins together | 200 | 19 | 10 | hold — folded into #5 |
-| 9 | donate furniture toronto (+ where to donate furniture toronto 70) | donate-furniture-toronto | 70 | 7 | 9 | **commissioned 3 Nov** (see COMMISSIONS.md) — still blocked on egress/`DATABASE_URL` for the writer; WINNABLE NOW, independently confirmed a second consecutive pull (9 Nov: KD held at 0, vol 60→70) — but expect lower click-through than KD0 alone implies (AI Overview + local pack + PAA above organic) |
-| 10 | donate hair toronto | donate-hair-toronto | 90 | 1 | 45 | **commissioned 3 Nov** (see COMMISSIONS.md) — still blocked on egress/`DATABASE_URL` for the writer, same fault as #6/#9 |
+| 9 | donate furniture toronto (+ where to donate furniture toronto 70) | donate-furniture-toronto | 70 | 7 | 9 | **commissioned 3 Nov, re-commissioned in full 10 Nov** (see COMMISSIONS.md) — still blocked on egress/`DATABASE_URL` for the writer; WINNABLE NOW, independently confirmed a second consecutive pull (9 Nov: KD held at 0, vol 60→70) — but expect lower click-through than KD0 alone implies (AI Overview + local pack + PAA above organic) |
+| 10 | donate hair toronto | donate-hair-toronto | 90 | 1 | 45 | **commissioned 3 Nov, re-commissioned in full 10 Nov** (see COMMISSIONS.md) — still blocked on egress/`DATABASE_URL` for the writer, same fault as #6/#9 |
 | 11 | charities in toronto / toronto charities | covered by / and /toronto-charities-list/ | 180 | 58 | — | covered |
 | 12 | charity events toronto | covered by /charity-events-toronto/ | 100 | 1 | — | covered |
 
