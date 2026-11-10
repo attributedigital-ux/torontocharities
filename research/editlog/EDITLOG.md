@@ -1727,3 +1727,26 @@ push notification, since the block has now run a full four calendar weeks
 with zero throughput and the fix is outside this session's reach.
 
 ---
+
+## DESIGNER run — 10 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 Oct ruling (imagery comes from
+what is true before it comes from a model; no generator on this site;
+generate nothing). Filesystem check: `content/drafts/` does not exist,
+matching today's own WRITER run logged above — twenty-eighth calendar day,
+no draft produced since 13 October. No draft, no facts/figures to draw a
+`guide-figure` from, and no charity names to add to a logo-pending list.
+`content/images/` still does not exist.
+
+Checked the four live pieces in `content/published/` anyway: all four
+(`volunteer-toronto`, `soup-kitchen-volunteer-toronto`,
+`where-to-donate-books-toronto`, `where-to-donate-clothes-toronto`) still
+carry exactly one `.guide-figure` element each, unchanged since the 9 Nov
+check. Not re-flagging the egress block to Richard separately — today's
+WRITER run already pushed that notification; a second one from this role
+for the same fault on the same day would be noise.
+
+No file needed changing beyond this entry.
+
+---
