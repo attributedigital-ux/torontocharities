@@ -1,232 +1,188 @@
-# Commissions — 10 November 2026 (Tuesday)
+# Commissions — 11 November 2026 (Wednesday)
 
-Written by the editor, commissioning run. Tuesday is not a fixed-track day
+Written by the editor, commissioning run. Wednesday is not a fixed-track day
 (`CLIENT.md`: Monday is events, Friday is news) — per the standing
 instruction, an "other day" commissions one or two guides from
 `content/QUEUE.md`.
 
 ## Connectivity, checked this session
 
-`curl -m 10` to `https://toronto-charities.ca/charity-events-toronto/` and
-`https://toronto-charities.ca/guides/` both returned `HTTP 000` — a
-connection-level failure (`CONNECT tunnel failed, response 403`), not a
-non-200. The proxy status endpoint (`$HTTPS_PROXY/__agentproxy/status`,
-checked directly this session, timestamp 2026-11-10T11:31:48Z) logs the
-identical `connect_rejected`/"gateway answered 403 to CONNECT" shape against
-a wide, unrelated spread of hosts in the same window (mcp.slack.com,
-mcp.similarweb.com, mcp.asana.com, mcp.atlassian.com, mcp.egnyte.com),
-policy `"selective": false` — the same blanket block logged every session
-since 21 Oct (R-192). Cross-checked `attribute-brain/todo/toronto-charities.md`
-directly: R-192 (general web egress for this session type) and R-170
-(category-page mapping) are both still open. `research/editlog/EDITLOG.md`'s
-9 November GATE entry puts the fault at its 28th consecutive weekday session
-with zero drafts since 13 October — 28 calendar days as of today. A
-commission is a brief, not a draft, and is written below in full regardless,
-but no commission below can clear its facts-needed section until the block
-lifts.
+`curl -m 10` to `https://toronto-charities.ca/guides/` and
+`https://www.cbc.ca/` both returned `HTTP 000` — a connection-level failure
+(`CONNECT tunnel failed, response 403`), not a non-200. The proxy status
+endpoint (`$HTTPS_PROXY/__agentproxy/status`, checked directly this session,
+timestamp 2026-11-11T11:31:45Z) logs the identical `connect_rejected`/
+"gateway answered 403 to CONNECT" shape against a wide, unrelated spread of
+hosts in the same window (mcp.klaviyo.com, mcp.zapier.com, mcp.linear.app,
+mcp.slack.com, mcp.intercom.com and others), policy `"selective": false` —
+the same blanket block logged every session since 21 Oct. Presence-only
+check: `DATABASE_URL`, `ANTHROPIC_API_KEY`, `RESEND_API_KEY`,
+`CF_ACCOUNT_ID`, `CF_API_TOKEN` all absent. Cross-checked
+`attribute-brain/todo/toronto-charities.md` directly rather than trusting
+yesterday's note: R-192 (general web egress for this session type, opened
+16 Oct) and R-170 (category-page mapping, opened 13 Oct) are both still open,
+word for word the same entries as 10 November. `research/editlog/
+EDITLOG.md`'s 10 November GATE entry puts the fault at "at least the
+thirtieth" consecutive weekday session with zero drafts since 13 October —
+29 calendar days as of today. Checked `attribute-brain/raw/` for anything
+dated 7–11 November naming this site: nothing does (the week's dictated
+sessions concern Collingwood, FreshBooks, Quill's build, a 21-day ad sweep
+and the Cassar build — none of them this site). A commission is a brief, not
+a draft, and is written below in full regardless, but no commission below
+can clear its facts-needed section until the block lifts.
 
 ## What the last ten EDITLOG entries say the writer keeps getting wrong
 
-Checked the tail: every entry since 2 November is a WRITER/DESIGNER/GATE run
-finding nothing to review, because nothing has drafted since 13 October.
-There is no new prose fault to add. The five standing faults and the
-category-link restriction are in `CLIENT.md` and restated in full below
-rather than re-derived, since the writer has not had a chance to act on them
-since they were written.
+Checked the tail through 10 November: every one of the last ten entries is a
+WRITER/DESIGNER/GATE run finding nothing to review or nothing to draft,
+because nothing has drafted since 13 October. There is no new prose fault to
+add this run. The five standing faults, the category-link restriction and the
+bare-intensifier/personification bans are in `CLIENT.md` and `RULINGS.md` and
+restated in full below rather than re-derived, since the writer has not had a
+chance to act on them since they were written.
 
-## Commission: Where to donate furniture in Toronto
+## Commission: Volunteer opportunities in Toronto for students
 
-**Slug:** `donate-furniture-toronto`
-**Cluster / intent tier:** `QUEUE.md` #9 (donate furniture toronto + where to
-donate furniture toronto, 70/mo, KD 7, score 9). Evergreen, commissioned
-3 Nov, re-commissioned in full today as this run's pick from the queue.
-**Status of the keyword call:** WINNABLE NOW, independently confirmed a
-second consecutive Ahrefs pull (9 Nov: KD held at 0 on the question-phrased
-exact match, vol 60→70) after 2 Nov's live SERP check found no organic
-top-10 incumbent stronger than DR66. Caveat that travels with the call: an
-AI Overview, a 3-pack local pack and a PAA box all sit above position 1
-organic — commission this as "winnable, modest traffic ceiling," never as
-an easy 70/mo (`EVIDENCE.md`'s own "What NOT to write").
+**Slug:** `volunteer-opportunities-toronto-students`
+**Cluster / intent tier:** `QUEUE.md` #6 (volunteer opportunities toronto for
+students, 200/mo, KD 8, score 22). Evergreen, first commissioned 15 Oct,
+recommissioned 20 Oct, carried forward without full re-detail on 10 Nov while
+that run's two picks (#9, #10) got the full write-up — re-commissioned in
+full today as this run's pick from the queue, since it is the highest-scoring
+undrafted cluster that has not had a fresh brief in three weeks.
 
-**The angle, in one sentence:** which Toronto organisations take a donated
-sofa, table, mattress or other furniture item, what each one actually
-accepts and refuses, and how a resident gets it there — pickup, drop-off, or
-neither — with every organisation that has a profile on this site linked to
-it.
+**The angle, in one sentence:** which Toronto charities offer volunteer roles
+that count toward Ontario's mandatory 40 hours of community involvement for
+the OSSD, what each role actually involves, the minimum age and supervision
+each charity requires, and how the student gets the hours signed off —
+because the charity does the volunteering, but the school's own form is what
+actually certifies the hours, and a guide that blurs that line misleads the
+one reader group it is written for.
 
-**Who it is for:** someone in Toronto with furniture to give away, deciding
-where it can actually go before they haul it to the curb.
+**Who it is for:** an Ontario secondary student in Toronto (or a parent
+helping them) looking for a volunteer placement that will count toward
+graduation, usually under real time pressure near a school deadline.
 
 **What it must answer:**
-1. Which organisations in Toronto take donated furniture, by name.
-2. What condition and type of item each one accepts, and what each refuses
-   (most charities that take furniture have a specific no-list: stained
-   upholstery, broken frames, particleboard, mattresses without a clean
-   fire-safety tag).
-3. Does each one offer a pickup, and if so what it costs or what it requires
-   (a minimum number of items, a address within a service area, notice
-   period) — or is drop-off the only route.
-4. Does the donor get a tax receipt, and under what condition.
-5. Which of these organisations has a profile on this site, so the reader
-   can read more about the charity itself.
+1. What Ontario's community-involvement requirement actually is: 40 hours,
+   completed any time between the summer before grade 9 and graduation, with
+   the activities list and the sign-off process set by the Ministry of
+   Education and administered by the student's own school — stated from
+   ontario.ca directly, not from memory of how the rule is generally
+   described.
+2. Which Toronto charities have a volunteer programme that explicitly
+   welcomes students doing community-involvement hours, by name.
+3. What each role actually is, and the minimum age or grade each charity
+   states for it.
+4. Whether a parent/guardian signature or school form is part of that
+   charity's own intake process, and whether the charity signs the student's
+   official community-involvement form itself or simply confirms hours by
+   letter — these are different processes and the guide states which one
+   each charity uses, never assumed.
+5. Whether a one-off shift or an ongoing commitment is on offer, since a
+   deadline-driven reader needs to know which roles can produce hours
+   quickly.
+6. Which of these charities has a profile on this site, so the reader can
+   read more before applying.
 
 **Links every organisation must carry:**
-- Its own donation page (the outbound source the claim comes from).
-- Its profile `/profile/<slug>/` on this site, checked against the sitemap
-  or `DATABASE_URL` before linking. An organisation not found in the
-  charities table is named without a link, never linked to a guessed URL —
-  `CLIENT.md`'s rule.
+- Its own volunteer or youth-volunteer page (the outbound source the claim
+  comes from).
+- `ontario.ca`'s own community-involvement-requirement page, as the
+  authority for the 40-hour rule itself — never restated as fact without
+  this link.
+- Its profile `/profile/<slug>/` on this site, checked against the sitemap or
+  `DATABASE_URL` before linking. An organisation not found in the charities
+  table is named without a link, never linked to a guessed URL — `CLIENT.md`'s
+  rule.
 - `/category/social-services/` once, if and only if it is the category at
   least one named organisation actually sits in, verified live first — no
-  other category page may be linked at all (R-170 still open; every other
-  category page misattributes charities to the wrong cause).
+  other category page may be linked at all (R-170 still open).
 
 **Facts needed and where they come from:**
-- The identity of Toronto furniture-donation organisations: Furniture Bank,
-  Habitat for Humanity GTA ReStore, Diabetes Canada's clothing/furniture
-  pickup, Salvation Army Thrift Store, and any other charity with a live
-  furniture-donation programme — found by live search and then read in full
-  on each organisation's own donation page, not assumed from name
-  recognition.
-- Each organisation's accepted/refused item list, pickup terms, and receipt
-  policy — quoted or closely paraphrased from that page, with the URL and
-  fetch date recorded as a numbered row in `research/facts/
-  donate-furniture-toronto.md`, same format as `research/facts/
-  where-to-donate-books-toronto.md`.
+- Ontario's community-involvement requirement in full: total hours, the
+  eligibility window, the categories of ineligible activity (paid work, a
+  requirement of a course, time that is also a punishment), and how a
+  school's own form moves through the process — read in full from ontario.ca's
+  own graduation-requirements page, not summarised from general knowledge of
+  "volunteer hours for high school."
+- The identity of Toronto charities with a stated student or youth volunteer
+  programme — found by live search, then read in full on each charity's own
+  volunteer page, not assumed from name recognition. `research/facts/
+  volunteer-toronto.md` (the published sibling guide's own facts file)
+  already has sixteen Toronto volunteer-charity sources re-fetched 13 Oct;
+  check it first for any that already cover student eligibility before
+  re-fetching from scratch.
+- Each charity's minimum age, supervision requirement, and sign-off process
+  for community-involvement hours specifically — quoted or closely
+  paraphrased from that charity's own page, with the URL and fetch date
+  recorded as a numbered row in `research/facts/
+  volunteer-opportunities-toronto-students.md`, same format as the four
+  published guides' facts files.
 - A live slug check against the sitemap or `DATABASE_URL` for every named
-  organisation, to confirm whether it has a profile on this site.
-All three routes are live-fetch or DB-query dependent and are confirmed
+  charity, to confirm whether it has a profile on this site.
+All four routes are live-fetch or DB-query dependent and are confirmed
 blocked this session (see Connectivity above). Nothing here may be drafted
-from memory or general knowledge of these organisations until the block
-lifts — a claim without a facts row does not ship.
+from memory or general knowledge of the OSSD requirement or of these
+charities until the block lifts — a claim without a facts row does not ship.
 
 **Do not claim:**
-- No organisation's donation terms from memory or general familiarity; every
-  term comes from that organisation's own page, fetched this cycle, with a
-  facts row.
+- No detail of Ontario's 40-hour requirement from memory; the figure, the
+  eligibility window and the ineligible-activity list all come from
+  ontario.ca itself, fetched this cycle, with a facts row. This is the
+  single most consequential figure on the page — a wrong number here sends
+  a student toward missing their own graduation requirement, not just a
+  wrong fact about a charity.
+- No claim that any charity "signs the 40 hours" or "certifies the
+  requirement" — only the student's own school certifies the requirement;
+  a charity at most confirms the hours it supervised. State this
+  distinction plainly rather than letting the two blur, the same "convention
+  written as if it were law" failure `content-editor.md` already names for
+  this site.
+- No organisation's intake rules, minimum age, or sign-off process from
+  memory or general familiarity; every term comes from that organisation's
+  own page, fetched this cycle, with a facts row.
 - No organisation named without a live slug check; an unresolved slug is
   named, never linked to a guess.
-- No unsourced superlative ("the biggest furniture charity in Toronto," "the
-  easiest pickup") — `CLIENT.md` fault #2.
-- No invented number (wait times for pickup, how many items counts as a
-  truckload, how often a route runs) — `CLIENT.md` fault #3.
-- No invented belief about the reader ("Most people think furniture
-  donation means a truck shows up for free") — `CLIENT.md` fault #1.
-- No claim that this guide is an "easy win" or that 70/mo is a reliable
-  traffic estimate — the AI Overview/local-pack/PAA stack above organic
-  caps it; state the keyword opportunity nowhere in the reader-facing copy
-  at all, this caveat is for the commission, not the page.
+- No unsourced superlative ("the easiest hours to get in Toronto," "the most
+  popular student programme") — `CLIENT.md` fault #2.
+- No invented number (how long an application takes to process, how many
+  students a programme accepts per term) — `CLIENT.md` fault #3.
+- No invented belief about the reader ("Most students leave this to the last
+  minute") — `CLIENT.md` fault #1.
+- No claim that every Toronto school board follows an identical process;
+  if ontario.ca's page and a board's own page disagree on a procedural
+  detail (how the form is submitted, who signs it), state what each source
+  says and date it, rather than flattening the two into one rule.
 - No category-page link except `/category/social-services/`, and only once
   verified for the specific organisation named near it.
 - No bare "real"/"genuine(ly)"/"actually"/"actual" as filler.
 - No personification: nothing a page or organisation "carries," "holds," or
   "shows" in the sense of deciding what to include (RULINGS 2026-11-03).
-- Canadian spelling throughout (programme, not program, where "programme"
-  is the word in play; organisation, not organization, per this file's own
-  spelling).
+- Canadian spelling throughout (programme, organisation, not program,
+  organization — this file's own spelling).
 
 **[NEEDS RICHARD]:** none new. The standing blocker (R-192 egress /
 `DATABASE_URL`) already covers why this cannot be drafted; it is not a
 per-piece question, per `content-editor.md`'s rule against one `@richard`
 item per piece.
 
-## Commission: Where to donate hair in Toronto
-
-**Slug:** `donate-hair-toronto`
-**Cluster / intent tier:** `QUEUE.md` #10 (donate hair toronto, 90/mo, KD 1,
-score 45 — the highest score of any undrafted ready cluster). Evergreen,
-commissioned 3 Nov, re-commissioned in full today as this run's second pick.
-
-**The angle, in one sentence:** which organisations serving Toronto accept
-donated hair for wigs, what each one requires (minimum length, no colour
-treatment or chemical processing, how it must be bundled and sent), and how
-a donor sends it, since every organisation in this space works by mail
-rather than a Toronto drop-off.
-
-**Who it is for:** someone in Toronto who has had their hair cut for
-donation, or is about to, deciding which organisation to send it to and
-whether their hair qualifies.
-
-**What it must answer:**
-1. Which organisations accept hair donations that a Toronto resident can use
-   — national or international programmes with no local office are still
-   the honest answer if that is what exists; the guide does not need a
-   Toronto-specific recipient to be useful, only Toronto-relevant framing.
-2. What minimum length each requires.
-3. What condition each requires (grey, chemically treated, coloured hair —
-   each programme differs and some explicitly accept what others refuse).
-4. How the hair must be bundled (braided or ponytailed before cutting) and
-   shipped, and what it costs the donor to send it.
-5. Does the donor get anything back (a tax receipt; most hair-donation
-   charities are mail-in and do not issue one — confirm per organisation,
-   do not assume either way).
-6. Which, if any, of these organisations has a profile on this site.
-
-**Links every organisation must carry:**
-- Its own donation page (the source of its requirements).
-- Its profile `/profile/<slug>/` if it has one, checked against the
-  sitemap/`DATABASE_URL` first. Most hair-donation charities are
-  wig-focused medical charities (Angel Hair for Kids, Wigs for Kids Canada,
-  Hairdressers with Hearts) that may or may not be in the CRA-registered
-  charities table this site is built from — if an organisation named is not
-  a registered charity in the table, it is named without a profile link,
-  stated plainly as not listed on this site, never linked to a guess.
-- `/category/social-services/` only if verified live for the specific
-  organisation, same restriction as every other commission (R-170).
-
-**Facts needed and where they come from:**
-- The identity of hair-donation programmes relevant to a Toronto reader —
-  found by live search, then each organisation's own donation-requirements
-  page read in full, not assumed from name recognition.
-- Minimum length, condition rules, bundling/shipping instructions and
-  receipt policy per organisation, quoted or closely paraphrased with URL
-  and fetch date recorded as a numbered row in `research/facts/
-  donate-hair-toronto.md`, same format as the furniture commission above.
-- A live slug check against the sitemap or `DATABASE_URL` for every
-  organisation named, to confirm whether it is a registered charity with a
-  profile on this site.
-All three routes are confirmed blocked this session (see Connectivity
-above). Nothing here may be drafted from memory until the block lifts.
-
-**Do not claim:**
-- No minimum length, condition rule or shipping instruction from memory;
-  every one comes from that organisation's own current page, fetched this
-  cycle, with a facts row — these programmes change their rules and a
-  stale minimum-length figure would be actively harmful to a reader who
-  cuts their hair to a number that turns out wrong.
-- No organisation named without a live slug check against this site's own
-  charity table; state plainly where an organisation is not listed here
-  rather than linking a guess.
-- No invented tax-receipt claim either way — confirm per organisation or
-  say it is unconfirmed.
-- No unsourced superlative ("the most trusted wig charity") — `CLIENT.md`
-  fault #2.
-- No invented belief about the reader ("Most people think any length of
-  hair works") — `CLIENT.md` fault #1.
-- No invented number (how many wigs a single donation makes, how long
-  processing takes) — `CLIENT.md` fault #3.
-- No category-page link except `/category/social-services/`, verified for
-  the specific organisation.
-- No bare "real"/"genuine(ly)"/"actually"/"actual" as filler.
-- No personification (RULINGS 2026-11-03).
-- Canadian spelling throughout.
-
-**[NEEDS RICHARD]:** none new, same standing blocker as above.
-
 ## Carried forward, not re-detailed today
 
-`QUEUE.md` #6, `volunteer-opportunities-toronto-students` (score 22,
-recommissioned 20 Oct), remains open and blocked on the same fault; full
-detail in git history rather than re-typed here, since today's two picks
-above are this run's commissions from the queue per the "one or two"
-instruction. The Monday events-track and Friday news-track backlogs (every
-week since 19 Oct for events, 16 Oct for news) remain superseded by whichever
-issue of each track drafts first once the block lifts, per `CLIENT.md`'s
-dated-record rule — not reissued here.
+`QUEUE.md` #9 `donate-furniture-toronto` and #10 `donate-hair-toronto` were
+each commissioned in full yesterday (10 Nov) and remain unchanged: no new
+Ahrefs pull, no new SERP check, and the egress/`DATABASE_URL` block that
+stopped the writer on both is identical to today's. Re-typing either brief
+verbatim would be ceremony, not a new commission — full detail for both is in
+`COMMISSIONS.md`'s 10 November version (commit `16ab7f9`) and stands as this
+run's commission for them too. The Monday events-track and Friday news-track
+backlogs (every week since 19 Oct for events, 16 Oct for news) remain
+superseded by whichever issue of each track drafts first once the block
+lifts, per `CLIENT.md`'s dated-record rule — not reissued here.
 
 ## Standing rules for every commission above
 
-Unchanged since 4–9 Nov, restated once rather than per brief:
+Unchanged since 4–10 Nov, restated once rather than per brief:
 - `CLIENT.md`'s five faults (invented reader beliefs, unsourced
   superlatives, invented numbers/comparisons, FAQ-restating H2s, unchecked
   claims about our own site) apply directly.
@@ -249,7 +205,7 @@ Unchanged since 4–9 Nov, restated once rather than per brief:
 
 No new `[NEEDS RICHARD]` item from this run. The standing operational
 blocker (R-192 egress; this session type's missing general web access and
-`DATABASE_URL`) is now 28 calendar days old with zero drafts produced since
+`DATABASE_URL`) is now 29 calendar days old with zero drafts produced since
 13 October, across every weekday session this fleet has run in that window,
 and remains his decision alone: either this session type gets general web
 egress, or `DATABASE_URL` is provisioned to it, or both. R-170
