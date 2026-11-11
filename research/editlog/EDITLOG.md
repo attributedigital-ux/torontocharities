@@ -1793,3 +1793,40 @@ notification restating it would be noise. Both remain Richard's decisions,
 not something this session can fix from inside.
 
 ---
+
+## WRITER run — 11 November 2026 — NOTHING DRAFTED
+
+Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
+(one evergreen pick this run: `volunteer-opportunities-toronto-students`,
+`QUEUE.md` #6), `content/CLIENT.md` (brief, five faults, category-link
+restriction), and this file's tail, per the routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: `curl -m 10` to `https://toronto-charities.ca/guides/` and
+`https://www.ontario.ca/` both returned `000` (connection never completed);
+the agent-proxy status endpoint logs the identical `connect_rejected`/
+"gateway answered 403 to CONNECT" shape against a wide, unrelated spread of
+hosts in the same window (mcp.figma.com, mcp.box.com, mcp.notion.com,
+mcp.monday.com, mcp.hubspot.com and others), policy `"selective": false`.
+Presence-only check: `DATABASE_URL`, `ANTHROPIC_API_KEY`, `RESEND_API_KEY`
+all absent from the session environment and no `.env` file exists.
+
+Today's commission depends entirely on live-fetch facts (ontario.ca's
+community-involvement-requirement page, each named charity's own volunteer
+page) and a live slug check against the sitemap/`DATABASE_URL` for every
+profile link — all routes confirmed blocked. Per content-writer.md's own
+hard rule ("a claim without a facts row does not ship... never substitute a
+remembered figure"), nothing was drafted. `QUEUE.md` unchanged — no coverage
+check was possible without live egress, so no cluster status was touched.
+
+This is at least the thirty-first consecutive weekday session this fleet has
+hit the identical fault, and the twenty-ninth calendar day with no draft
+produced since 13 October. Not re-escalating: R-192 (egress) and R-170
+(category remap) already carry this as an open Richard decision, and a
+push notification already went out at the four-calendar-week mark (10 Nov
+WRITER run) with no new information since — per the 10 Nov GATE run's own
+stated reasoning, a further notification restating the identical,
+already-flagged fault one day later would be noise. Both remain Richard's
+decisions, not something this session can fix from inside.
+
+---
