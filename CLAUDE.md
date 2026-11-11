@@ -2,6 +2,29 @@
 
 Operating rules for Claude Code on this project. Read this file before touching anything.
 
+## Writing
+
+Quill writes every word published on this site. How to write:
+`~/github/workforce/agents/quill.md`. What this site is and how it sounds:
+`content/CLIENT.md` in this repo, which also carries the surface specification
+for the two weekly tracks. What a page of a given type contains: the page
+standards in `~/github/attribute-brain/wiki/standards/`. The publishing process
+itself: `~/github/attribute-brain/wiki/processes/content-engine.md`.
+
+No writing rule is restated in this repo. `content/CLIENT.md` was reshaped to
+the client-file order on 10 November 2026 and nothing was dropped from it
+(ruling: Quill is the writer, so a client repo says what is true about the
+client and nothing about how to write).
+
+## Read first
+1. `content/CLIENT.md` — the site: who reads it, how it sounds, where the
+   figures are, what it does not claim, what is still open, and what each
+   weekly issue contains.
+2. `content/QUEUE.md` — the evergreen clusters, with their status.
+3. `~/github/attribute-brain/wiki/clients/toronto-charities.md` — the standing
+   counts, the state of the newsroom and what is open.
+4. `~/github/attribute-brain/RULINGS.md` and `wiki/standards/` — law.
+
 ## What this project is
 
 A free public directory of every registered charity in the Greater Toronto Area, with automated event ingestion and a self-managing charity activation pipeline. Operated as a community resource by Toronto Property (credited subtly in footer only — one line, 70% opacity).
