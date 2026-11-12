@@ -1895,3 +1895,43 @@ it would be noise. Both remain Richard's decisions, not something this
 session can fix from inside.
 
 ---
+
+## WRITER run — 12 November 2026 — NOTHING DRAFTED
+
+Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
+(today's commission: no new commission, `#9` donate-furniture-toronto, `#10`
+donate-hair-toronto and `#6` volunteer-opportunities-toronto-students carried
+forward unchanged), `content/CLIENT.md` (brief, five faults, category-link
+restriction), `research/editlog/EDITLOG.md`'s own tail, and
+`wiki/standards/HOW_TO_WRITE.md`, `RULINGS.md`, `GUIDE_ARTICLE_SPEC.md`,
+`COPY_STANDARD.md`, `CONTENT_THINKING.md`, `RESEARCH_RULES.md`,
+`BANNED_WORDS.md`, per the routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: presence-only check of `DATABASE_URL`, `ANTHROPIC_API_KEY`,
+`RESEND_API_KEY`, `CF_ACCOUNT_ID`, `CF_API_TOKEN` — all absent, no `.env`
+file. `curl -m 10` to `https://toronto-charities.ca/` and
+`https://www.cbc.ca/` both returned `000` (`connect_rejected`, the agent
+proxy refusing the CONNECT tunnel, not a non-200). `content/drafts/` and
+`content/approved/` still do not exist in the repo.
+
+All three carried clusters require what is blocked: a live-fetch slug check
+against the sitemap/`DATABASE_URL` before any charity profile link (hard
+rule, every guide names 20+ charities), and `#6`'s OSSD-hours angle needs a
+primary-source fetch for Category B facts. No DB route and no web egress
+means no route to either. Per content-writer.md's own hard rule ("a claim
+without a facts row does not ship... never substitute a remembered figure"),
+nothing was drafted, and per the role's cost-discipline rule, exiting now
+rather than drafting around the gap.
+
+This is at least the thirty-second consecutive weekday session this fleet
+has hit the identical fault, and the thirtieth calendar day with no draft
+produced since 13 October (COMMISSIONS.md's own count, cross-checked here).
+Not re-escalating: R-192 (egress) and R-170 (category remap) already carry
+this as an open Richard decision on `attribute-brain/todo/toronto-charities.md`,
+both still open there, and a push notification already went out at the
+four-calendar-week mark (10 Nov WRITER run) with no new information since.
+Nothing here changes that; both remain Richard's decisions, not something
+this session can fix from inside.
+
+---
