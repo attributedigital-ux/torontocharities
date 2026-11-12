@@ -1935,3 +1935,29 @@ Nothing here changes that; both remain Richard's decisions, not something
 this session can fix from inside.
 
 ---
+
+## DESIGNER run — 12 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 Oct ruling (imagery comes from
+what is true before it comes from a model; no generator on this site;
+generate nothing). Independently re-verified rather than trusted from
+today's own WRITER entry (`b6fbc86`): `ls content/drafts` — still does not
+exist. Thirtieth calendar day with no draft since 13 October, matching the
+writer's own count from this same day. No draft, no facts/figures file to
+draw a `guide-figure` from, and no charity names to add to a logo-pending
+list. `content/images/` still does not exist, so no `PENDING.md` was
+written.
+
+Checked the four live pieces in `content/published/` anyway: all four
+(`volunteer-toronto`, `soup-kitchen-volunteer-toronto`,
+`where-to-donate-books-toronto`, `where-to-donate-clothes-toronto`) still
+carry exactly one `.guide-figure` element each, unchanged since the 11 Nov
+check. Not re-flagging the egress/`DATABASE_URL` block (R-192, R-170)
+separately — today's WRITER run already logged it and no notification
+threshold is newly crossed; a second one from this role for the same fault
+on the same day would be noise.
+
+No file needed changing beyond this entry.
+
+---
