@@ -1,105 +1,135 @@
-# Commissions — 12 November 2026 (Thursday)
+# Commissions — 13 November 2026 (Friday)
 
-Written by the editor, commissioning run. Thursday is not a fixed-track day
-(`CLIENT.md`: Monday is events, Friday is news) — per the standing
-instruction, an "other day" commissions one or two guides from
-`content/QUEUE.md`.
+Written by the editor, commissioning run. Friday is a fixed-track day
+(`CLIENT.md`): "Toronto charity news this week" takes priority over any
+evergreen pick from `content/QUEUE.md`.
 
 ## Connectivity, checked this session
 
-`curl -m 10` to `https://toronto-charities.ca/` and `https://www.cbc.ca/`
-both returned `HTTP 000` — a connection-level failure (`connect_rejected`,
-"gateway answered 403 to CONNECT"), not a non-200. The proxy status endpoint
-(`$HTTPS_PROXY/__agentproxy/status`, checked directly this session,
-timestamp 2026-11-12T11:32:17Z) logs the identical shape against a wide,
-unrelated spread of hosts in the same window (mcp.asana.com, mcp-server.
-egnyte.com, mcp.slack.com, mcp.apollo.io, mcp.klaviyo.com, mcp.linear.app,
-mcp.hubspot.com, mcp.docusign.com, mcp.zapier.com, mcp.similarweb.com,
-mcp.monday.com, mcp.supermetrics.com and others), policy `"selective":
-false` — the same blanket block logged every session since 21 Oct.
-Presence-only check this session: `DATABASE_URL`, `ANTHROPIC_API_KEY`,
-`RESEND_API_KEY`, `CF_ACCOUNT_ID`, `CF_API_TOKEN` all absent; no `.env`
-file. Cross-checked `attribute-brain/todo/toronto-charities.md` directly
-rather than trusting yesterday's note: R-192 (general web egress for this
-session type, opened 16 Oct) and R-170 (category-page mapping, opened 13
-Oct) are both still open, word for word the same entries as 11 November.
-Today is the **thirtieth calendar day** with no draft produced since 13
-October (18 remaining days of October + 12 days of November); the exact
-consecutive-weekday-session count is `EDITLOG.md`'s own tally to keep, not
-re-derived here. Checked `attribute-brain/raw/` for anything dated 7–12
-November naming this site: nothing does (the week's dictated sessions concern
-Collingwood, the F45 ad sweep, Fathom/meeting-recap process, FreshBooks,
-Professor Glitch's build lessons, Quill's writer model and the Cassar
-staging decision — none of them this site). A commission is a brief, not a
-draft, and `research/EVIDENCE.md`'s 9 November pull (the most recent) is
-explicit: "Do not commission anything new from this pull" — no new genuine
-gap, no cannibalisation risk, no status change on any `QUEUE.md` row.
+Presence-only check: `DATABASE_URL`, `ANTHROPIC_API_KEY`, `RESEND_API_KEY`
+all absent from the session environment; no `.env` file. `curl -m 10` to
+`https://toronto-charities.ca/` and `https://www.cbc.ca/` both returned
+`000` (`connect_rejected`, the agent proxy refusing the CONNECT tunnel, not
+a non-200). The proxy status endpoint (checked directly this session,
+timestamp 2026-11-13T11:32Z) logs the identical shape against a wide,
+unrelated spread of hosts (mcp.atlassian.com, mcp.clickup.com,
+mcp.klaviyo.com, mcp.asana.com, mcp.linear.app and others), policy
+`"selective": false` — the same blanket block logged every session since
+21 Oct. `content/drafts/` and `content/approved/` do not exist; `git
+status` clean, `content/published/` unchanged at four guides.
+Cross-checked `attribute-brain/todo/toronto-charities.md` directly rather
+than trusting yesterday's note: R-192 (general web egress for this session
+type, opened 16 Oct) and R-170 (category-page mapping, opened 13 Oct) are
+both still open, unchanged since 11–12 November. Today is at least the
+thirty-third consecutive weekday session this fleet has hit the identical
+fault, and the thirty-first calendar day with no draft produced since 13
+October. Not pushing a new notification: the four-calendar-week mark
+already triggered one (10 Nov WRITER run) and nothing has changed since —
+a further one today would be noise, per the pattern every GATE/WRITER/
+DESIGNER entry since has already followed.
 
-## What the last ten EDITLOG entries say the writer keeps getting wrong
+A commission is a brief, not a draft, and is written below regardless of
+the block, so the writer has a brief the moment egress or `DATABASE_URL`
+lands.
 
-Checked the tail through 11 November: every one of the last ten entries is a
-WRITER/DESIGNER/GATE run finding nothing to review or nothing to draft,
-because nothing has drafted since 13 October. There is no new prose fault to
-add this run. The five standing `CLIENT.md` faults, the category-link
-restriction and the bare-intensifier/personification/"is worth"-family bans
-are restated in full under Standing rules below rather than re-derived,
-since the writer has not had a chance to act on any of them since they were
-written — there is still nothing in `content/drafts/`.
+## Commission: Friday Track 2 — Toronto charity news this week
 
-## Why today carries forward rather than re-detailing
+- **Slug:** `toronto-charity-news-2026-11-13`
+- **Working title:** Toronto charity news, 13 November 2026
+- **Cluster / intent tier:** Weekly fixed track 2 (news), not a `QUEUE.md`
+  evergreen cluster — informational, dated, high internal-link density.
+- **Reader:** Someone in Toronto who wants to know what happened this week
+  to a charity they know or follow, plus the charity's own staff, who will
+  share a page that names them (`CLIENT.md`, "Who is reading").
 
-`QUEUE.md` holds exactly three `ready`/`commissioned` evergreen clusters,
-and all three already have a full, dated commission on record within the
-last two days, each on roughly a weekly refresh cadence this run continues
-rather than restarts:
+**The angle, in one sentence:** a plain, dated list of what actually
+happened this week to Toronto-area charities, nonprofits, food banks,
+fundraisers and foundations — each item sourced to the outlet that reported
+it and linked to the charity's own profile where one exists, nothing else.
 
-- `#9` donate-furniture-toronto and `#10` donate-hair-toronto: full detail 3
-  Nov, carried 4–9 Nov, full detail again **10 Nov** (commit `16ab7f9`).
-- `#6` volunteer-opportunities-toronto-students: full detail 4 Nov, carried
-  5–9 Nov, full detail again **11 Nov** (commit `df00eb1`).
+**Questions the piece must answer (5):**
+1. What happened this week (week of 13 November 2026) to a specific
+   Toronto-area charity, nonprofit, food bank, fundraiser or foundation,
+   each fact traceable to one named outlet's own article?
+2. Which outlet reported each item, and does the outbound link go to that
+   outlet's specific article, not its homepage or a section front?
+3. Which charity named in each item has a profile on this site, with a
+   slug that resolves against the sitemap/`DATABASE_URL` — and for the ones
+   that don't resolve or don't have a profile, is the charity named without
+   a link rather than guessed at?
+4. Is every item genuinely dated to this week, with nothing that is
+   actually an event (an event belongs to the Monday events track and the
+   events source list, never this issue)?
+5. If genuine citable items number fewer than five this week, does the
+   piece say so plainly rather than pad with older or weaker items?
 
-No Ahrefs pull, SERP check, or `raw/` dictation has touched any of the three
-since those write-ups, and the egress/`DATABASE_URL` block that stops the
-writer on all three is identical to both prior sessions' (confirmed above,
-this session). Re-typing any of the three briefs verbatim one or two days
-after their last full detail would be ceremony, not a new commission — per
-`wiki/processes/content-engine.md`'s own test ("what about this page is
-actually uncertain? If the answer is nothing, the loop is ceremony"). This
-Thursday mirrors 5 November's shape exactly: a carry-forward day the
-weekday after a Tuesday/Wednesday pair of full refreshes, ahead of Friday's
-news-track issue. Next full refresh due on this cadence: `#9`/`#10` around
-17 Nov, `#6` around 18 Nov, each re-anchored to whatever `QUEUE.md` reads
-that day rather than fixed in advance.
+**Links it must earn:**
+- Every item: one outbound link to the specific outlet article the fact
+  came from (Toronto Star, CBC Toronto, CP24, Globe and Mail, BlogTO,
+  Toronto Life, The Philanthropist, Future of Good, CharityVillage, or
+  whichever outlet actually ran it).
+- Every item naming a charity with a resolvable profile: a link to
+  `/profile/<slug>/`. A charity without a confirmed slug is named with no
+  link — never guessed (`CLIENT.md`, "What this site does not claim").
+- No category-page link except `/category/social-services/`, and only when
+  independently verified for that specific organisation (R-170 is still
+  open; every other category page is wrong).
+- No link to `/charity-events-toronto/` unless an item is itself about that
+  page's own content, which should be rare on this track.
+
+**Facts it will need, and where from:**
+- Google News RSS for: Toronto charity, Toronto nonprofit, Toronto food
+  bank, Toronto fundraiser, Toronto foundation.
+- The outlets' own feeds: Toronto Star, CBC Toronto, CP24, Globe and Mail,
+  BlogTO, Toronto Life, The Philanthropist, Future of Good, CharityVillage.
+- Charity profile slugs: the sitemap or a live `DATABASE_URL` query —
+  whichever route egress allows once it is unblocked; neither is available
+  to this session today.
+
+**Do not claim:**
+- Nothing the writer cannot cite to a named outlet's own article. No
+  outlet, no item.
+- No item that is actually an event — route it to the events source list,
+  not into this issue.
+- No invented quote, figure, outcome or detail beyond what the outlet's
+  own piece states.
+- No charity profile link guessed at; unresolved names run without a link.
+- No adjectives about the cause, no invented belief about the reader, no
+  unsourced superlative, no invented number or comparison, no unchecked
+  claim about this site's own pages (`CLIENT.md`'s five standing faults).
+- No commentary or filler between items — one or two sentences per item,
+  what happened, who reported it, who it concerns, then the next item.
+- No bare intensifier filler ("real", "genuine(ly)", "actually", "actual")
+  unless the sentence draws an explicit contrast.
+- No object-as-actor phrasing ("the report holds," "the story carries,"
+  "the outlet shows") — name the outlet or the person, or use has/is
+  in/says.
+- Fewer than five genuine items is a reason to say so in the piece, never
+  a reason to invent a sixth.
 
 ## Carried forward, unchanged
 
-**`#9` donate-furniture-toronto** (donate furniture toronto + where to
-donate furniture toronto, 70/mo, KD7, score 9, WINNABLE NOW — independently
-confirmed a second consecutive Ahrefs pull, 9 Nov: KD held 0, vol 60→70,
-expect lower click-through than KD0 alone implies, AI Overview + local pack
-+ PAA sit above organic) and **`#10` donate-hair-toronto** (90/mo, KD1,
-score 45) — full brief: angle, reader, six-point "must answer" list, link
-and facts requirements, do-not-claim list — stands as written in
-`content/COMMISSIONS.md`'s 10 November version, commit `16ab7f9`. Both
-remain blocked on the identical egress/`DATABASE_URL` fault confirmed again
-this session; neither has a facts row started in `research/facts/`.
+`QUEUE.md` holds exactly three `ready`/`commissioned` evergreen clusters,
+all blocked on the identical egress/`DATABASE_URL` fault, all still within
+their last full-detail refresh window (next due: `#9`/`#10` around 17 Nov,
+`#6` around 18 Nov, per the 12 Nov commission's cadence). No Ahrefs pull,
+SERP check or `raw/` dictation has touched any of the three since their
+last full write-up, so re-typing them today would be ceremony
+(`wiki/processes/content-engine.md`'s own test). Not detailed again here:
 
-**`#6` volunteer-opportunities-toronto-students** (volunteer opportunities
-toronto for students, 200/mo, KD8, score 22) — full brief stands as written
-in `content/COMMISSIONS.md`'s 11 November version, commit `df00eb1`,
-including the OSSD 40-hour-requirement angle, the six-point "must answer"
-list, and the do-not-claim list distinguishing a charity confirming hours
-from a school certifying them. Same block, unchanged.
+- **`#9` donate-furniture-toronto** and **`#10` donate-hair-toronto** — full
+  brief stands as written in the 10 November version of this file (commit
+  `16ab7f9`).
+- **`#6` volunteer-opportunities-toronto-students** — full brief stands as
+  written in the 11 November version of this file (commit `df00eb1`).
 
-The Monday events-track and Friday news-track backlogs (every week since 19
-Oct for events, 16 Oct for news) remain superseded by whichever issue of
-each track drafts first once the block lifts, per `CLIENT.md`'s
-dated-record rule — not reissued here; Friday's news-track issue is this
-week's next fixed-track commission, due 13 November.
+The Monday events-track backlog (every week since 19 Oct) remains
+superseded by whichever issue of each track drafts first once the block
+lifts, per `CLIENT.md`'s dated-record rule.
 
 ## Standing rules for every commission above
 
-Unchanged since 4–11 Nov, restated once rather than per brief:
+Unchanged since 4–12 Nov, restated once rather than per brief:
 - `CLIENT.md`'s five faults (invented reader beliefs, unsourced
   superlatives, invented numbers/comparisons, FAQ-restating H2s, unchecked
   claims about our own site) apply directly.
@@ -119,19 +149,15 @@ Unchanged since 4–11 Nov, restated once rather than per brief:
   unlisted organisations are named without a link.
 - A category, label or taxonomy is a claim (RULINGS 2026-11-01): no
   eligibility stated without a source that actually defines it.
-- No merchant link needs an affiliate code on this site (RULINGS 2026-11-03
-  applies to GoHighLevel specifically; no merchant relationship exists
-  here) — noted only because it is a live standard elsewhere in the fleet,
-  not because it changes anything on this repo.
 
 ## For Richard
 
 No new `[NEEDS RICHARD]` item from this run. The standing operational
 blocker (R-192 egress; this session type's missing general web access and
-`DATABASE_URL`) is now 30 calendar days old with zero drafts produced since
+`DATABASE_URL`) is now 31 calendar days old with zero drafts produced since
 13 October, across every weekday session this fleet has run in that window,
 and remains his decision alone: either this session type gets general web
 egress, or `DATABASE_URL` is provisioned to it, or both. Not re-pushing a
-notification for this today — the four-calendar-week mark already triggered
-one (10 Nov WRITER run) and nothing has changed since. R-170 (category-page
+notification today — the four-calendar-week mark already triggered one
+(10 Nov WRITER run) and nothing has changed since. R-170 (category-page
 mapping) remains open on the same todo file, unaffected by today's run.
