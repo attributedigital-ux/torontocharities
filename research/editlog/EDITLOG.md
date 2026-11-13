@@ -2025,3 +2025,40 @@ noise.
 No file needed changing beyond this entry.
 
 ---
+
+## EDITOR gate run — 13 November 2026 — NOTHING TO GATE
+
+Read `attribute-brain/wiki/agents/content-editor.md`, `wiki/standards/HOW_TO_WRITE.md`
+and `EDITORIAL_PASS.md`, `RULINGS.md`, and `content/CLIENT.md` (the five
+faults, category-link restriction) per the routine brief, before touching
+anything.
+
+Independently re-verified rather than trusted from today's WRITER (`8b9e506`)
+and DESIGNER (`e4970b6`) entries: `ls content/drafts content/approved` —
+neither exists. Presence-only check of `DATABASE_URL`, `ANTHROPIC_API_KEY`,
+`RESEND_API_KEY`, `CF_ACCOUNT_ID`, `CF_API_TOKEN` and `.env` — all absent.
+`curl -m 10` to `https://toronto-charities.ca/` and `https://www.cbc.ca/`
+both returned `000`; the agent-proxy status endpoint confirms the identical
+`connect_rejected` ("gateway answered 403 to CONNECT"), `"selective": false`
+— the same blanket block as every prior pass. Cross-checked
+`attribute-brain/todo/toronto-charities.md` directly: R-192 (egress/DNS
+block, opened 16 Oct) and R-170 (category mapping wrong across the board)
+both still open, unchanged.
+
+Nothing to check against `research/facts/` (four rows exist —
+soup-kitchen-volunteer-toronto, volunteer-toronto,
+where-to-donate-books-toronto, where-to-donate-clothes-toronto — none tied
+to an undrafted piece), no internal or outbound links to curl, no
+`prose_gate.py` to run, no category-link rule to enforce — there is no file
+in `content/drafts/` to gate. No verdict to record per draft because no
+draft exists.
+
+Not re-notifying: this is the same fault the commissioning and designer
+runs already logged today, the four-calendar-week push notification went
+out 10 Nov, and nothing has changed since the 12 Nov gate pass logged the
+identical state. A fourth log entry restating the same open fault the same
+day would be noise.
+
+No file needed changing beyond this entry.
+
+---
