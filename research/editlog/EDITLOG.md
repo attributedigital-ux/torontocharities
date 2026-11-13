@@ -1988,3 +1988,40 @@ out 10 Nov with no new information since. Nothing here changes that.
 No file needed changing beyond this entry.
 
 ---
+
+## DESIGNER run — 13 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 Oct ruling (imagery comes from
+what is true before it comes from a model; no generator on this site;
+generate nothing). Independently re-verified rather than trusted from
+today's own Commission entry (`8b9e506`): `ls content/drafts content/approved
+content/images` — none of the three exist. Presence-only check of
+`DATABASE_URL`, `ANTHROPIC_API_KEY`, `CF_ACCOUNT_ID`, `CF_API_TOKEN`,
+`RESEND_API_KEY` — all absent. `curl -m 10` to `https://toronto-charities.ca/`
+returned `000`; the agent-proxy status endpoint logs the identical
+`connect_rejected` ("gateway answered 403 to CONNECT"), policy `"selective":
+false` — the same blanket block logged every session since 21 Oct, now also
+hitting an unrelated spread of other MCP hosts (mcp.clickup.com and others)
+in the same window. Thirty-first calendar day with no draft since 13
+October, matching the commissioning run's own count from this same day.
+
+No draft, no `research/facts/` file to draw a `guide-figure` from, and no
+charity name to add to a logo-pending list. `content/images/` still does not
+exist, so no `PENDING.md` was written.
+
+Checked the four live pieces in `content/published/` anyway: all four
+(`volunteer-toronto`, `soup-kitchen-volunteer-toronto`,
+`where-to-donate-books-toronto`, `where-to-donate-clothes-toronto`) still
+carry exactly one `.guide-figure` element each, unchanged since the 12 Nov
+check. Cross-checked `attribute-brain/todo/toronto-charities.md` directly:
+R-192 and R-170 both still open, word for word the same entries as 12
+November. Not re-notifying: today's own Commission run already logged the
+same fault and said so explicitly ("Not re-notifying, nothing new"), and the
+four-calendar-week push notification already went out 10 Nov with no new
+information since. A third log entry restating it the same day would be
+noise.
+
+No file needed changing beyond this entry.
+
+---
