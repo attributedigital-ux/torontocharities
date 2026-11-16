@@ -2063,6 +2063,43 @@ No file needed changing beyond this entry.
 
 ---
 
+## EDITOR gate run — 16 November 2026 — NOTHING TO GATE
+
+Read `attribute-brain/wiki/agents/content-editor.md`, `wiki/standards/HOW_TO_WRITE.md`
+and `EDITORIAL_PASS.md`, `RULINGS.md`, and `content/CLIENT.md` (the five
+faults, category-link restriction), and `research/editlog/EDITLOG.md` per
+the routine brief, before touching anything.
+
+Independently re-verified rather than trusted from today's WRITER
+(`c6fbedd`, "egress/DB block confirmed independently") entry: `ls
+content/drafts content/approved` — neither exists. Presence-only check of
+`DATABASE_URL` and `ANTHROPIC_API_KEY` in `env` — both absent. `curl -m 10`
+to `https://toronto-charities.ca/` returned `000`; the agent-proxy status
+endpoint confirms `connect_rejected` ("host not allowed for this session"),
+the same blanket block as every prior pass this month. Cross-checked
+`attribute-brain/todo/toronto-charities.md` and `RULINGS.md` directly:
+R-192 (egress block, opened 16 Oct) and R-170 (category mapping wrong
+across the board) both still open, unchanged; today's own DESIGNER-run
+ruling entry (16 Nov) already re-confirmed the identical state once this
+session.
+
+Nothing to check against `research/facts/` (four rows exist —
+soup-kitchen-volunteer-toronto, volunteer-toronto,
+where-to-donate-books-toronto, where-to-donate-clothes-toronto — none tied
+to an undrafted piece), no internal or outbound links to curl, no
+`prose_gate.py` to run, no category-link rule to enforce — there is no
+file in `content/drafts/` to gate. No verdict to record per draft because
+no draft exists.
+
+Not re-notifying: this is the same fault the writer and designer runs
+already logged today, the four-calendar-week push notification went out
+10 Nov, and nothing has changed since the 13 Nov gate pass logged the
+identical state.
+
+No file needed changing beyond this entry.
+
+---
+
 ## WRITER run — 16 November 2026 — NOTHING DRAFTED
 
 Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
