@@ -2062,3 +2062,51 @@ day would be noise.
 No file needed changing beyond this entry.
 
 ---
+
+## WRITER run — 16 November 2026 — NOTHING DRAFTED
+
+Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
+(today's commission: Track 1, `charity-events-toronto-week-of-2026-11-16`, a
+fixed Monday events-track piece, no new `QUEUE.md` cluster commissioned),
+`content/CLIENT.md` (brief, five faults, category-link restriction),
+`research/editlog/EDITLOG.md`'s own tail, and `wiki/standards/HOW_TO_WRITE.md`,
+`RULINGS.md`, `GUIDE_ARTICLE_SPEC.md`, `COPY_STANDARD.md`,
+`CONTENT_THINKING.md`, `RESEARCH_RULES.md`, `BANNED_WORDS.md`, per the
+routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: Bash `curl -m 15` to `https://toronto-charities.ca/` and
+`https://toronto-charities.ca/charity-events-toronto/` both returned exit
+56, `CONNECT tunnel failed, response 403`; the agent proxy's own status
+endpoint (`$HTTPS_PROXY/__agentproxy/status`) logs both as
+`connect_rejected`, "gateway answered 403 to CONNECT (policy denial or
+other refusal)," with the policy itself non-selective (`"selective":
+false`) — the same blanket block logged every weekday session since 21 Oct.
+A direct read of `.env` for `DATABASE_URL` was refused outright by the
+harness's own credential-materialization guard before any content read
+happened, so no DB-query route was available either. `content/drafts/` and
+`content/approved/` still do not exist in the repo.
+
+The commission's own facts-needed section requires exactly these two routes
+for every part of this piece: the `events` table for which events, when,
+where, cost and organiser; and a live slug check against the sitemap/DB
+before any charity profile link. No DB route and no web egress means no
+path to either. Per content-writer.md's own hard rule ("a claim without a
+facts row does not ship... never substitute a remembered figure") and the
+commission's own instruction not to draft from the stale 13 October event
+count, nothing was drafted — not the issue body, not a facts file, not a
+QUEUE.md change (none was due today; Monday is fixed-track).
+
+This is at least the thirty-fourth calendar day with no draft produced
+since 13 October, matching the commission's own count, cross-checked here.
+Not re-escalating: R-192 (egress) and R-170 (category remap) already carry
+this as an open Richard decision on
+`attribute-brain/todo/toronto-charities.md`, both confirmed still open and
+unchanged there this session, and a push notification already went out at
+the four-calendar-week mark (10 Nov WRITER run) with no new information
+since. Nothing here changes that; both remain Richard's decisions, not
+something this session can fix from inside.
+
+No file needed changing beyond this entry.
+
+---
