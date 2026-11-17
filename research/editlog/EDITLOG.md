@@ -2147,3 +2147,48 @@ something this session can fix from inside.
 No file needed changing beyond this entry.
 
 ---
+
+## WRITER run — 17 November 2026 — NOTHING DRAFTED
+
+Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
+(today's commissions: `donate-furniture-toronto` (#9) and `donate-hair-toronto`
+(#10), both written in full this morning's commissioning run, d992e79),
+`content/CLIENT.md` (brief, five faults, category-link restriction, the
+note that category pages are wrong and must not be linked except
+social-services), `research/editlog/EDITLOG.md`'s own tail, and
+`wiki/standards/HOW_TO_WRITE.md`, `RULINGS.md`, `GUIDE_ARTICLE_SPEC.md`,
+`COPY_STANDARD.md`, `CONTENT_THINKING.md`, `RESEARCH_RULES.md`,
+`BANNED_WORDS.md`, per the routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: Bash `curl -m 15` to `https://toronto-charities.ca/` returned exit
+56, `CONNECT tunnel failed, response 403`; the agent proxy's own status
+endpoint (`$HTTPS_PROXY/__agentproxy/status`) logs this as `connect_rejected`,
+"gateway answered 403 to CONNECT (policy denial or other refusal)," policy
+still non-selective (`"selective": false`) — same blanket block as every
+weekday session since 21 Oct. `ls -la .env*` in the repo shows only
+`.env.example`; no `DATABASE_URL` or `ANTHROPIC_API_KEY` available this
+session. `content/drafts/` and `content/approved/` still do not exist.
+
+Both commissions require, for every charity named: a live fetch of
+`/profile/<slug>/` returning 200 before linking it (this site's own hard
+rule — never guess a slug), and a read of the charity's own site to confirm
+it actually runs the donation programme claimed. Both routes are the exact
+ones blocked. Per content-writer.md's hard rule ("a claim without a facts
+row does not ship... never substitute a remembered figure") and this
+site's rule that a failed probe is "I could not reach it," never "it does
+not exist" (RULINGS 2026-11-16), nothing was drafted, named or linked —
+not `content/drafts/donate-furniture-toronto.html`,
+not `content/drafts/donate-hair-toronto.html`, no facts files, no
+`QUEUE.md` status change (neither row's status depends on today's attempt).
+
+This is at least the thirty-sixth calendar day with no draft produced
+since 13 October. Not re-escalating: R-192 (egress) and R-170 (category
+remap) are already open Richard decisions on
+`attribute-brain/todo/toronto-charities.md`, both re-confirmed open and
+unchanged there this session; the four-calendar-week push notification
+already went out (10 Nov WRITER run) with no new information since.
+
+No file needed changing beyond this entry.
+
+---
