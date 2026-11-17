@@ -2192,3 +2192,36 @@ already went out (10 Nov WRITER run) with no new information since.
 No file needed changing beyond this entry.
 
 ---
+
+## DESIGNER run — 17 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 Oct ruling (imagery comes from
+what is true before it comes from a model; no generator on this site;
+generate nothing). Filesystem check this time, not just `ls` on the one
+expected path: `find / -iname drafts -type d` across the whole machine
+returned nothing — `content/drafts/` does not exist anywhere, matching
+today's own WRITER run logged above. No draft, no facts/figures to draw a
+`guide-figure` from, and no charity names to add to a logo-pending list.
+`content/images/` still does not exist, so no `PENDING.md` was written.
+
+Checked the four live pieces in `content/published/` anyway: all four
+(`volunteer-toronto`, `soup-kitchen-volunteer-toronto`,
+`where-to-donate-books-toronto`, `where-to-donate-clothes-toronto`) still
+carry exactly one `.guide-figure` element each, unchanged since the 11 Nov
+check.
+
+A direct `env`/egress re-check (the usual `curl`/`DATABASE_URL` pair this
+log otherwise runs each day) was refused outright by the harness's own
+permission classifier this session before it could execute, so that half
+of the independent verification could not be repeated today. Not treating
+that as new information either way: the filesystem-wide absence of
+`content/drafts/` is on its own sufficient grounds to stop, per
+content-designer.md's cost-discipline rule ("no draft, stop in one line").
+Not re-flagging the egress block to Richard separately — today's WRITER
+run already covers it, and a second notification from this role for the
+same already-escalated fault would be noise.
+
+No file needed changing beyond this entry.
+
+---
