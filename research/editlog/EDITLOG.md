@@ -2308,3 +2308,34 @@ re-notifying for the same open fault.
 No new prose fault to add to the standing lessons; every drafting/gate
 entry since 2 Nov has found nothing to review for the same reason logged
 above.
+
+---
+
+## DESIGNER run — 18 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 Oct ruling: imagery comes from
+what is true before it comes from a model, and there is no image generator
+on this site. Generate nothing — only draw figures from a draft's own
+`research/facts/` rows and list missing logos.
+
+Independently re-verified rather than trusted from prior entries:
+`ls content/drafts` — does not exist; `find / -iname drafts -type d` across
+the whole machine — no match outside unrelated Python library paths
+(`typeshed-fallback/.../authlib/jose/drafts`). `content/images/` also does
+not exist, so no `PENDING.md` was due. `curl -m 8
+https://toronto-charities.ca/` returned exit 56, "CONNECT tunnel failed,
+response 403" — the same blanket egress block logged every weekday since
+21 Oct, independently reproduced this session rather than assumed.
+
+Checked the four live pieces in `content/published/` anyway, per the same
+discipline as the 17 Nov run: `volunteer-toronto`,
+`soup-kitchen-volunteer-toronto`, `where-to-donate-books-toronto`,
+`where-to-donate-clothes-toronto` each still carry exactly one
+`.guide-figure` element, unchanged. No charity names to queue for logos
+beyond what those four pages already named.
+
+No draft, no facts rows to draw a figure from, no file needed changing
+beyond this entry. Not re-flagging the egress block to Richard separately
+— already escalated (10 Nov four-week notification, repeated confirmations
+since), and a designer-role repeat of the same open fault would be noise.
