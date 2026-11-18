@@ -2339,3 +2339,39 @@ No draft, no facts rows to draw a figure from, no file needed changing
 beyond this entry. Not re-flagging the egress block to Richard separately
 — already escalated (10 Nov four-week notification, repeated confirmations
 since), and a designer-role repeat of the same open fault would be noise.
+
+---
+
+## EDITOR gate run — 18 November 2026 — NOTHING TO REVIEW
+
+Read, in order, per the routine brief: `attribute-brain/wiki/agents/
+content-editor.md` (gate section, including the EDITLOG write-back),
+`wiki/standards/HOW_TO_WRITE.md`, `EDITORIAL_PASS.md`, `RULINGS.md` (tail,
+checked for anything dated since 17 Nov — nothing changes this site's gate
+pass or link rules), `content/CLIENT.md` (the five standing faults), this
+file's own tail through the 18 Nov commissioning and designer entries
+above.
+
+Independently re-verified rather than trusted from either entry above: `ls
+content/drafts content/approved content/images` — none of the three exist.
+`ls research/facts/` — the same four rows as the four published guides,
+nothing new. `git status` clean, `git log` shows no commit between the
+designer entry above and this one. `curl -m 10 https://toronto-charities.ca/`
+returned exit 56, "CONNECT tunnel failed, response 403"; the agent-proxy
+status endpoint confirms `connect_rejected`, the identical blanket block
+reproduced by every stage this week. Per content-editor.md's own cost
+discipline ("Nothing in content/drafts/? Stop in one line"), there is no
+draft to run the facts audit, mechanical scans, link curls or
+`prose_gate.py` against — the pass has nothing to operate on, not a pass
+that found zero faults.
+
+No file to move to `content/approved/`. No new prose fault, no new rule
+unrecorded, nothing to add to the standing lessons in `CLIENT.md`. Not
+re-escalating R-192 (egress/`DATABASE_URL`) or R-170 (category mapping)
+separately in `attribute-brain/todo/toronto-charities.md` — both already
+open, already escalated, and a sixth-week gate-stage confirmation of the
+same fault is not new information. No push notification sent for the same
+reason.
+
+**Verdict: no drafts submitted this cycle — nothing to approve or bounce.**
+
