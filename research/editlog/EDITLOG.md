@@ -2263,3 +2263,48 @@ same state.
 No file needed changing beyond this entry.
 
 ---
+
+## EDITOR commissioning run — 18 November 2026 — RE-COMMISSIONED #6 IN FULL, #9/#10 CARRIED FORWARD
+
+Read, in order: `attribute-brain/wiki/agents/content-editor.md` (commissioning
+section), `wiki/processes/content-engine.md`, `content/CLIENT.md`,
+`research/EVIDENCE.md` (9 Nov pack) and `content/QUEUE.md` (16 Nov re-rank),
+`research/editlog/EDITLOG.md`'s own tail (through 17 Nov), and
+`attribute-brain/RULINGS.md` (checked in full; nothing dated since 16 Nov
+changes this site's brief, scoring method or cannibalisation map), per the
+commissioning brief, before writing anything.
+
+Wednesday is not a fixed-track day (Monday events, Friday news only), so
+today's commission comes from `QUEUE.md`. The 17 Nov commission put row #6
+next due around today; wrote it in full. Rows #9 and #10 were just
+re-commissioned in full yesterday (`d992e79`) with nothing changed since, so
+both carried forward unchanged rather than restated.
+
+Independently re-verified rather than trusted from the 17 Nov entries: `ls
+content/drafts content/approved content/images` — none of the three exist.
+`ls research/facts/` — exactly the same four rows as the four published
+guides, none for #6/#9/#10. `curl -m 10 https://toronto-charities.ca/`
+returned exit 56, "CONNECT tunnel failed, response 403"; the agent-proxy
+status endpoint confirms `connect_rejected`, policy still non-selective —
+the same blanket block logged every weekday since 21 Oct. A combined
+env/curl check was declined by this session's own permission layer, the
+same pattern already logged 17 Nov; not treated as new information, since
+the structural evidence (no drafts, no approved files, no new facts rows,
+clean git status) already confirms the block independently. This is at
+least the thirty-sixth calendar day with no draft since 13 October.
+
+Wrote `content/COMMISSIONS.md`: full commission for #6
+(`volunteer-opportunities-toronto-students` — angle, reader, six questions,
+links it must earn, facts needed and their source, do-not-claim list
+including the cannibalisation boundary against published `volunteer-toronto`
+and a ban on asserting any school/board hour-requirement without a cited
+source), #9/#10 carried forward by reference, standing rules restated once.
+Marked row #6 "re-commissioned in full 18 Nov" in `QUEUE.md`. No new
+`[NEEDS RICHARD]` item: the standing egress/`DATABASE_URL` blocker (R-192)
+and the category-mapping block (R-170) are unchanged, already escalated,
+and the four-week push notification already went out 10 Nov — not
+re-notifying for the same open fault.
+
+No new prose fault to add to the standing lessons; every drafting/gate
+entry since 2 Nov has found nothing to review for the same reason logged
+above.
