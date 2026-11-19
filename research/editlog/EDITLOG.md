@@ -2375,3 +2375,45 @@ reason.
 
 **Verdict: no drafts submitted this cycle — nothing to approve or bounce.**
 
+## WRITER run — 19 November 2026 — NOTHING DRAFTED
+
+Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
+(today's commissioning run: `donate-furniture-toronto` (#9) and
+`donate-hair-toronto` (#10) fully re-detailed this morning, commit
+`22c1f70`; #6 carried forward unchanged), `content/CLIENT.md` (brief, five
+faults, category-link restriction, the note that category pages are wrong
+and must not be linked except social-services), this file's own tail
+through the 18 Nov gate run, and `wiki/standards/HOW_TO_WRITE.md`,
+`RULINGS.md`, `GUIDE_ARTICLE_SPEC.md`, `COPY_STANDARD.md`,
+`CONTENT_THINKING.md`, `RESEARCH_RULES.md`, `BANNED_WORDS.md`, per the
+routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: `curl -sS -m 10 https://toronto-charities.ca/` returned exit 56,
+`CONNECT tunnel failed, response 403` — the same blanket block logged every
+weekday session since 21 Oct. `DATABASE_URL`, `ANTHROPIC_API_KEY` and
+`RESEND_API_KEY` all absent from the environment this session. `git log`
+on `main` after a fast-forward pull shows the tree at `22c1f70`, clean,
+no commits ahead; `ls content/drafts content/approved` — neither exists.
+
+Both commissions require, for every charity named, a live fetch of
+`/profile/<slug>/` returning 200 before linking it, and a live read of the
+charity's or programme's own site to confirm the donation claim — this
+site's own hard rule (never guess a slug) and this run's instructions both
+say so. Both routes are the exact ones blocked. Per content-writer.md's
+hard rule ("a claim without a facts row does not ship... never substitute a
+remembered figure") and this site's rule that a failed probe is "I could
+not reach it," never "it does not exist" (RULINGS 2026-11-16), nothing was
+drafted, named or linked — not `content/drafts/donate-furniture-toronto.html`,
+not `content/drafts/donate-hair-toronto.html`, no facts files, no
+`QUEUE.md` status change (neither row's status depends on today's attempt).
+
+This is at least the thirty-eighth calendar day with no draft produced
+since 13 October. Not re-escalating: R-192 (egress) and R-170 (category
+remap) are already open Richard decisions on
+`attribute-brain/todo/toronto-charities.md`; no push notification sent —
+the four-calendar-week notice already went out (10 Nov WRITER run) and
+nothing has changed since.
+
+**Verdict: no drafts submitted this cycle.**
+
