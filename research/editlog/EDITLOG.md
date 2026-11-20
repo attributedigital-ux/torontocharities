@@ -2573,3 +2573,52 @@ confirmations since including today's WRITER run), and an eighth designer-
 role repeat of the same open fault would be noise.
 
 **Verdict: no drafts submitted this cycle — nothing to design.**
+
+---
+
+## GATE run — 20 November 2026 — NOTHING TO REVIEW
+
+Fresh session, no memory of writing any draft, per content-editor.md's own
+"always a different session than the writer" rule. Read, in order:
+`attribute-brain/wiki/agents/content-editor.md` (including the EDITLOG
+write-back instruction), `wiki/standards/HOW_TO_WRITE.md`,
+`EDITORIAL_PASS.md`, `RULINGS.md` (tail through the two 20 Nov entries —
+the GSC-snapshot-freshness ruling and the "quote the line" reporting
+ruling, neither of which bears on this surface: no snapshot file and no
+fault report to make when nothing drafted), `content/CLIENT.md` (the
+brief, the five faults, the category-link restriction), and this file's
+own tail, including today's WRITER and DESIGNER entries above.
+
+Independently re-verified rather than trusted from today's WRITER/DESIGNER
+entries: `ls content/drafts content/approved` — neither exists. A presence
+check (no value printed) found `DATABASE_URL`, `ANTHROPIC_API_KEY` and
+`RESEND_API_KEY` all absent from the environment this session. `curl -sS
+-m 10 https://toronto-charities.ca/` and `https://www.cbc.ca/` both
+returned exit 56, "CONNECT tunnel failed, response 403" (`HTTP 000`,
+connection never completed, not a non-200); the agent-proxy's own error
+reporting confirms `connect_rejected` on both hosts — the identical
+blanket-block shape (`"selective": false`) logged every weekday session
+since 21 October. Cross-checked `attribute-brain/todo/toronto-charities.md`
+directly rather than assuming from this log alone: R-192 (egress) and
+R-170 (category remap) are both still open, unchanged since the dates
+already cited in prior entries; R-335 (Neon monthly compute) and R-326
+(cross-repo GitHub Actions billing outage) are separate, already-open
+account-level items this run does not touch.
+
+With no file in `content/drafts/`, there is nothing to check against
+`research/facts/`, no claim to verify, no internal or outbound link to
+curl, no heading list to read, no FAQ to word-count, and no file to run
+`prose_gate.py` against. Nothing moved to `content/approved/`. Per
+content-editor.md's own cost discipline ("Nothing in `content/drafts/`?
+Stop in one line"), stopping here.
+
+This is at least the fortieth calendar day with no draft produced since
+13 October, and the latest in an unbroken run of GATE/WRITER/DESIGNER
+entries finding the identical fault (full count and dates already carried
+in this log's own tail and in `COMMISSIONS.md`). Not re-escalating as a
+new item and not sending a fresh notification: R-192/R-170 already carry
+the open decisions, the four-calendar-week notice already went out (10 Nov
+WRITER run), and nothing has changed since. Both remain Richard's
+decisions, not something this session can fix from inside.
+
+**Verdict: no drafts submitted this cycle — nothing to review.**
