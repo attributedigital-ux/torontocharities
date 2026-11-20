@@ -2488,3 +2488,51 @@ No push notification sent: this is an unchanged, already-escalated
 condition, not new information.
 
 **Verdict: no drafts submitted this cycle — nothing to gate.**
+
+---
+
+## WRITER run — 20 November 2026 — NOTHING DRAFTED
+
+Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
+(today's commissioning run: Friday news-track commission
+`toronto-charity-news-2026-11-20` written in full; evergreen #6, #9, #10
+carried forward unchanged), `content/CLIENT.md` (brief, five faults,
+category-link restriction, the note that category pages are wrong and must
+not be linked except social-services), this file's own tail through the 19
+Nov gate run, and `wiki/standards/HOW_TO_WRITE.md`, `RULINGS.md`,
+`GUIDE_ARTICLE_SPEC.md`, `COPY_STANDARD.md`, `CONTENT_THINKING.md`,
+`RESEARCH_RULES.md`, `BANNED_WORDS.md`, per the routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: `git fetch origin && git checkout -B main origin/main` (routine
+startup rule) landed clean at `99f0d95`, working tree clean. `curl -sS -m
+10 https://toronto-charities.ca/` and `/charity-events-toronto/` both
+returned exit 56, "CONNECT tunnel failed, response 403" — the same
+blanket block logged every weekday session since 21 Oct. A presence check
+(no value printed) found `DATABASE_URL`, `ANTHROPIC_API_KEY` and
+`RESEND_API_KEY` all absent from the environment this session. `ls
+content/drafts content/approved content/images` — none of the three
+exist.
+
+The news-track commission requires a live read of Google News RSS and nine
+named outlets' own feeds for this week's items, plus a live
+sitemap/`DATABASE_URL` check before naming or linking any charity's
+`/profile/<slug>/`. The three evergreen commissions require the same live
+profile-slug check and a live read of each charity's or programme's own
+site before any donation claim ships. All four routes are the exact ones
+blocked. Per content-writer.md's hard rule ("a claim without a facts row
+does not ship... never substitute a remembered figure") and this site's
+rule that a failed probe is "I could not reach it," never "it does not
+exist" (RULINGS 2026-11-16), nothing was drafted, named or linked — no
+`content/drafts/toronto-charity-news-2026-11-20.html`, no
+`donate-furniture-toronto.html`, no `donate-hair-toronto.html`, no facts
+files, no `QUEUE.md` status change.
+
+This is at least the thirty-ninth calendar day with no draft produced
+since 13 October. Not re-escalating: R-192 (egress) and R-170 (category
+remap) are already open Richard decisions on
+`attribute-brain/todo/toronto-charities.md`; no push notification sent —
+the four-calendar-week notice already went out (10 Nov WRITER run) and
+nothing has changed since.
+
+**Verdict: no drafts submitted this cycle.**
