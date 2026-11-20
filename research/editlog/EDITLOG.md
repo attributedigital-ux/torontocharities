@@ -2536,3 +2536,40 @@ the four-calendar-week notice already went out (10 Nov WRITER run) and
 nothing has changed since.
 
 **Verdict: no drafts submitted this cycle.**
+
+---
+
+## DESIGNER run — 20 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 Oct ruling forward: imagery
+comes from what is true before it comes from a model, and there is no image
+generator on this site. Generate nothing — only draw figures from a draft's
+own `research/facts/` rows and list missing logos.
+
+Independently re-verified rather than trusted from today's WRITER entry
+above: `ls content/drafts content/approved content/images` — none of the
+three exist. `ls research/facts/` — the same four rows as the four
+published guides (`volunteer-toronto`, `soup-kitchen-volunteer-toronto`,
+`where-to-donate-books-toronto`, `where-to-donate-clothes-toronto`), nothing
+new since 18 Nov. `curl -m 10 -v https://toronto-charities.ca/` returned
+exit 56, "CONNECT tunnel failed, response 403" — the same blanket egress
+block every stage has reproduced every weekday since 21 Oct. A presence
+check (no value printed) found `DATABASE_URL`, `ANTHROPIC_API_KEY`,
+`RESEND_API_KEY`, `CF_ACCOUNT_ID` and `CF_API_TOKEN` all absent from the
+environment this session.
+
+Checked the four live pieces in `content/published/` anyway: each still
+carries exactly one `.guide-figure` element, unchanged. No charity names
+named in today's writer run to queue for logos — the news-track commission
+(`toronto-charity-news-2026-11-20`) and the three carried-forward evergreen
+commissions (#6, #9, #10) were all blocked before any charity name entered
+a draft, so `content/images/PENDING.md` has nothing to list.
+
+No draft, no facts rows beyond the existing four, no file needing a change
+beyond this entry. Not re-flagging the egress block to Richard separately —
+already escalated (10 Nov four-week notification, repeated independent
+confirmations since including today's WRITER run), and an eighth designer-
+role repeat of the same open fault would be noise.
+
+**Verdict: no drafts submitted this cycle — nothing to design.**
