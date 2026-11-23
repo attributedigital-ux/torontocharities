@@ -1,11 +1,11 @@
 {
-  "pulled": "2026-11-16",
+  "pulled": "2026-11-23",
   "pull_params": {
     "tool": "keywords-explorer-matching-terms",
     "country": "ca",
     "terms": "questions",
     "keywords": "volunteer toronto,volunteer opportunities toronto,where to donate clothes toronto,where to donate books toronto,where to donate furniture toronto,charity events toronto,charities in toronto,food bank toronto",
-    "units_spent": 1485
+    "units_spent": 990
   },
   "serp_checks": [
     {
@@ -13,23 +13,25 @@
       "country": "ca",
       "units_spent": 228,
       "pulled": "2026-11-02",
-      "reason": "Carried forward unchanged for the third consecutive pull (9 Nov, now 16 Nov). No fresh SERP volatility since the 2 Nov check (KD and volume both held again this pull — see delta below), so no new live check was run; a sixth check with no new information would be ceremony, not evidence.",
-      "finding": "Organic position 1 is habithmd.ca (DR 38), not furniturebank.org. Full organic top 10: habithmd.ca (DR38), reddit.com/r/askTO (DR95), upstagingto.com (DR4), jewishtoronto.com/JRCC directory listing (DR57), nesto.ca (DR66), thegreenline.to (DR43), habitatrestore.ca FAQ page (DR35). furniturebank.org does not hold an organic top-10 slot for this exact phrase.",
-      "but": "Position 1 is a Google AI Overview citing furniturebank.org six times plus habitatrestore.ca, reddit and two others; position 2 is a three-pack local pack (Furniture Bank, Habitat ReStore, JRCC Furniture Depot); position 3 is a four-item 'people also ask' box. All three sit above the first organic result. The real constraint on this cluster is AI-Overview/local-pack/PAA interception, not a single dominant competitor.",
+      "reason": "Carried forward unchanged for the fourth consecutive pull (9 Nov, 16 Nov, now 23 Nov). KD and volume have stayed at 0/70 every pull since 2 Nov, so no new live check was run; a fifth check with no new information would be ceremony, not evidence.",
+      "finding": "Organic position 1 is habithmd.ca (DR 38), not furniturebank.org. Full organic top 10: habithmd.ca (DR38), reddit.com/r/askTO (DR95), upstagingto.com (DR4), jewishtoronto.com/JRCC directory listing (DR57), nesto.ca (DR66), thegreenline.to (DR43), habitatrestore.ca FAQ page (DR35). furniturebank.org has no organic top-10 slot for this exact phrase.",
+      "but": "Position 1 is a Google AI Overview citing furniturebank.org six times plus habitatrestore.ca, reddit and two others; position 2 is a three-pack local pack (Furniture Bank, Habitat ReStore, JRCC Furniture Depot); position 3 is a four-item 'people also ask' box. All three rank above the first organic result. The real constraint on this cluster is AI-Overview/local-pack/PAA interception, not a single dominant competitor.",
       "verdict": "WINNABLE NOW, unchanged this pull. No organic incumbent stronger than DR66 (Reddit's DR95 result is a thread, not a purpose-built page). Still state the caveat when commissioned: expect lower click-through than KD0/vol alone implies, because most of the demand is answered on the SERP itself."
     }
   ],
-  "note": "Sixth pull for these seeds (13 Oct all-terms, 19 Oct questions, 26 Oct questions, 2 Nov questions, 9 Nov questions, this one). terms=questions only, per researcher brief. Head seed terms themselves (e.g. 'volunteer toronto' 2,800/mo) are not question-phrased so do not appear here; their volumes/KD are carried forward unchanged from the 13 Oct all-terms pull already in QUEUE.md.",
-  "delta_vs_9_nov_pull": [
-    "where to donate books toronto: volume 90 -> 100, difficulty held at 6. This is the published guide's own head term. No table/score change made this pull (published rows are not rescored on a terms=questions drift, per the convention set for row #4 on 9 Nov) — logged here and in EVIDENCE.md instead.",
-    "where to donate clothes toronto: difficulty held at 4 for a second consecutive pull (drifted 0->4 on 9 Nov, now confirmed stable at 4). Volume unchanged at 90. No action: published, fold decisions unaffected.",
-    "where to donate furniture toronto: volume held at 70, difficulty held at 0 for a third consecutive pull (7 through 26 Oct, 0 on 2 Nov, 0 on 9 Nov, 0 now). Third independent confirmation of the 2 Nov SERP-checked WINNABLE NOW upgrade on #9 — strengthens, does not change, the call.",
-    "where to volunteer in toronto: difficulty held at 16 for a third consecutive pull (6 on 26 Oct, 16 on 2 Nov, 16 on 9 Nov, 16 now). Settled.",
-    "where can i volunteer in toronto: difficulty held at 18 for a fourth consecutive pull. Settled.",
-    "where to donate clothes in toronto (secondary variant, folds into #4): difficulty 2 -> 1, parent_topic 'donate clothes toronto' -> 'toronto clothing donation'. Minor drift on a vol-10 secondary term; does not change the fold.",
-    "where to donate furniture in toronto / where to donate books in toronto / how to volunteer in toronto / where to volunteer toronto / where to donate used books toronto / where to donate used furniture in toronto: all unchanged from 9 Nov.",
-    "charity events toronto / charities in toronto / food bank toronto: no question-phrased volume again, sixth pull running. Covered rows #11, #12 unaffected.",
-    "No new non-zero parent_topic surfaced outside the clusters already on QUEUE.md — sixth pull in a row with this result. Rows #6 (volunteer-opportunities-toronto-students) and #10 (donate-hair-toronto) are outside these six seed groups and are not re-verified by this pull (writer/gate territory, not a keyword question, per standing note)."
+  "note": "Seventh pull for these seeds (13 Oct all-terms, 19 Oct, 26 Oct, 2 Nov, 9 Nov, 16 Nov, this one all terms=questions). terms=questions only, per researcher brief. Head seed terms themselves (e.g. 'volunteer toronto' 2,800/mo) are not question-phrased so do not appear here; their volumes/KD stay as recorded in the 13 Oct all-terms pull already in QUEUE.md, unchanged.",
+  "delta_vs_16_nov_pull": [
+    "how to volunteer in toronto: difficulty 0 -> 24, parent_topic blank/'volunteering ontario' -> 'volunteer opportunities toronto'. The largest single-keyword drift this cache has logged (every prior drift on this seed set has been single digits). The keyword is inside the cluster the published volunteer-toronto guide already covers, folded under row #1/#3 since 13 Oct, so no row, status or score changes — flagged in full because of the size of the jump, not acted on; the next pull will say whether the number stays or reverts.",
+    "where to donate furniture toronto: volume stayed at 70, difficulty stayed at 0 for a fourth consecutive pull. Fourth independent confirmation of the 2 Nov SERP-checked WINNABLE NOW upgrade on row #9 — strengthens, does not change, the call.",
+    "where to donate clothes toronto: difficulty stayed at 4 for a third consecutive pull (drifted 0->4 on 9 Nov, unchanged 16 Nov and again now). Settled.",
+    "where to donate books toronto: volume stayed at 100, difficulty stayed at 6. Published guide's own head term unchanged since the 16 Nov bump; no table/score change (published rows are not rescored on a terms=questions drift).",
+    "where to volunteer in toronto: difficulty stayed at 16 for a fourth consecutive pull. Settled.",
+    "where can i volunteer in toronto: difficulty stayed at 18 for a fifth consecutive pull. Settled.",
+    "where to donate furniture in toronto (secondary, folds into #9): parent_topic is still 'furniture bank', volume 10, difficulty 8. Unchanged.",
+    "where to donate clothes in toronto (secondary, folds into #4): volume 10, difficulty 1, parent_topic 'toronto clothing donation'. Unchanged from 16 Nov.",
+    "charity events toronto / charities in toronto / food bank toronto: no question-phrased volume again, seventh pull running. Covered rows #11, #12 unaffected.",
+    "'how do i find charity events toronto?' resurfaced again at volume 0 (first seen 16 Nov). Still not scored; still do not chase as its own page.",
+    "No new non-zero parent_topic surfaced outside the clusters already on QUEUE.md — seventh pull in a row with this result. Rows #6 (volunteer-opportunities-toronto-students) and #10 (donate-hair-toronto) are outside these six seed groups and are not re-verified by this pull (writer/gate territory, not a keyword question, per standing note)."
   ],
   "clusters": [
     {
@@ -37,8 +39,19 @@
       "score": 90,
       "status": "published (where-to-donate-clothes-toronto)",
       "questions": [
-        { "keyword": "where to donate clothes toronto", "volume": 90, "difficulty": 4, "note": "difficulty held at 4 for a second consecutive pull (drifted 0->4 on 9 Nov)" },
-        { "keyword": "where to donate clothes in toronto", "volume": 10, "difficulty": 1, "parent_topic": "toronto clothing donation", "note": "difficulty 2->1, parent_topic renamed from 'donate clothes toronto' this pull; same cluster regardless" }
+        {
+          "keyword": "where to donate clothes toronto",
+          "volume": 90,
+          "difficulty": 4,
+          "note": "difficulty stayed at 4 for a third consecutive pull"
+        },
+        {
+          "keyword": "where to donate clothes in toronto",
+          "volume": 10,
+          "difficulty": 1,
+          "parent_topic": "toronto clothing donation",
+          "note": "unchanged from 16 Nov"
+        }
       ]
     },
     {
@@ -46,28 +59,62 @@
       "score": 12.86,
       "status": "published (where-to-donate-books-toronto)",
       "questions": [
-        { "keyword": "where to donate books toronto", "volume": 100, "difficulty": 6, "note": "volume up from 90, difficulty held at 6; table score not recomputed (published, see delta)" },
-        { "keyword": "where to donate books in toronto", "volume": 10, "difficulty": 6, "note": "same cluster, do not chase this variant on its own (standing since 19 Oct)" },
-        { "keyword": "where to donate used books toronto", "volume": 0, "difficulty": 6 }
+        {
+          "keyword": "where to donate books toronto",
+          "volume": 100,
+          "difficulty": 6,
+          "note": "unchanged from 16 Nov"
+        },
+        {
+          "keyword": "where to donate books in toronto",
+          "volume": 10,
+          "difficulty": 6,
+          "note": "same cluster, do not chase this variant on its own (standing since 19 Oct)"
+        },
+        {
+          "keyword": "where to donate used books toronto",
+          "volume": 0,
+          "difficulty": 6
+        }
       ]
     },
     {
       "parent_topic": "donate furniture with free pick up toronto",
       "score": 9,
-      "status": "ready — WINNABLE NOW, confirmed a third consecutive pull; see serp_checks and delta",
+      "status": "ready — WINNABLE NOW, confirmed a fourth consecutive pull; see serp_checks and delta",
       "questions": [
-        { "keyword": "where to donate furniture toronto", "volume": 70, "difficulty": 0, "note": "held at vol 70 / KD 0 for a third straight pull" },
-        { "keyword": "where to donate furniture in toronto", "volume": 10, "difficulty": 8, "parent_topic": "furniture bank", "note": "branded-adjacent variant, vol too thin to chase on its own — see EVIDENCE.md What NOT to write" },
-        { "keyword": "where to donate used furniture in toronto", "volume": 0, "difficulty": null }
+        {
+          "keyword": "where to donate furniture toronto",
+          "volume": 70,
+          "difficulty": 0,
+          "note": "vol 70 / KD 0 again, a fourth straight pull unchanged"
+        },
+        {
+          "keyword": "where to donate furniture in toronto",
+          "volume": 10,
+          "difficulty": 8,
+          "parent_topic": "furniture bank",
+          "note": "branded-adjacent variant, vol too thin to chase on its own — see EVIDENCE.md What NOT to write"
+        },
+        {
+          "keyword": "where to donate used furniture in toronto",
+          "volume": 0,
+          "difficulty": null
+        }
       ],
-      "serp_note": "Unchanged this pull. Organic top 10 has no furniturebank.org result (see serp_checks, 2 Nov); the real constraint is a Google AI Overview + 3-pack local pack + PAA box all sitting above position 1 organic, which will cap click-through below what KD0/vol alone implies. Score (9) is still computed from the head term 'donate furniture toronto' (vol 70, KD 7, carried from the 13 Oct all-terms pull, not re-measured by this terms=questions pull)."
+      "serp_note": "Unchanged this pull. Organic top 10 has no furniturebank.org result (see serp_checks, 2 Nov); the real constraint is a Google AI Overview + 3-pack local pack + PAA box all ranking above position 1 organic, which will cap click-through below what KD0/vol alone implies. Score (9) is still computed from the head term 'donate furniture toronto' (vol 70, KD 7, from the 13 Oct all-terms pull, not re-measured by this terms=questions pull)."
     },
     {
-      "parent_topic": "volunteering ontario",
+      "parent_topic": "volunteering ontario / volunteer opportunities toronto",
       "score": 20,
       "status": "covered by volunteer-toronto (published)",
       "questions": [
-        { "keyword": "how to volunteer in toronto", "volume": 10, "difficulty": 0, "note": "unchanged from 9 Nov" }
+        {
+          "keyword": "how to volunteer in toronto",
+          "volume": 10,
+          "difficulty": 24,
+          "note": "difficulty jumped 0 -> 24 this pull, parent_topic reassigned from 'volunteering ontario' to 'volunteer opportunities toronto'. Largest single drift logged on this seed set. No row/status/score change (already folded, covered by the published guide) — watch next pull."
+        }
       ]
     },
     {
@@ -75,8 +122,17 @@
       "score": 1.18,
       "status": "covered by volunteer-toronto (published)",
       "questions": [
-        { "keyword": "where to volunteer in toronto", "volume": 20, "difficulty": 16, "note": "difficulty held at 16 for a third consecutive pull" },
-        { "keyword": "where to volunteer toronto", "volume": 20, "difficulty": null }
+        {
+          "keyword": "where to volunteer in toronto",
+          "volume": 20,
+          "difficulty": 16,
+          "note": "difficulty stayed at 16 for a fourth consecutive pull"
+        },
+        {
+          "keyword": "where to volunteer toronto",
+          "volume": 20,
+          "difficulty": null
+        }
       ]
     },
     {
@@ -84,30 +140,54 @@
       "score": 0.53,
       "status": "covered by volunteer-toronto (published) — same reader as #1, already folded 13 Oct",
       "questions": [
-        { "keyword": "where can i volunteer in toronto", "volume": 10, "difficulty": 18, "note": "difficulty held at 18 for a fourth consecutive pull" }
+        {
+          "keyword": "where can i volunteer in toronto",
+          "volume": 10,
+          "difficulty": 18,
+          "note": "difficulty stayed at 18 for a fifth consecutive pull"
+        }
       ]
     }
   ],
   "zero_volume_questions_seen_not_scored": [
-    "where to donate old books in toronto", "how many people volunteer in toronto",
-    "how to volunteer toronto election campaign", "where to donate books toronto 2022",
-    "how do i find charity events toronto?", "where to donate baby clothes toronto",
-    "where to donate books and dvds toronto", "where can kids volunteer in toronto",
-    "how to use food bank toronto", "how to volunteer for psychedelic research toronto",
-    "where to donate used books in toronto", "toronto where to donate books",
-    "how to volunteer firefighter toronto", "where to donate clothes toronto during covid",
-    "where to donate winter clothes toronto", "how to get food from food bank toronto",
-    "toronto where to donate clothes", "how to volunteer for a charity toronto",
-    "where to donate used clothes toronto", "where to donate books toronto during covid",
-    "how do i get food from the food bank in toronto?", "where to donate books toronto 2021",
-    "where to donate clothes downtown toronto", "where can i volunteer to help animals toronto",
-    "how to volunteer for the city of toronto", "where to get volunteer hours in toronto",
-    "where to donate children's clothes toronto", "how to find volunteer opportunities in toronto",
-    "where to donate old clothes toronto", "where to donate books toronto 2020",
-    "where to donate clothes during covid toronto", "where to volunteer this christmas in toronto",
+    "where to donate old books in toronto",
+    "how many people volunteer in toronto",
+    "how to volunteer toronto election campaign",
+    "where to donate books toronto 2022",
+    "how do i find charity events toronto?",
+    "where to donate baby clothes toronto",
+    "where to donate books and dvds toronto",
+    "where can kids volunteer in toronto",
+    "how to use food bank toronto",
+    "how to volunteer for psychedelic research toronto",
+    "where to donate used books in toronto",
+    "toronto where to donate books",
+    "how to volunteer firefighter toronto",
+    "where to donate clothes toronto during covid",
+    "where to donate winter clothes toronto",
+    "how to get food from food bank toronto",
+    "toronto where to donate clothes",
+    "how to volunteer for a charity toronto",
+    "where to donate used clothes toronto",
+    "where to donate books toronto during covid",
+    "how do i get food from the food bank in toronto?",
+    "where to donate books toronto 2021",
+    "where to donate clothes downtown toronto",
+    "where can i volunteer to help animals toronto",
+    "how to volunteer for the city of toronto",
+    "where to get volunteer hours in toronto",
+    "where to donate children's clothes toronto",
+    "how to find volunteer opportunities in toronto",
+    "where to donate old clothes toronto",
+    "where to donate books toronto 2020",
+    "where to donate clothes during covid toronto",
+    "where to volunteer this christmas in toronto",
+    "where to donate used furniture in toronto",
     "where to donate clothes toronto covid"
   ],
   "no_results": [
-    "charity events toronto", "charities in toronto", "food bank toronto — no question-phrased volume above the items listed under the other parent topics (sixth consecutive pull with this result)"
+    "charity events toronto",
+    "charities in toronto",
+    "food bank toronto — no question-phrased volume above the items listed under the other parent topics (seventh consecutive pull with this result)"
   ]
 }
