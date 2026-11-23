@@ -2622,3 +2622,61 @@ WRITER run), and nothing has changed since. Both remain Richard's
 decisions, not something this session can fix from inside.
 
 **Verdict: no drafts submitted this cycle — nothing to review.**
+
+---
+
+## WRITER run — 23 November 2026 — NOTHING DRAFTED
+
+Read `attribute-brain/wiki/agents/content-writer.md`, `content/COMMISSIONS.md`
+(today's commissioning run: Monday events-track commission
+`charity-events-toronto-week-of-2026-11-23` written in full; evergreen #6,
+#9, #10 carried forward unchanged, confirmed re-detailed 18-19 Nov), the
+relevant sections of `content/CLIENT.md` (brief, five faults, category-link
+restriction), this file's own tail through the 20 Nov gate run, and
+`attribute-brain/wiki/standards/HOW_TO_WRITE.md`, `RULINGS.md`,
+`GUIDE_ARTICLE_SPEC.md`, `COPY_STANDARD.md`, `CONTENT_THINKING.md`,
+`RESEARCH_RULES.md`, `BANNED_WORDS.md`, per the routine brief. Confirmed by
+file date that only `HOW_TO_WRITE.md`/`BANNED_WORDS.md` (21 Nov, the
+verb-on-object ruling, already folded into `content/CLIENT.md`'s standing
+rules) and `RESEARCH_RULES.md` (22 Nov, an unread-comparison rule from a
+different client's session) changed since the 20 Nov gate run; neither
+bears on this site's brief, scoring method or cannibalisation map.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: `git fetch origin && git checkout -B main origin/main` (routine
+startup rule) landed clean at `d69a20a`, working tree clean. `curl -sS -m
+10 https://toronto-charities.ca/` and `/charity-events-toronto/` both
+returned exit 56, "CONNECT tunnel failed, response 403" (`HTTP 000`) — the
+same blanket block logged every weekday session since 21 October. A
+presence check (no value printed) found `DATABASE_URL`, `ANTHROPIC_API_KEY`
+and `RESEND_API_KEY` all absent from the environment this session. `ls
+content/drafts content/approved content/images` — none of the three
+exist. Cross-checked `attribute-brain/todo/toronto-charities.md` directly:
+R-192 (egress/`DATABASE_URL`) and R-170 (category remap) both still open,
+unchanged; R-335 (Neon monthly compute) is a separate, already-open
+account-level item this run does not touch.
+
+Today's commission requires a live read of the `events` table or the
+rendered `/charity-events-toronto/` page, plus a live sitemap/`DATABASE_URL`
+check before naming or linking any organiser's `/profile/<slug>/`. The
+three evergreen commissions require the same live profile-slug check and a
+live read of each programme's own site before any claim ships. All routes
+are the exact ones blocked. Per content-writer.md's hard rule ("a claim
+without a facts row does not ship... never substitute a remembered
+figure") and this site's rule that a failed probe is "I could not reach
+it," never "it does not exist" (RULINGS 2026-11-16), nothing was drafted,
+named or linked — no
+`content/drafts/charity-events-toronto-week-of-2026-11-23.html`, no
+`donate-furniture-toronto.html`, no `donate-hair-toronto.html`, no
+`volunteer-opportunities-toronto-students.html`, no facts files, no
+`QUEUE.md` status change.
+
+This is at least the forty-second calendar day with no draft produced
+since 13 October. Not re-escalating: R-192 and R-170 are already open
+Richard decisions on `attribute-brain/todo/toronto-charities.md`; no push
+notification sent — the four-calendar-week notice already went out (10 Nov
+WRITER run) and nothing has changed since, and `COMMISSIONS.md`'s own 23
+Nov run already flagged the six-week mark as the next natural re-raise
+point, later this week.
+
+**Verdict: no drafts submitted this cycle.**
