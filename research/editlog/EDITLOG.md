@@ -2765,3 +2765,46 @@ same-day repeat of the identical fault would be noise. Both remain
 Richard's decisions, not something this session can fix from inside.
 
 **Verdict: no drafts submitted this cycle — nothing to review.**
+
+---
+
+## WRITER run — 24 November 2026 — NOTHING DRAFTED
+
+Read, in order: `attribute-brain/wiki/agents/content-writer.md`,
+`content/COMMISSIONS.md` (today's Tuesday commission: #6
+`volunteer-opportunities-toronto-students` re-detailed in full; #9
+`donate-furniture-toronto` and #10 `donate-hair-toronto` carried forward
+unchanged from 19 Nov), `content/CLIENT.md`'s brief, the five faults and
+the category-link restriction, this file's own tail through the 23 Nov
+gate run, and `attribute-brain/wiki/standards/HOW_TO_WRITE.md`,
+`RULINGS.md`, `GUIDE_ARTICLE_SPEC.md`, `COPY_STANDARD.md`,
+`CONTENT_THINKING.md`, `RESEARCH_RULES.md`, `BANNED_WORDS.md`, per the
+routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: `git fetch origin && git checkout -B main origin/main` landed
+clean at `f391111`, working tree clean, no stale local `main`. `curl -sS
+-m 15 https://toronto-charities.ca/` and `/guides/` both returned `exit
+56, "CONNECT tunnel failed, response 403"` (`HTTP 000`) — a
+destination-not-allowed refusal, the identical block logged every weekday
+session since 21 October (R-192). A presence-only check found
+`DATABASE_URL`, `ANTHROPIC_API_KEY` and `RESEND_API_KEY` all absent from
+this session's environment. `ls content/drafts content/approved
+content/images` — none of the three exist. Cross-checked
+`attribute-brain/todo/toronto-charities.md` directly: R-192 (egress/
+`DATABASE_URL`) and R-170 (category remap) both still open, unchanged.
+
+Today's #6 commission requires a live read of each named charity's own
+site to confirm its student-volunteer programme, age floor and sign-up
+step, plus a live sitemap/`DATABASE_URL` check before naming or linking
+any `/profile/<slug>/` — none of which has a cached or DB-query
+substitute per the commission's own "Facts needed" section. #9 and #10
+carry the same dependency. No figure may come from memory (RESEARCH_RULES
+Category B), so nothing was drafted rather than written around invented
+facts. This is at least the forty-fourth calendar day with no draft
+produced since 13 October. The six-week re-raise on R-192 is already
+logged today in `COMMISSIONS.md`'s "For Richard" section by the
+commissioning session; this run adds no new escalation, only this
+independent reconfirmation.
+
+**Verdict: no drafts submitted this cycle — nothing to review.**
