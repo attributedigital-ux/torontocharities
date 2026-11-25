@@ -2934,3 +2934,38 @@ Richard" section, not repeated there today; this run adds no new
 escalation, only this independent reconfirmation.
 
 **Verdict: no drafts submitted this cycle — nothing to review.**
+
+---
+
+## DESIGNER run — 25 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 Oct ruling forward: imagery
+comes from what is true before it comes from a model. Generate nothing —
+only draw figures from a draft's own `research/facts/` rows and list
+missing logos.
+
+Independently re-verified: `ls content/drafts content/approved
+content/images` — none of the three exist. `ls research/facts/` — the
+same four rows as the four published guides (`volunteer-toronto`,
+`soup-kitchen-volunteer-toronto`, `where-to-donate-books-toronto`,
+`where-to-donate-clothes-toronto`), unchanged since 9 Nov. `curl -m 10
+https://toronto-charities.ca/` failed `CONNECT tunnel failed, response
+403` — the same blanket egress block every stage has reproduced every
+weekday since 21 Oct (R-192). A presence check (no value printed) found
+`DATABASE_URL`, `ANTHROPIC_API_KEY` and `RESEND_API_KEY` all absent from
+this session's environment.
+
+Checked the four live pieces in `content/published/` anyway: each still
+carries exactly one `.guide-figure` element, unchanged. No charity named
+in today's writer run to queue for logos (nothing drafted this cycle per
+the 25 Nov WRITER entry above), so `content/images/PENDING.md` has
+nothing to list.
+
+No draft, no facts rows beyond the existing four, no file needing a change
+beyond this entry. Not re-flagging the egress block to Richard separately
+— today's WRITER entry already reconfirmed R-192 without repeating
+yesterday's re-raise; an eleventh designer-role repeat of the same open
+fault today would be noise.
+
+**Verdict: no drafts submitted this cycle — nothing to design.**
