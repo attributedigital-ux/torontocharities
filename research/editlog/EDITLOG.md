@@ -2968,4 +2968,52 @@ beyond this entry. Not re-flagging the egress block to Richard separately
 yesterday's re-raise; an eleventh designer-role repeat of the same open
 fault today would be noise.
 
+## EDITOR gate run — 25 November 2026 — NOTHING TO REVIEW
+
+Read, in order, `attribute-brain/wiki/agents/content-editor.md` (including
+the EDITLOG write-back instruction), `wiki/standards/HOW_TO_WRITE.md`,
+`wiki/standards/EDITORIAL_PASS.md`, `RULINGS.md`,
+`torontocharities/content/CLIENT.md` (including the five faults and the
+category-link restriction), and this file's own tail through today's
+WRITER and DESIGNER entries, per the routine brief. A fresh session, no
+memory of today's commissioning, writer or designer runs beyond what is
+written here.
+
+Independently re-verified rather than trusted from the earlier runs'
+write-up: `git fetch origin && git checkout -B main origin/main` landed
+clean at `2383908` (Designer run 25 Nov), working tree clean, no stale
+local `main`. `ls content/drafts content/approved content/images` — none
+of the three exist. A presence-only check found `DATABASE_URL`,
+`ANTHROPIC_API_KEY` and `RESEND_API_KEY` all absent from this session's
+environment. `curl -sS -m 10 https://toronto-charities.ca/` returned
+`exit 56, "CONNECT tunnel failed, response 403"` (HTTP 000) — the same
+blanket egress block every stage has reproduced every weekday since 21
+October (R-192), reproduced here independently rather than assumed.
+Checked `content/QUEUE.md` directly: rows #6, #9 and #10 still read
+"blocked on egress/`DATABASE_URL`," unchanged; no row's Status or Score
+changed since the researcher's seventh pull.
+
+The only four pieces live anywhere in the repo — `volunteer-toronto`,
+`soup-kitchen-volunteer-toronto`, `where-to-donate-books-toronto`,
+`where-to-donate-clothes-toronto` — sit in `content/published/`, not
+`content/drafts/`, and were published before 13 October 2026, long before
+this run existed to gate them; nothing about them changed today and they
+are not this run's job to re-review absent a change. No file in
+`content/drafts/` to check against a `research/facts/` row, no internal or
+outbound link to curl, no `prose_gate.py` to run, no verdict to record
+against a slug.
+
+**Verdict: nothing in `content/drafts/` — nothing to review, per the
+"Cost discipline" line in `content-editor.md`.** Not re-raising R-192 to
+Richard separately in this entry — the WRITER run above already
+reconfirmed it today without repeating the six-week re-raise; a third
+same-day repeat of the identical open fault would be noise. One thing
+worth a human's eye, not an escalation: `origin/static-rebuild` carries 54
+commits (last dated 13 October 2026, at the fork point) including
+"Approved: four guides ready to publish" and "Published: ... [skip ci]"
+messages, never merged into `main`. It predates this run's own existence
+and looks like the superseded original build of the same four guides
+already live in `content/published/` on `main` — flagged for Richard to
+confirm it is safe to delete, not treated as active work.
+
 **Verdict: no drafts submitted this cycle — nothing to design.**
