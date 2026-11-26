@@ -3064,3 +3064,36 @@ a new finding. The next natural re-raise point, per the commission, is
 the seven-week mark (1 December).
 
 **Verdict: no drafts submitted this cycle — nothing to review.**
+
+---
+
+## DESIGNER run — 26 November 2026 — NOTHING TO DESIGN
+
+Read `attribute-brain/wiki/agents/content-designer.md` and `content/CLIENT.md`
+per the routine brief, carrying Richard's 13 October ruling forward: imagery
+comes from what is true before it comes from a model. Generate nothing — only
+draw figures from a draft's own `research/facts/` rows and list missing
+logos.
+
+Independently re-verified: `git fetch origin && git checkout -B main
+origin/main` landed clean at `74afebb` (today's writer run), working tree
+clean. `ls content/drafts content/approved content/images` — none of the
+three exist. `ls research/facts/` — the same four rows behind the four
+published guides, unchanged since 9 Nov. `curl -sS -m 10
+https://toronto-charities.ca/` returned `exit 56, "CONNECT tunnel failed,
+response 403"` — the same blanket egress block every stage has reproduced
+every weekday since 21 October (R-192). A presence-only check found
+`DATABASE_URL`, `ANTHROPIC_API_KEY` and `RESEND_API_KEY` all absent from this
+session's environment.
+
+Checked the four live pieces in `content/published/` anyway: each still
+carries exactly one `.guide-figure` element, unchanged. No charity named in
+today's writer run to queue for logos (nothing drafted this cycle per the 26
+Nov WRITER entry), so `content/images/PENDING.md` has nothing to list.
+
+No draft, no new facts rows, no file needing a change beyond this entry. Not
+re-raising R-192 separately — today's WRITER entry already reconfirmed it,
+and the commission itself names 1 December as the next natural re-raise
+point.
+
+**Verdict: no drafts submitted this cycle — nothing to design.**
