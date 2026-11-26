@@ -3017,3 +3017,50 @@ already live in `content/published/` on `main` — flagged for Richard to
 confirm it is safe to delete, not treated as active work.
 
 **Verdict: no drafts submitted this cycle — nothing to design.**
+
+---
+
+## WRITER run — 26 November 2026 — NOTHING DRAFTED
+
+Read, in order: `attribute-brain/wiki/agents/content-writer.md`,
+`content/COMMISSIONS.md` (today's Thursday commission: #6
+`volunteer-opportunities-toronto-students` re-detailed in full; #9
+`donate-furniture-toronto` and #10 `donate-hair-toronto` carried forward
+unchanged from 25 Nov), `content/CLIENT.md`'s brief and the five faults,
+this file's own tail through yesterday's gate run, and
+`attribute-brain/wiki/standards/HOW_TO_WRITE.md`, `RULINGS.md`,
+`GUIDE_ARTICLE_SPEC.md`, `COPY_STANDARD.md`, `CONTENT_THINKING.md`,
+`RESEARCH_RULES.md`, `BANNED_WORDS.md`, per the routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: `git fetch origin && git checkout -B main origin/main` landed
+clean at `b8f267f`, working tree clean, no stale local `main`. A
+presence-only check found `DATABASE_URL`, `ANTHROPIC_API_KEY` and
+`RESEND_API_KEY` all absent from this session's environment. `curl -sS -m
+10 https://toronto-charities.ca/` returned `exit 56, "CONNECT tunnel
+failed, response 403"` (`HTTP 000`); a separate WebFetch on
+`https://toronto-charities.ca/guides/` returned `getaddrinfo ENOTFOUND` —
+the identical destination-not-allowed refusal logged every weekday session
+since 21 October (R-192), reproduced here by two independent routes. `ls
+content/drafts content/approved content/images` — none of the three
+exist. Checked `content/QUEUE.md` directly rather than only the
+commission's summary of it: rows #6, #9 and #10 all still read "blocked
+on egress/`DATABASE_URL`," unchanged.
+
+#6 requires a live read of each named charity's own site to confirm its
+student-volunteer programme, age floor, time commitment and sign-up step,
+plus a live sitemap/`DATABASE_URL` check before naming or linking any
+`/profile/<slug>/` and before counting charities with a documented
+programme for the one figure the guide carries — none of which has a
+cached or DB-query substitute per the commission's own "Facts needed"
+section. #9 and #10 carry the same dependency. No figure may come from
+memory (RESEARCH_RULES Category B), so nothing was drafted rather than
+written around invented facts. This is at least the forty-sixth calendar
+day with no draft produced since 13 October. The six-calendar-week
+re-raise on R-192 was logged 24 November in `COMMISSIONS.md`'s "For
+Richard"; 25 November's run already declined to repeat it the next day,
+and this entry independently reconfirms the same block rather than adding
+a new finding. The next natural re-raise point, per the commission, is
+the seven-week mark (1 December).
+
+**Verdict: no drafts submitted this cycle — nothing to review.**
