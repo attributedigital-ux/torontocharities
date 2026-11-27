@@ -3223,3 +3223,53 @@ and the commission itself names 1 December as the next natural re-raise
 point.
 
 **Verdict: no drafts submitted this cycle — nothing to design.**
+
+
+---
+
+## EDITOR gate run — 27 November 2026 — NOTHING TO REVIEW
+
+Fresh session, no memory of today's commissioning, writer or designer runs
+beyond what is written here. Read, in order:
+`attribute-brain/wiki/agents/content-editor.md` (including the EDITLOG
+write-back instruction), `wiki/standards/HOW_TO_WRITE.md`,
+`wiki/standards/EDITORIAL_PASS.md`, `RULINGS.md`,
+`torontocharities/content/CLIENT.md` (the brief and the five faults), and
+this file's own tail through today's WRITER and DESIGNER entries above.
+
+Independently re-verified rather than trusted from the earlier runs'
+write-up: `git fetch origin && git checkout -B main origin/main` landed
+clean at `6457392` (Designer run 27 Nov), working tree clean, no stale
+local `main`. `ls content/drafts content/approved/published content/images`
+— none of the three exist (`content/approved/` itself holds only
+`CLIENT.md`, `COMMISSIONS.md`, `EVIDENCE.md`, `QUEUE.md` and a `published/`
+subfolder, no drafted article). A presence-only check found `DATABASE_URL`,
+`ANTHROPIC_API_KEY` and `RESEND_API_KEY` all absent from this session's
+environment. `curl -sS -m 10 -o /dev/null -w "%{http_code}"
+https://toronto-charities.ca/` returned `CONNECT tunnel failed, response
+403` (HTTP 000) — the same blanket egress block every stage has reproduced
+every weekday since 21 October (R-192), reproduced here independently
+rather than assumed. Cross-checked `attribute-brain/todo/toronto-charities.md`
+directly: R-192 and R-170 both still open, unchanged; R-335 (Neon monthly
+compute) is a separate, already-open account-level item this run does not
+touch. Checked `content/QUEUE.md` directly: rows #6, #9 and #10 still read
+"blocked on egress/`DATABASE_URL`," unchanged.
+
+The only four pieces live anywhere in the repo — `volunteer-toronto`,
+`soup-kitchen-volunteer-toronto`, `where-to-donate-books-toronto`,
+`where-to-donate-clothes-toronto` — sit in `content/published/`, published
+before 13 October 2026, unchanged today and not this run's job to
+re-review absent a change. No file in `content/drafts/` to check against a
+`research/facts/` row, no internal or outbound link to curl, no
+`prose_gate.py` to run, no verdict to record against a slug.
+
+**Verdict: nothing in `content/drafts/` — nothing to review, per the
+"Cost discipline" line in `content-editor.md`.** Not re-raising R-192/R-170
+separately — today's WRITER entry already reconfirmed R-192, and the
+commission itself names 1 December as the next natural re-raise point; a
+further same-day repeat of the identical open fault would be noise. The
+`origin/static-rebuild` branch (54 commits, last dated 13 October, flagged
+for Richard on 25 Nov as a probable superseded build safe to delete) is
+unchanged this run — not re-flagging it a second time absent new
+information. This is at least the forty-eighth calendar day with no draft
+produced since 13 October.
