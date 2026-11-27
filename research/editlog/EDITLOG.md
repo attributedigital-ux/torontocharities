@@ -3141,3 +3141,52 @@ fourth same-day repeat of the identical open fault would be noise. The
 for Richard on 25 Nov as a probable superseded build safe to delete) is
 unchanged this run — not re-flagging it a second time absent new
 information.
+
+---
+
+## WRITER run — 27 November 2026 — NOTHING DRAFTED
+
+Read, in order: `attribute-brain/wiki/agents/content-writer.md`,
+`content/COMMISSIONS.md` (today's Friday commission:
+`toronto-charity-news-2026-11-27`, Track 2; #9 `donate-furniture-toronto`,
+#10 `donate-hair-toronto` and #6
+`volunteer-opportunities-toronto-students` carried forward unchanged),
+`content/CLIENT.md`'s brief and the five faults, this file's own tail
+through yesterday's gate run, and `attribute-brain/wiki/standards/
+HOW_TO_WRITE.md`, `RULINGS.md`, `GUIDE_ARTICLE_SPEC.md`, `COPY_STANDARD.md`,
+`CONTENT_THINKING.md`, `RESEARCH_RULES.md`, `BANNED_WORDS.md`, per the
+routine brief.
+
+Independently re-verified rather than trusted from the commission's own
+write-up: `git fetch origin && git checkout -B main origin/main` landed
+clean at `dbd15e8` (today's commissioning run), working tree clean, no
+stale local `main`. `curl -sS -m 10 https://toronto-charities.ca/` and
+`/charity-events-toronto/` both returned `exit 56, "CONNECT tunnel failed,
+response 403"` (`HTTP 000`) — the identical destination-not-allowed
+refusal logged every weekday session since 21 October (R-192). A
+presence-only check found `DATABASE_URL`, `ANTHROPIC_API_KEY` and
+`RESEND_API_KEY` all absent from this session's environment. `ls
+content/drafts content/approved content/images` — none of the three
+exist. Cross-checked `attribute-brain/todo/toronto-charities.md` directly:
+R-192 and R-170 both still open, unchanged; R-335 (Neon monthly compute)
+remains a separate, already-open account-level item this run does not
+touch.
+
+Today's commission requires a live read of Google News RSS for five named
+search terms plus the nine named outlets' own feeds for every item's
+substance, and a live sitemap/`DATABASE_URL` check for every charity named
+before it is linked — neither route has a cached or remembered
+substitute. Per `content-writer.md`'s own hard rule, a claim without a
+facts row does not ship, so nothing was drafted against the news
+commission. The three carried-forward evergreen commissions (#6, #9, #10)
+were already fully re-detailed in prior sessions (25-26 Nov) and remain
+blocked on the identical fault, unchanged today.
+
+This is at least the forty-seventh calendar day with no draft produced
+since 13 October. Not re-escalating: R-192/R-170 already carry the open
+questions and a further log entry restating them would change nothing;
+the next natural re-raise point is the seven-week mark (1 December), per
+today's commission. `content/drafts/`, `content/images/` and `QUEUE.md`
+stay exactly as they were; nothing to commit this run beyond this entry.
+
+**Verdict: no drafts submitted this cycle — nothing to review.**
